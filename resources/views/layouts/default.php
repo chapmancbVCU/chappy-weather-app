@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title><?=$this->siteTitle()?></title>
-    <link rel="icon" href="<?= env('APP_DOMAIN', '/')?>public/noun-mvc-5340614.png">
+    <link rel="icon" href="<?= env('APP_DOMAIN', '/')?>public/weather-sunny.svg">
     <?php if ($isDev): ?>
       <!-- React Fast Refresh preamble -->
       <script type="module">

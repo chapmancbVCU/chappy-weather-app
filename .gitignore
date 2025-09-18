@@ -1,0 +1,46 @@
+# IDE / OS files
+.vscode/
+.DS_Store
+Thumbs.db*
+
+# Environment
+.env
+
+# Config
+/config/*.php
+!/config/config.php
+!/config/console.php
+!/config/database.php
+!/config/email.php
+!/config/notifications.php
+!/config/password.php
+!/config/providers.php
+!/config/queue.php
+!/config/session.php
+
+# Vendor / dependencies
+/vendor
+/node_modules
+package-lock.json
+
+# Caches / logs / runtime
+/cache/
+/storage/cache/
+
+# Database (local only)
+database/database.sqlite
+
+# Ruby docs (optional cleanup)
+docs/Gemfile.lock
+
+# Vite Assets
+public/build
+
+# Dev
+toggle-composer.sh
+composer_local.txt
+composer_remote.txt
+
+# PHPUnit
+.env.testing
+:memory:

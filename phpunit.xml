@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="vendor/chappy-php/chappy-php-framework/src/scripts/bootstrap_phpunit.php"
+         colors="true"
+        cacheDirectory="cache/phpunit/">
+    <testsuites>
+        <testsuite name="Application Test Suite">
+            <directory>./tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <php>
+        <env name="APP_ENV" value="testing"/>
+        <!-- In memory SQLite config -->
+        <!-- <env name="DB_CONNECTION" value="sqlite"/>
+        <env name="DB_DATABASE" value=":memory:"/> -->
+
+        <!-- MySQL/MariaDB test DB config -->
+        <!-- <env name="DB_CONNECTION" value="mysql_testing"/>
+        <env name="DB_HOST" value="127.0.0.1"/>
+        <env name="DB_PORT" value="3306"/>
+        <env name="DB_DATABASE" value=""/>
+        <env name="DB_USERNAME" value=""/>
+        <env name="DB_PASSWORD" value=""/> -->
+
+        <!-- Feature test configuration -->
+        <!-- <env name="DB_REFRESH" value="true"/> -->
+        <!-- <env name="DB_MIGRATE" value="true"/> -->
+        <!-- <env name="DB_SEED" value="true"/> -->
+    </php>
+</phpunit>

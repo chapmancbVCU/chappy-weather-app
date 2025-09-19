@@ -3,7 +3,8 @@
         "denied" : {},
         "Home" : ["*"],
         "Auth" : ["login", "register", "resetPassword"],
-        "Restricted" : ["*"]
+        "Restricted" : ["*"],
+        "Weather": ["currentConditions", "preflight"]
     },
     "LoggedIn" : {
         "denied" : {

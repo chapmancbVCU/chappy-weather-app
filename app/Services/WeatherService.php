@@ -24,4 +24,11 @@ class WeatherService extends Api{
             timeout: 6
         );
     }
+
+    public function current(array $query): array {
+        $allowed = ['q', 'zip', 'lat', 'lon', 'units', 'lang'];
+        $params = array_intersect_key($query, array_flip($allowed));
+
+        return $this->get('/weather', $params);
+    }
 }

@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 use Core\Controller;
+use App\Services\WeatherService;
 
 /**
  * Undocumented class

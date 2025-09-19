@@ -1,4 +1,5 @@
 import React from "react";
+import CurrentConditions from "@/components/CurrentConditions";
 function Index({ user }) {
 
     const welcomeMessage = () => {
@@ -12,7 +13,7 @@ function Index({ user }) {
     return (
         <div>
             <h2 className="text-center">{welcomeMessage()}</h2>
-            
+            <CurrentConditions />
         </div>
     );
 }        

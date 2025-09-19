@@ -9,4 +9,19 @@ use Core\Lib\Http\Api;
 class WeatherService extends Api{
     private const ONE_CALL = 'http://api.openweathermap.org/data/3.0/onecall';
     private const STANDARD = 'http://api.openweathermap.org/data/2.5';
+
+    public function __construct(bool $oneCall = false) {
+        $baseUrl = ($oneCall) ? self::ONE_CALL : self::STANDARD;
+        parent::__construct(
+            baseUrl: $baseUrl,
+            cacheNamespace: 'owm',
+            defaultHeaders: ['Accept' => 'application/json'],
+            defaultQuery: [
+                'appid' => env('OWM_API_KEY'),
+                'units' => 'imperial'
+            ],
+            defaultTtl: 120,
+            timeout: 6
+        );
+    }
 }

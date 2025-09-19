@@ -10,16 +10,16 @@ use Throwable;
 class WeatherController extends Controller {
     public function currentConditionsAction() {
         try {
-            $q = $_GET['q'] ?? null;
-            $lat = $_GET['lat'] ?? null;
-            $lon = $_GET['lon'] ?? null;
+            $q = $this->request->get('q') ?? null;
+            $lat = $this->request->get('lat') ?? null;
+            $lon = $this->request->get('lon') ?? null;
 
             if(!$q && !($lat && $lon)) {
                 return $this->jsonError('Provide ?q=City or ?lat=&lon=', 422);
             }
 
             $svc = new WeatherService();
-            $data = $svc->current($_GET);
+            $data = $svc->current($this->request->get());
 
             $this->jsonResponse(['success' => true, 'data' => $data]);
         } catch(Throwable $e) {

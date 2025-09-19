@@ -14,21 +14,8 @@ class HomeController extends Controller {
      * @return void
      */
     public function indexAction(): void {
-        // Toggle comments to enable React.js view.
-        $this->view->render('home.index');
-
-        // $user = AuthService::currentUser();
-        // $props = ['user' => $user ?? 'Guest'];
-        // $this->view->renderJSX('home.Index', $props);
-    }
-
-    /**
-     * Demonstration for an Ajax request.
-     *
-     * @return void
-     */
-    public function testAjaxAction(): void {
-        $resp = ['success'=>true,'data'=>['id'=>23,'name'=>'Hello World','favorite_food'=>'bread']];
-        $this->jsonResponse($resp);
+        $user = AuthService::currentUser();
+        $props = ['user' => $user ?? 'Guest'];
+        $this->view->renderJSX('home.Index', $props);
     }
 }

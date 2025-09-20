@@ -6,7 +6,8 @@ use Core\Lib\Http\Api;
 /**
  * Service that supports the WeatherService model.
  */
-class WeatherService extends Api{
+class WeatherService extends Api {
+    private const GEO_LOCATE = 'http://api.openweathermap.org/geo/1.0/direct';
     private const ONE_CALL = 'http://api.openweathermap.org/data/3.0/onecall';
     private const STANDARD = 'http://api.openweathermap.org/data/2.5';
 

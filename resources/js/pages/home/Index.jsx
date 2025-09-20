@@ -9,19 +9,21 @@ function Index({ user }) {
     
     const [data, setData] = useState(null);
     useEffect(() =>{
-        // const result = await geoLoc();
-        // setData(result);
+
         geoLoc()
             .then(d => {
                 setData(d)
             })
     }, []) 
 
+
+
+
     console.log(data);
     return (
         <div>
-            <h2 className="text-center">{welcomeMessage()}</h2>
-            <CurrentConditions />
+            <h2 className="text-center">Conditions in {data?.city}, {data?.principalSubdivision}</h2>
+            <CurrentConditions city={`${data?.city}, ${data?.principalSubdivision}`} />
         </div>
     );
 }        

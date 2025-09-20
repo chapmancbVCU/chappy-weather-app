@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CurrentConditions from "@/components/CurrentConditions";
-// import geoLoc from "@/utils/geoLocation";
+import SearchBar from "@/components/SearchBar";
 import { Weather } from "@/utils/Weather";
 function Index({ user }) {
     const [city, setCity] = useState(null);
@@ -32,6 +32,7 @@ function Index({ user }) {
 
     return (
         <div>
+            <SearchBar />
             <h2 className="text-center">Conditions in {city}</h2>
             <CurrentConditions city={city} units={units}/>
         </div>

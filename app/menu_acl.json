@@ -1,4 +1,6 @@
 {
-    "Home" : "home",
+    "Current Conditions" : "home",
+    "Hourly Forecast" : "hourly",
+    "Daily Forecast" : "daily",
     "Admin" : "admindashboard/index"
 }

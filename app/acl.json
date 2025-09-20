@@ -2,6 +2,7 @@
     "Guest" : {
         "denied" : {},
         "Home" : ["*"],
+        "Hourly" : ["*"],
         "Auth" : ["login", "register", "resetPassword"],
         "Restricted" : ["*"],
         "Weather": ["currentConditions", "preflight"]

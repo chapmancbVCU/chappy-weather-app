@@ -3,6 +3,7 @@
         "denied" : {},
         "Home" : ["*"],
         "Hourly" : ["*"],
+        "Daily" : ["*"],
         "Auth" : ["login", "register", "resetPassword"],
         "Restricted" : ["*"],
         "Weather": ["currentConditions", "preflight"]

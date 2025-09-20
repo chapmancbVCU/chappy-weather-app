@@ -1,0 +1,13 @@
+.search-bar {
+    border: solid 1px black;
+    position: fixed;
+    top: 56px;
+    left: 0;
+    width: 100%;
+}
+
+@media only screen and (max-width: 222px) {
+    .search-bar {
+        top: 96px;
+    }
+}

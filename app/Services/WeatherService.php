@@ -1,13 +1,12 @@
 <?php
 namespace App\Services;
 
-use Core\Lib\Utilities\Env;
 use Core\Lib\Http\Api;
+use Core\Lib\Utilities\Env;
 /**
  * Service that supports the WeatherService model.
  */
 class WeatherService extends Api {
-    private const GEO_LOCATE = 'http://api.openweathermap.org/geo/1.0/direct';
     private const ONE_CALL = 'http://api.openweathermap.org/data/3.0/onecall';
     private const STANDARD = 'http://api.openweathermap.org/data/2.5';
 
@@ -29,7 +28,6 @@ class WeatherService extends Api {
     public function current(array $query): array {
         $allowed = ['q', 'zip', 'lat', 'lon', 'units', 'lang'];
         $params = array_intersect_key($query, array_flip($allowed));
-
         return $this->get('/weather', $params);
     }
 }

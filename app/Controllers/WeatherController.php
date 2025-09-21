@@ -43,7 +43,7 @@ class WeatherController extends Controller {
             
             $geo = new GeoLocateService();
             $data = $geo->geoLocation($this->request->get());
-            $this->jsonResponse(['success' => true, 'options' => $data ?? '']);
+            $this->jsonResponse(['success' => true, 'data' => $data ?? '']);
         } catch(Throwable $e) {
             $this->jsonError('Upstream error', 502, ['detail' => $e->getMessage()]);
         }

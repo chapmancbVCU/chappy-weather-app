@@ -15,7 +15,6 @@ function SearchBar({ onSubmit }) {
      * Search text entered by the user.
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
      */
-    const [searchTerm, setSearchTerm] = useState("");
     const [q, setQ] = useState("");
 
     const onOptionSelect = (option) => {
@@ -24,8 +23,7 @@ function SearchBar({ onSubmit }) {
     }
     const onInputChange = (e) => {
         const value = e.target.value;
-        setSearchTerm(value)
-        setQ(value);
+        setQ(e.target.value);
     }
 
    const { data: options = [], loading, error } = useAsync(({ signal }) => {
@@ -49,7 +47,7 @@ function SearchBar({ onSubmit }) {
                         type="text"
                         aria-label="Get weather conditions"
                         placeholder="City or Zip Code"
-                        value={searchTerm}
+                        value={q}
                         onChange={onInputChange}>
                     </input>
                     <div

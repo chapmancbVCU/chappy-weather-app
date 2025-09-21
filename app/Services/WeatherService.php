@@ -2,18 +2,16 @@
 namespace App\Services;
 
 use Core\Lib\Http\Api;
-use Core\Lib\Utilities\Env;
+
 /**
- * Service that supports the WeatherService model.
+ * Service that supports retrieving weather for current conditions.
  */
 class WeatherService extends Api {
-    private const ONE_CALL = 'http://api.openweathermap.org/data/3.0/onecall';
     private const STANDARD = 'http://api.openweathermap.org/data/2.5';
 
     public function __construct(bool $oneCall = false) {
-        $baseUrl = ($oneCall) ? self::ONE_CALL : self::STANDARD;
         parent::__construct(
-            baseUrl: $baseUrl,
+            baseUrl: self::STANDARD,
             cacheNamespace: 'owm',
             defaultHeaders: ['Accept' => 'application/json'],
             defaultQuery: [

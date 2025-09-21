@@ -8,7 +8,7 @@ use Core\Lib\Logging\Logger;
 use App\Services\WeatherService;
 
 /**
- * Undocumented class
+ * Has actions that serves as endpoints for api requests.
  */
 class WeatherController extends Controller {
     public function currentConditionsAction() {

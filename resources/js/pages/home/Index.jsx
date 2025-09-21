@@ -34,7 +34,7 @@ function Index({ user }) {
         <>
             <SearchBar />
             <h2 className="text-center">Conditions in {city}</h2>
-            <CurrentConditions city={city} units={units}/>
+            <CurrentConditions city={city} units={units} />
         </>
     );
 }        

@@ -30,4 +30,8 @@ class WeatherController extends Controller {
     public function preflightAction(): void {
         $this->preflight();
     }
+
+    public function searchAction(): void {
+        $this->jsonResponse(['success' => true, 'test' => 'test']);
+    }
 }

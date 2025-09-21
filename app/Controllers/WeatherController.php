@@ -44,6 +44,12 @@ class WeatherController extends Controller {
         $this->preflight();
     }
 
+    /**
+     * Performs query for geo location suggestions based on user input in 
+     * search bar.
+     *
+     * @return void
+     */
     public function searchAction() {
         try {
             $q = $this->request->get('q') ?? null;

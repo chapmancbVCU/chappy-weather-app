@@ -18,7 +18,7 @@ function SearchBar({searchTerm, onSubmit}) {
         onSubmit?.(q);
     }
 
-    console.log(q)
+    console.log(options)
     return (
         <>
             <div className="search-bar">
@@ -28,7 +28,7 @@ function SearchBar({searchTerm, onSubmit}) {
                         type="text"
                         aria-label="Get weather conditions"
                         placeholder="City or Zip Code"
-                        value={searchTerm}
+                        value={q}
                         onChange={onInputChange}>
                     </input>
                     <div

@@ -1,8 +1,11 @@
 <?php
 namespace App\Controllers;
-use Core\Controller;
-use App\Services\WeatherService;
+
+use App\Services\GeoLocateService;
 use Throwable;
+use Core\Controller;
+use Core\Lib\Logging\Logger;
+use App\Services\WeatherService;
 
 /**
  * Undocumented class
@@ -31,7 +34,18 @@ class WeatherController extends Controller {
         $this->preflight();
     }
 
-    public function searchAction(): void {
-        $this->jsonResponse(['success' => true, 'test' => 'test']);
+    public function searchAction() {
+        try {
+            $q = $this->request->get('q') ?? null;
+            if(!$q) {
+                return $this->jsonError('Invalid location provided', 422);
+            }
+            
+            $geo = new GeoLocateService();
+            $data = $geo->geoLocation($this->request->get());
+            $this->jsonResponse(['success' => true, 'options' => $data ?? '']);
+        } catch(Throwable $e) {
+            $this->jsonError('Upstream error', 502, ['detail' => $e->getMessage()]);
+        }
     }
 }

@@ -2,7 +2,6 @@
 namespace App\Services;
 
 use Core\Lib\Http\Api;
-use App\Models\GeoLocate;
 
 /**
  * Service that supports the GeoLocate model.
@@ -10,6 +9,10 @@ use App\Models\GeoLocate;
 class GeoLocateService extends Api {
     private const GEO_LOCATE = 'http://api.openweathermap.org/geo/1.0';
 
+    /**
+     * Setup instance of this class.  Configures default query with 
+     * appid and limit for suggestions to be returned.
+     */
     public function __construct() {
         parent::__construct(
             baseUrl: self::GEO_LOCATE,
@@ -24,6 +27,12 @@ class GeoLocateService extends Api {
         );
     }
 
+    /**
+     * Packages query for geo location based on user input.
+     *
+     * @param array $query The query string.
+     * @return array The response data for the API request.
+     */
     public function geoLocation(array $query): array {
         $allowed = ['q'];
         $params = array_intersect_key($query, array_flip($allowed));

@@ -10,7 +10,6 @@ function Index({ user }) {
     const welcomeMessage = () => {
         
     }
-    
     const getCity = () => {
         weather.getCityInfo()    
             .then(c => {
@@ -25,6 +24,12 @@ function Index({ user }) {
             })
     }
 
+    const onSubmit = (q) => {
+        console.log(q);
+        setCity(q);
+    }
+
+
     useEffect(() =>{
         getCity()
         getUnits();
@@ -32,7 +37,7 @@ function Index({ user }) {
 
     return (
         <>
-            <SearchBar />
+            <SearchBar onSubmit={onSubmit}/>
             <h2 className="text-center">Conditions in {city}</h2>
             <CurrentConditions city={city} units={units} />
         </>

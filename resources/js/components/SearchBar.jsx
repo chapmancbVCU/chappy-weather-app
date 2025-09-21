@@ -1,7 +1,20 @@
 import React, { useState } from "react";
 import "@css/searchbar.css";
 import { apiGet, useAsync } from '@chappy/utils/api';
+
+/**
+ * Supports the search feature for the weather application.  It also includes, 
+ * the ability to show suggestions when user types input.
+ * 
+ * @property {} onSubmit 
+ * @param {InputProps} param0 
+ * @returns {JSX.Element} The search bar
+ */
 function SearchBar({ onSubmit }) {
+    /**
+     * Search text entered by the user.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [searchTerm, setSearchTerm] = useState("");
     const [q, setQ] = useState("");
 

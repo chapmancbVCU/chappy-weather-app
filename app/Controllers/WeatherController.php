@@ -11,6 +11,11 @@ use App\Services\WeatherService;
  * Has actions that serves as endpoints for api requests.
  */
 class WeatherController extends Controller {
+    /**
+     * Supports query for getting current conditions for a given area.
+     *
+     * @return void
+     */
     public function currentConditionsAction() {
         try {
             $q = $this->request->get('q') ?? null;

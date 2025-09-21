@@ -9,6 +9,10 @@ use Core\Lib\Http\Api;
 class WeatherService extends Api {
     private const STANDARD = 'http://api.openweathermap.org/data/2.5';
 
+    /**
+     * Setup instance of this class.  Configures default query with 
+     * appid and units for suggestions to be returned.
+     */
     public function __construct(bool $oneCall = false) {
         parent::__construct(
             baseUrl: self::STANDARD,
@@ -23,6 +27,13 @@ class WeatherService extends Api {
         );
     }
 
+    /**
+     * Packages query for current conditions using free tier api call.
+     *
+     * @param array $query The query string
+     * @return array The response data for the API request containing 
+     * weather information.
+     */
     public function current(array $query): array {
         $allowed = ['q', 'zip', 'lat', 'lon', 'units', 'lang'];
         $params = array_intersect_key($query, array_flip($allowed));

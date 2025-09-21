@@ -8,8 +8,7 @@ use Core\Services\AuthService;
  */
 class HomeController extends Controller {
     /** 
-     * The default action for this controller.  It performs rendering of this 
-     * site's home page.
+     * Home page that renders current conditions.
      * 
      * @return void
      */

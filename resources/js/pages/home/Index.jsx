@@ -31,11 +31,11 @@ function Index({ user }) {
     }, []) 
 
     return (
-        <div>
+        <>
             <SearchBar />
             <h2 className="text-center">Conditions in {city}</h2>
             <CurrentConditions city={city} units={units}/>
-        </div>
+        </>
     );
 }        
 export default Index;

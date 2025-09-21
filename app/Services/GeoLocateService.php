@@ -4,7 +4,7 @@ namespace App\Services;
 use Core\Lib\Http\Api;
 
 /**
- * Service that supports the GeoLocate model.
+ * Service that supports the geo location api calls.
  */
 class GeoLocateService extends Api {
     private const GEO_LOCATE = 'http://api.openweathermap.org/geo/1.0';

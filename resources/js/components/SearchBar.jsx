@@ -18,7 +18,8 @@ function SearchBar({searchTerm, onSubmit}) {
         onSubmit?.(q);
     }
 
-    console.log(options)
+    const geoData = options?.data;
+    console.log(geoData)
     return (
         <>
             <div className="search-bar">
@@ -41,7 +42,11 @@ function SearchBar({searchTerm, onSubmit}) {
                 </form>
             </div>
             <ul className="options-list">
-
+                {geoData && geoData.map((option, index) => (
+                    <li className="option-list-item" key={option.name + '-' + index}>
+                        <button>{option.name}, {option.state}, {option.country}</button>
+                    </li>
+                ))}
             </ul>
         </>
     );

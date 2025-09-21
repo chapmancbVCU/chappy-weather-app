@@ -30,6 +30,11 @@ class WeatherController extends Controller {
         }
     }
 
+    /**
+     * OPTIONS /weather/*  (CORS preflight)
+     *
+     * @return void
+     */
     public function preflightAction(): void {
         $this->preflight();
     }

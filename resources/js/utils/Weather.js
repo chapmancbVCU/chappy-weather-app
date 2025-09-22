@@ -142,12 +142,29 @@ export class Weather {
     }
 
     updateStorage(data, units, city) {
-        console.log(data)
-        console.log(`City: ${city}`);
-        console.log(`Units: ${units}`);
+        // console.log(data)
+        // console.log(`City: ${city}`);
+        // console.log(`Units: ${units}`);
         let lat = data.coord?.lat;
-        console.log(`Latitude: ${lat}`)
+        // console.log(`Latitude: ${lat}`)
         let lon = data.coord?.lon;
-        console.log(`Longitude: ${lon}`)
+        // console.log(`Longitude: ${lon}`)
+
+        const locationData = {
+            location: city,
+            units: units,
+            latitude: lat,
+            longitude: lon
+        }
+
+        localStorage.setItem('locationData', JSON.stringify(locationData));
+    }
+
+    readStorage() {
+        const locationData = localStorage.getItem('locationData');
+        if(locationData) {
+            const data = JSON.parse(locationData);
+            console.log(data)
+        }
     }
 }

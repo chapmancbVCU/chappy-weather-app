@@ -49,7 +49,7 @@ function Index({ user }) {
     [city, units]);
     const conditions = data?.data || {};
     weather.updateStorage(conditions, units, city);
-    
+    weather.readStorage();
     return (
         <>
             <SearchBar onSubmit={onSubmit}/>

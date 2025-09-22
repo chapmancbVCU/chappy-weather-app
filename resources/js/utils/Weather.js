@@ -1,5 +1,12 @@
+/**
+ * Helper class that assists in retrieving data.
+ */
 export class Weather {
     
+    /**
+     * Creates instance of weather class.  Variables are set 
+     * either by using geo location API or local storage.
+     */
     constructor() {
         let geoLocationInfo = this.getLocationInformation();
         this.latitude = this.setLatitude(geoLocationInfo);

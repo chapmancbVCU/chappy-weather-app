@@ -72,6 +72,18 @@ class WeatherService extends Api {
     }
 
     /**
+     * Packages query for onecall api call.
+     *
+     * @param array $query The query string.
+     * @return array The response data for the API request.
+     */
+    public function oneCall(array $query): array {
+        $allowed = ['lat', 'lon', 'units', 'lang'];
+        $params = array_intersect_key($query, array_flip($allowed));
+        return $this->get('/onecall', $params);
+    }
+
+    /**
      * Determines if mode provided in constructor is valid value
      *
      * @param string $mode The mode that determines appropriate API call.

@@ -86,7 +86,7 @@ export class Weather {
 
     setLocation(city) {
         this.city = city;
-        console.log(city);
+        // console.log(city);
     }
     /**
      * Setter function for the latitude of the user's location or search query.
@@ -141,4 +141,13 @@ export class Weather {
         }
     }
 
+    updateStorage(data, units, city) {
+        console.log(data)
+        console.log(`City: ${city}`);
+        console.log(`Units: ${units}`);
+        let lat = data.coord?.lat;
+        console.log(`Latitude: ${lat}`)
+        let lon = data.coord?.lon;
+        console.log(`Longitude: ${lon}`)
+    }
 }

@@ -33,7 +33,7 @@ function Index({ user }) {
     }
 
     const onSubmit = (q) => {
-        console.log(q);
+        // console.log(q);
         setCity(q);
         weather.setLocation(q);
     }
@@ -48,6 +48,8 @@ function Index({ user }) {
         apiGet('/weather/currentConditions', { query: {q: city, units}, signal}),
     [city, units]);
     const conditions = data?.data || {};
+    weather.updateStorage(conditions, units, city);
+    
     return (
         <>
             <SearchBar onSubmit={onSubmit}/>

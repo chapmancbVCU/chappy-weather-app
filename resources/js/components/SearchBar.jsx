@@ -23,10 +23,15 @@ function SearchBar({ onSubmit }) {
      */
     const [q, setQ] = useState("");
 
+    /**
+     * Set search term in address bar when user selects option.
+     * @param {object} option An option that has been selected by the user.
+     */
     const onOptionSelect = (option) => {
         let term = option.name + ", " + option.state + ", " + option.country;
         setSearchTerm(term)
     }
+    
     const onInputChange = (e) => {
         const value = e.target.value;
         setSearchTerm(value)

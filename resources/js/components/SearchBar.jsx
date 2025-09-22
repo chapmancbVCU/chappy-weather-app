@@ -24,6 +24,16 @@ function SearchBar({ onSubmit }) {
     const [q, setQ] = useState("");
 
     /**
+     * Handles event when user clicks on search.
+     * @param {Event} e Event when user clicks on search button.
+     */
+    const handleClick = (e) => {
+        e.preventDefault();
+        
+        onSubmit?.(searchTerm);
+    }
+
+    /**
      * Set search term in address bar when user selects option.
      * @param {object} option An option that has been selected by the user.
      */
@@ -31,30 +41,26 @@ function SearchBar({ onSubmit }) {
         let term = option.name + ", " + option.state + ", " + option.country;
         setSearchTerm(term)
     }
-    
+
     const onInputChange = (e) => {
         const value = e.target.value;
         setSearchTerm(value)
         setQ(value);
     }
 
-   const { data: options = [], loading, error } = useAsync(({ signal }) => {
+    const { data: options = [], loading, error } = useAsync(({ signal }) => {
         if (!q) return Promise.resolve([]);
         return apiGet('/weather/search', { query: { q }, signal})
     }, [q]);
 
-    const handleClick = (e) => {
-        e.preventDefault();
-        
-        onSubmit?.(searchTerm);
-    }
+    
 
     const geoData = options?.data;
 
     return (
         <>
             <div className="search-bar">
-                <form className="search-form">
+                <form className="search-form" >
                     <input id="q"
                         className="search-input"
                         type="text"

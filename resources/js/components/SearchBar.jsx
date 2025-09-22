@@ -24,7 +24,7 @@ function SearchBar({ onSubmit }) {
     const [q, setQ] = useState("");
 
     /**
-     * Handles event when user clicks on search.
+     * Handles event when user clicks on search or presses enter.
      * @param {Event} e Event when user clicks on search button.
      */
     const handleClick = (e) => {
@@ -42,6 +42,11 @@ function SearchBar({ onSubmit }) {
         setSearchTerm(term)
     }
 
+    /**
+     * Ensures text that user types into search bar is updated or when.  Updates 
+     * q and searchTerm
+     * @param {Event} e The event for when user types in search bar.
+     */
     const onInputChange = (e) => {
         const value = e.target.value;
         setSearchTerm(value)

@@ -6,7 +6,7 @@ import { apiGet, useAsync } from '@chappy/utils/api';
 
 /**
  * Renders and handles information for current conditions at a specific 
- * location.
+ * location and search.
  * @param {InputProps} param0 
  * @returns {JSX.Element} The home view that displays current conditions.
  */

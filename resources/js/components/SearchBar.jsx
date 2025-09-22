@@ -12,7 +12,13 @@ import { apiGet, useAsync } from '@chappy/utils/api';
  */
 function SearchBar({ onSubmit }) {
     /**
-     * Search text entered by the user.
+     * Search text selected by user.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
+    const [searchTerm, setSearchTerm] = useState("");
+
+    /**
+     * Query string in search input element.
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
      */
     const [q, setQ] = useState("");
@@ -23,7 +29,8 @@ function SearchBar({ onSubmit }) {
     }
     const onInputChange = (e) => {
         const value = e.target.value;
-        setQ(e.target.value);
+        setSearchTerm(value)
+        setQ(value);
     }
 
    const { data: options = [], loading, error } = useAsync(({ signal }) => {
@@ -33,6 +40,7 @@ function SearchBar({ onSubmit }) {
 
     const handleClick = (e) => {
         e.preventDefault();
+        
         onSubmit?.(searchTerm);
     }
 
@@ -47,7 +55,7 @@ function SearchBar({ onSubmit }) {
                         type="text"
                         aria-label="Get weather conditions"
                         placeholder="City or Zip Code"
-                        value={q}
+                        value={searchTerm}
                         onChange={onInputChange}>
                     </input>
                     <div

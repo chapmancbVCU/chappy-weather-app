@@ -8,9 +8,9 @@ use InvalidArgumentException;
  * Service that supports retrieving weather for current conditions.
  */
 class WeatherService extends Api {
-    private const GEO_LOCATE = 'http://api.openweathermap.org/geo/1.0';
-    private const ONE_CALL = 'http://api.openweathermap.org/data/3.0';
-    private const STANDARD = 'http://api.openweathermap.org/data/2.5';
+    public const GEO_LOCATE = 'http://api.openweathermap.org/geo/1.0';
+    public const ONE_CALL = 'http://api.openweathermap.org/data/3.0';
+    public const STANDARD = 'http://api.openweathermap.org/data/2.5';
     /**
      * Setup instance of this class.  Configures default query with 
      * appid and units for suggestions to be returned.
@@ -22,13 +22,28 @@ class WeatherService extends Api {
             baseUrl: $mode,
             cacheNamespace: 'owm',
             defaultHeaders: ['Accept' => 'application/json'],
-            defaultQuery: [
-                'appid' => env('OWM_API_KEY'),
-                'units' => 'imperial'
-            ],
+            defaultQuery: self::buildQuery($mode),
             defaultTtl: 120,
             timeout: 6
         );
+    }
+
+    /**
+     * Builds defaultQuery based on which API is selected.
+     *
+     * @param string $mode The specific API to use.
+     * @return array $query The params for the defaultQuery.
+     */
+    private function buildQuery(string $mode): array {
+        $query = [];
+        $query['appid'] = env('OWM_API_KEY');
+        // $query['units'] = 'imperial';
+
+        if($mode === self::GEO_LOCATE) {
+            $query['limit'] = env('OWM_SEARCH_TERM_LIMIT');
+        }
+
+        return $query;
     }
 
     /**
@@ -39,7 +54,7 @@ class WeatherService extends Api {
      * weather information.
      */
     public function current(array $query): array {
-        $allowed = ['q', 'zip', 'lat', 'lon', 'units', 'lang'];
+        $allowed = ['q', 'units', 'lang'];
         $params = array_intersect_key($query, array_flip($allowed));
         return $this->get('/weather', $params);
     }
@@ -55,7 +70,7 @@ class WeatherService extends Api {
         $params = array_intersect_key($query, array_flip($allowed));
         return $this->get('/direct', $params);
     }
-    
+
     /**
      * Determines if mode provided in constructor is valid value
      *

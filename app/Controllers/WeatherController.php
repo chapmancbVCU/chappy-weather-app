@@ -1,7 +1,6 @@
 <?php
 namespace App\Controllers;
 
-use App\Services\GeoLocateService;
 use Throwable;
 use Core\Controller;
 use Core\Lib\Logging\Logger;
@@ -57,7 +56,7 @@ class WeatherController extends Controller {
                 return $this->jsonError('Invalid location provided', 422);
             }
             
-            $geo = new GeoLocateService();
+            $geo = new WeatherService(WeatherService::GEO_LOCATE);
             $data = $geo->geoLocation($this->request->get());
             $this->jsonResponse(['success' => true, 'data' => $data ?? '']);
         } catch(Throwable $e) {

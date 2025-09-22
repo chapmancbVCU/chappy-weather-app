@@ -28,11 +28,12 @@ function Index({ user }) {
     const onSubmit = (q) => {
         console.log(q);
         setCity(q);
+        weather.setLocation(q);
     }
 
 
     useEffect(() =>{
-        getCity()
+        getCity();
         getUnits();
     }, []) 
 

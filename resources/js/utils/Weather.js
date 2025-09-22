@@ -84,6 +84,10 @@ export class Weather {
         return this.units;
     }
 
+    setLocation(city) {
+        this.city = city;
+        console.log(city);
+    }
     /**
      * Setter function for the latitude of the user's location or search query.
      * @param {Number} latitude The latitude of the user's location or search 

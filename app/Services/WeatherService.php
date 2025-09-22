@@ -45,6 +45,18 @@ class WeatherService extends Api {
     }
 
     /**
+     * Packages query for geo location based on user input.
+     *
+     * @param array $query The query string.
+     * @return array The response data for the API request.
+     */
+    public function geoLocation(array $query): array {
+        $allowed = ['q'];
+        $params = array_intersect_key($query, array_flip($allowed));
+        return $this->get('/direct', $params);
+    }
+    
+    /**
      * Determines if mode provided in constructor is valid value
      *
      * @param string $mode The mode that determines appropriate API call.

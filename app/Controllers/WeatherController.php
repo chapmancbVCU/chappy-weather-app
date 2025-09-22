@@ -30,7 +30,7 @@ class WeatherController extends Controller {
 
             $this->jsonResponse(['success' => true, 'data' => $data]);
         } catch(Throwable $e) {
-            $this->jsonError('Upstream error', 502, ['detail' => $e->getMessage()]);
+            $this->jsonError("Upstream error - {$e->getMessage()}", 502);
         }
     }
 

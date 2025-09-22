@@ -3,6 +3,13 @@ import CurrentConditions from "@/components/CurrentConditions";
 import SearchBar from "@/components/SearchBar";
 import { Weather } from "@/utils/Weather";
 import { apiGet, useAsync } from '@chappy/utils/api';
+
+/**
+ * Renders and handles information for current conditions at a specific 
+ * location.
+ * @param {InputProps} param0 
+ * @returns {JSX.Element} The home view that displays current conditions.
+ */
 function Index({ user }) {
     const [city, setCity] = useState(null);
     const [units, setUnits] = useState(null)

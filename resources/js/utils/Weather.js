@@ -94,6 +94,11 @@ export class Weather {
         return this.units;
     }
 
+    /**
+     * Tests if locationData variable key exists in localStorage.
+     * 
+     * @returns {boolean} True if key exists, otherwise false.
+     */
     locationDataExists() {
         const data = localStorage.getItem('locationData');
         return (data) ? true : false;

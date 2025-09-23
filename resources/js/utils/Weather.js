@@ -155,6 +155,14 @@ export class Weather {
         }
     }
 
+    /**
+     * Sets or updates local storage with information needed to instantiate 
+     * instance of Weather class using local storage.
+     * 
+     * @param {array} data Weather data used to set latitude and longitude.
+     * @param {string} units The units to be used.
+     * @param {string} city The name of the city.
+     */
     updateStorage(data, units, city) {
         let lat = data.coord?.lat;
         let lon = data.coord?.lon;

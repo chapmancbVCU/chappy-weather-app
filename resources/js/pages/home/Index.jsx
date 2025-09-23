@@ -43,11 +43,8 @@ function Index({ user }) {
     }
 
     const onSubmit = (q) => {
-        // console.log(q);
         setCity(q);
         weather.setLocation(q);
-        // weather.updateStorage(conditions, units, city);
-        // weather.readStorage();
     }
 
 

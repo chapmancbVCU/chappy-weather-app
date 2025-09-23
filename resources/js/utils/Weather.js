@@ -10,7 +10,6 @@ export class Weather {
     constructor() {
         const data = this.readStorage();
         if(data) {
-            console.log(data)
             this.latitude = data.latitude;
             this.longitude = data.longitude;
             this.city = data.location;
@@ -42,6 +41,9 @@ export class Weather {
         return this.latitude;
     }
 
+    getLongitude() {
+        return this.longitude;
+    }
     /**
      * Retrieves locality information of user upon initialization of page.
      * @param {String} geoLocationInfo JSON string that contains information 
@@ -191,7 +193,6 @@ export class Weather {
         const locationData = localStorage.getItem('locationData');
         if(locationData) {
             const data = JSON.parse(locationData);
-            console.log(typeof(data))
             return data;
         }
         return null;

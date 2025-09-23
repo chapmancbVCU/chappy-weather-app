@@ -23,6 +23,11 @@ function SearchBar({ onSubmit }) {
      */
     const [q, setQ] = useState("");
 
+    /**
+     * State used to track if unordered list containing location data should 
+     * be visible.
+     * @type {[boolean, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [open, setOpen] = useState(false);
 
     /**

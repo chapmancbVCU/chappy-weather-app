@@ -177,10 +177,16 @@ export class Weather {
         localStorage.setItem('locationData', JSON.stringify(locationData));
     }
 
+    /**
+     * Retrieves location data from local storage.
+     * 
+     * @returns {object} Data from local storage packaged as an object.
+     */
     readStorage() {
         const locationData = localStorage.getItem('locationData');
         if(locationData) {
             const data = JSON.parse(locationData);
+            console.log(typeof(data))
             return data;
         }
         return null;

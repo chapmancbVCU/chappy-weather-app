@@ -36,6 +36,8 @@ function Index({ user }) {
         // console.log(q);
         setCity(q);
         weather.setLocation(q);
+        // weather.updateStorage(conditions, units, city);
+        // weather.readStorage();
     }
 
 
@@ -48,8 +50,11 @@ function Index({ user }) {
         apiGet('/weather/currentConditions', { query: {q: city, units}, signal}),
     [city, units]);
     const conditions = data?.data || {};
-    weather.updateStorage(conditions, units, city);
-    weather.readStorage();
+
+    useEffect(() => {
+        weather.updateStorage(conditions, units, city);
+        weather.readStorage();
+    }, [conditions])
     return (
         <>
             <SearchBar onSubmit={onSubmit}/>

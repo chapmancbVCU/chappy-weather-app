@@ -6,7 +6,7 @@
         "Daily" : ["*"],
         "Auth" : ["login", "register", "resetPassword"],
         "Restricted" : ["*"],
-        "Weather": ["currentConditions", "preflight", "search"]
+        "Weather": ["currentConditions", "preflight", "search", "hourly"]
     },
     "LoggedIn" : {
         "denied" : {

@@ -23,13 +23,15 @@ function SearchBar({ onSubmit }) {
      */
     const [q, setQ] = useState("");
 
+    const [open, setOpen] = useState(false);
+
     /**
      * Handles event when user clicks on search or presses enter.
      * @param {Event} e Event when user clicks on search button.
      */
     const handleClick = (e) => {
         e.preventDefault();
-        
+        setOpen(false);
         onSubmit?.(searchTerm);
     }
 
@@ -50,6 +52,7 @@ function SearchBar({ onSubmit }) {
     const onInputChange = (e) => {
         const value = e.target.value;
         setSearchTerm(value)
+        setOpen(true);
         setQ(value);
     }
 
@@ -58,9 +61,7 @@ function SearchBar({ onSubmit }) {
         return apiGet('/weather/search', { query: { q }, signal})
     }, [q]);
 
-    
-
-    const geoData = options?.data;
+    let geoData = options?.data;
 
     return (
         <>
@@ -83,15 +84,17 @@ function SearchBar({ onSubmit }) {
                     <button className='search-button' onClick={handleClick}>Search</button>
                 </form>
             </div>
-            <ul className="options-list">
-                {geoData && geoData.map((option, index) => (
-                    <li className="option-list-item" key={option.name + '-' + index}>
-                        <button onClick={() => onOptionSelect(option)}>
-                            {option.name}, {option.state}, {option.country}
-                        </button>
-                    </li>
-                ))}
-            </ul>
+            {open && (
+                <ul className="options-list">
+                    {geoData && geoData.map((option, index) => (
+                        <li className="option-list-item" key={option.name + '-' + index}>
+                            <button onClick={() => onOptionSelect(option)}>
+                                {option.name}, {option.state}, {option.country}
+                            </button>
+                        </li>
+                    ))}
+                </ul>
+            )}
         </>
     );
 }        

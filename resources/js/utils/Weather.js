@@ -8,11 +8,21 @@ export class Weather {
      * either by using geo location API or local storage.
      */
     constructor() {
-        let geoLocationInfo = this.getLocationInformation();
-        this.latitude = this.setLatitude(geoLocationInfo);
-        this.longitude = this.setLongitude(geoLocationInfo);
-        this.city = this.getLocalityInfo(geoLocationInfo);
-        this.units = this.setUnits(geoLocationInfo);
+        const data = this.readStorage();
+        if(data) {
+            console.log(data)
+            this.latitude = data.latitude;
+            this.longitude = data.longitude;
+            this.city = data.location;
+            this.units = data.units;
+        } else {
+            let geoLocationInfo = this.getLocationInformation();
+            this.latitude = this.setLatitude(geoLocationInfo);
+            this.longitude = this.setLongitude(geoLocationInfo);
+            this.city = this.getLocalityInfo(geoLocationInfo);
+            this.units = this.setUnits(geoLocationInfo);
+        }
+        
     }
 
     /**
@@ -84,9 +94,13 @@ export class Weather {
         return this.units;
     }
 
+    locationDataExists() {
+        const data = localStorage.getItem('locationData');
+        return (data) ? true : false;
+    }
+
     setLocation(city) {
         this.city = city;
-        // console.log(city);
     }
     /**
      * Setter function for the latitude of the user's location or search query.
@@ -142,13 +156,8 @@ export class Weather {
     }
 
     updateStorage(data, units, city) {
-        // console.log(data)
-        // console.log(`City: ${city}`);
-        // console.log(`Units: ${units}`);
         let lat = data.coord?.lat;
-        // console.log(`Latitude: ${lat}`)
         let lon = data.coord?.lon;
-        // console.log(`Longitude: ${lon}`)
 
         const locationData = {
             location: city,
@@ -164,7 +173,8 @@ export class Weather {
         const locationData = localStorage.getItem('locationData');
         if(locationData) {
             const data = JSON.parse(locationData);
-            console.log(data)
+            return data;
         }
+        return null;
     }
 }

@@ -19,17 +19,27 @@ function Index({ user }) {
         
     }
     const getCity = () => {
-        weather.getCityInfo()    
-            .then(c => {
-                setCity(c);
-            })
+        const locationData = localStorage.getItem('locationData');
+        if(weather.locationDataExists()) {
+            setCity(weather.getCityInfo())
+        } else {
+            weather.getCityInfo()    
+                .then(c => {
+                    setCity(c);
+                })
+        }
     }
 
     const getUnits = () => {
-        weather.getUnits()    
-            .then(u => {
-                setUnits(u)
-            })
+        const locationData = localStorage.getItem('locationData');
+        if(weather.locationDataExists()) {
+            setUnits(weather.getUnits())
+        } else {
+            weather.getUnits()    
+                .then(u => {
+                    setUnits(u)
+                })
+        }
     }
 
     const onSubmit = (q) => {

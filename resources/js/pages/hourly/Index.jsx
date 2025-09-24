@@ -20,53 +20,22 @@ function Index({ user }) {
     const welcomeMessage = () => {
         
     }
-    const getCity = () => {
-        const locationData = localStorage.getItem('locationData');
-        if(weather.locationDataExists()) {
-            setCity(weather.getCityInfo())
-        } else {
-            weather.getCityInfo()    
-                .then(c => {
-                    setCity(c);
-                })
-        }
-    }
 
-    const getLatitude = () => {
-        const locationData = localStorage.getItem('locationData');
-        if(weather.locationDataExists()) {
-            setLat(weather.getLatitude())
+    useEffect(() => {
+        (async () => {
+        if (weather.locationDataExists()) {
+            setCity(weather.getCityInfo());
+            setUnits(weather.getUnits());
+            setLat(weather.getLatitude());
+            setLon(weather.getLongitude());
         } else {
-            weather.getLatitude()    
-                .then(c => {
-                    setLat(c);
-                })
+            setCity(await weather.getCityInfo());
+            setUnits(await weather.getUnits());
+            setLat(await weather.getLatitude());
+            setLon(await weather.getLongitude());
         }
-    }
-
-    const getLongitude = () => {
-        const locationData = localStorage.getItem('locationData');
-        if(weather.locationDataExists()) {
-            setLon(weather.getLongitude())
-        } else {
-            weather.getLongitude()   
-                .then(c => {
-                    setLon(c);
-                })
-        }
-    }
-    
-    const getUnits = () => {
-        const locationData = localStorage.getItem('locationData');
-        if(weather.locationDataExists()) {
-            setUnits(weather.getUnits())
-        } else {
-            weather.getUnits()    
-                .then(u => {
-                    setUnits(u)
-                })
-        }
-    }
+        })();
+    }, [weather]);
 
     const onSubmit = (q) => {
         setCity(q);
@@ -74,14 +43,6 @@ function Index({ user }) {
         setLon(null);
         weather.setLocation(q);
     }
-
-
-    useEffect(() =>{
-        getCity();
-        getUnits();
-        getLatitude();
-        getLongitude();
-    }, []) 
 
     const { 
         data: currentData, 
@@ -102,7 +63,7 @@ function Index({ user }) {
         setLon(c.lon);
         }
     }, [current?.coord?.lat, current?.coord?.lon]);
-    
+
     const {
         data: hourlyData,
         loading: hourlyLoading,

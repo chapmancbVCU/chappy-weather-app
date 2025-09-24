@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import CurrentConditions from "@/components/CurrentConditions";
 import SearchBar from "@/components/SearchBar";
 import { Weather } from "@/utils/Weather";
@@ -13,7 +13,9 @@ import { apiGet, useAsync } from '@chappy/utils/api';
 function Index({ user }) {
     const [city, setCity] = useState(null);
     const [units, setUnits] = useState(null)
-    let weather = new Weather();
+    const [lat, setLat] = useState(null);
+    const [lon, setLon] = useState(null);
+    const weather = useMemo(() => new Weather(), []);
 
     const welcomeMessage = () => {
         
@@ -30,6 +32,30 @@ function Index({ user }) {
         }
     }
 
+    const getLatitude = () => {
+        const locationData = localStorage.getItem('locationData');
+        if(weather.locationDataExists()) {
+            setLat(weather.getLatitude())
+        } else {
+            weather.getLatitude()    
+                .then(c => {
+                    setLat(c);
+                })
+        }
+    }
+
+    const getLongitude = () => {
+        const locationData = localStorage.getItem('locationData');
+        if(weather.locationDataExists()) {
+            setLon(weather.getLongitude())
+        } else {
+            weather.getLongitude()   
+                .then(c => {
+                    setLon(c);
+                })
+        }
+    }
+    
     const getUnits = () => {
         const locationData = localStorage.getItem('locationData');
         if(weather.locationDataExists()) {
@@ -51,17 +77,31 @@ function Index({ user }) {
     useEffect(() =>{
         getCity();
         getUnits();
+        getLatitude();
+        getLongitude();
     }, []) 
 
     const { data, loading, error} = useAsync(({ signal}) => 
-        apiGet('/weather/currentConditions', { query: {q: city, units}, signal}),
-    [city, units]);
-    const conditions = data?.data || {};
+            apiGet('/weather/currentConditions', { query: {q: city, units}, signal}),
+        [city, units]);
+        const conditions = data?.data || {};
+    console.log(conditions)
+
+    const { hdata, hloading, herror } = useAsync(({ signal }) => {
+        if (lat == null || lon == null) return Promise.resolve(null);
+        return apiGet('/weather/hourly', { query: { lat, lon, units }, signal });
+    }, [lat, lon, units]);
+    
+    const hconditions = hdata?.data || {};
+    console.log(hconditions)
 
     useEffect(() => {
         weather.updateStorage(conditions, units, city);
         weather.readStorage();
     }, [conditions])
+
+
+    // if(error) return <div className="text-danger">{error.message}</div>
     return (
         <>
             <SearchBar onSubmit={onSubmit}/>

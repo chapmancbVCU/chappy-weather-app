@@ -34,6 +34,34 @@ class WeatherController extends Controller {
         }
     }
 
+    public function hourlyAction()
+    {
+        try {
+            $lat = $this->request->get('lat') ?? null;
+            $lon = $this->request->get('lon') ?? null;
+
+            if (!($lat && $lon)) {
+                return $this->jsonError('Provide ?lat=&lon=', 422);
+            }
+
+            $svc = new WeatherService(WeatherService::ONE_CALL);
+
+            // Only need hourly; drop other blocks to reduce size/cost
+            $params = [
+                'lat' => $lat,
+                'lon' => $lon,
+                'units' => $this->request->get('units') ?? 'imperial',
+                'lang'  => $this->request->get('lang')  ?? 'en',
+                'exclude' => 'minutely,alerts,current,daily', // optional
+            ];
+
+            $data = $svc->oneCall($params);
+            return $this->jsonResponse(['success' => true, 'data' => $data]);
+        } catch (\Throwable $e) {
+            return $this->jsonError("Upstream error - {$e->getMessage()}", 502);
+        }
+    }
+
     /**
      * OPTIONS /weather/*  (CORS preflight)
      *

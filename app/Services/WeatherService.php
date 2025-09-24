@@ -2,6 +2,7 @@
 namespace App\Services;
 
 use Core\Lib\Http\Api;
+use Core\Lib\Logging\Logger;
 use InvalidArgumentException;
 
 /**
@@ -34,7 +35,7 @@ class WeatherService extends Api {
      * @param string $mode The specific API to use.
      * @return array $query The params for the defaultQuery.
      */
-    private function buildQuery(string $mode): array {
+    private static function buildQuery(string $mode): array {
         $query = [];
         $query['appid'] = env('OWM_API_KEY');
         // $query['units'] = 'imperial';
@@ -78,7 +79,7 @@ class WeatherService extends Api {
      * @return array The response data for the API request.
      */
     public function oneCall(array $query): array {
-        $allowed = ['lat', 'lon', 'units', 'lang'];
+        $allowed = ['lat', 'lon', 'units', 'lang', 'exclude'];
         $params = array_intersect_key($query, array_flip($allowed));
         return $this->get('/onecall', $params);
     }
@@ -89,7 +90,7 @@ class WeatherService extends Api {
      * @param string $mode The mode that determines appropriate API call.
      * @return void
      */
-    private function isValidMode(string $mode): void {
+    private static function isValidMode(string $mode): void {
         if(!in_array($mode, [self::GEO_LOCATE, self::ONE_CALL, self::STANDARD])) {
             throw new InvalidArgumentException("Invalid api call: $mode");
         }

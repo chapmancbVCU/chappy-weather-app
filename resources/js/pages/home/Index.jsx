@@ -12,7 +12,10 @@ import { apiGet, useAsync } from '@chappy/utils/api';
  */
 function Index({ user }) {
     const [city, setCity] = useState(null);
-    const [units, setUnits] = useState(null)
+    const [units, setUnits] = useState(null);
+    const [lat, setLat] = useState(null);
+    const [lon, setLon] = useState(null);
+
     let weather = new Weather();
 
     const welcomeMessage = () => {
@@ -30,6 +33,29 @@ function Index({ user }) {
         }
     }
 
+    const getLatitude = () => {
+        const locationData = localStorage.getItem('locationData');
+        if(weather.locationDataExists()) {
+            setLat(weather.getLatitude())
+        } else {
+            weather.getLatitude()    
+                .then(c => {
+                    setLat(c);
+                })
+        }
+    }
+
+    const getLongitude = () => {
+        const locationData = localStorage.getItem('locationData');
+        if(weather.locationDataExists()) {
+            setLon(weather.getLongitude())
+        } else {
+            weather.getLongitude()   
+                .then(c => {
+                    setLon(c);
+                })
+        }
+    }
     const getUnits = () => {
         const locationData = localStorage.getItem('locationData');
         if(weather.locationDataExists()) {
@@ -51,6 +77,8 @@ function Index({ user }) {
     useEffect(() =>{
         getCity();
         getUnits();
+        getLatitude();
+        getLongitude();
     }, []) 
 
     const { data, loading, error} = useAsync(({ signal}) => 
@@ -69,7 +97,7 @@ function Index({ user }) {
             <CurrentConditions 
                 city={city} 
                 error={error} 
-                loading={loading }
+                loading={loading}
                 conditions={conditions} 
                 units={units} 
             />

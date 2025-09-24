@@ -41,9 +41,14 @@ export class Weather {
         return this.latitude;
     }
 
+    /**
+     * Getter function for the longitude.
+     * @returns The longitude of the user or search query
+     */
     getLongitude() {
         return this.longitude;
     }
+
     /**
      * Retrieves locality information of user upon initialization of page.
      * @param {String} geoLocationInfo JSON string that contains information 

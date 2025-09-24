@@ -70,6 +70,8 @@ function Index({ user }) {
 
     const onSubmit = (q) => {
         setCity(q);
+        setLat(null);
+        setLon(null);
         weather.setLocation(q);
     }
 
@@ -81,24 +83,44 @@ function Index({ user }) {
         getLongitude();
     }, []) 
 
-    const { data, loading, error} = useAsync(({ signal}) => 
-            apiGet('/weather/currentConditions', { query: {q: city, units}, signal}),
-        [city, units]);
-        const conditions = data?.data || {};
-    console.log(conditions)
+    const { 
+        data: currentData, 
+        loading: currentLoading, 
+        error: currentError} = useAsync(({ signal}) => {
+            if (!city) return Promise.resolve(null);
+            const u = units || "imperial";
+            return apiGet("/weather/currentConditions", { query: { q: city, units: u }, signal });
+        }, [city, units]);
 
-    const { hdata, hloading, herror } = useAsync(({ signal }) => {
-        if (lat == null || lon == null) return Promise.resolve(null);
-        return apiGet('/weather/hourly', { query: { lat, lon, units }, signal });
-    }, [lat, lon, units]);
-    
-    const hconditions = hdata?.data || {};
-    console.log(hconditions)
+    const current = currentData?.data || {};
+    console.log(current)
 
     useEffect(() => {
-        weather.updateStorage(conditions, units, city);
-        weather.readStorage();
-    }, [conditions])
+        const c = current?.coord;
+        if (c && typeof c.lat === 'number' && typeof c.lon === 'number') {
+        setLat(c.lat);
+        setLon(c.lon);
+        }
+    }, [current?.coord?.lat, current?.coord?.lon]);
+    
+    const {
+        data: hourlyData,
+        loading: hourlyLoading,
+        error: hourlyError
+    } = useAsync(({ signal }) => {
+        if (lat == null || lon == null) return Promise.resolve(null);
+        const u = units || "imperial";
+        return apiGet("/weather/hourly", { query: { lat, lon, units: u }, signal });
+    }, [lat, lon, units]);
+    
+    const hourly = hourlyData?.data || {};
+    console.log(hourly)
+
+    useEffect(() => {
+        if(city && units && current && Object.keys(current).length) {
+            weather.updateStorage(current, units, city);
+        }
+    }, [city, units, current, weather, hourly]);
 
 
     // if(error) return <div className="text-danger">{error.message}</div>
@@ -108,11 +130,13 @@ function Index({ user }) {
             <h2 className="text-center">Conditions in {city}</h2>
             <CurrentConditions 
                 city={city} 
-                error={error} 
-                loading={loading }
-                conditions={conditions} 
+                error={currentError} 
+                loading={currentLoading }
+                conditions={current} 
                 units={units} 
             />
+            <div>Current lon: {current.coord?.lon}</div>
+            <div>Hourly lon: {hourly.lon}</div>
         </>
     );
 }        

@@ -1,8 +1,6 @@
-import React, { useEffect, useState, useMemo } from "react";
-import { Weather } from "@/utils/Weather";
+import { useEffect, useState } from "react";
 import { apiGet, useAsync } from '@chappy/utils/api';
 const useWeather = (weather) => {
-    // const weather = useMemo(() => weatherArg ?? new Weather(), [weatherArg]);
     const [city, setCity] = useState(null);
     const [units, setUnits] = useState(null)
 

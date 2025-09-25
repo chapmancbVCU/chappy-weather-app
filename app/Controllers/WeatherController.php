@@ -46,13 +46,11 @@ class WeatherController extends Controller {
 
             $svc = new WeatherService(WeatherService::ONE_CALL);
 
-            // Only need hourly; drop other blocks to reduce size/cost
             $params = [
                 'lat' => $lat,
                 'lon' => $lon,
                 'units' => $this->request->get('units') ?? 'imperial',
                 'lang'  => $this->request->get('lang')  ?? 'en',
-                // 'exclude' => 'minutely,alerts,current,daily', // optional
             ];
 
             $data = $svc->oneCall($params);

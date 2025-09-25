@@ -12,7 +12,17 @@ import useWeather from "@/utils/useWeather";
  */
 function Index({ user }) {
     const weather = useMemo(() => new Weather(), []);
-    const { city, units, onSubmit, currentError, currentLoading, current, oneCall } = useWeather(weather);
+    const { 
+        city, 
+        current,
+        currentError, 
+        currentLoading, 
+        oneCall,
+        oneCallError,
+        oneCallLoading,
+        onSubmit, 
+        units
+    } = useWeather(weather);
 
     const welcomeMessage = () => {
         

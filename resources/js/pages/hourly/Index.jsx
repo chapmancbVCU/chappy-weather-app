@@ -17,6 +17,9 @@ function Index({ user }) {
         current,
         currentError, 
         currentLoading, 
+        oneCall,
+        oneCallError,
+        oneCallLoading,
         onSubmit, 
         units
     } = useWeather(weather);

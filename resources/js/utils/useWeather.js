@@ -67,7 +67,7 @@ const useWeather = (weather) => {
         city, 
         current, 
         currentError, 
-        currentLoading, 
+        currentLoading,
         oneCall,
         oneCallError,
         oneCallLoading,

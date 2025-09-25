@@ -12,12 +12,22 @@ import useWeather from "@/utils/useWeather";
  */
 function Index({ user }) {
     const weather = useMemo(() => new Weather(), []);
-    const { city, units, onSubmit, currentError, currentLoading, current, oneCall } = useWeather(weather);
+    const { 
+        city, 
+        current,
+        currentError, 
+        currentLoading, 
+        onSubmit, 
+        units
+    } = useWeather(weather);
 
     const welcomeMessage = () => {
         
     }
-    // if(error) return <div className="text-danger">{error.message}</div>
+
+    if(currentError) return <div className="text-danger">{currentError.message}</div>
+    if(currentLoading) return <div>Loading...</div>
+    
     return (
         <>
             <SearchBar onSubmit={onSubmit}/>
@@ -29,8 +39,6 @@ function Index({ user }) {
                 conditions={current} 
                 units={units} 
             />
-            <div>Current lon: {current.coord?.lon}</div>
-            <div>oneCall lon: {oneCall.lon}</div>
         </>
     );
 }        

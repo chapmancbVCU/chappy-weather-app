@@ -11,11 +11,9 @@ import { apiGet, useAsync } from '@chappy/utils/api';
  * @returns {JSX.Element} The home view that displays current conditions.
  */
 function Index({ user }) {
+    const weather = useMemo(() => new Weather(), []);
     const [city, setCity] = useState(null);
     const [units, setUnits] = useState(null)
-    const [lat, setLat] = useState(null);
-    const [lon, setLon] = useState(null);
-    const weather = useMemo(() => new Weather(), []);
 
     const welcomeMessage = () => {
         
@@ -28,30 +26,6 @@ function Index({ user }) {
             weather.getCityInfo()    
                 .then(c => {
                     setCity(c);
-                })
-        }
-    }
-
-    const getLatitude = () => {
-        const locationData = localStorage.getItem('locationData');
-        if(weather.locationDataExists()) {
-            setLat(weather.getLatitude())
-        } else {
-            weather.getLatitude()    
-                .then(c => {
-                    setLat(c);
-                })
-        }
-    }
-
-    const getLongitude = () => {
-        const locationData = localStorage.getItem('locationData');
-        if(weather.locationDataExists()) {
-            setLon(weather.getLongitude())
-        } else {
-            weather.getLongitude()   
-                .then(c => {
-                    setLon(c);
                 })
         }
     }
@@ -70,8 +44,6 @@ function Index({ user }) {
 
     const onSubmit = (q) => {
         setCity(q);
-        setLat(null);
-        setLon(null);
         weather.setLocation(q);
     }
 
@@ -79,8 +51,6 @@ function Index({ user }) {
     useEffect(() =>{
         getCity();
         getUnits();
-        getLatitude();
-        getLongitude();
     }, []) 
 
     const { 
@@ -93,25 +63,20 @@ function Index({ user }) {
         }, [city, units]);
 
     const current = currentData?.data || {};
+    const coords = current?.coord;
     console.log(current)
-
-    useEffect(() => {
-        const c = current?.coord;
-        if (c && typeof c.lat === 'number' && typeof c.lon === 'number') {
-        setLat(c.lat);
-        setLon(c.lon);
-        }
-    }, [current?.coord?.lat, current?.coord?.lon]);
     
     const {
         data: hourlyData,
         loading: hourlyLoading,
-        error: hourlyError
+        error: hourlyError,
     } = useAsync(({ signal }) => {
-        if (lat == null || lon == null) return Promise.resolve(null);
+        if (!coords || typeof coords.lat !== "number" || typeof coords.lon !== "number") {
+        return Promise.resolve(null);
+        }
         const u = units || "imperial";
-        return apiGet("/weather/hourly", { query: { lat, lon, units: u }, signal });
-    }, [lat, lon, units]);
+        return apiGet("/weather/hourly", { query: { lat: coords.lat, lon: coords.lon, units: u }, signal });
+    }, [coords?.lat, coords?.lon, units]);
     
     const hourly = hourlyData?.data || {};
     console.log(hourly)

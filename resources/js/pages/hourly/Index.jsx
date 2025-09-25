@@ -25,9 +25,9 @@ function Index({ user }) {
         units
     } = useWeather(weather);
 
-
     if(currentLoading || oneCallLoading) return <div>Loading...</div>
     
+    console.log(`Units: ${units}`);
     return (
         <>
             <SearchBar onSubmit={onSubmit}/>

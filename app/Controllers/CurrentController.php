@@ -3,8 +3,8 @@ namespace App\Controllers;
 use Core\Controller;
 use Core\Services\AuthService;
 /**
- * Implements support for our Home controller.  Functions found in this class 
- * will support tasks related to the home page.
+ * Supports operations for rendering current conditions.  This is our 
+ * DEFAULT_CONTROLLER.
  */
 class CurrentController extends Controller {
     /** 

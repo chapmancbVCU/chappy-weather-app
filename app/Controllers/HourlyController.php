@@ -3,19 +3,15 @@ namespace App\Controllers;
 use Core\Controller;
 
 /**
- * Undocumented class
+ * Supports operations for rendering hourly forecast.
  */
 class HourlyController extends Controller {
-    public function indexAction(): void {
-        $this->view->renderJsx('hourly.Index');
-    }
-
     /**
-     * Runs when the object is constructed.
+     * Renders hourly forecast.
      *
      * @return void
      */
-    public function onConstruct(): void {
-        $this->view->setLayout('default');
+    public function indexAction(): void {
+        $this->view->renderJsx('hourly.Index');
     }
 }

@@ -31,16 +31,18 @@ function Index({ user }) {
     return (
         <>
             <SearchBar onSubmit={onSubmit}/>
-            <h2 className="text-center">Conditions in {city}</h2>
-            <CurrentConditions 
-                city={city} 
-                error={currentError} 
-                loading={currentLoading }
-                conditions={current} 
-                units={units} 
-            />
-            <div>Current lon: {current.coord?.lon}</div>
-            <div>OneCall lon: {oneCall.lon}</div>
+            <div className="mt-3">
+                <h2 className="text-center">Conditions in {city}</h2>
+                <CurrentConditions 
+                    city={city} 
+                    error={currentError} 
+                    loading={currentLoading }
+                    conditions={current} 
+                    units={units} 
+                />
+                <div>Current lon: {current.coord?.lon}</div>
+                <div>OneCall lon: {oneCall.lon}</div>
+            </div>
         </>
     );
 }        

@@ -1,6 +1,6 @@
 {
     "Current Conditions" : "home",
-    "Hourly" : "hourly",
     "Daily" : "daily",
+    "Hourly" : "hourly",
     "Admin" : "admindashboard/index"
 }

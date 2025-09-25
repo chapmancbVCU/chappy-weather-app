@@ -23,24 +23,27 @@ function Index({ user }) {
         units
     } = useWeather(weather);
 
-    if(currentError) return <div className="text-danger">{currentError.message}</div>
     if(currentLoading) return <div>Loading...</div>
 
     return (
         <>
             <SearchBar onSubmit={onSubmit}/>
-            <div className="mt-3">
-                <h2 className="text-center">Conditions in {city}</h2>
-                <CurrentConditions 
-                    city={city} 
-                    error={currentError} 
-                    loading={currentLoading }
-                    conditions={current} 
-                    units={units} 
-                />
-                <div>Current lon: {current.coord?.lon}</div>
-                <div>OneCall lon: {oneCall.lon}</div>
-            </div>
+            {currentError ? (
+                <div className="text-danger text-center mt-3">{currentError.message}</div>
+            ) : (
+                <div className="mt-3">
+                    <h2 className="text-center">Conditions in {city}</h2>
+                    <CurrentConditions 
+                        city={city} 
+                        error={currentError} 
+                        loading={currentLoading }
+                        conditions={current} 
+                        units={units} 
+                    />
+                    <div>Current lon: {current.coord?.lon}</div>
+                    <div>OneCall lon: {oneCall.lon}</div>
+                </div>
+            )}
         </>
     );
 }        

@@ -61,6 +61,9 @@ function SearchBar({ onSubmit }) {
         setQ(value);
     }
 
+    /**
+     * Performs API request for geo location data.
+     */
     const { data: options = [], loading, error } = useAsync(({ signal }) => {
         if (!q) return Promise.resolve([]);
         return apiGet('/weather/search', { query: { q }, signal})

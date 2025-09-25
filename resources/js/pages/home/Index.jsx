@@ -3,7 +3,7 @@ import CurrentConditions from "@/components/CurrentConditions";
 import SearchBar from "@/components/SearchBar";
 import { Weather } from "@/utils/Weather";
 import { apiGet, useAsync } from '@chappy/utils/api';
-
+import useWeather from "@/utils/useWeather";
 /**
  * Renders and handles information for current conditions at a specific 
  * location and search.
@@ -12,80 +12,85 @@ import { apiGet, useAsync } from '@chappy/utils/api';
  */
 function Index({ user }) {
     const weather = useMemo(() => new Weather(), []);
-    const [city, setCity] = useState(null);
-    const [units, setUnits] = useState(null)
+    const { city, units, onSubmit, currentError, currentLoading, current, hourly } = useWeather(weather);
 
     const welcomeMessage = () => {
         
     }
-    const getCity = () => {
-        const locationData = localStorage.getItem('locationData');
-        if(weather.locationDataExists()) {
-            setCity(weather.getCityInfo())
-        } else {
-            weather.getCityInfo()    
-                .then(c => {
-                    setCity(c);
-                })
-        }
-    }
+    // const [city, setCity] = useState(null);
+    // const [units, setUnits] = useState(null)
+
+    // const welcomeMessage = () => {
+        
+    // }
+    // const getCity = () => {
+    //     const locationData = localStorage.getItem('locationData');
+    //     if(weather.locationDataExists()) {
+    //         setCity(weather.getCityInfo())
+    //     } else {
+    //         weather.getCityInfo()    
+    //             .then(c => {
+    //                 setCity(c);
+    //             })
+    //     }
+    // }
     
-    const getUnits = () => {
-        const locationData = localStorage.getItem('locationData');
-        if(weather.locationDataExists()) {
-            setUnits(weather.getUnits())
-        } else {
-            weather.getUnits()    
-                .then(u => {
-                    setUnits(u)
-                })
-        }
-    }
+    // const getUnits = () => {
+    //     const locationData = localStorage.getItem('locationData');
+    //     if(weather.locationDataExists()) {
+    //         setUnits(weather.getUnits())
+    //     } else {
+    //         weather.getUnits()    
+    //             .then(u => {
+    //                 setUnits(u)
+    //             })
+    //     }
+    // }
 
-    const onSubmit = (q) => {
-        setCity(q);
-        weather.setLocation(q);
-    }
+    // const onSubmit = (q) => {
+    //     setCity(q);
+    //     weather.setLocation(q);
+    // }
 
 
-    useEffect(() =>{
-        getCity();
-        getUnits();
-    }, []) 
+    // useEffect(() =>{
+    //     getCity();
+    //     getUnits();
+    // }, []) 
 
-    const { 
-        data: currentData, 
-        loading: currentLoading, 
-        error: currentError} = useAsync(({ signal}) => {
-            if (!city) return Promise.resolve(null);
-            const u = units || "imperial";
-            return apiGet("/weather/currentConditions", { query: { q: city, units: u }, signal });
-        }, [city, units]);
+    // const { 
+    //     data: currentData, 
+    //     loading: currentLoading, 
+    //     error: currentError} = useAsync(({ signal}) => {
+    //         if (!city) return Promise.resolve(null);
+    //         const u = units || "imperial";
+    //         return apiGet("/weather/currentConditions", { query: { q: city, units: u }, signal });
+    //     }, [city, units]);
 
-    const current = currentData?.data || {};
-    const coords = current?.coord;
-    console.log(current)
+    // const current = currentData?.data || {};
+    // const coords = current?.coord;
+    // console.log(current)
     
-    const {
-        data: hourlyData,
-        loading: hourlyLoading,
-        error: hourlyError,
-    } = useAsync(({ signal }) => {
-        if (!coords || typeof coords.lat !== "number" || typeof coords.lon !== "number") {
-        return Promise.resolve(null);
-        }
-        const u = units || "imperial";
-        return apiGet("/weather/hourly", { query: { lat: coords.lat, lon: coords.lon, units: u }, signal });
-    }, [coords?.lat, coords?.lon, units]);
+    // const {
+    //     data: hourlyData,
+    //     loading: hourlyLoading,
+    //     error: hourlyError,
+    // } = useAsync(({ signal }) => {
+    //     if (!coords || typeof coords.lat !== "number" || typeof coords.lon !== "number") {
+    //     return Promise.resolve(null);
+    //     }
+    //     const u = units || "imperial";
+    //     return apiGet("/weather/hourly", { query: { lat: coords.lat, lon: coords.lon, units: u }, signal });
+    // }, [coords?.lat, coords?.lon, units]);
     
-    const hourly = hourlyData?.data || {};
-    console.log(hourly)
+    // const hourly = hourlyData?.data || {};
+    // console.log(hourly)
 
-    useEffect(() => {
-        if(city && units && current && Object.keys(current).length) {
-            weather.updateStorage(current, units, city);
-        }
-    }, [city, units, current, weather, hourly]);
+    // useEffect(() => {
+    //     if(city && units && coords) {
+    //         weather.updateStorage(current, units, city);
+    //     }
+    // }, [city, units, current, weather, hourly]);
 
 
     // if(error) return <div className="text-danger">{error.message}</div>

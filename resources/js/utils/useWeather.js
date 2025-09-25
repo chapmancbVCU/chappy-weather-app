@@ -64,7 +64,7 @@ const useWeather = (weather) => {
         return Promise.resolve(null);
         }
         const u = units || "imperial";
-        return apiGet("/weather/hourly", { query: { lat: coords.lat, lon: coords.lon, units: u }, signal });
+        return apiGet("/weather/onecall", { query: { lat: coords.lat, lon: coords.lon, units: u }, signal });
     }, [coords?.lat, coords?.lon, units]);
     
     const hourly = hourlyData?.data || {};

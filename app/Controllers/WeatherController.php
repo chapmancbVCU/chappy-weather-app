@@ -34,7 +34,7 @@ class WeatherController extends Controller {
         }
     }
 
-    public function hourlyAction()
+    public function onecallAction()
     {
         try {
             $lat = $this->request->get('lat') ?? null;
@@ -52,7 +52,7 @@ class WeatherController extends Controller {
                 'lon' => $lon,
                 'units' => $this->request->get('units') ?? 'imperial',
                 'lang'  => $this->request->get('lang')  ?? 'en',
-                'exclude' => 'minutely,alerts,current,daily', // optional
+                // 'exclude' => 'minutely,alerts,current,daily', // optional
             ];
 
             $data = $svc->oneCall($params);

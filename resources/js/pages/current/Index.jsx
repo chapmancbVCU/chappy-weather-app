@@ -5,10 +5,10 @@ import { Weather } from "@/utils/Weather";
 import { apiGet, useAsync } from '@chappy/utils/api';
 import useWeather from "@/utils/useWeather";
 /**
- * Renders and handles information for hourly conditions at a specific 
+ * Renders and handles information for current conditions at a specific 
  * location and search.
  * @param {InputProps} param0 
- * @returns {JSX.Element} The  view that displays hourly forecast.
+ * @returns {JSX.Element} The view that displays current conditions.
  */
 function Index({ user }) {
     const weather = useMemo(() => new Weather(), []);

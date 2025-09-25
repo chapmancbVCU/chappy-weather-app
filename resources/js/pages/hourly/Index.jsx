@@ -24,9 +24,6 @@ function Index({ user }) {
         units
     } = useWeather(weather);
 
-    const welcomeMessage = () => {
-        
-    }
 
     if(currentError) return <div className="text-danger">{currentError.message}</div>
     if(currentLoading) return <div>Loading...</div>

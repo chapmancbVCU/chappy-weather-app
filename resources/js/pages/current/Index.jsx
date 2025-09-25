@@ -24,9 +24,6 @@ function Index({ user }) {
         units
     } = useWeather(weather);
 
-    const welcomeMessage = () => {
-        
-    }
     // if(error) return <div className="text-danger">{error.message}</div>
     return (
         <>

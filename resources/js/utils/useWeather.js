@@ -1,9 +1,16 @@
 import { useEffect, useState } from "react";
 import { apiGet, useAsync } from '@chappy/utils/api';
+
+/**
+ * Manages actions associated with fetching weather data and ensures 
+ * consistency between views.
+ * @param {Weather} weather Object responsible for tracking information about 
+ * currently selected location.
+ * @returns 
+ */
 const useWeather = (weather) => {
     const [city, setCity] = useState(null);
     const [units, setUnits] = useState(null)
-
 
     useEffect(() => {
         (async () => {
@@ -36,26 +43,26 @@ const useWeather = (weather) => {
     console.log(current)
     
     const {
-        data: hourlyData,
-        loading: hourlyLoading,
-        error: hourlyError,
+        data: oneCallData,
+        loading: oneCallLoading,
+        error: oneCallError,
     } = useAsync(({ signal }) => {
         if (!coords || typeof coords.lat !== "number" || typeof coords.lon !== "number") {
         return Promise.resolve(null);
         }
         const u = units || "imperial";
-        return apiGet("/weather/onecall", { query: { lat: coords.lat, lon: coords.lon, units: u }, signal });
+        return apiGet("/weather/oneCall", { query: { lat: coords.lat, lon: coords.lon, units: u }, signal });
     }, [coords?.lat, coords?.lon, units]);
     
-    const hourly = hourlyData?.data || {};
-    console.log(hourly)
+    const oneCall = oneCallData?.data || {};
+    console.log(oneCall)
 
     useEffect(() => {
         if(city && units && coords) {
             weather.updateStorage(current, units, city);
         }
     }, [city, units, coords?.lat, coords?.lon, weather]);
-    return { city, units, onSubmit, currentError, currentLoading, current, hourly };
+    return { city, units, onSubmit, currentError, currentLoading, current, oneCall };
 }
 
 export default useWeather;

@@ -12,7 +12,7 @@ import useWeather from "@/utils/useWeather";
  */
 function Index({ user }) {
     const weather = useMemo(() => new Weather(), []);
-    const { city, units, onSubmit, currentError, currentLoading, current, hourly } = useWeather(weather);
+    const { city, units, onSubmit, currentError, currentLoading, current, oneCall } = useWeather(weather);
 
     const welcomeMessage = () => {
         
@@ -30,7 +30,7 @@ function Index({ user }) {
                 units={units} 
             />
             <div>Current lon: {current.coord?.lon}</div>
-            <div>Hourly lon: {hourly.lon}</div>
+            <div>oneCall lon: {oneCall.lon}</div>
         </>
     );
 }        

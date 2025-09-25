@@ -34,7 +34,7 @@ class WeatherController extends Controller {
         }
     }
 
-    public function onecallAction()
+    public function oneCallAction()
     {
         try {
             $lat = $this->request->get('lat') ?? null;

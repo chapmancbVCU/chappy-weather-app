@@ -25,7 +25,7 @@ function Index({ user }) {
         units
     } = useWeather(weather);
 
-    if(currentLoading) return <div>Loading...</div>
+    if(currentLoading || oneCallLoading) return <div>Loading...</div>
 
     return (
         <>

@@ -6,7 +6,7 @@ use Core\Services\AuthService;
  * Implements support for our Home controller.  Functions found in this class 
  * will support tasks related to the home page.
  */
-class HomeController extends Controller {
+class CurrentController extends Controller {
     /** 
      * Home page that renders current conditions.
      * 
@@ -15,6 +15,6 @@ class HomeController extends Controller {
     public function indexAction(): void {
         $user = AuthService::currentUser();
         $props = ['user' => $user ?? 'Guest'];
-        $this->view->renderJSX('home.Index', $props);
+        $this->view->renderJSX('current.Index', $props);
     }
 }

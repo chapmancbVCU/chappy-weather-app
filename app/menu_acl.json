@@ -1,5 +1,5 @@
 {
-    "Current Conditions" : "home",
+    "Current Conditions" : "current",
     "Daily" : "daily",
     "Hourly" : "hourly",
     "Admin" : "admindashboard/index"

@@ -62,7 +62,18 @@ const useWeather = (weather) => {
             weather.updateStorage(current, units, city);
         }
     }, [city, units, coords?.lat, coords?.lon, weather]);
-    return { city, units, onSubmit, currentError, currentLoading, current, oneCall };
+
+    return { 
+        city, 
+        current, 
+        currentError, 
+        currentLoading, 
+        oneCall,
+        oneCallError,
+        oneCallLoading,
+        onSubmit, 
+        units,
+    };
 }
 
 export default useWeather;

@@ -1,7 +1,6 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useMemo } from "react";
 import SearchBar from "@/components/SearchBar";
 import { Weather } from "@/utils/Weather";
-import { apiGet, useAsync } from '@chappy/utils/api';
 import useWeather from "@/utils/useWeather";
 
 /**

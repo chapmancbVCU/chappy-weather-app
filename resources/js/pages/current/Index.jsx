@@ -1,8 +1,7 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useMemo } from "react";
 import CurrentConditions from "@/components/CurrentConditions";
 import SearchBar from "@/components/SearchBar";
 import { Weather } from "@/utils/Weather";
-import { apiGet, useAsync } from '@chappy/utils/api';
 import useWeather from "@/utils/useWeather";
 /**
  * Renders and handles information for current conditions at a specific 
@@ -26,7 +25,7 @@ function Index({ user }) {
 
     if(currentError) return <div className="text-danger">{currentError.message}</div>
     if(currentLoading) return <div>Loading...</div>
-    
+
     return (
         <>
             <SearchBar onSubmit={onSubmit}/>

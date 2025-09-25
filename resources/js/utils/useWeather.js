@@ -5,40 +5,22 @@ const useWeather = (weather) => {
     const [units, setUnits] = useState(null)
 
 
-    const getCity = () => {
-        const locationData = localStorage.getItem('locationData');
-        if(weather.locationDataExists()) {
-            setCity(weather.getCityInfo())
+    useEffect(() => {
+        (async () => {
+        if (weather.locationDataExists()) {
+            setCity(weather.getCityInfo());
+            setUnits(weather.getUnits());
         } else {
-            weather.getCityInfo()    
-                .then(c => {
-                    setCity(c);
-                })
+            setCity(await weather.getCityInfo());
+            setUnits(await weather.getUnits());
         }
-    }
-    
-    const getUnits = () => {
-        const locationData = localStorage.getItem('locationData');
-        if(weather.locationDataExists()) {
-            setUnits(weather.getUnits())
-        } else {
-            weather.getUnits()    
-                .then(u => {
-                    setUnits(u)
-                })
-        }
-    }
+        })();
+    }, [weather]);
 
     const onSubmit = (q) => {
         setCity(q);
         weather.setLocation(q);
     }
-
-
-    useEffect(() =>{
-        getCity();
-        getUnits();
-    }, []) 
 
     const { 
         data: currentData, 

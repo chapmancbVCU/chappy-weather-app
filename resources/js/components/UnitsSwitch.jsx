@@ -1,9 +1,16 @@
 import React from "react";
-function UnitsSwitch() {
 
+/**
+ * @property {string} units The name of the system of units.
+ * @param {InputProps} param0 
+ * @returns 
+ */
+function UnitsSwitch({ units }) {
+
+    const label = (units === 'imperial') ? 'F' : 'C'; 
     return (
         <div>
-            Units
+            <h2 className="me-3">{'\xB0'}{label}</h2>
         </div>
     );
 }        

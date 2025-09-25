@@ -4,7 +4,7 @@ import SearchBar from "@/components/SearchBar";
 import { Weather } from "@/utils/Weather";
 import useWeather from "@/utils/useWeather";
 import Error from "@/components/Error";
-
+import UnitsSwitch from "@/components/UnitsSwitch";
 /**
  * Renders and handles information for current conditions at a specific 
  * location and search.
@@ -36,7 +36,10 @@ function Index({ user }) {
 
             {!currentError && !oneCallError && (
                 <div className="mt-3">
-                    <h2 className="text-center">Conditions in {city}</h2>
+                    <div className="d-flex justify-content-center">
+                        {<UnitsSwitch units={units}/>}
+                        <h2 className="">Conditions in {city}</h2>
+                    </div>
                     <CurrentConditions 
                         city={city} 
                         error={currentError} 

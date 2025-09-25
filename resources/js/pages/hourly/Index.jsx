@@ -32,7 +32,7 @@ function Index({ user }) {
         <>
             <SearchBar onSubmit={onSubmit}/>
             <div className="mt-3">
-                <h2 className="text-center">Conditions in {city}</h2>
+                <h2 className="text-center">Hourly forecast for {city}</h2>
                 <div>Current lon: {current.coord?.lon}</div>
                 <div>OneCall lon: {oneCall.lon}</div>
             </div>

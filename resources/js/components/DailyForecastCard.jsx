@@ -7,4 +7,4 @@ function DailyForecastCard() {
         </>
     );
 }        
-export default DailyForecast;
+export default DailyForecastCard;

@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import SearchBar from "@/components/SearchBar";
 import { Weather } from "@/utils/Weather";
 import useWeather from "@/utils/useWeather";
+import DailyForecast from "@/components/DailyForecastCard";
 
 /**
  * Renders and handles information for daily forecast at a specific 

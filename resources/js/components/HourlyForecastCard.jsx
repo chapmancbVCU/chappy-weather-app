@@ -7,4 +7,4 @@ function HourlyForecastCard() {
         </>
     );
 }        
-export default HourlyForecast;
+export default HourlyForecastCard;

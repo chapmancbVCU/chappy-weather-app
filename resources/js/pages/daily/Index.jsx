@@ -24,7 +24,9 @@ function Index({ user }) {
         units
     } = useWeather(weather);
 
-    // if(error) return <div className="text-danger">{error.message}</div>
+    if(oneCallError) return <div className="text-danger">{oneCallError.message}</div>
+    if(oneCallLoading) return <div>Loading...</div>
+    
     return (
         <>
             <SearchBar onSubmit={onSubmit}/>

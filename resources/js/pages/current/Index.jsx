@@ -18,16 +18,19 @@ function Index({ user }) {
         current,
         currentError, 
         currentLoading, 
+        handleToggleChange, 
+        isToggled, 
         oneCall,
         oneCallError,
         oneCallLoading,
         onSubmit, 
-        units
+        units, 
+        unitsLabel, 
     } = useWeather(weather);
 
     if(currentLoading || oneCallLoading) return <div>Loading...</div>
 
-    console.log(`Units: ${units}`);
+    // console.log(`Units: ${weather.getUnits()}`);
     return (
         <>
             <SearchBar onSubmit={onSubmit}/>
@@ -37,7 +40,11 @@ function Index({ user }) {
             {!currentError && !oneCallError && (
                 <div className="mt-3">
                     <div className="d-flex justify-content-center">
-                        {<UnitsSwitch units={units}/>}
+                        {<UnitsSwitch 
+                            isToggled={isToggled} 
+                            handleToggleChange={handleToggleChange} 
+                            unitsLabel={unitsLabel}/>
+                        }
                         <h2 className="">Conditions in {city}</h2>
                     </div>
                     <CurrentConditions 

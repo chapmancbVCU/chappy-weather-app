@@ -80,6 +80,10 @@ const useWeather = (weather) => {
     const oneCall = oneCallData?.data || {};
     console.log(oneCall)
 
+    /**
+     * Updates storage when there are updates to city, units,
+     * coordinates, and weather object.
+     */
     useEffect(() => {
         if(city && units && coords) {
             weather.updateStorage(current, units, city);

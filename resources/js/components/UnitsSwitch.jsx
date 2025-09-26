@@ -1,5 +1,6 @@
 import React from "react";
 import cx from "classnames";
+import "@css/toggleSwitch.css"
 /**
  * @property {string} units The name of the system of units.
  * @param {InputProps} param0 

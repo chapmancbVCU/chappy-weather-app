@@ -4,7 +4,7 @@ import { Weather } from "@/utils/Weather";
 import useWeather from "@/utils/useWeather";
 import HourlyForecastCard from "@/components/HourlyForecastCard";
 import Error from "@/components/Error";
-
+import UnitsSwitch from "@/components/UnitsSwitch";
 /**
  * Renders and handles information for hourly conditions at a specific 
  * location and search.
@@ -18,11 +18,14 @@ function Index({ user }) {
         current,
         currentError, 
         currentLoading, 
+        handleToggleChange, 
+        isToggled, 
         oneCall,
         oneCallError,
         oneCallLoading,
         onSubmit, 
-        units
+        units, 
+        unitsLabel, 
     } = useWeather(weather);
 
     if(currentLoading || oneCallLoading) return <div>Loading...</div>
@@ -36,7 +39,14 @@ function Index({ user }) {
 
             {!currentError && !oneCallError && ( 
                 <div className="mt-3">
-                    <h2 className="text-center">Hourly forecast for {city}</h2>
+                    <div className="d-flex justify-content-center">
+                        {<UnitsSwitch 
+                            isToggled={isToggled} 
+                            handleToggleChange={handleToggleChange} 
+                            unitsLabel={unitsLabel}/>
+                        }
+                        <h2 className="text-center">Hourly forecast for {city}</h2>
+                    </div>
                     <div>Current lon: {current.coord?.lon}</div>
                     <div>OneCall lon: {oneCall.lon}</div>
                 </div>

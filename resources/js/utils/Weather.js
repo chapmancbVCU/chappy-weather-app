@@ -111,9 +111,6 @@ export class Weather {
         return (data) ? true : false;
     }
 
-    setLocation(city) {
-        this.city = city;
-    }
     /**
      * Setter function for the latitude of the user's location or search query.
      * @param {Number} latitude The latitude of the user's location or search 
@@ -127,6 +124,14 @@ export class Weather {
         } catch (error) {
             console.log(error);
         }
+    }
+
+    /**
+     * Setter function for city.
+     * @param {string} city The new value for city.
+     */
+    setLocation(city) {
+        this.city = city;
     }
 
     /**

@@ -1,8 +1,8 @@
-input:checked + .slider{
+input:checked + .slider {
     background-color: #2196f3;
 }
 
-input:checked + .slider:before{
+input:checked + .slider:before {
     transform: translateX(26px);
 }
 
@@ -35,7 +35,7 @@ input:checked + .slider:before{
 }
 
 .slider.rounded:before {
-    border-radius: 50px;
+    border-radius: 50%;
 }
 
 .toggle-switch {
@@ -54,7 +54,7 @@ input:checked + .slider:before{
 .toggle-switch-container {
     display: flex;
     flex-direction: row;
-    gap: 25px;
+    gap: 10px;
     align-items: center;
     justify-content: center;
 }

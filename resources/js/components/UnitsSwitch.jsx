@@ -7,8 +7,8 @@ import "@css/toggleSwitch.css"
  * @returns 
  */
 function UnitsSwitch({ units }) {
-    const rounded = true;
-    const sliderCX = cx('slider', { 'rounded': rounded});
+
+    const sliderCX = cx('slider', { 'rounded': true});
     const label = (units === 'imperial') ? 'F' : 'C'; 
     return (
         <div className="toggle-switch-container me-3">

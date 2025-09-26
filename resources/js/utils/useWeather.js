@@ -13,13 +13,40 @@ const useWeather = (weather) => {
      * The name of the city.
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
      */
-    const [city, setCity] = useState(null);
+    const [city, setCity] = useState("");
+
+    const [isToggled, setToggled] = useState(false);
 
     /**
      * Keeps track of units being used.
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
      */
-    const [units, setUnits] = useState(null)
+    const [units, setUnits] = useState("")
+
+    const [unitsLabel, setUnitsLabel] = useState("");
+
+    const updateUnitsLabel = () => {
+        (weather.getUnits() === 'imperial') ? setUnitsLabel('F') : setUnitsLabel('C');
+        setUnits(weather.getUnits());
+    }
+
+    const handleToggleChange = () => {
+        weather.toggleUnits();
+        setToggledCheckedState();
+    }
+
+    const setToggledCheckedState = () => {
+        (weather.getUnits() === 'imperial') ? setToggled(false) : setToggled(true);
+    }
+
+    useEffect(() => {
+        updateUnitsLabel();
+        setToggledCheckedState();
+    }, [isToggled])
+    
+    
+
+    
 
     /**
      * Sets state of city and units variable based on updates to weather 
@@ -95,11 +122,14 @@ const useWeather = (weather) => {
         current, 
         currentError, 
         currentLoading,
+        handleToggleChange, 
+        isToggled, 
         oneCall,
         oneCallError,
         oneCallLoading,
         onSubmit, 
         units,
+        unitsLabel,
     };
 }
 

@@ -9,6 +9,10 @@ import { apiGet, useAsync } from '@chappy/utils/api';
  * @returns 
  */
 const useWeather = (weather) => {
+    /**
+     * The name of the city.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [city, setCity] = useState(null);
     const [units, setUnits] = useState(null)
 

@@ -6,19 +6,19 @@ import "@css/toggleSwitch.css"
  * @param {InputProps} param0 
  * @returns 
  */
-function UnitsSwitch({ units }) {
+function UnitsSwitch({ isToggled, handleToggleChange, unitsLabel }) {
 
     const sliderCX = cx('slider', { 'rounded': true});
-    const label = (units === 'imperial') ? 'F' : 'C'; 
+
     return (
         <div className="toggle-switch-container me-3">
-            <h2>{'\xB0'}{label}</h2>
+            <h2>{'\xB0'}{unitsLabel}</h2>
             <label className="toggle-switch">
                 <input type="checkbox"
                     name="isToggled"
                     id="isToggled"
-                    // checked={""}
-                    // onChange={""}
+                    checked={isToggled}
+                    onChange={handleToggleChange}
                 />
                 <span className={sliderCX} />
             </label>

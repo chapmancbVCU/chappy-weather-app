@@ -14,6 +14,11 @@ const useWeather = (weather) => {
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
      */
     const [city, setCity] = useState(null);
+
+    /**
+     * Keeps track of units being used.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [units, setUnits] = useState(null)
 
     useEffect(() => {

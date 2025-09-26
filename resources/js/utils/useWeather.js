@@ -38,7 +38,7 @@ const useWeather = (weather) => {
     }, [weather]);
 
     /**
-     * Sets name of city to value of query string on submit.
+     * Sets name of city to value of query string on submit.b
      * @param {string} q The query string.
      */
     const onSubmit = (q) => {
@@ -46,6 +46,9 @@ const useWeather = (weather) => {
         weather.setLocation(q);
     }
 
+    /**
+     * Fetches data for current conditions using free tier api.
+     */
     const { 
         data: currentData, 
         loading: currentLoading, 
@@ -59,6 +62,9 @@ const useWeather = (weather) => {
     const coords = current?.coord;
     console.log(current)
     
+    /**
+     * Fetches data using onecall api.
+     */
     const {
         data: oneCallData,
         loading: oneCallLoading,

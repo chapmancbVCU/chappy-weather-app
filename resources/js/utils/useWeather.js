@@ -21,6 +21,10 @@ const useWeather = (weather) => {
      */
     const [units, setUnits] = useState(null)
 
+    /**
+     * Sets state of city and units variable based on updates to weather 
+     * object.
+     */
     useEffect(() => {
         (async () => {
         if (weather.locationDataExists()) {

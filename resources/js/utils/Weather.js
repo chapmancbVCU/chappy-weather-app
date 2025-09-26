@@ -112,6 +112,20 @@ export class Weather {
     }
 
     /**
+     * Retrieves location data from local storage.
+     * 
+     * @returns {object} Data from local storage packaged as an object.
+     */
+    readStorage() {
+        const locationData = localStorage.getItem('locationData');
+        if(locationData) {
+            const data = JSON.parse(locationData);
+            return data;
+        }
+        return null;
+    }
+
+    /**
      * Setter function for the latitude of the user's location or search query.
      * @param {Number} latitude The latitude of the user's location or search 
      * query.
@@ -173,6 +187,13 @@ export class Weather {
     }
 
     /**
+     * Toggle units between metric and imperial.
+     */
+    toggleUnits() {
+        this.units = (this.units === 'imperial') ? 'metric' : 'imperial';
+    }
+
+    /**
      * Sets or updates local storage with information needed to instantiate 
      * instance of Weather class using local storage.
      * 
@@ -192,19 +213,5 @@ export class Weather {
         }
 
         localStorage.setItem('locationData', JSON.stringify(locationData));
-    }
-
-    /**
-     * Retrieves location data from local storage.
-     * 
-     * @returns {object} Data from local storage packaged as an object.
-     */
-    readStorage() {
-        const locationData = localStorage.getItem('locationData');
-        if(locationData) {
-            const data = JSON.parse(locationData);
-            return data;
-        }
-        return null;
     }
 }

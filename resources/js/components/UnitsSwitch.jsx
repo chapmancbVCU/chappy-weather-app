@@ -10,8 +10,8 @@ function UnitsSwitch({ units }) {
 
     const label = (units === 'imperial') ? 'F' : 'C'; 
     return (
-        <div className="toggle-switch-container">
-            <h2 className="me-3">{'\xB0'}{label}</h2>
+        <div className="toggle-switch-container me-3">
+            <h2>{'\xB0'}{label}</h2>
             <input type="checkbox"
                 name="isToggled"
                 id="isToggled"

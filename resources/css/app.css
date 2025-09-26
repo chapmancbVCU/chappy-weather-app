@@ -34,3 +34,11 @@
 .nav-background {
   background-color: #62a2cf;;
 }
+
+.toggle-switch-container {
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  align-items: center;
+  justify-content: center;
+}

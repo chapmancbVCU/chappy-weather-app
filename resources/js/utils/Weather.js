@@ -191,6 +191,13 @@ export class Weather {
      */
     toggleUnits() {
         this.units = (this.units === 'imperial') ? 'metric' : 'imperial';
+        const locationData = {
+            location: this.city,
+            units: this.units,
+            latitude: this.latitude,
+            longitude: this.longitude
+        }
+        localStorage.setItem('locationData', JSON.stringify(locationData));
     }
 
     /**

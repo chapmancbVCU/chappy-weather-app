@@ -20,7 +20,7 @@ function UnitsSwitch({ units }) {
                     // checked={""}
                     // onChange={""}
                 />
-                <span className={sliderCX}></span>
+                <span className={sliderCX} />
             </label>
         </div>
     );

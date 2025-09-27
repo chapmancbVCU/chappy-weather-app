@@ -11,17 +11,12 @@ function Index() {
     const weather = useMemo(() => new Weather(), []);
     const { 
         city, 
-        current,
         currentError, 
         currentLoading, 
-        handleToggleChange, 
-        isToggled, 
         oneCall,
         oneCallError,
         oneCallLoading,
         onSubmit, 
-        units, 
-        unitsLabel, 
     } = useWeather(weather);
 
     if(currentLoading || oneCallLoading) return <div className="mt-3 text-center">Loading...</div>

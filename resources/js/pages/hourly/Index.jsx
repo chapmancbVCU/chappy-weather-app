@@ -40,8 +40,8 @@ function Index({ user }) {
             {oneCallError && <Error error={oneCallError} />}
 
             {!currentError && !oneCallError && ( 
-                <div className="mt-3">
-                    {oneCall.alerts && <Alerts />}
+                <div className="mt-3 d-flex flex-column">
+                    {oneCall.alerts && <Alerts alerts={oneCall.alerts}/>}
                     {user && <Favorites />}
                     <div className="d-flex justify-content-center">
                         {<UnitsSwitch 

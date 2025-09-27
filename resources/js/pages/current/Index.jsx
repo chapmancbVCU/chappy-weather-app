@@ -41,7 +41,7 @@ function Index({ user }) {
 
             {!currentError && !oneCallError && (
                 <div className="mt-3 d-flex flex-column">
-                    {oneCall.alerts && <Alerts />}
+                    {oneCall.alerts && <Alerts alerts={oneCall.alerts}/>}
                     {user && <Favorites />}
                     <div className="d-flex justify-content-center">
                         {<UnitsSwitch 

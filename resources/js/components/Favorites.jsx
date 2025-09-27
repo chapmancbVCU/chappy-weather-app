@@ -3,7 +3,7 @@ function Favorites() {
 
     return (
         <>
-        
+            Favorites bar
         </>
     );
 }        

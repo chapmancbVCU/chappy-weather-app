@@ -3,6 +3,10 @@ import "@css/alerts.css";
 import { Card, Button, Collapse } from 'react-bootstrap'; 
 function AlertCard({ alert }) {
 
+    /**
+     * Manages state of card body so user can reveal and hide it.
+     * @type {[boolean, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [open, setOpen] = useState(false);
     return (
         <Card className="alert-card my-3">

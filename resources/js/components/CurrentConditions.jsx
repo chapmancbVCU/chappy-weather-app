@@ -7,11 +7,8 @@ import React from "react";
  */
 function CurrentConditions({ conditions, oneCall, units}) {
     return (
-        <div className="card mt-4">
-            <h5 className="mb-2">{conditions.name}</h5>
-            <div>
-                {Math.round(conditions.main?.temp)}°{units === 'metric' ? 'C' : 'F'} — {conditions.weather?.[0]?.description}
-            </div>
+        <div className="card forecast mt-4">
+            <h4 className="text-center my-3">{oneCall.daily[0].summary}</h4>
         </div>
     );
 }        

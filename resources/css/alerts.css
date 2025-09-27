@@ -6,3 +6,9 @@
     border-radius: 15px;
     text-decoration: none;
 }
+
+.alerts-container {
+    border: 1px solid black;
+    width: 80%;
+    margin: 15px auto;
+}

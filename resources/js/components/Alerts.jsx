@@ -1,6 +1,13 @@
 import React from "react";
 import "@css/alerts.css";
 import route from "@chappy/utils/route";
+
+/**
+ * Renders banner containing title of alerts in area.
+ * @property {array} alerts An array of alerts provided by weather service.
+ * @param {InputProps} param0 
+ * @returns {JSX.Element} The banner with alerts listed.
+ */
 function Alerts({ alerts }) {
 
     console.log('Alerts:');

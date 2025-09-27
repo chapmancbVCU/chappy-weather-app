@@ -1,19 +1,19 @@
 import React from "react";
 import "@css/alerts.css";
-
+import route from "@chappy/utils/route";
 function Alerts({ alerts }) {
 
     console.log('Alerts:');
     console.log(alerts)
     return (
-        <div className="alerts-card my-3">
+        <a href={route('alerts.Index')}className="alerts-card my-3">
             <h4 className="text-center text-danger my-2">Alerts in your area</h4>
             <ul>
                 {alerts && alerts.map((alert) => (
-                    <li key={alert}>{alert.event}</li>
+                    <li className="text-black" key={alert}>{alert.event}</li>
                 ))}
             </ul>
-        </div>
+        </a>
     );
 }        
 export default Alerts;

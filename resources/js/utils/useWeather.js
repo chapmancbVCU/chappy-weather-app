@@ -33,6 +33,9 @@ const useWeather = (weather) => {
      */
     const [unitsLabel, setUnitsLabel] = useState("");
 
+    /**
+     * Updates label for units system.
+     */
     const updateUnitsLabel = () => {
         (weather.getUnits() === 'imperial') ? setUnitsLabel('F') : setUnitsLabel('C');
         setUnits(weather.getUnits());

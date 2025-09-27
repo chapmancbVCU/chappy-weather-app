@@ -54,7 +54,7 @@ function Index({ user }) {
                     <CurrentConditions 
                         conditions={current} 
                         oneCall={oneCall}
-                        units={units} 
+                        units={units}
                     />
                 </div>
             )}

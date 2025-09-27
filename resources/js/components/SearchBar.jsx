@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "@css/searchbar.css";
 import { apiGet, useAsync } from '@chappy/utils/api';
+import Error from "./Error";
 
 /**
  * Supports the search feature for the weather application.  It also includes, 
@@ -102,16 +103,21 @@ function SearchBar({ onSubmit }) {
                     <button className='search-button' onClick={handleClick}>Search</button>
                 </form>
             </div>
-            {open && (
-                <ul className="options-list">
-                    {geoData && geoData.map((option, index) => (
-                        <li className="option-list-item" key={option.name + '-' + index}>
-                            <button onClick={() => onOptionSelect(option)}>
-                                {optionName(option)}
-                            </button>
-                        </li>
-                    ))}
-                </ul>
+            {error ? (
+                <div>error</div>
+            ) : (loading ? (
+                    <Error error={error} />
+                ) : (open && (
+                    <ul className="options-list">
+                        {geoData && geoData.map((option, index) => (
+                            <li className="option-list-item" key={option.name + '-' + index}>
+                                <button onClick={() => onOptionSelect(option)}>
+                                    {optionName(option)}
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                ))
             )}
         </>
     );

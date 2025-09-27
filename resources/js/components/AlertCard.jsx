@@ -11,7 +11,7 @@ function AlertCard({ alert }) {
                     className="alert-button text-black"
                     onClick={() => setOpen(!open)}
                     aria-controls="collapse-text"
-                    area-expand={open}
+                    aria-expanded={open}
                     variant="link"
                 >
                     {alert.event}
@@ -20,7 +20,14 @@ function AlertCard({ alert }) {
             <Collapse in={open}>
                 <div id="collapse-text">
                     <Card.Body>
-
+                        <div>
+                            <strong>Issued by:</strong>
+                            <p>{alert.sender_name}</p>
+                        </div>
+                        <div>
+                            <strong>Description:</strong>
+                            <div className="alert-description">{alert.description}</div>
+                        </div>
                     </Card.Body>
                 </div>
             </Collapse>

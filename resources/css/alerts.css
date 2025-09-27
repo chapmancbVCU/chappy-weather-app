@@ -1,9 +1,12 @@
 .alerts-banner {
-    border: 1px solid red;
-    box-shadow: 1px 1px red;
-    width: 60%;
-    align-self: center;
+    border: 3px solid red;
     border-radius: 15px;
+    box-shadow: 2px 2px red;
+    
+    width: 60%;
+    background-color: rgb(111, 200, 230, .7);
+    align-self: center;
+    
     text-decoration: none;
 }
 

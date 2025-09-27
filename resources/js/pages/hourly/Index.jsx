@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import SearchBar from "@/components/SearchBar";
 import { Weather } from "@/utils/Weather";
-import useWeather from "@/utils/useWeather";
+import useWeather from "@/utils/hooks/useWeather";
 import HourlyForecastCard from "@/components/HourlyForecastCard";
 import Error from "@/components/Error";
 import UnitsSwitch from "@/components/UnitsSwitch";

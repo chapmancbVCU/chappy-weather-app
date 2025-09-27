@@ -1,6 +1,6 @@
 import React from "react";
 import "@css/forecast.css";
-import useCurrentConditions from "@/utils/useCurrentConditions";
+import useCurrentConditions from "@/utils/hooks/useCurrentConditions";
 
 /**
  * Renders current conditions.

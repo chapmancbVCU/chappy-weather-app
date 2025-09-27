@@ -6,6 +6,7 @@ import HourlyForecastCard from "@/components/HourlyForecastCard";
 import Error from "@/components/Error";
 import UnitsSwitch from "@/components/UnitsSwitch";
 import Favorites from "@/components/Favorites";
+import Alerts from "@/components/Alerts";
 
 /**
  * Renders and handles information for hourly conditions at a specific 
@@ -40,6 +41,7 @@ function Index({ user }) {
 
             {!currentError && !oneCallError && ( 
                 <div className="mt-3">
+                    {oneCall.alerts && <Alerts />}
                     {user && <Favorites />}
                     <div className="d-flex justify-content-center">
                         {<UnitsSwitch 

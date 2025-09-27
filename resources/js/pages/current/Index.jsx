@@ -6,6 +6,7 @@ import useWeather from "@/utils/useWeather";
 import Error from "@/components/Error";
 import UnitsSwitch from "@/components/UnitsSwitch";
 import Favorites from "@/components/Favorites";
+import Alerts from "@/components/Alerts";
 
 /**
  * Renders and handles information for current conditions at a specific 
@@ -39,7 +40,8 @@ function Index({ user }) {
             {oneCallError && <Error error={oneCallError} />}
 
             {!currentError && !oneCallError && (
-                <div className="mt-3">
+                <div className="mt-3 d-flex flex-column">
+                    {oneCall.alerts && <Alerts />}
                     {user && <Favorites />}
                     <div className="d-flex justify-content-center">
                         {<UnitsSwitch 

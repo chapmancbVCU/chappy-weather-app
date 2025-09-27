@@ -49,6 +49,9 @@ const useWeather = (weather) => {
         setToggledCheckedState();
     }
 
+    /**
+     * Set state for toggle switch when it is selected.
+     */
     const setToggledCheckedState = () => {
         (weather.getUnits() === 'imperial') ? setToggled(false) : setToggled(true);
     }
@@ -58,10 +61,6 @@ const useWeather = (weather) => {
         setToggledCheckedState();
     }, [isToggled])
     
-    
-
-    
-
     /**
      * Sets state of city and units variable based on updates to weather 
      * object.

@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 use Core\Controller;
+use Core\Services\AuthService;
 
 /**
  * Supports operations for rendering daily forecast.
@@ -12,6 +13,8 @@ class DailyController extends Controller {
      * @return void
      */
     public function indexAction(): void {
-        $this->view->renderJsx('daily.Index');
+        $user = AuthService::currentUser();
+        $props = ['user' => $user ?? null];
+        $this->view->renderJsx('daily.Index', $props);
     }
 }

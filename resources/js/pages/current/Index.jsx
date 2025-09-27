@@ -5,6 +5,8 @@ import { Weather } from "@/utils/Weather";
 import useWeather from "@/utils/useWeather";
 import Error from "@/components/Error";
 import UnitsSwitch from "@/components/UnitsSwitch";
+import Favorites from "@/components/Favorites";
+
 /**
  * Renders and handles information for current conditions at a specific 
  * location and search.
@@ -29,7 +31,7 @@ function Index({ user }) {
     } = useWeather(weather);
 
     if(currentLoading || oneCallLoading) return <div>Loading...</div>
-
+    console.log(user);
     return (
         <>
             <SearchBar onSubmit={onSubmit}/>
@@ -38,6 +40,7 @@ function Index({ user }) {
 
             {!currentError && !oneCallError && (
                 <div className="mt-3">
+                    {user && <Favorites />}
                     <div className="d-flex justify-content-center">
                         {<UnitsSwitch 
                             isToggled={isToggled} 

@@ -14,7 +14,7 @@ class CurrentController extends Controller {
      */
     public function indexAction(): void {
         $user = AuthService::currentUser();
-        $props = ['user' => $user ?? 'Guest'];
+        $props = ['user' => $user ?? null];
         $this->view->renderJSX('current.Index', $props);
     }
 }

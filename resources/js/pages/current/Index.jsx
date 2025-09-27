@@ -30,7 +30,6 @@ function Index({ user }) {
 
     if(currentLoading || oneCallLoading) return <div>Loading...</div>
 
-    // console.log(`Units: ${weather.getUnits()}`);
     return (
         <>
             <SearchBar onSubmit={onSubmit}/>

@@ -6,7 +6,7 @@ function Alerts({ alerts }) {
     console.log('Alerts:');
     console.log(alerts)
     return (
-        <a href={route('alerts')}className="alerts-banner my-3">
+        <a href={route('alerts')} className="alerts-banner my-3">
             <h4 className="text-center text-danger my-2">Alerts in your area</h4>
             <ul>
                 {alerts && alerts.map((alert, index) => (

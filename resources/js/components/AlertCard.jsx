@@ -8,7 +8,7 @@ function AlertCard({ alert }) {
         <Card className="alert-card my-3">
             <Card.Header>
                 <Button
-                    className="alert-button"
+                    className="alert-button text-black"
                     onClick={() => setOpen(!open)}
                     aria-controls="collapse-text"
                     area-expand={open}

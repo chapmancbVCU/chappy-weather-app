@@ -7,6 +7,10 @@
     text-decoration: none;
 }
 
+.alert-button {
+    text-decoration: none;
+}
+
 .alert-card {
     width: 80%;
     align-self: center;

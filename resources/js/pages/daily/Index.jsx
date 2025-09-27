@@ -45,7 +45,7 @@ function Index({ user }) {
                             handleToggleChange={handleToggleChange} 
                             unitsLabel={unitsLabel}/>
                         }
-                        <h2 className="text-center">Daily forecast for {city}</h2>
+                        <h2 className="ms-3">Daily forecast for {city}</h2>
                     </div>
                     <div>Current lon: {current.coord?.lon}</div>
                     <div>OneCall lon: {oneCall.lon}</div>

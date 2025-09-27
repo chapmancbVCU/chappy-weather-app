@@ -45,7 +45,7 @@ function Index({ user }) {
                             handleToggleChange={handleToggleChange} 
                             unitsLabel={unitsLabel}/>
                         }
-                        <h2 className="">Conditions in {city}</h2>
+                        <h2 className="ms-3">Conditions in {city}</h2>
                     </div>
                     <CurrentConditions 
                         city={city} 

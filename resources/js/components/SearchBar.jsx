@@ -45,8 +45,7 @@ function SearchBar({ onSubmit }) {
      * @param {object} option An option that has been selected by the user.
      */
     const onOptionSelect = (option) => {
-        let term = option.name + ", " + option.state + ", " + option.country;
-        setSearchTerm(term)
+        setSearchTerm(optionName(option));
     }
 
     /**
@@ -59,6 +58,17 @@ function SearchBar({ onSubmit }) {
         setSearchTerm(value)
         setOpen(true);
         setQ(value);
+    }
+
+    /**
+     * Formats option in the following format:
+     * ${option.name}, ${option.state}, ${option.country}
+     * 
+     * @param {object} option The option to be formatted.
+     * @returns {string} The formatted option.
+     */
+    const optionName = (option) => {
+        return `${option.name}, ${option.state}, ${option.country}`;
     }
 
     /**
@@ -97,7 +107,7 @@ function SearchBar({ onSubmit }) {
                     {geoData && geoData.map((option, index) => (
                         <li className="option-list-item" key={option.name + '-' + index}>
                             <button onClick={() => onOptionSelect(option)}>
-                                {option.name}, {option.state}, {option.country}
+                                {optionName(option)}
                             </button>
                         </li>
                     ))}

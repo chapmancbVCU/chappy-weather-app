@@ -104,9 +104,9 @@ function SearchBar({ onSubmit }) {
                 </form>
             </div>
             {error ? (
-                <div>error</div>
+                <div>{error.message}</div>
             ) : (loading ? (
-                    <Error error={error} />
+                    <div>Loading ...</div>
                 ) : (open && (
                     <ul className="options-list">
                         {geoData && geoData.map((option, index) => (

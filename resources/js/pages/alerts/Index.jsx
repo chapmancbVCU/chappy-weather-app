@@ -6,6 +6,11 @@ import Error from "@/components/Error";
 import "@css/alerts.css";
 import AlertCard from "@/components/AlertCard";
 
+/**
+ * Renders view containing alerts.
+ * @returns {JSX.Element} View containing list of alerts represented 
+ * as cards.
+ */
 function Index() {
 
     const weather = useMemo(() => new Weather(), []);

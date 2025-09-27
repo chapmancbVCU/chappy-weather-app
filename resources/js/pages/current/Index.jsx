@@ -53,10 +53,9 @@ function Index({ user }) {
                     </div>
                     <CurrentConditions 
                         conditions={current} 
+                        oneCall={oneCall}
                         units={units} 
                     />
-                    <div>Current lon: {current.coord?.lon}</div>
-                    <div>OneCall lon: {oneCall.lon}</div>
                 </div>
             )}
         </>

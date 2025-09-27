@@ -52,9 +52,6 @@ function Index({ user }) {
                         <h2 className="ms-3">Conditions in {city}</h2>
                     </div>
                     <CurrentConditions 
-                        city={city} 
-                        error={currentError} 
-                        loading={currentLoading }
                         conditions={current} 
                         units={units} 
                     />

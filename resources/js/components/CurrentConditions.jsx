@@ -5,7 +5,7 @@ import React from "react";
  * @param {InputProps} param0 
  * @returns {JSX.Element} The current conditions for selected area.
  */
-function CurrentConditions({ conditions, loading, error, units = 'imperial'}) {
+function CurrentConditions({ conditions, units = 'imperial'}) {
     if(loading) return <div>Loading...</div>
     if(error) return <div className="text-danger">{error.message}</div>
 

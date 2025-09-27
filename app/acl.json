@@ -4,6 +4,7 @@
         "Current" : ["*"],
         "Hourly" : ["*"],
         "Daily" : ["*"],
+        "Alerts" : ["*"],
         "Auth" : ["login", "register", "resetPassword"],
         "Restricted" : ["*"],
         "Weather": ["currentConditions", "preflight", "search", "oneCall"]

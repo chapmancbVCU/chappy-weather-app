@@ -3,16 +3,6 @@
   padding: 0;
 }
 
-.forecast {
-  width: 80%;
-  border: 3px solid rgb(57, 169, 244);
-  background-color: rgb(111, 200, 230, .7);
-
-  align-self: center;
-  display: flex;
-  flex-direction: column;
-}
-
 /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
 
 .form-errors {

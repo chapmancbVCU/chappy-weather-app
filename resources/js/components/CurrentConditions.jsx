@@ -1,4 +1,5 @@
 import React from "react";
+import "@css/forecast.css";
 
 /**
  * Renders current conditions.

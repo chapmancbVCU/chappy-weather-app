@@ -15,6 +15,10 @@ const useWeather = (weather) => {
      */
     const [city, setCity] = useState("");
 
+    /**
+     * Manages checked status for units toggle switch.
+     * @type {[boolean, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [isToggled, setToggled] = useState(false);
 
     /**

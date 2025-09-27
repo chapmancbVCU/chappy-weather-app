@@ -56,6 +56,9 @@ const useWeather = (weather) => {
         (weather.getUnits() === 'imperial') ? setToggled(false) : setToggled(true);
     }
 
+    /**
+     * Updates units and checked state when value for isToggled is changed.
+     */
     useEffect(() => {
         updateUnitsLabel();
         setToggledCheckedState();

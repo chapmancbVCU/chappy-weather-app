@@ -27,6 +27,7 @@
     "jquery-ui": "^1.14.1",
     "jquery-ui-dist": "^1.13.3",
     "react": "^19.1.1",
+    "react-bootstrap": "^2.10.10",
     "react-dom": "^19.1.1",
     "tinymce": "^8.1.2"
   },

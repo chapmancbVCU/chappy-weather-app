@@ -27,6 +27,10 @@ const useWeather = (weather) => {
      */
     const [units, setUnits] = useState("")
 
+    /**
+     * Manages state of units label.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [unitsLabel, setUnitsLabel] = useState("");
 
     const updateUnitsLabel = () => {

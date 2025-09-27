@@ -31,7 +31,7 @@ function Index({ user }) {
     } = useWeather(weather);
 
     if(currentLoading || oneCallLoading) return <div>Loading...</div>
-    console.log(user);
+
     return (
         <>
             <SearchBar onSubmit={onSubmit}/>

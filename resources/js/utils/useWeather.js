@@ -41,6 +41,9 @@ const useWeather = (weather) => {
         setUnits(weather.getUnits());
     }
 
+    /**
+     * Event handler for setting units when toggle switch is set by user.
+     */
     const handleToggleChange = () => {
         weather.toggleUnits();
         setToggledCheckedState();

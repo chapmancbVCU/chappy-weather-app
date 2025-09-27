@@ -14,6 +14,7 @@ import AlertCard from "@/components/AlertCard";
 function Index() {
 
     const weather = useMemo(() => new Weather(), []);
+    
     const { 
         city, 
         currentError, 

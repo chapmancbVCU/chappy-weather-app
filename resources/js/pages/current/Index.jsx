@@ -30,7 +30,7 @@ function Index({ user }) {
         unitsLabel, 
     } = useWeather(weather);
 
-    if(currentLoading || oneCallLoading) return <div>Loading...</div>
+    if(currentLoading || oneCallLoading) return <div className="mt-3 text-center">Loading...</div>
 
     return (
         <>

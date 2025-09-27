@@ -7,8 +7,7 @@
     text-decoration: none;
 }
 
-.alerts-container {
-    border: 1px solid black;
+.alert-card {
     width: 80%;
-    margin: 15px auto;
+    align-self: center;
 }

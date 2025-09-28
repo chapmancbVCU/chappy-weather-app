@@ -31,7 +31,7 @@ const useCurrentConditions = (conditions, oneCall, units) => {
 
     const setCurrentTemperature = () => {
         const symbol = (units === 'imperial') ? 'F' : 'C';
-        setTemperature(`${conditions?.main?.temp}\xB0${symbol}`);
+        setTemperature(`${Math.round(conditions?.main?.temp)}\xB0${symbol}`);
     }
 
     useEffect(() => {

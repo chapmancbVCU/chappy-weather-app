@@ -27,7 +27,7 @@ function CurrentConditions({ conditions, oneCall, units}) {
                     <div className="fs-5">Today's High: {highTemp}</div>
                     <div className="fs-5">Today's Low: {lowTemp}</div>
                 </div>
-                <div className="section-half">right</div>
+                <div className="section-half section-right">right</div>
             </div>
         </div>
     );

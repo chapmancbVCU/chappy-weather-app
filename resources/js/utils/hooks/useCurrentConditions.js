@@ -11,6 +11,8 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      */
     const [date, setDate] = useState("");
 
+    const [lowTemp, setLowTemp] = useState("");
+    const [highTemp, setHighTemp] = useState("");
     /**
      * Short summary of current conditions.
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
@@ -29,9 +31,8 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      */
     const [time, setTime] = useState("");
 
-    const setCurrentTemperature = () => {
-        const symbol = (units === 'imperial') ? 'F' : 'C';
-        setTemperature(`${Math.round(conditions?.main?.temp)}\xB0${symbol}`);
+    const temperatureSymbol = () => {
+        return (units === 'imperial') ? 'F' : 'C';
     }
 
     useEffect(() => {
@@ -47,11 +48,15 @@ const useCurrentConditions = (conditions, oneCall, units) => {
 
         setSummary(oneCall?.daily?.[0]?.summary ?? "");
 
-        setCurrentTemperature();
+        setTemperature(`${Math.round(conditions?.main?.temp)}\xB0${temperatureSymbol()}`);
+        setLowTemp(`${Math.round(conditions?.main?.temp_min)}\xB0${temperatureSymbol()}`);
+        setHighTemp(`${Math.round(conditions?.main?.temp_max)}\xB0${temperatureSymbol()}`);
     }, [conditions, oneCall, units]);
 
     return {
         date,
+        lowTemp,
+        highTemp,
         summary,
         temperature,
         time

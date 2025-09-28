@@ -11,7 +11,16 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      */
     const [date, setDate] = useState("");
 
+    /**
+     * Today's low temperature.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [lowTemp, setLowTemp] = useState("");
+
+    /**
+     * Today's high temperature.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [highTemp, setHighTemp] = useState("");
     /**
      * Short summary of current conditions.
@@ -31,6 +40,10 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      */
     const [time, setTime] = useState("");
 
+    /**
+     * Determines temperature symbol based on system used.
+     * @returns {string} F or C depending of system used.
+     */
     const temperatureSymbol = () => {
         return (units === 'imperial') ? 'F' : 'C';
     }

@@ -23,6 +23,12 @@ const useCurrentConditions = (conditions, oneCall) => {
      */
     const [summary, setSummary] =  useState("")
 
+    const [time, setTime] = useState("");
+
+    const currentTime = () => {
+        setTime(dateTimeUtil.getTimeInfo(dateTimeStamp));
+    }
+
     /**
      * Obtains summary from oneCall data.
      */
@@ -42,7 +48,6 @@ const useCurrentConditions = (conditions, oneCall) => {
      * Sets time based off of timestamp and timezone offset.
      */
     const setDateTime = () => {
-        console.log(oneCall?.timezone_offset)
         setDateTimeStamp(dateTimeUtil.getDateTime(
             oneCall?.current?.dt, oneCall?.timezone_offset ?? ""
         ))
@@ -52,11 +57,13 @@ const useCurrentConditions = (conditions, oneCall) => {
         setDateTime();
         getSummary();
         setCurrentDate();
+        currentTime();
     }, [oneCall]);
 
     return {
         date,
-        summary
+        summary,
+        time
     }
 }
 

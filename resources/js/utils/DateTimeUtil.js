@@ -2,6 +2,12 @@
  * Supports the display of date and time information.
  */
 export class DateTimeUtil {
+    /**
+     * This function reports the local date in the following format: 
+     * <day_of_week>, <month> <day_of_month>, <year>.
+     * @param {string} localDateTime The local timestamp.
+     * @returns The formatted date.
+     */
     getDateInfo(timestamp) {
         return this.getDayOfWeek(timestamp) + ', ' +
             this.getFullMonthName(timestamp) + ' ' +

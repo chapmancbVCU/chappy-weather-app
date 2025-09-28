@@ -10,6 +10,7 @@ import useCurrentConditions from "@/utils/hooks/useCurrentConditions";
 function CurrentConditions({ conditions, oneCall, units}) {
     const { 
         date, 
+        description,
         lowTemp, 
         highTemp,
         summary, 
@@ -23,11 +24,15 @@ function CurrentConditions({ conditions, oneCall, units}) {
             <h4 className="text-center">{summary}</h4>
             <div className="section">
                 <div className="section-half">
-                    <div className="fs-1 mb-2">{temperature}</div>
+                    <div className="fs-2 mb-2">{temperature}</div>
                     <div className="fs-5">Today's High: {highTemp}</div>
                     <div className="fs-5">Today's Low: {lowTemp}</div>
                 </div>
-                <div className="section-half section-right">right</div>
+                <div className="section-half section-right">
+                    <div className="fs-2 mb-2">
+                        {description}
+                    </div>
+                </div>
             </div>
         </div>
     );

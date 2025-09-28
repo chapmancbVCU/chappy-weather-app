@@ -11,6 +11,8 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      */
     const [date, setDate] = useState("");
 
+    const [description, setDescription] = useState("");
+
     /**
      * Today's low temperature.
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
@@ -40,6 +42,15 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      */
     const [time, setTime] = useState("");
 
+    const setDescriptionText = (data) => {
+        const description = data;;
+        const descArr = description.split(" ");
+        for(let i = 0; i < descArr.length; i++) {
+            descArr[i] = descArr[i][0].toUpperCase() + descArr[i].substring(1);
+        }
+        setDescription(descArr.join(" "));
+    }
+
     /**
      * Determines temperature symbol based on system used.
      * @returns {string} F or C depending of system used.
@@ -60,6 +71,7 @@ const useCurrentConditions = (conditions, oneCall, units) => {
         setDate(dateTimeUtil.getDateInfo(stamp));
 
         setSummary(oneCall?.daily?.[0]?.summary ?? "");
+        setDescriptionText(conditions?.weather[0]?.description);
 
         setTemperature(`${Math.round(conditions?.main?.temp)}\xB0${temperatureSymbol()}`);
         setLowTemp(`${Math.round(conditions?.main?.temp_min)}\xB0${temperatureSymbol()}`);
@@ -68,6 +80,7 @@ const useCurrentConditions = (conditions, oneCall, units) => {
 
     return {
         date,
+        description,
         lowTemp,
         highTemp,
         summary,

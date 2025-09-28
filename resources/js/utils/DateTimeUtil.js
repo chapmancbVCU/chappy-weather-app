@@ -15,5 +15,28 @@ export class DateTimeUtil {
             : dayOfMonth;
     }
 
-    
+    /**
+     * Returns full day of week using the ISO timestamp as parameter.
+     * @param {string} timestamp Date and time information in the form of an 
+     * ISO string.
+     * @returns {string} Full day of week name.
+     */
+    getDayOfWeek(timestamp) {
+        const days =[
+            ['Sunday', 'Sun'],
+            ['Monday', 'Mon'],
+            ['Tuesday', 'Tue'],
+            ['Wednesday', 'Wed'],
+            ['Thursday', 'Thu'],
+            ['Friday', 'Fri'],
+            ['Saturday', 'Sat']
+        ];
+
+        let dayOfWeek = timestamp?.toString().slice(0, 3);
+        for(let i = 0; i < days.length; i++) {
+            if(dayOfWeek?.includes(days[i][1])) {
+                return dayOfWeek?.replace(days[i][1], days([i],[0]))
+            }
+        }
+    }
 }

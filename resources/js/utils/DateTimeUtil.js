@@ -96,6 +96,11 @@ export class DateTimeUtil {
         }
     }
 
+    /**
+     * This function reports the local time.
+     * @param {string} localDateTime The local timestamp.
+     * @returns {string} The formatted time.
+     */
     getTimeInfo(timestamp) {
         let minutes = timestamp.slice(20,22);
         let hours = timestamp.slice(17, 19);

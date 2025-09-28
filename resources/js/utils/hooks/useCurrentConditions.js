@@ -3,6 +3,12 @@ import { DateTimeUtil } from "../DateTimeUtil";
 
 const useCurrentConditions = (conditions, oneCall) => {
     const dateTimeUtil = new DateTimeUtil();
+
+    /**
+     * Prop for date in the following format: 
+     * <day_of_week>, <month> <day_of_month>, <year>.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [date, setDate] = useState("");
     const [dateTimeStamp, setDateTimeStamp] = useState("");
     const [summary, setSummary] =  useState("")

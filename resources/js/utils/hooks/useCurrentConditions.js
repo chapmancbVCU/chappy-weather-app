@@ -10,6 +10,11 @@ const useCurrentConditions = (conditions, oneCall) => {
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
      */
     const [date, setDate] = useState("");
+
+    /**
+     * Date time string derived from Unix time.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [dateTimeStamp, setDateTimeStamp] = useState("");
     const [summary, setSummary] =  useState("")
 

@@ -8,13 +8,13 @@ import useCurrentConditions from "@/utils/hooks/useCurrentConditions";
  * @returns {JSX.Element} The current conditions for selected area.
  */
 function CurrentConditions({ conditions, oneCall, units}) {
-    const { summary } = useCurrentConditions(conditions, oneCall);
-
+    const { date, summary } = useCurrentConditions(conditions, oneCall);
+    console.log(date);
     return (
         <div className="card forecast mt-4">
             <h4 className="text-center my-3">{summary}</h4>
             <div className="section">
-                <div className="section-half">left</div>
+                <div className="section-half">{date}</div>
                 <div className="section-half">right</div>
             </div>
         </div>

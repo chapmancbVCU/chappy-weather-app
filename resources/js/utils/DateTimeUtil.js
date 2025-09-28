@@ -2,6 +2,17 @@
  * Supports the display of date and time information.
  */
 export class DateTimeUtil {
+    getDateInfo(timestamp) {
+        return this.getDayOfWeek(timestamp) + ', ' +
+            this.getFullMonthName(timestamp) + ' ' +
+            this.getDayOfMonth(timestamp) + ', ' +
+            timestamp?.slice(12, 16);
+    }
+
+    getDateTime(timestamp, timezoneOffset) {
+        return new Date((timezoneOffset + timestamp) * 1000).toUTCString();
+    }
+
     /**
      * Returns the day of month using the ISO timestamp as parameter.
      * @param {string} timestamp Date and time information in the form of an 
@@ -35,7 +46,7 @@ export class DateTimeUtil {
         let dayOfWeek = timestamp?.toString().slice(0, 3);
         for(let i = 0; i < days.length; i++) {
             if(dayOfWeek?.includes(days[i][1])) {
-                return dayOfWeek?.replace(days[i][1], days([i],[0]));
+                return dayOfWeek?.replace(days[i][1], days[i][0]);
             }
         }
     }

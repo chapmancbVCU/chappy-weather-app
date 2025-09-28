@@ -23,8 +23,15 @@ const useCurrentConditions = (conditions, oneCall) => {
      */
     const [summary, setSummary] =  useState("")
 
+    /**
+     * The time for when forecast data was received.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [time, setTime] = useState("");
 
+    /**
+     * Sets time for when forecast data was received.
+     */
     const currentTime = () => {
         setTime(dateTimeUtil.getTimeInfo(dateTimeStamp));
     }

@@ -13,8 +13,9 @@ function CurrentConditions({ conditions, oneCall, units}) {
     return (
         <div className="card forecast mt-4">
             <h4 className="text-center my-3">{summary}</h4>
-            <div>
-
+            <div className="section">
+                <div className="section-half">left</div>
+                <div className="section-half">right</div>
             </div>
         </div>
     );

@@ -22,7 +22,7 @@ export class DateTimeUtil {
      * @returns {string} Full day of week name.
      */
     getDayOfWeek(timestamp) {
-        const days =[
+        const days = [
             ['Sunday', 'Sun'],
             ['Monday', 'Mon'],
             ['Tuesday', 'Tue'],
@@ -35,7 +35,38 @@ export class DateTimeUtil {
         let dayOfWeek = timestamp?.toString().slice(0, 3);
         for(let i = 0; i < days.length; i++) {
             if(dayOfWeek?.includes(days[i][1])) {
-                return dayOfWeek?.replace(days[i][1], days([i],[0]))
+                return dayOfWeek?.replace(days[i][1], days([i],[0]));
+            }
+        }
+    }
+
+    /**
+     * Returns the full name of the month using the ISO timestamp as a 
+     * parameter.
+     * @param {string} timestamp Date and time information in the form of an 
+     * ISO string.
+     * @returns {string} Full name of month.
+     */
+    getFullMonthName(timestamp) {
+        let months = [
+            ['January', 'Jan'],
+            ['February', 'Feb'],
+            ['March', 'Mar'],
+            ['April', 'Apr'],
+            ['May', 'May'],
+            ['June', 'Jun'],
+            ['July', 'Jul'],
+            ['August', 'Aug'],
+            ['September', 'Sep'],
+            ['October', 'Oct'],
+            ['November', 'Nov'],
+            ['December', 'Dec']
+        ];
+
+        let monthName = timestamp?.toString().slice(8, 11);
+        for(let i = 0; i < months.length; i++) {
+            if(monthName?.includes(months[i][1])) {
+                return monthName?.replace(months[i][1], months[i][0]);
             }
         }
     }

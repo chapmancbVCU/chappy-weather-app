@@ -18,9 +18,9 @@ export class DateTimeUtil {
     /**
      * Converts unix time to a UTCString and takes into account timezone 
      * offset.
-     * @param {Number} unixTime The time as a number that we want to convert to a 
+     * @param {number} unixTime The time as a number that we want to convert to a 
      * string.
-     * @param {String} timezoneOffset The timezone offset.
+     * @param {string} timezoneOffset The timezone offset.
      * @returns {string} A string containing a timestamp.
      */
     getDateTime(timestamp, timezoneOffset) {

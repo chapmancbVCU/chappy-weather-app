@@ -28,7 +28,7 @@ function Index() {
     if(currentLoading || oneCallLoading) return <div className="mt-3 text-center">Loading...</div>
 
     const alerts = oneCall?.alerts;
-    console.log(alerts);
+
     return (
         <>
             <SearchBar onSubmit={onSubmit}/>

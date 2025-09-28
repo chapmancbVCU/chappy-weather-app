@@ -24,6 +24,12 @@ const useCurrentConditions = (conditions, oneCall) => {
     const [summary, setSummary] =  useState("")
 
     /**
+     * Current temperature for when forecast data was received.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
+    const [temperature, setTemperature] = useState("");
+
+    /**
      * The time for when forecast data was received.
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
      */

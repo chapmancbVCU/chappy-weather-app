@@ -9,7 +9,7 @@ import useCurrentConditions from "@/utils/hooks/useCurrentConditions";
  */
 function CurrentConditions({ conditions, oneCall, units}) {
     const { date, summary, time } = useCurrentConditions(conditions, oneCall);
-    console.log(date);
+
     return (
         <div className="card forecast mt-4">
             <p className="text-center mt-3">As of {time} at {date}</p>

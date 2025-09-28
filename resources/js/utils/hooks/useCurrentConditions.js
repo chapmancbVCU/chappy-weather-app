@@ -16,6 +16,11 @@ const useCurrentConditions = (conditions, oneCall) => {
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
      */
     const [dateTimeStamp, setDateTimeStamp] = useState("");
+
+    /**
+     * Short summary of current conditions.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [summary, setSummary] =  useState("")
 
     const getSummary = () => {

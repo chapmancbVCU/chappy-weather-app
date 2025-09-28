@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { DateTimeUtil } from "../DateTimeUtil";
 
-const useCurrentConditions = (conditions, oneCall) => {
-    const dateTimeUtil = new DateTimeUtil();
+const useCurrentConditions = (conditions, oneCall, units) => {
+    const dateTimeUtil = useMemo(() => new DateTimeUtil(), []);
 
     /**
      * Prop for date in the following format: 
@@ -10,12 +10,6 @@ const useCurrentConditions = (conditions, oneCall) => {
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
      */
     const [date, setDate] = useState("");
-
-    /**
-     * Date time string derived from Unix time.
-     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
-     */
-    const [dateTimeStamp, setDateTimeStamp] = useState("");
 
     /**
      * Short summary of current conditions.
@@ -35,47 +29,31 @@ const useCurrentConditions = (conditions, oneCall) => {
      */
     const [time, setTime] = useState("");
 
-    /**
-     * Sets time for when forecast data was received.
-     */
-    const currentTime = () => {
-        setTime(dateTimeUtil.getTimeInfo(dateTimeStamp));
-    }
-
-    /**
-     * Obtains summary from oneCall data.
-     */
-    const getSummary = () => {
-        const summary = oneCall?.daily?.[0]?.summary ?? "";
-        setSummary(summary);
-    }
-
-    /**
-     * Sets current date.
-     */
-    const setCurrentDate = () => {
-        setDate(dateTimeUtil.getDateInfo(dateTimeStamp));
-    }
-
-    /**
-     * Sets time based off of timestamp and timezone offset.
-     */
-    const setDateTime = () => {
-        setDateTimeStamp(dateTimeUtil.getDateTime(
-            oneCall?.current?.dt, oneCall?.timezone_offset ?? ""
-        ))
+    const setCurrentTemperature = () => {
+        const symbol = (units === 'imperial') ? 'F' : 'C';
+        setTemperature(`${conditions?.main?.temp}\xB0${symbol}`);
     }
 
     useEffect(() => {
-        setDateTime();
-        getSummary();
-        setCurrentDate();
-        currentTime();
-    }, [oneCall]);
+        // Guard: need dt and timezone_offset to compute local date/time
+        const dt = oneCall?.current?.dt;
+        const tz = oneCall?.timezone_offset;
+        if (dt == null || tz == null) return;
+
+        // Compute once, then use the local value (not stale state)
+        const stamp = dateTimeUtil.getDateTime(dt, tz);
+        setTime(dateTimeUtil.getTimeInfo(stamp));
+        setDate(dateTimeUtil.getDateInfo(stamp));
+
+        setSummary(oneCall?.daily?.[0]?.summary ?? "");
+
+        setCurrentTemperature();
+    }, [conditions, oneCall, units]);
 
     return {
         date,
         summary,
+        temperature,
         time
     }
 }

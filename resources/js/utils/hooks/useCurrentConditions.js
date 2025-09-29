@@ -29,6 +29,10 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      */
     const [highTemp, setHighTemp] = useState("");
 
+    /**
+     * Icon representation of current conditions.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const[icon, setIcon] = useState("");
 
     /**

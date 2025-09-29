@@ -1,7 +1,8 @@
 import React from "react";
 import "@css/forecast.css";
 import useCurrentConditions from "@/utils/hooks/useCurrentConditions";
-
+import asset
+ from "@chappy/utils/asset";
 /**
  * Renders current conditions.
  * @param {InputProps} param0 
@@ -31,14 +32,19 @@ function CurrentConditions({ conditions, oneCall, units}) {
                     <div className="fs-4 mb-2">Today's High: {highTemp}</div>
                     <div className="fs-4 mb-2">Today's Low: {lowTemp}</div>
                     <div className="description">
-                        <div className="fs-2">
-                            {description}
-                        </div>
-                        {icon && <img src={icon}/>}
-                        
+                        <div className="fs-2">{description}</div>
+                        {icon && <img src={icon}/>}   
                     </div>
                 </div>
-                <div className="section-half section-right">{feelsLike}</div>
+                <div className="section-half section-right">
+                    <div className="forecast-info">
+                        <img className="forecast-icon" src={asset('public/icons/temperature-feels-like.svg', true)} />
+                        <div className="forecast-info-description">
+                            Feels Like
+                            <div>{feelsLike}</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );

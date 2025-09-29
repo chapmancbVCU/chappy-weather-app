@@ -18,7 +18,7 @@ const useCurrentConditions = (conditions, oneCall, units) => {
     const [description, setDescription] = useState("");
 
     const [feelsLike, setFeelsLike] = useState("");
-    
+
     /**
      * Today's low temperature.
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
@@ -92,6 +92,7 @@ const useCurrentConditions = (conditions, oneCall, units) => {
         setIcon(`https://openweathermap.org/img/wn/${conditions?.weather[0].icon}@2x.png`);
 
         setTemperature(`${Math.round(conditions?.main?.temp)}\xB0${temperatureSymbol()}`);
+        setFeelsLike(`${Math.round(conditions?.main?.feels_like)}\xB0${temperatureSymbol()}`);
         setLowTemp(`${Math.round(conditions?.main?.temp_min)}\xB0${temperatureSymbol()}`);
         setHighTemp(`${Math.round(conditions?.main?.temp_max)}\xB0${temperatureSymbol()}`);
     }, [conditions, oneCall, units]);
@@ -99,6 +100,7 @@ const useCurrentConditions = (conditions, oneCall, units) => {
     return {
         date,
         description,
+        feelsLike,
         highTemp,
         icon,
         lowTemp,

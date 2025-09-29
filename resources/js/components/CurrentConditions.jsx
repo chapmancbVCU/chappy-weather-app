@@ -11,6 +11,7 @@ function CurrentConditions({ conditions, oneCall, units}) {
     const { 
         date, 
         description,
+        feelsLike,
         highTemp,
         icon,
         lowTemp, 
@@ -33,10 +34,11 @@ function CurrentConditions({ conditions, oneCall, units}) {
                         <div className="fs-2">
                             {description}
                         </div>
-                        <img src={icon}/>
+                        {icon && <img src={icon}/>}
+                        
                     </div>
                 </div>
-                <div className="section-half section-right">right </div>
+                <div className="section-half section-right">{feelsLike}</div>
             </div>
         </div>
     );

@@ -53,6 +53,10 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      */
     const [time, setTime] = useState("");
 
+    /**
+     * Makes all first case characters of description upper case.
+     * @param {string} data Description as presented by Open Weather Map.
+     */
     const setDescriptionText = (data) => {
         const description = data;;
         const descArr = description.split(" ");

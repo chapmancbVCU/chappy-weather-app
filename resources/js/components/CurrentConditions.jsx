@@ -37,11 +37,11 @@ function CurrentConditions({ conditions, oneCall, units}) {
                     </div>
                 </div>
                 <div className="section-half section-right">
-                    <div className="forecast-info">
+                    <div className="d-flex">
                         <img className="forecast-icon" src={asset('public/icons/temperature-feels-like.svg', true)} />
-                        <div className="forecast-info-description">
-                            Feels Like
-                            <div>{feelsLike}</div>
+                        <div className="ms-2">
+                            <div>Feels Like</div>
+                            <div className="">{feelsLike}</div>
                         </div>
                     </div>
                 </div>

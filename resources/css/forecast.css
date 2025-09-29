@@ -1,3 +1,9 @@
+.description {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .forecast {
   width: 80%;
   border: 3px solid rgb(57, 169, 244);
@@ -38,6 +44,6 @@
     }
 
     .section-right {
-    margin-top: 0;
-}
+        margin-top: 0;
+    }
 }

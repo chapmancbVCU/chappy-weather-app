@@ -11,8 +11,9 @@ function CurrentConditions({ conditions, oneCall, units}) {
     const { 
         date, 
         description,
-        lowTemp, 
         highTemp,
+        icon,
+        lowTemp, 
         summary, 
         temperature, 
         time
@@ -25,14 +26,16 @@ function CurrentConditions({ conditions, oneCall, units}) {
             <div className="section">
                 <div className="section-half">
                     <div className="fs-2 mb-2">{temperature}</div>
-                    <div className="fs-5">Today's High: {highTemp}</div>
-                    <div className="fs-5">Today's Low: {lowTemp}</div>
-                </div>
-                <div className="section-half section-right">
-                    <div className="fs-2 mb-2">
-                        {description}
+                    <div className="fs-4 mb-2">Today's High: {highTemp}</div>
+                    <div className="fs-4 mb-2">Today's Low: {lowTemp}</div>
+                    <div className="description">
+                        <div className="fs-2">
+                            {description}
+                        </div>
+                        <img src={icon}/>
                     </div>
                 </div>
+                <div className="section-half section-right">right </div>
             </div>
         </div>
     );

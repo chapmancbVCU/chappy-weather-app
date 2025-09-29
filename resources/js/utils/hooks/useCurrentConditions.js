@@ -17,6 +17,10 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      */
     const [description, setDescription] = useState("");
 
+    /**
+     * The feels like temperature.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [feelsLike, setFeelsLike] = useState("");
 
     /**

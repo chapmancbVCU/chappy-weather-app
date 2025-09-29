@@ -11,6 +11,10 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      */
     const [date, setDate] = useState("");
 
+    /**
+     * Short description of current conditions.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [description, setDescription] = useState("");
 
     /**
@@ -76,7 +80,7 @@ const useCurrentConditions = (conditions, oneCall, units) => {
         setSummary(oneCall?.daily?.[0]?.summary ?? "");
         setDescriptionText(conditions?.weather[0]?.description);
         setIcon(`https://openweathermap.org/img/wn/${conditions?.weather[0].icon}@2x.png`);
-        
+
         setTemperature(`${Math.round(conditions?.main?.temp)}\xB0${temperatureSymbol()}`);
         setLowTemp(`${Math.round(conditions?.main?.temp_min)}\xB0${temperatureSymbol()}`);
         setHighTemp(`${Math.round(conditions?.main?.temp_max)}\xB0${temperatureSymbol()}`);

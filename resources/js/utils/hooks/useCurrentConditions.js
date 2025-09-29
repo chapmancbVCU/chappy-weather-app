@@ -18,40 +18,10 @@ const useCurrentConditions = (conditions, oneCall, units) => {
     const [description, setDescription] = useState("");
 
     /**
-     * The feels like temperature.
-     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
-     */
-    const [feelsLike, setFeelsLike] = useState("");
-
-    /**
-     * Today's low temperature.
-     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
-     */
-    const [lowTemp, setLowTemp] = useState("");
-
-    /**
-     * Today's high temperature.
-     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
-     */
-    const [highTemp, setHighTemp] = useState("");
-
-    /**
-     * Icon representation of current conditions.
-     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
-     */
-    const[icon, setIcon] = useState("");
-
-    /**
      * Short summary of current conditions.
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
      */
     const [summary, setSummary] =  useState("")
-
-    /**
-     * Current temperature for when forecast data was received.
-     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
-     */
-    const [temperature, setTemperature] = useState("");
 
     /**
      * The time for when forecast data was received.
@@ -93,23 +63,13 @@ const useCurrentConditions = (conditions, oneCall, units) => {
 
         setSummary(oneCall?.daily?.[0]?.summary ?? "");
         setDescriptionText(conditions?.weather[0]?.description);
-        setIcon(`https://openweathermap.org/img/wn/${conditions?.weather[0].icon}@2x.png`);
-
-        setTemperature(`${Math.round(conditions?.main?.temp)}\xB0${temperatureSymbol()}`);
-        setFeelsLike(`${Math.round(conditions?.main?.feels_like)}\xB0${temperatureSymbol()}`);
-        setLowTemp(`${Math.round(conditions?.main?.temp_min)}\xB0${temperatureSymbol()}`);
-        setHighTemp(`${Math.round(conditions?.main?.temp_max)}\xB0${temperatureSymbol()}`);
     }, [conditions, oneCall, units]);
 
     return {
         date,
         description,
-        feelsLike,
-        highTemp,
-        icon,
-        lowTemp,
         summary,
-        temperature,
+        temperatureSymbol,
         time
     }
 }

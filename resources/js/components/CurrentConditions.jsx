@@ -25,7 +25,7 @@ function CurrentConditions({ conditions, oneCall, units}) {
         <div className="card forecast mt-4">
             <h4 className="text-center mt-4">{summary}</h4>
             <div className="section">
-                <div className="section-half section-left">
+                <div className="section-left">
                     <div>{date}</div>
                     <div className="mb-2">As of {time}</div>
                     <div className="fs-2 mb-2">{`${Math.round(conditions?.main?.temp)}\xB0${temperatureSymbol()}`}</div>
@@ -36,40 +36,40 @@ function CurrentConditions({ conditions, oneCall, units}) {
                         <img src={`https://openweathermap.org/img/wn/${conditions?.weather[0].icon}@2x.png`}/>  
                     </div>
                 </div>
-                <div className="section-half section-right">
-                    <div className="d-flex me-5 mb-3 align-items-center">
+                <div className="section-right">
+                    <div className="forecast-info">
                         <img className="forecast-icon" src={asset('public/icons/temperature-feels-like.svg')} />
-                        <div className="ms-2">
-                            <div>Feels Like</div>
+                        <div className="forecast-info-label">
+                            Feels Like
                             <div>
                                 {`${Math.round(conditions?.main?.feels_like)}\xB0${temperatureSymbol()}`}
                             </div>
                         </div>
                     </div>
-                    <div className="d-flex me-5 mb-3 align-items-center">
+                    <div className="forecast-info">
                         <img className="forecast-icon" src={asset('public/icons/humidity.png')} />
-                        <div className="ms-2">
-                            <div>Humidity</div>
+                        <div className="forecast-info-label">
+                            Humidity
                             <div>
                                 {conditions?.main?.humidity}%
                             </div>
                         </div>
                     </div>
-                    <div className="d-flex me-2 mb-3 align-items-center">
+                    <div className="forecast-info">
                         <img className="forecast-icon" src={asset('public/icons/weather-pouring.png')} />
-                        <div className="ms-2">
-                            <div>Chance of PPT</div>
+                        <div className="forecast-info-label">
+                            Chance of PPT
                             <div>
                                 {(oneCall?.daily?.[0]?.pop * 100).toFixed()}%
                             </div>
                         </div>
                     </div>
-                    <div className="d-flex me-4 align-items-center">
+                    <div className="forecast-info">
                         <img className="forecast-icon" src={asset('public/icons/weather-windy.png')} />
-                        <div className="ms-2">
-                            <div>Winds</div>
+                        <div className="forecast-info-label">
+                            Winds
                             <div>{wind} / {windDirection}</div>
-                            <div>Wind Gusts</div>
+                            Wind Gusts
                             <div>{windGusts}</div>
                         </div>
                     </div>

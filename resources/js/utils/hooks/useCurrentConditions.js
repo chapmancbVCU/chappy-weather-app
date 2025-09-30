@@ -41,6 +41,10 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      */
     const [windDirection, setWindDirection] = useState("");
 
+    /**
+     * Current wind guests.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [windGusts, setWindGusts] = useState("");
 
     const calculateWindDirection = (deg) => {

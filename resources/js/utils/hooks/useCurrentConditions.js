@@ -96,12 +96,19 @@ const useCurrentConditions = (conditions, oneCall, units) => {
         return (units === 'imperial') ? 'F' : 'C';
     }
 
-
+    /**
+     * Sets string representation for current wind gusts.
+     * @param {number} data The speed of wind gusts.
+     */
     const windGustSpeed = (data) => {
         const system = ('imperial') ? 'mph' : 'km/h';
         setWindGusts(`${Math.round(data)} ${system}`);
     }
 
+    /**
+     * Sets string representation for current winds.
+     * @param {number} data The speed of winds.
+     */
     const windSpeed = (data) => {
         const system = ('imperial') ? 'mph' : 'km/h';
         setWind(`${Math.round(data)} ${system}`);

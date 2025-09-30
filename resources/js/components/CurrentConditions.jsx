@@ -36,13 +36,21 @@ function CurrentConditions({ conditions, oneCall, units}) {
                 <div className="section-half section-right">
                     <div className="d-flex">
                         <img className="forecast-icon" src={asset('public/icons/temperature-feels-like.svg')} />
-                        <div className="ms-2">
+                        <div className="ms-2 mb-2">
                             <div>Feels Like</div>
-                            <div className="">{`${Math.round(conditions?.main?.feels_like)}\xB0${temperatureSymbol()}`}</div>
+                            <div>
+                                {`${Math.round(conditions?.main?.feels_like)}\xB0${temperatureSymbol()}`}
+                            </div>
                         </div>
                     </div>
-                    <div >
-                        {conditions?.main?.humidity}%
+                    <div className="d-flex">
+                        <img className="forecast-icon" src={asset('public/icons/humidity.png')} />
+                        <div className="ms-2">
+                            <div>Humidity</div>
+                            <div>
+                                {conditions?.main?.humidity}%
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

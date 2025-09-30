@@ -47,6 +47,11 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      */
     const [windGusts, setWindGusts] = useState("");
 
+    /**
+     * Determines string representation of wind direction and 
+     * sets state for windDirection.
+     * @param {number} deg The direction of winds in degrees.
+     */
     const calculateWindDirection = (deg) => {
         let dir = "";
         if ((deg >= 337.6 && deg <= 359.9) || deg >= 0 && deg <= 22.5) {

@@ -29,15 +29,15 @@ function CurrentConditions({ conditions, oneCall, units}) {
                     <div>{date}</div>
                     <div className="mb-2">As of {time}</div>
                     <div className="fs-2 mb-2">{`${Math.round(conditions?.main?.temp)}\xB0${temperatureSymbol()}`}</div>
-                    <div className="fs-4 mb-2">Today's High: {`${Math.round(conditions?.main?.temp_max)}\xB0${temperatureSymbol()}`}</div>
-                    <div className="fs-4 mb-2">Today's Low: {`${Math.round(conditions?.main?.temp_min)}\xB0${temperatureSymbol()}`}</div>
+                    <div className="fs-5 mb-2">Today's High: {`${Math.round(conditions?.main?.temp_max)}\xB0${temperatureSymbol()}`}</div>
+                    <div className="fs-5 mb-2">Today's Low: {`${Math.round(conditions?.main?.temp_min)}\xB0${temperatureSymbol()}`}</div>
                     <div className="description">
                         <div className="fs-2">{description}</div>
-                        {icon && <img src={`https://openweathermap.org/img/wn/${conditions?.weather[0].icon}@2x.png`}/>}   
+                        <img src={`https://openweathermap.org/img/wn/${conditions?.weather[0].icon}@2x.png`}/>  
                     </div>
                 </div>
                 <div className="section-half section-right">
-                    <div className="d-flex me-5 mb-2 align-items-center">
+                    <div className="d-flex me-5 mb-3 align-items-center">
                         <img className="forecast-icon" src={asset('public/icons/temperature-feels-like.svg')} />
                         <div className="ms-2">
                             <div>Feels Like</div>
@@ -46,7 +46,7 @@ function CurrentConditions({ conditions, oneCall, units}) {
                             </div>
                         </div>
                     </div>
-                    <div className="d-flex me-5 mb-2 align-items-center">
+                    <div className="d-flex me-5 mb-3 align-items-center">
                         <img className="forecast-icon" src={asset('public/icons/humidity.png')} />
                         <div className="ms-2">
                             <div>Humidity</div>
@@ -55,7 +55,7 @@ function CurrentConditions({ conditions, oneCall, units}) {
                             </div>
                         </div>
                     </div>
-                    <div className="d-flex me-2 mb-2 align-items-center">
+                    <div className="d-flex me-2 mb-3 align-items-center">
                         <img className="forecast-icon" src={asset('public/icons/weather-pouring.png')} />
                         <div className="ms-2">
                             <div>Chance of PPT</div>

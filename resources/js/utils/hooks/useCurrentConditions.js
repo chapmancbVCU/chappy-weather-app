@@ -29,6 +29,10 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      */
     const [time, setTime] = useState("");
 
+    /**
+     * The current wind speed.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [wind, setWind] = useState("");
 
     const [windDirection, setWindDirection] = useState("");
@@ -96,7 +100,6 @@ const useCurrentConditions = (conditions, oneCall, units) => {
         const tz = oneCall?.timezone_offset;
         if (dt == null || tz == null) return;
 
-        // Compute once, then use the local value (not stale state)
         const stamp = dateTimeUtil.getDateTime(dt, tz);
         setTime(dateTimeUtil.getTimeInfo(stamp));
         setDate(dateTimeUtil.getDateInfo(stamp));

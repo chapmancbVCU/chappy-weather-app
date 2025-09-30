@@ -54,10 +54,6 @@
     flex-direction: column;
 }
 
-.sr {
-    
-}
-
 @media only screen and (min-width: 922px) {
     .forecast-icon-container {
         min-width: 10px;
@@ -71,7 +67,7 @@
     .forecast-info-block {
         min-width: 115px;
     }
-    
+
     .section {
         flex-direction: row;
         margin-left: 25px;

@@ -15,7 +15,10 @@ function CurrentConditions({ conditions, oneCall, units}) {
         icon, 
         summary, 
         temperatureSymbol,
-        time
+        time,
+        wind,
+        windDirection,
+        windGusts
     } = useCurrentConditions(conditions, oneCall, units);
 
     return (
@@ -34,22 +37,40 @@ function CurrentConditions({ conditions, oneCall, units}) {
                     </div>
                 </div>
                 <div className="section-half section-right">
-                    <div className="d-flex">
+                    <div className="d-flex me-5 mb-2 align-items-center">
                         <img className="forecast-icon" src={asset('public/icons/temperature-feels-like.svg')} />
-                        <div className="ms-2 mb-2">
+                        <div className="ms-2">
                             <div>Feels Like</div>
                             <div>
                                 {`${Math.round(conditions?.main?.feels_like)}\xB0${temperatureSymbol()}`}
                             </div>
                         </div>
                     </div>
-                    <div className="d-flex">
+                    <div className="d-flex me-5 mb-2 align-items-center">
                         <img className="forecast-icon" src={asset('public/icons/humidity.png')} />
                         <div className="ms-2">
                             <div>Humidity</div>
                             <div>
                                 {conditions?.main?.humidity}%
                             </div>
+                        </div>
+                    </div>
+                    <div className="d-flex me-2 mb-2 align-items-center">
+                        <img className="forecast-icon" src={asset('public/icons/weather-pouring.png')} />
+                        <div className="ms-2">
+                            <div>Chance of PPT</div>
+                            <div>
+                                {(oneCall?.daily?.[0]?.pop * 100).toFixed()}%
+                            </div>
+                        </div>
+                    </div>
+                    <div className="d-flex me-4 align-items-center">
+                        <img className="forecast-icon" src={asset('public/icons/weather-windy.png')} />
+                        <div className="ms-2">
+                            <div>Winds</div>
+                            <div>{wind} / {windDirection}</div>
+                            <div>Wind Gusts</div>
+                            <div>{windGusts}</div>
                         </div>
                     </div>
                 </div>

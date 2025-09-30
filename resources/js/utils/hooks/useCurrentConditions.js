@@ -29,6 +29,35 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      */
     const [time, setTime] = useState("");
 
+    const [wind, setWind] = useState("");
+
+    const [windDirection, setWindDirection] = useState("");
+
+    const [windGusts, setWindGusts] = useState("");
+
+    const calculateWindDirection = (deg) => {
+        let dir = "";
+        if ((deg >= 337.6 && deg <= 359.9) || deg >= 0 && deg <= 22.5) {
+            dir  = 'S';
+        } else if (deg >= 22.6 && deg <= 67.5) {
+            dir  = 'SW';
+        } else if (deg >= 67.6 && deg <= 112.5) {
+            dir  = 'W';
+        } else if (deg >= 112.6 && deg <= 157.5) {
+            dir  = 'NW';
+        } else if (deg >= 157.6 && deg <= 202.5) {
+            dir  = 'N';
+        } else if (deg >= 202.6 && deg <= 247.5) {
+            dir  = 'NE';
+        } else if (deg >= 247.6 && deg <= 292.5) {
+            dir  = 'E';
+        } else if (deg >= 292.6 && deg <= 337.5) {
+            dir  = 'SE';
+        }
+
+        setWindDirection(dir);
+    }
+
     /**
      * Makes all first case characters of description upper case.
      * @param {string} data Description as presented by Open Weather Map.
@@ -50,6 +79,17 @@ const useCurrentConditions = (conditions, oneCall, units) => {
         return (units === 'imperial') ? 'F' : 'C';
     }
 
+
+    const windGustSpeed = (data) => {
+        const system = ('imperial') ? 'mph' : 'km/h';
+        setWindGusts(`${Math.round(data)} ${system}`);
+    }
+
+    const windSpeed = (data) => {
+        const system = ('imperial') ? 'mph' : 'km/h';
+        setWind(`${Math.round(data)} ${system}`);
+    }
+
     useEffect(() => {
         // Guard: need dt and timezone_offset to compute local date/time
         const dt = oneCall?.current?.dt;
@@ -63,6 +103,10 @@ const useCurrentConditions = (conditions, oneCall, units) => {
 
         setSummary(oneCall?.daily?.[0]?.summary ?? "");
         setDescriptionText(conditions?.weather[0]?.description);
+
+        windSpeed(conditions?.wind?.speed);
+        calculateWindDirection(conditions?.wind?.deg);
+        windGustSpeed(oneCall?.daily[0]?.wind_gust);
     }, [conditions, oneCall, units]);
 
     return {
@@ -70,7 +114,10 @@ const useCurrentConditions = (conditions, oneCall, units) => {
         description,
         summary,
         temperatureSymbol,
-        time
+        time,
+        wind,
+        windDirection,
+        windGusts
     }
 }
 

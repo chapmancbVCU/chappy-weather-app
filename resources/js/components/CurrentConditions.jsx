@@ -26,7 +26,7 @@ function CurrentConditions({ conditions, oneCall, units}) {
             <h4 className="text-center mt-4">{summary}</h4>
             <div className="section">
                 <div className="section-left">
-                    <div>{date}</div>
+                    <div className="mb-2">{date}</div>
                     <div className="mb-2">As of {time}</div>
                     <div className="fs-2 mb-2">{`${Math.round(conditions?.main?.temp)}\xB0${temperatureSymbol()}`}</div>
                     <div className="fs-5 mb-2">Today's High: {`${Math.round(conditions?.main?.temp_max)}\xB0${temperatureSymbol()}`}</div>

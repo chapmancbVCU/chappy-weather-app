@@ -83,6 +83,8 @@ function CurrentConditions({ conditions, oneCall, units}) {
                     </div>
                 </div>
             </div>
+
+            <hr className="hr-border mx-auto" />
         </div>
     );
 }        

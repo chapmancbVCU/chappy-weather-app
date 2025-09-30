@@ -15,6 +15,11 @@
 
 .forecast-icon {
     height: 33px;
+    float:right
+}
+
+.forecast-icon-container {
+    width: 50%;
 }
 
 .forecast-info {
@@ -25,8 +30,9 @@
     font-size: 16px;
 }
 
-.forecast-info-label {
+.forecast-info-block {
     margin-left: 10px;
+    width: 50%;
 }
 
 .section {
@@ -48,11 +54,24 @@
     flex-direction: column;
 }
 
+.sr {
+    
+}
+
 @media only screen and (min-width: 922px) {
+    .forecast-icon-container {
+        min-width: 10px;
+    }
+
     .forecast-info {
         justify-content: flex-start;
         align-items: center;
     }
+
+    .forecast-info-block {
+        min-width: 115px;
+    }
+    
     .section {
         flex-direction: row;
         margin-left: 25px;

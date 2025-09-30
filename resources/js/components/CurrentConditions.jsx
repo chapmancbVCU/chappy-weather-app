@@ -33,13 +33,15 @@ function CurrentConditions({ conditions, oneCall, units}) {
                     <div className="fs-5 mb-2">Today's Low: {`${Math.round(conditions?.main?.temp_min)}\xB0${temperatureSymbol()}`}</div>
                     <div className="description">
                         <div className="fs-2">{description}</div>
-                        <img src={`https://openweathermap.org/img/wn/${conditions?.weather[0].icon}@2x.png`}/>  
+                        <img src={`https://openweathermap.org/img/wn/${conditions?.weather?.[0]?.icon}@2x.png`}/>  
                     </div>
                 </div>
                 <div className="section-right">
                     <div className="forecast-info">
-                        <img className="forecast-icon" src={asset('public/icons/temperature-feels-like.svg')} />
-                        <div className="forecast-info-label">
+                        <div className="forecast-icon-container">
+                            <img className="forecast-icon" src={asset('public/icons/temperature-feels-like.svg')} />
+                        </div>
+                        <div className="forecast-info-block sr">
                             Feels Like
                             <div>
                                 {`${Math.round(conditions?.main?.feels_like)}\xB0${temperatureSymbol()}`}
@@ -47,8 +49,10 @@ function CurrentConditions({ conditions, oneCall, units}) {
                         </div>
                     </div>
                     <div className="forecast-info">
-                        <img className="forecast-icon" src={asset('public/icons/humidity.png')} />
-                        <div className="forecast-info-label">
+                        <div className="forecast-icon-container">
+                            <img className="forecast-icon" src={asset('public/icons/humidity.png')} />
+                        </div>
+                        <div className="forecast-info-block sr">
                             Humidity
                             <div>
                                 {conditions?.main?.humidity}%
@@ -56,8 +60,10 @@ function CurrentConditions({ conditions, oneCall, units}) {
                         </div>
                     </div>
                     <div className="forecast-info">
-                        <img className="forecast-icon" src={asset('public/icons/weather-pouring.png')} />
-                        <div className="forecast-info-label">
+                        <div className="forecast-icon-container">
+                            <img className="forecast-icon" src={asset('public/icons/weather-pouring.png')} />
+                        </div>
+                        <div className="forecast-info-block sr">
                             Chance of PPT
                             <div>
                                 {(oneCall?.daily?.[0]?.pop * 100).toFixed()}%
@@ -65,8 +71,10 @@ function CurrentConditions({ conditions, oneCall, units}) {
                         </div>
                     </div>
                     <div className="forecast-info">
-                        <img className="forecast-icon" src={asset('public/icons/weather-windy.png')} />
-                        <div className="forecast-info-label">
+                        <div className="forecast-icon-container">
+                            <img className="forecast-icon" src={asset('public/icons/weather-windy.png')} />
+                        </div>
+                        <div className="forecast-info-block sr">
                             Winds
                             <div>{wind} / {windDirection}</div>
                             Wind Gusts

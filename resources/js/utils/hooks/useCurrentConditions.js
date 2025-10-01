@@ -17,8 +17,16 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      */
     const [description, setDescription] = useState("");
 
+    /**
+     * Sets icon for current conditions.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [icon, setIcon] = useState("");
 
+    /**
+     * Sets message for air pressure.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [pressure, setPressure] = useState("");
     
     /**
@@ -33,7 +41,10 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      */
     const [time, setTime] = useState("");
 
-
+    /**
+     * Sets message for visibility.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [visibility, setVisibility] = useState("");
 
     /**
@@ -82,6 +93,10 @@ const useCurrentConditions = (conditions, oneCall, units) => {
         setWindDirection(dir);
     }
 
+    /**
+     * Set message for air pressure depending on current system of units.
+     * @param {number} data The air pressure value from Open Weather Map.
+     */
     const pressureText = (data) => {
         const system = (units === 'imperial') ? "psi" : 'mbar';
         const conversionValue = 0.0295
@@ -112,6 +127,10 @@ const useCurrentConditions = (conditions, oneCall, units) => {
         return (units === 'imperial') ? 'F' : 'C';
     }
 
+    /**
+     * Sets message for visibility depending on current system of units.
+     * @param {number} data Visibility value presented by Open Weather Map. 
+     */
     const visibilityText = (data) => {
         const imperialConversion = 1609.344;
         const metricConversion = 1000;

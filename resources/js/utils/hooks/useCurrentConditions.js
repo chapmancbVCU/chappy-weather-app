@@ -30,6 +30,8 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      */
     const [icon, setIcon] = useState("");
 
+    const [moonRise, setMoonRise] = useState("");
+    const [moonSet, setMoonSet] = useState("");
     /**
      * Sets message for air pressure.
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
@@ -42,6 +44,8 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      */
     const [summary, setSummary] =  useState("")
 
+    const [sunRise, setSunRise] = useState("");
+    const [sunSet, setSunSet] = useState("");
     /**
      * The time for when forecast data was received.
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
@@ -72,6 +76,25 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      */
     const [windGusts, setWindGusts] = useState("");
 
+    const calcMoonRise = (data, tz) => {
+        const moonRiseTime = dateTimeUtil.getDateTime(data, tz);
+        setMoonRise(dateTimeUtil.getTimeInfo(moonRiseTime));
+    }
+
+    const calcMoonSet = (data, tz) => {
+        const moonSetTime = dateTimeUtil.getDateTime(data, tz);
+        setMoonSet(dateTimeUtil.getTimeInfo(moonSetTime));
+    }
+
+    const calcSunRise = (data, tz) => {
+        const sunRiseTime = dateTimeUtil.getDateTime(data, tz);
+        setSunRise(dateTimeUtil.getTimeInfo(sunRiseTime));
+    }
+
+    const calcSunSet = (data, tz) => {
+        const sunSetTime = dateTimeUtil.getDateTime(data, tz);
+        setSunSet(dateTimeUtil.getTimeInfo(sunSetTime));
+    }
     /**
      * Determines string representation of wind direction and 
      * sets state for windDirection.
@@ -175,6 +198,10 @@ const useCurrentConditions = (conditions, oneCall, units) => {
         const stamp = dateTimeUtil.getDateTime(dt, tz);
         setTime(dateTimeUtil.getTimeInfo(stamp));
         setDate(dateTimeUtil.getDateInfo(stamp));
+        calcMoonRise(oneCall?.daily?.[0]?.moonrise, tz);
+        calcMoonSet(oneCall?.daily?.[0]?.moonset, tz);
+        calcSunRise(oneCall?.daily?.[0]?.sunrise, tz);
+        calcSunSet(oneCall?.daily?.[0]?.sunset, tz);
 
         setSummary(oneCall?.daily?.[0]?.summary ?? "");
         setDescriptionText(conditions?.weather[0]?.description);
@@ -192,8 +219,12 @@ const useCurrentConditions = (conditions, oneCall, units) => {
         date,
         description,
         icon,
+        moonRise,
+        moonSet,
         pressure,
         summary,
+        sunRise,
+        sunSet,
         temperatureSymbol,
         time,
         visibility,

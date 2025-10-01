@@ -13,8 +13,12 @@ function CurrentConditions({ conditions, oneCall, units }) {
         date, 
         description,
         icon, 
+        moonRise,
+        moonSet,
         pressure,
         summary, 
+        sunRise,
+        sunSet,
         temperatureSymbol,
         time,
         visibility,
@@ -35,7 +39,7 @@ function CurrentConditions({ conditions, oneCall, units }) {
                     <div className="fs-5 mb-2">Today's Low: {`${Math.round(conditions?.main?.temp_min)}\xB0${temperatureSymbol()}`}</div>
                     <div className="description">
                         <div className="fs-2">{description}</div>
-                        <img src={icon}/>  
+                        {icon && <img src={icon}/>  }
                     </div>
                 </div>
                 <div className="section-right">
@@ -128,6 +132,45 @@ function CurrentConditions({ conditions, oneCall, units }) {
             </div>
 
             <hr className="hr-border mx-auto" />
+
+            <div className="row-section">
+                <div className="forecast-info">
+                    <div className="forecast-icon-container">
+                        <img className="forecast-icon" src={asset('public/icons/sun-rise.png')} />
+                    </div>
+                    <div className="forecast-info-block">
+                        Sun Rise
+                        <div>{sunRise}</div>
+                    </div>
+                </div>
+                <div className="forecast-info">
+                    <div className="forecast-icon-container">
+                        <img className="forecast-icon" src={asset('public/icons/sun-set.png')} />
+                    </div>
+                    <div className="forecast-info-block">
+                        Sun Set
+                        <div>{sunSet}</div>
+                    </div>
+                </div>
+                <div className="forecast-info">
+                    <div className="forecast-icon-container">
+                        <img className="forecast-icon" src={asset('public/icons/moon-rise.png')} />
+                    </div>
+                    <div className="forecast-info-block">
+                        Moon Rise
+                        <div>{moonRise}</div>
+                    </div>
+                </div>
+                <div className="forecast-info">
+                    <div className="forecast-icon-container">
+                        <img className="forecast-icon" src={asset('public/icons/moon-set.png')} />
+                    </div>
+                    <div className="forecast-info-block">
+                        Moon Set
+                        <div>{moonSet}</div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }        

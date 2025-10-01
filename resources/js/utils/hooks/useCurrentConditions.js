@@ -30,8 +30,18 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      */
     const [icon, setIcon] = useState("");
 
+    /**
+     * Sets message for moonrise.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [moonRise, setMoonRise] = useState("");
+
+    /**
+     * Sets message for moonset.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [moonSet, setMoonSet] = useState("");
+
     /**
      * Sets message for air pressure.
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
@@ -44,8 +54,18 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      */
     const [summary, setSummary] =  useState("")
 
+    /**
+     * Sets message for sunrise.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [sunRise, setSunRise] = useState("");
+
+    /**
+     * Sets message for sunset.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [sunSet, setSunSet] = useState("");
+
     /**
      * The time for when forecast data was received.
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
@@ -76,25 +96,46 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      */
     const [windGusts, setWindGusts] = useState("");
 
+    /**
+     * Sets state for moonrise hook.
+     * @param {number} data Time for moonrise.
+     * @param {number} tz Timezone offset.
+     */
     const calcMoonRise = (data, tz) => {
         const moonRiseTime = dateTimeUtil.getDateTime(data, tz);
         setMoonRise(dateTimeUtil.getTimeInfo(moonRiseTime));
     }
 
+    /**
+     * Sets state for moonset hook.
+     * @param {number} data Time for moonset.
+     * @param {number} tz Timezone offset.
+     */
     const calcMoonSet = (data, tz) => {
         const moonSetTime = dateTimeUtil.getDateTime(data, tz);
         setMoonSet(dateTimeUtil.getTimeInfo(moonSetTime));
     }
 
+    /**
+     * Sets state for sunrise hook.
+     * @param {number} data Time for sunrise.
+     * @param {number} tz Timezone offset.
+     */
     const calcSunRise = (data, tz) => {
         const sunRiseTime = dateTimeUtil.getDateTime(data, tz);
         setSunRise(dateTimeUtil.getTimeInfo(sunRiseTime));
     }
 
+    /**
+     * Sets state for sunset hook.
+     * @param {number} data Time for sunset.
+     * @param {number} tz Timezone offset.
+     */
     const calcSunSet = (data, tz) => {
         const sunSetTime = dateTimeUtil.getDateTime(data, tz);
         setSunSet(dateTimeUtil.getTimeInfo(sunSetTime));
     }
+
     /**
      * Determines string representation of wind direction and 
      * sets state for windDirection.

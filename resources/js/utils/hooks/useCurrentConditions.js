@@ -1,6 +1,13 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { DateTimeUtil } from "../DateTimeUtil";
 
+/**
+ * Manages states of hooks for current conditions.
+ * @param {object} conditions Standard data.
+ * @param {object} oneCall OneCall tier data.
+ * @param {string} units Current system of measure.
+ * @returns 
+ */
 const useCurrentConditions = (conditions, oneCall, units) => {
     const dateTimeUtil = useMemo(() => new DateTimeUtil(), []);
 

@@ -17,6 +17,7 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      */
     const [description, setDescription] = useState("");
 
+    const [icon, setIcon] = useState("");
 
     const [pressure, setPressure] = useState("");
     
@@ -158,6 +159,7 @@ const useCurrentConditions = (conditions, oneCall, units) => {
 
         pressureText(conditions?.main.pressure);
         visibilityText(conditions?.visibility);
+        setIcon(`https://openweathermap.org/img/wn/${conditions?.weather?.[0]?.icon}@2x.png`);
     }, [conditions, oneCall, units]);
 
     return {

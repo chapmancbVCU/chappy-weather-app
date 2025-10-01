@@ -41,8 +41,6 @@
 }
 
 .row-section {
-    /* align-items: center; */
-    /* justify-content:space-evenly; */
     display: flex;
     flex-direction: column;
 }

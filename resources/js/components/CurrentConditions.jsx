@@ -35,7 +35,7 @@ function CurrentConditions({ conditions, oneCall, units }) {
                     <div className="fs-5 mb-2">Today's Low: {`${Math.round(conditions?.main?.temp_min)}\xB0${temperatureSymbol()}`}</div>
                     <div className="description">
                         <div className="fs-2">{description}</div>
-                        <img src={`https://openweathermap.org/img/wn/${conditions?.weather?.[0]?.icon}@2x.png`}/>  
+                        <img src={icon}/>  
                     </div>
                 </div>
                 <div className="section-right">

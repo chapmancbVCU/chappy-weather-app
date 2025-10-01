@@ -17,6 +17,9 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      */
     const [description, setDescription] = useState("");
 
+
+    const [pressure, setPressure] = useState("");
+    
     /**
      * Short summary of current conditions.
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
@@ -28,6 +31,9 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
      */
     const [time, setTime] = useState("");
+
+
+    const [visibility, setVisibility] = useState("");
 
     /**
      * The current wind speed.
@@ -75,6 +81,15 @@ const useCurrentConditions = (conditions, oneCall, units) => {
         setWindDirection(dir);
     }
 
+    const pressureText = (data) => {
+        const system = (units === 'imperial') ? "psi" : 'mbar';
+        const conversionValue = 0.0295
+        const pressure = (units === 'imperial') 
+            ? (conversionValue * data).toFixed(1) 
+            : data;
+        setPressure(`${pressure} ${system}`);
+    }
+
     /**
      * Makes all first case characters of description upper case.
      * @param {string} data Description as presented by Open Weather Map.
@@ -94,6 +109,16 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      */
     const temperatureSymbol = () => {
         return (units === 'imperial') ? 'F' : 'C';
+    }
+
+    const visibilityText = (data) => {
+        const imperialConversion = 1609.344;
+        const metricConversion = 1000;
+        const value = (units === 'imperial') 
+            ? (data / imperialConversion).toFixed(1) + ' miles'
+            : (data / metricConversion).toFixed(1) + ' km';
+
+        setVisibility(value);
     }
 
     /**
@@ -130,14 +155,19 @@ const useCurrentConditions = (conditions, oneCall, units) => {
         windSpeed(conditions?.wind?.speed);
         calculateWindDirection(conditions?.wind?.deg);
         windGustSpeed(oneCall?.daily[0]?.wind_gust);
+
+        pressureText(conditions?.main.pressure);
+        visibilityText(conditions?.visibility);
     }, [conditions, oneCall, units]);
 
     return {
         date,
         description,
+        pressure,
         summary,
         temperatureSymbol,
         time,
+        visibility,
         wind,
         windDirection,
         windGusts

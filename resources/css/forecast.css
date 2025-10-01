@@ -40,11 +40,17 @@
     width: 95%;
 }
 
+.row-section {
+    /* align-items: center; */
+    /* justify-content:space-evenly; */
+    display: flex;
+    flex-direction: column;
+}
+
 .section {
     display: flex;
     flex-direction: column;
     margin-top: 15px;
-    /* margin-bottom: 15px; */
 }
 
 .section-left {
@@ -71,6 +77,11 @@
 
     .forecast-info-block {
         min-width: 115px;
+    }
+
+    .row-section {
+        flex-direction: row;
+        justify-content:center;
     }
 
     .section {

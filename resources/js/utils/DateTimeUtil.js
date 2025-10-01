@@ -104,7 +104,7 @@ export class DateTimeUtil {
     getTimeInfo(timestamp) {
         let minutes = timestamp.slice(20,22);
         let hours = timestamp.slice(17, 19);
-        let timePeriod = (hours >= 12) ? "AM" : "PM";
+        let timePeriod = (hours >= 12) ? "PM" : "AM";
 
         minutes = (minutes < 10) ? '0' + minutes.slice(0, 1) : minutes;
         hours = (hours > 12) ? (hours - 12) : hours;

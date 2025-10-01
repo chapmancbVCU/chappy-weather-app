@@ -191,6 +191,7 @@ const useCurrentConditions = (conditions, oneCall, units) => {
     return {
         date,
         description,
+        icon,
         pressure,
         summary,
         temperatureSymbol,

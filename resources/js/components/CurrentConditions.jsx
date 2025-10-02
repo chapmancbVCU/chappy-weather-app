@@ -1,8 +1,8 @@
 import React from "react";
 import "@css/forecast.css";
 import useCurrentConditions from "@/utils/hooks/useCurrentConditions";
-import asset
- from "@chappy/utils/asset";
+import asset from "@chappy/utils/asset";
+
 /**
  * Renders current conditions.
  * @param {InputProps} param0 

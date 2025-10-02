@@ -28,7 +28,7 @@ function CurrentConditions({ conditions, oneCall, units }) {
     } = useCurrentConditions(conditions, oneCall, units);
 
     return (
-        <div className="card forecast mt-4">
+        <div className="card forecast my-4">
             <h4 className="text-center mt-4">{summary}</h4>
             <div className="section">
                 <div className="section-left">

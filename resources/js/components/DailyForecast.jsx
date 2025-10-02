@@ -6,12 +6,18 @@ import DailyForecastCard from "./DailyForecastCard";
 function DailyForecast({ oneCall, units }) {
 
     const { dailyForecast } = useDaily(oneCall);
-    console.log(dailyForecast)
+    
+    const tzOffset = oneCall?.timezone_offset;
+    // console.log(oneCall?.timezone_offset)
     return (
         <div className="card forecast my-4">
             <div className="daily-forecast-container">
                 {dailyForecast && dailyForecast.map((daily, index) => (
-                    <DailyForecastCard key={index}/>
+                    <DailyForecastCard 
+                        key={index}
+                        daily={daily}
+                        tzOffset={tzOffset}
+                    />
                 ))}
             </div>
         </div>

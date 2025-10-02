@@ -1,3 +1,23 @@
+.daily-forecast-container {
+    display: flex;
+    flex-direction: row;
+
+    width: 90%;
+    margin: 15px auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.daily-forecast-card {
+    margin: 5px;
+    text-align: center;
+    border: 3px solid rgb(57, 169, 244);
+    background-color: rgb(111, 200, 230);
+    border-radius: 10px;
+    min-width: 200px;
+}
+
 .description {
     display: flex;
     align-items: center; 

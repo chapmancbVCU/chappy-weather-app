@@ -51,8 +51,7 @@ function Index({ user }) {
                         }
                         <h2 className="ms-3">Hourly forecast for {city}</h2>
                     </div>
-                    <div>Current lon: {current.coord?.lon}</div>
-                    <div>OneCall lon: {oneCall.lon}</div>
+
                 </div>
             )}
         </>

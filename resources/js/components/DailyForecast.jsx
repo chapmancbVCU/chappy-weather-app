@@ -12,9 +12,6 @@ function DailyForecast({ oneCall, units }) {
     } = useDaily(oneCall);
     
     const tzOffset = oneCall?.timezone_offset;
-    console.log("selected")
-    console.log(selectedCard)
-    console.log(onCardClick)
     return (
         <div className="card forecast my-4">
             <div className="daily-forecast-container">
@@ -29,7 +26,7 @@ function DailyForecast({ oneCall, units }) {
                 ))}
             </div>
             <div className="selected-day">
-                {selectedCard.summary}
+                {selectedCard?.summary}
             </div>
         </div>
     );

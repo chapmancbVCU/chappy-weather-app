@@ -4,7 +4,6 @@ const useDaily = (oneCall) => {
 
     const [dailyForecast, setDailyForecast] = useState([]);
     const [selectedCard, setSelectedCard] = useState();
-    const [selectedDate, setSelectedDate] = useState("");
 
     const onCardClick = (e) => {
         setSelectedCard(dailyForecast[e])

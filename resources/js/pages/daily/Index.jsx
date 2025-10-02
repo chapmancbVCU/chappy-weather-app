@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import SearchBar from "@/components/SearchBar";
 import { Weather } from "@/utils/Weather";
 import useWeather from "@/utils/hooks/useWeather";
-import DailyForecast from "@/components/DailyForecastCard";
+import DailyForecast from "@/components/DailyForecast";
 import Error from "@/components/Error";
 import UnitsSwitch from "@/components/UnitsSwitch";
 import Favorites from "@/components/Favorites";
@@ -51,8 +51,7 @@ function Index({ user }) {
                         }
                         <h2 className="ms-3">Daily forecast for {city}</h2>
                     </div>
-                    <div>Current lon: {current.coord?.lon}</div>
-                    <div>OneCall lon: {oneCall.lon}</div>
+                    <DailyForecast />
                 </div>
             )}
         </>

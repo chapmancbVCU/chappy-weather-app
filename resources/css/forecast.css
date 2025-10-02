@@ -64,23 +64,31 @@
     flex-direction: column;
 }
 
+.temperature {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
 @media only screen and (min-width: 922px) {
     .forecast-icon-container {
         min-width: 10px;
     }
 
-    .forecast-info {
+    .forecast-info, .temperature {
         justify-content: flex-start;
         align-items: center;
     }
-
+    
     .forecast-info-block {
         min-width: 115px;
     }
 
     .row-section {
         flex-direction: row;
-        justify-content: center;
+        justify-content:space-evenly;
     }
 
     .section {

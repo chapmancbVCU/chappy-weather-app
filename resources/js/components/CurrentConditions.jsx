@@ -173,7 +173,47 @@ function CurrentConditions({ conditions, oneCall, units }) {
             </div>
 
             <hr className="hr-border mx-auto" />
-            
+
+            <h4 className="text-center">Temperature Range</h4>
+
+            <div className="row-section">
+                <div className="temperature">
+                    <p className="fs-5 mb-1">Morning</p>
+                    <div>
+                        Actual: {`${Math.round(oneCall?.daily?.[0]?.temp.morn)}\xB0${temperatureSymbol()}`}
+                    </div>
+                    <div>
+                        Feels Like: {`${Math.round(oneCall?.daily?.[0]?.feels_like.morn)}\xB0${temperatureSymbol()}`}
+                    </div>
+                </div>
+                <div className="temperature">
+                    <p className="fs-5 mb-1">Day</p>
+                    <div>
+                        Actual: {`${Math.round(oneCall?.daily?.[0]?.temp.day)}\xB0${temperatureSymbol()}`}
+                    </div>
+                    <div>
+                        Feels Like: {`${Math.round(oneCall?.daily?.[0]?.feels_like.day)}\xB0${temperatureSymbol()}`}
+                    </div>
+                </div>
+                <div className="temperature">
+                    <p className="fs-5 mb-1">Evening</p>
+                    <div>
+                        Actual: {`${Math.round(oneCall?.daily?.[0]?.temp.eve)}\xB0${temperatureSymbol()}`}
+                    </div>
+                    <div>
+                        Feels Like: {`${Math.round(oneCall?.daily?.[0]?.feels_like.eve)}\xB0${temperatureSymbol()}`}
+                    </div>
+                </div>
+                <div className="temperature">
+                    <p className="fs-5 mb-1">Night</p>
+                    <div>
+                        Actual: {`${Math.round(oneCall?.daily?.[0]?.temp.night)}\xB0${temperatureSymbol()}`}
+                    </div>
+                    <div>
+                        Feels Like: {`${Math.round(oneCall?.daily?.[0]?.feels_like.night)}\xB0${temperatureSymbol()}`}
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }        

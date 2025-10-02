@@ -66,6 +66,19 @@ export class DateTimeUtil {
     }
 
     /**
+     * Returns a string containing the day of week, month, and day of month.
+     * @param {string} dateTimeStamp Date and time information in the form of 
+     * an ISO string.
+     * @returns String in the following format: <day of week>, <month> 
+     * <day of month>.
+     */
+    getForecastDate(timestamp) {
+        return this.getDayOfWeek(timestamp) + ", " +
+            this.getFullMonthName(timestamp) + " " +
+            this.getDayOfMonth(timestamp);
+    }
+
+    /**
      * Returns the full name of the month using the ISO timestamp as a 
      * parameter.
      * @param {string} timestamp Date and time information in the form of an 

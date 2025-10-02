@@ -1,5 +1,5 @@
 import React from "react";
-function DailyForecast() {
+function DailyForecast({ oneCall, units }) {
 
     return (
         <>

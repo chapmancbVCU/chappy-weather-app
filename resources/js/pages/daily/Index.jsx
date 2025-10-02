@@ -51,7 +51,7 @@ function Index({ user }) {
                         }
                         <h2 className="ms-3">Daily forecast for {city}</h2>
                     </div>
-                    <DailyForecast />
+                    <DailyForecast oneCall={oneCall} units={units} />
                 </div>
             )}
         </>

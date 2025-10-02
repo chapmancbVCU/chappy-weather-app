@@ -2,13 +2,14 @@ import React from "react";
 import "@css/forecast.css";
 import useDailyCard from "@/utils/hooks/useDailyCard";
 
-function DailyForecastCard({daily, tzOffset}) {
+function DailyForecastCard({daily, index, onCardClick, tzOffset}) {
     const {date} = useDailyCard(daily, tzOffset);
-
     return (
-        <div className="daily-forecast-card">
+        <button className="daily-forecast-card"
+            onClick={() => onCardClick(index)}
+        >
             {date}
-        </div>
+        </button>
     );
 }        
 export default DailyForecastCard;

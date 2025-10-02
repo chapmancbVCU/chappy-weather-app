@@ -5,10 +5,16 @@ import DailyForecastCard from "./DailyForecastCard";
 
 function DailyForecast({ oneCall, units }) {
 
-    const { dailyForecast } = useDaily(oneCall);
+    const { 
+        dailyForecast, 
+        onCardClick, 
+        selectedCard 
+    } = useDaily(oneCall);
     
     const tzOffset = oneCall?.timezone_offset;
-    // console.log(oneCall?.timezone_offset)
+    console.log("selected")
+    console.log(selectedCard)
+    console.log(onCardClick)
     return (
         <div className="card forecast my-4">
             <div className="daily-forecast-container">
@@ -16,9 +22,14 @@ function DailyForecast({ oneCall, units }) {
                     <DailyForecastCard 
                         key={index}
                         daily={daily}
+                        index={index}
+                        onCardClick={onCardClick}
                         tzOffset={tzOffset}
                     />
                 ))}
+            </div>
+            <div className="selected-day">
+                {selectedCard.summary}
             </div>
         </div>
     );

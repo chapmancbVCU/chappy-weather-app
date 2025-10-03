@@ -20,6 +20,10 @@ const useDaily = (oneCall) => {
      */
     const [selectedCard, setSelectedCard] = useState();
 
+    /**
+     * Handles event for when user selects a card.
+     * @param {number} e Index for the card that is selected.
+     */
     const onCardClick = (e) => {
         setSelectedCard(dailyForecast[e])
     }

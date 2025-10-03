@@ -25,7 +25,7 @@ const useDaily = (oneCall) => {
      * @param {number} e Index for the card that is selected.
      */
     const onCardClick = (e) => {
-        setSelectedCard(dailyForecast[e])
+        setSelectedCard(dailyForecast[e]);
     }
     
     useEffect(() => {
@@ -33,7 +33,7 @@ const useDaily = (oneCall) => {
     });
 
     useEffect(() => {
-        setSelectedCard(dailyForecast[0])
+        setSelectedCard(dailyForecast[0]);
     }, [dailyForecast])
 
     return {

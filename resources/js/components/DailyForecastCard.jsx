@@ -16,6 +16,7 @@ import useDailyCard from "@/utils/hooks/useDailyCard";
 function DailyForecastCard({ daily, index, onCardClick, tzOffset }) {
     
     const {
+        description,
         date,
         icon
     } = useDailyCard(daily, tzOffset);
@@ -25,8 +26,8 @@ function DailyForecastCard({ daily, index, onCardClick, tzOffset }) {
             onClick={() => onCardClick(index)}
         >
             <p><strong>{date}</strong></p>
-            <p>{daily?.weather?.[0].description}</p>
-            {icon && <img src={icon} alt={daily?.weather?.[0].description}></img>}
+            <p>{description}</p>
+            {icon && <img src={icon} alt={description}></img>}
         </button>
     );
 }        

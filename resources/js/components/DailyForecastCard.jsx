@@ -13,7 +13,7 @@ import useDailyCard from "@/utils/hooks/useDailyCard";
  * @param {InputProps} param0 
  * @returns {JSX.Element} The daily forecast card component.
  */
-function DailyForecastCard({daily, index, onCardClick, tzOffset}) {
+function DailyForecastCard({ daily, index, onCardClick, tzOffset }) {
     
     const {
         date

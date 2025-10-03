@@ -9,6 +9,11 @@ import { DateTimeUtil } from "../DateTimeUtil";
  */
 const useHourlyCard = (hourly, tzOffset) => {
     const dateTimeUtil = useMemo(() => new DateTimeUtil(), []);
+
+    /**
+     * The date associated with the currently selected card.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [date, setDate] = useState("");
 
     useEffect(() => {

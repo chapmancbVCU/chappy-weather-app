@@ -1,5 +1,6 @@
 import React from "react";
 import "@css/forecast.css";
+import useCommon from "@/utils/hooks/useCommon";
 import useCurrentConditions from "@/utils/hooks/useCurrentConditions";
 import asset from "@chappy/utils/asset";
 
@@ -9,6 +10,10 @@ import asset from "@chappy/utils/asset";
  * @returns {JSX.Element} The current conditions for selected area.
  */
 function CurrentConditions({ conditions, oneCall, units }) {
+    const {
+        temperatureSymbol
+    } = useCommon(units);
+    
     const { 
         date, 
         description,
@@ -19,7 +24,6 @@ function CurrentConditions({ conditions, oneCall, units }) {
         summary, 
         sunRise,
         sunSet,
-        temperatureSymbol,
         time,
         visibility,
         wind,

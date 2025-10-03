@@ -191,14 +191,6 @@ const useCurrentConditions = (conditions, oneCall, units) => {
     }
 
     /**
-     * Determines temperature symbol based on system used.
-     * @returns {string} F or C depending of system used.
-     */
-    const temperatureSymbol = () => {
-        return (units === 'imperial') ? 'F' : 'C';
-    }
-
-    /**
      * Sets message for visibility depending on current system of units.
      * @param {number} data Visibility value presented by Open Weather Map. 
      */
@@ -266,7 +258,6 @@ const useCurrentConditions = (conditions, oneCall, units) => {
         summary,
         sunRise,
         sunSet,
-        temperatureSymbol,
         time,
         visibility,
         wind,

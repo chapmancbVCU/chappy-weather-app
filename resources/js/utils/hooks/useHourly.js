@@ -6,7 +6,17 @@ import React, { useEffect, useState } from "react";
  * @returns 
  */
 const useHourly = (oneCall) => {
+    /**
+     * The collection of hourly forecast data.
+     * @type {[array, import('react').Dispatch<import('react').SetStateAction<array>>]}
+     */
     const [hourlyForecast, setHourlyForecast] = useState([]);
+
+    /**
+     * The data associated with the selected card. 
+     * The collection of daily forecast data.
+     * @type {[object, import('react').Dispatch<import('react').SetStateAction<object>>]}
+     */
     const [selectedCard, setSelectedCard] = useState();
 
     const onCardClick = (e) => {

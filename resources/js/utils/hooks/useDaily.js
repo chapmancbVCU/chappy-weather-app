@@ -7,7 +7,17 @@ import React, { useEffect, useState, useMemo } from "react";
  */
 const useDaily = (oneCall) => {
 
+    /**
+     * The collection of daily forecast data.
+     * @type {[array, import('react').Dispatch<import('react').SetStateAction<array>>]}
+     */
     const [dailyForecast, setDailyForecast] = useState([]);
+
+    /**
+     * The data associated with the selected card. 
+     * The collection of daily forecast data.
+     * @type {[object, import('react').Dispatch<import('react').SetStateAction<object>>]}
+     */
     const [selectedCard, setSelectedCard] = useState();
 
     const onCardClick = (e) => {
@@ -21,6 +31,7 @@ const useDaily = (oneCall) => {
     useEffect(() => {
         setSelectedCard(dailyForecast[0])
     }, [dailyForecast])
+
     return {
         dailyForecast,
         onCardClick,

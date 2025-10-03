@@ -16,17 +16,18 @@ import useHourlyCard from "@/utils/hooks/useHourlyCard";
  */
 function HourlyForecastCard({ hourly, index, onCardClick, tzOffset }) {
     const {
-        date
+        date,
+        time
     } = useHourlyCard(hourly, tzOffset);
 
     return (
-        <>
-            <button className="hourly-forecast-card"
+        <button className="hourly-forecast-card"
             onClick={() => onCardClick(index)}
         >
-            {date}
+            <div>{date}</div>
+            <div>{time}</div>
         </button>
-        </>
+
     );
 }        
 export default HourlyForecastCard;

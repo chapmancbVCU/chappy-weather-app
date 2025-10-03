@@ -16,13 +16,17 @@ const useHourlyCard = (hourly, tzOffset) => {
      */
     const [date, setDate] = useState("");
 
+    const [time, setTime] = useState("");
+    
     useEffect(() => {
         const stamp = dateTimeUtil.getDateTime(hourly.dt, tzOffset);
-        setDate(dateTimeUtil.getForecastDate(stamp))
+        setDate(dateTimeUtil.getForecastDate(stamp));
+        setTime(dateTimeUtil.getTimeInfo(stamp));
     }, []);
 
     return {
-        date
+        date,
+        time
     }
 }
 

@@ -182,7 +182,7 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      * @param {string} data Description as presented by Open Weather Map.
      */
     const setDescriptionText = (data) => {
-        const description = data;;
+        const description = data;
         const descArr = description.split(" ");
         for(let i = 0; i < descArr.length; i++) {
             descArr[i] = descArr[i][0].toUpperCase() + descArr[i].substring(1);

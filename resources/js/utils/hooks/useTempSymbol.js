@@ -1,4 +1,8 @@
-import React, { useEffect, useState, useMemo } from "react";
+/**
+ * Reusable hook for the temperature symbol.
+ * @param {string} units The system of units in use.
+ * @returns 
+ */
 const useTempSymbol = (units) => {
     
     /**

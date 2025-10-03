@@ -16,14 +16,17 @@ import useDailyCard from "@/utils/hooks/useDailyCard";
 function DailyForecastCard({ daily, index, onCardClick, tzOffset }) {
     
     const {
-        date
+        date,
+        icon
     } = useDailyCard(daily, tzOffset);
 
     return (
         <button className="daily-forecast-card"
             onClick={() => onCardClick(index)}
         >
-            {date}
+            <p><strong>{date}</strong></p>
+            <p>{daily?.weather?.[0].description}</p>
+            {icon && <img src={icon} alt={daily?.weather?.[0].description}></img>}
         </button>
     );
 }        

@@ -18,6 +18,19 @@
     min-width: 200px;
 }
 
+.daily-forecast-card:hover,
+.daily-forecast-card:focus,
+.hourly-forecast-card:hover,
+.hourly-forecast-card:focus {
+   border: 3px solid rgb(27, 80, 114);
+}
+
+.daily-forecast-card p,
+.hourly-forecast-card p {
+   margin-top: 5px;
+   margin-bottom: 5px;
+}
+
 .description {
     display: flex;
     align-items: center; 

@@ -1,5 +1,10 @@
 import React, { useEffect, useState, useMemo } from "react";
 
+/**
+ * Manages states and hooks for daily forecast.
+ * @param {object} oneCall OneCall tier data.
+ * @returns 
+ */
 const useDaily = (oneCall) => {
 
     const [dailyForecast, setDailyForecast] = useState([]);

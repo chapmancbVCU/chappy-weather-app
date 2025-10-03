@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
 
+/**
+ * Manages states and hooks for daily forecast.
+ * @param {object} oneCall OneCall tier data.
+ * @returns 
+ */
 const useHourly = (oneCall) => {
     const [hourlyForecast, setHourlyForecast] = useState([]);
     const [selectedCard, setSelectedCard] = useState();

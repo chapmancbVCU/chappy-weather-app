@@ -21,6 +21,7 @@ const useDailyCard = (daily, tzOffset) => {
         setDate(dateTimeUtil.getForecastDate(stamp));
 
     }, []);
+    
     return {
         date
     }

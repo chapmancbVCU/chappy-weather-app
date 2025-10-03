@@ -1,4 +1,4 @@
-.daily-forecast-container {
+.daily-forecast-container, .hourly-forecast-container {
     display: flex;
     flex-direction: row;
 
@@ -9,7 +9,7 @@
     white-space: nowrap;
 }
 
-.daily-forecast-card {
+.daily-forecast-card, .hourly-forecast-card {
     margin: 5px;
     text-align: center;
     border: 3px solid rgb(57, 169, 244);

@@ -25,7 +25,7 @@ function DailyForecastCard({ daily, index, onCardClick, tzOffset, units }) {
         date,
         icon
     } = useDailyCard(daily, tzOffset);
-    console.log(daily)
+    
     return (
         <button className="daily-forecast-card"
             onClick={() => onCardClick(index)}
@@ -40,10 +40,9 @@ function DailyForecastCard({ daily, index, onCardClick, tzOffset, units }) {
                 </div>
                 <div>
                     <p>High</p>
-                    <p>p</p>
+                    <p>{`${Math.round(daily?.temp?.max)}\xB0${temperatureSymbol()}`}</p>
                 </div>
             </div>
-
         </button>
     );
 }        

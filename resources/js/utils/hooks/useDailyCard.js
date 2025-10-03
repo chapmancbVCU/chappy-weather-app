@@ -10,7 +10,16 @@ import { DateTimeUtil } from "../DateTimeUtil";
 const useDailyCard = (daily, tzOffset) => {
     const dateTimeUtil = useMemo(() => new DateTimeUtil(), []);
 
+    /**
+     * Sets description for daily card.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [description, setDescription] = useState("");
+
+    /**
+     * Sets icon for daily card.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [icon, setIcon] = useState("");
 
     /**

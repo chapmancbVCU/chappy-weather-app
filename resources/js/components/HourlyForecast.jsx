@@ -3,6 +3,14 @@ import "@css/forecast.css";
 import useHourly from "@/utils/hooks/useHourly";
 import HourlyForecastCard from "./HourlyForecastCard";
 
+/**
+ * Renders component for hourly forecast.
+ * 
+ * @property {object} oneCall The oneCall tier data.
+ * @property {string} units The system of units in use.
+ * @param {InputProps} param0 
+ * @returns {JSX.Element} Component displaying hourly forecast.
+ */
 function HourlyForecast({ oneCall, units }) {
 
     const {

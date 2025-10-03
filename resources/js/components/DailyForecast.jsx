@@ -3,6 +3,14 @@ import "@css/forecast.css";
 import useDaily from "@/utils/hooks/useDaily";
 import DailyForecastCard from "./DailyForecastCard";
 
+/**
+ * Renders component for daily forecast.
+ * 
+ * @property {object} oneCall The oneCall tier data.
+ * @property {string} units The system of units in use.
+ * @param {InputProps} param0 
+ * @returns {JSX.Element} Component displaying daily forecast.
+ */
 function DailyForecast({ oneCall, units }) {
 
     const { 

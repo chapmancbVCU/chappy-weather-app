@@ -11,12 +11,12 @@ import asset from "@chappy/utils/asset";
  */
 function CurrentConditions({ conditions, oneCall, units }) {
     const {
+        description,
         temperatureSymbol
-    } = useCommon(units);
+    } = useCommon(conditions?.weather?.[0]?.description, units);
     
     const { 
         date, 
-        description,
         icon, 
         moonRise,
         moonSet,

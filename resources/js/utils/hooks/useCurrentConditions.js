@@ -18,11 +18,7 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      */
     const [date, setDate] = useState("");
 
-    /**
-     * Short description of current conditions.
-     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
-     */
-    const [description, setDescription] = useState("");
+
 
     /**
      * Sets icon for current conditions.
@@ -178,19 +174,6 @@ const useCurrentConditions = (conditions, oneCall, units) => {
     }
 
     /**
-     * Makes all first case characters of description upper case.
-     * @param {string} data Description as presented by Open Weather Map.
-     */
-    const setDescriptionText = (data) => {
-        const description = data;
-        const descArr = description.split(" ");
-        for(let i = 0; i < descArr.length; i++) {
-            descArr[i] = descArr[i][0].toUpperCase() + descArr[i].substring(1);
-        }
-        setDescription(descArr.join(" "));
-    }
-
-    /**
      * Sets message for visibility depending on current system of units.
      * @param {number} data Visibility value presented by Open Weather Map. 
      */
@@ -237,7 +220,6 @@ const useCurrentConditions = (conditions, oneCall, units) => {
         calcSunSet(oneCall?.daily?.[0]?.sunset, tz);
 
         setSummary(oneCall?.daily?.[0]?.summary ?? "");
-        setDescriptionText(conditions?.weather[0]?.description);
 
         windSpeed(conditions?.wind?.speed);
         calculateWindDirection(conditions?.wind?.deg);
@@ -250,7 +232,6 @@ const useCurrentConditions = (conditions, oneCall, units) => {
 
     return {
         date,
-        description,
         icon,
         moonRise,
         moonSet,

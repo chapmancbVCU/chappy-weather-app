@@ -3,7 +3,10 @@ import "@css/forecast.css";
 import useDailyCard from "@/utils/hooks/useDailyCard";
 
 function DailyForecastCard({daily, index, onCardClick, tzOffset}) {
-    const {date} = useDailyCard(daily, tzOffset);
+    const {
+        date
+    } = useDailyCard(daily, tzOffset);
+    
     return (
         <button className="daily-forecast-card"
             onClick={() => onCardClick(index)}

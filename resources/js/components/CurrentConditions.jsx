@@ -1,6 +1,6 @@
 import React from "react";
 import "@css/forecast.css";
-import useCommon from "@/utils/hooks/useCommon";
+import useTempSymbol from "@/utils/hooks/useTempSymbol";
 import useCurrentConditions from "@/utils/hooks/useCurrentConditions";
 import asset from "@chappy/utils/asset";
 
@@ -11,12 +11,12 @@ import asset from "@chappy/utils/asset";
  */
 function CurrentConditions({ conditions, oneCall, units }) {
     const {
-        description,
         temperatureSymbol
-    } = useCommon(conditions?.weather?.[0]?.description, units);
+    } = useTempSymbol(units);
     
     const { 
         date, 
+        description,
         icon, 
         moonRise,
         moonSet,

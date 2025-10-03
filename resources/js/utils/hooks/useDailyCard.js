@@ -18,7 +18,7 @@ const useDailyCard = (daily, tzOffset) => {
     
     useEffect(() => {
         const stamp = dateTimeUtil.getDateTime(daily.dt, tzOffset);
-        setDate(dateTimeUtil.getForecastDate(stamp))
+        setDate(dateTimeUtil.getForecastDate(stamp));
 
     }, []);
     return {

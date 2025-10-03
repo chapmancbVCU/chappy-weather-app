@@ -28,7 +28,7 @@ const useCommon = (descriptionData, units) => {
     }
 
     useEffect(() => {
-        setDescription(descriptionData)
+        setDescriptionText(descriptionData)
     })
     return {
         description,

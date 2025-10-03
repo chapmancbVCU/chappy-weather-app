@@ -10,6 +10,9 @@ import { DateTimeUtil } from "../DateTimeUtil";
 const useDailyCard = (daily, tzOffset) => {
     const dateTimeUtil = useMemo(() => new DateTimeUtil(), []);
 
+    const [description, setDescription] = useState("");
+    const [icon, setIcon] = useState("");
+
     /**
      * The date associated with the currently selected card.
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
@@ -20,10 +23,14 @@ const useDailyCard = (daily, tzOffset) => {
         const stamp = dateTimeUtil.getDateTime(daily.dt, tzOffset);
         setDate(dateTimeUtil.getForecastDate(stamp));
 
-    }, []);
-    
+        setDescription(daily?.weather?.[0].description);
+        setIcon(`https://openweathermap.org/img/wn/${daily?.weather?.[0]?.icon}@2x.png`);
+    }, [daily]);
+
     return {
-        date
+        description,
+        date,
+        icon
     }
 }
 

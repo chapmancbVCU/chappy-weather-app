@@ -17,7 +17,7 @@ function HourlyForecast({ oneCall, units }) {
         hourlyForecast,
         onCardClick,
         selectedCard
-    } = useHourly(oneCall)
+    } = useHourly(oneCall);
 
     const tzOffset = oneCall?.timezone_offset;
 

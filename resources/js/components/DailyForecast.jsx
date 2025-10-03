@@ -20,6 +20,7 @@ function DailyForecast({ oneCall, units }) {
     } = useDaily(oneCall);
     
     const tzOffset = oneCall?.timezone_offset;
+    
     return (
         <div className="card forecast my-4">
             <div className="daily-forecast-container">

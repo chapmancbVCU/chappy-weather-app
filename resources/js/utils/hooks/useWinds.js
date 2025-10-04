@@ -79,7 +79,7 @@ const  useWinds = (speed, gust, direction, units) => {
         windSpeed(speed);
         calculateWindDirection(direction);
         windGustSpeed(gust);
-    }, [speed, gust, direction]);
+    }, [speed, gust, direction, units]);
 
     return { wind, windDirection, windGusts }
 }

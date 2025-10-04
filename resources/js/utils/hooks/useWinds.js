@@ -1,5 +1,14 @@
 import { useEffect, useState } from 'react';
 
+/**
+ * Manages hooks and states related to wind, wind guests, and wind direction.
+ * 
+ * @param {number} speed The wind speed.
+ * @param {number} gust The wind gusts.
+ * @param {number} direction The wind direction in degrees.
+ * @param {string} units Current system of measure.
+ * @returns 
+ */
 const  useWinds = (speed, gust, direction, units) => {
 
     /**

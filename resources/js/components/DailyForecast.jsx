@@ -1,5 +1,6 @@
 import React from "react";
 import "@css/forecast.css";
+import asset from "@chappy/utils/asset";
 import useDaily from "@/utils/hooks/useDaily";
 import DailyForecastCard from "./DailyForecastCard";
 import useForecastDate from "@/utils/hooks/useForecastDate";
@@ -22,6 +23,12 @@ function DailyForecast({ oneCall, units }) {
     const { forecastDate } = useForecastDate(selectedCard?.dt, oneCall?.timezone_offset);
     const { icon } = useIcon(selectedCard?.weather?.[0]?.icon);
     const { temperature } = useTemperature(units);
+
+    const { wind, windDirection, windGusts} = useWinds(
+        selectedCard?.wind_speed,
+        selectedCard?.wind_gust,
+        selectedCard?.wind_deg
+    );
 
     return (
         <div className="card forecast my-4">
@@ -56,6 +63,17 @@ function DailyForecast({ oneCall, units }) {
                         <div>
                             <div><strong>High</strong></div>
                             <div>{temperature(selectedCard?.temp.max)}</div>
+                        </div>
+                        <div className="forecast-info">
+                            <div className="forecast-icon-container">
+                                <img className="forecast-icon" src={asset('public/icons/weather-windy.png')} />
+                            </div>
+                            <div className="forecast-info-block">
+                                Winds
+                                <div>{wind}, {windDirection}</div>
+                                Wind Gusts
+                                <div>{windGusts}</div>
+                            </div>
                         </div>
                     </div>
                 </div>

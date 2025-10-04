@@ -20,7 +20,7 @@ const useForecastDate = (timestamp, tzOffset) => {
         if(timestamp == null || tzOffset == null) return;
         const stamp = dateTimeUtil.getDateTime(timestamp, tzOffset);
         setForecastDate(dateTimeUtil.getForecastDate(stamp));
-    }, []);
+    }, [timestamp, tzOffset]);
 
     return { forecastDate }
 }

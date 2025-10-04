@@ -11,6 +11,11 @@ const setDescriptionText = (data) =>
         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
         .join(" ");
 
+/**
+ * Sets description for views.
+ * @param {string} data Description as presented by Open Weather Map.
+ * @returns 
+ */
 const useDescription = (data) => {
     /**
      * Short description of current conditions.

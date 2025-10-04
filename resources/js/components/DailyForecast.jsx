@@ -4,7 +4,9 @@ import useDaily from "@/utils/hooks/useDaily";
 import DailyForecastCard from "./DailyForecastCard";
 import useForecastDate from "@/utils/hooks/useForecastDate";
 import useIcon from "@/utils/hooks/useIcon";
-import useTempSymbol from "@/utils/hooks/useTempSymbol";
+import useTemperature from "@/utils/hooks/useTemperature";
+import useWinds from "@/utils/hooks/useWinds";
+
 /**
  * Renders component for daily forecast.
  * 
@@ -19,7 +21,7 @@ function DailyForecast({ oneCall, units }) {
     const { dailyForecast, onCardClick, selectedCard } = useDaily(oneCall);
     const { forecastDate } = useForecastDate(selectedCard?.dt, oneCall?.timezone_offset);
     const { icon } = useIcon(selectedCard?.weather?.[0]?.icon);
-    const { temperatureSymbol } = useTempSymbol(units);
+    const { temperature } = useTemperature(units);
 
     return (
         <div className="card forecast my-4">
@@ -44,16 +46,16 @@ function DailyForecast({ oneCall, units }) {
                     <p className="text-center my-2">{selectedCard?.summary}</p>
                     <div className="selected-content">
                         {icon && <img src={icon}/>}
-                        <h4>{`${Math.round(selectedCard?.temp.day)}\xB0${temperatureSymbol()}`}</h4>
+                        <h4>{temperature(selectedCard?.temp.day)}</h4>
                     </div>
                     <div className="selected-content">
                         <div>
                             <div><strong>Low</strong></div>
-                            <div>{`${Math.round(selectedCard?.temp.min)}\xB0${temperatureSymbol()}`}</div>
+                            <div>{temperature(selectedCard?.temp.min)}</div>
                         </div>
                         <div>
                             <div><strong>High</strong></div>
-                            <div>{`${Math.round(selectedCard?.temp.max)}\xB0${temperatureSymbol()}`}</div>
+                            <div>{temperature(selectedCard?.temp.max)}</div>
                         </div>
                     </div>
                 </div>

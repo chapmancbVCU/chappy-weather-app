@@ -1,7 +1,7 @@
 import React from "react";
 import "@css/forecast.css";
 import useDescription from "@/utils/hooks/useDescription";
-import useTempSymbol from "@/utils/hooks/useTempSymbol";
+import useTemperature from "@/utils/hooks/useTemperature";
 import useCurrentConditions from "@/utils/hooks/useCurrentConditions";
 import useIcon from "@/utils/hooks/useIcon";
 import asset from "@chappy/utils/asset";
@@ -15,7 +15,7 @@ import useWinds from "@/utils/hooks/useWinds";
 function CurrentConditions({ conditions, oneCall, units }) {
     const { description } = useDescription(conditions?.weather?.[0]?.description)
     const { icon } = useIcon(conditions?.weather?.[0]?.icon)
-    const { temperatureSymbol } = useTempSymbol(units);
+    const { temperature } = useTemperature(units);
     
     const { 
         date, 
@@ -43,9 +43,9 @@ function CurrentConditions({ conditions, oneCall, units }) {
                 <div className="section-left">
                     <div className="mb-2">{date}</div>
                     <div className="mb-2">As of {time}</div>
-                    <div className="fs-2 mb-2">{`${Math.round(conditions?.main?.temp)}\xB0${temperatureSymbol()}`}</div>
-                    <div className="fs-5 mb-2">Today's High: {`${Math.round(conditions?.main?.temp_max)}\xB0${temperatureSymbol()}`}</div>
-                    <div className="fs-5 mb-2">Today's Low: {`${Math.round(conditions?.main?.temp_min)}\xB0${temperatureSymbol()}`}</div>
+                    <div className="fs-2 mb-2">{temperature(conditions?.main?.temp)}</div>
+                    <div className="fs-5 mb-2">Today's High: {temperature(conditions?.main?.temp_max)}</div>
+                    <div className="fs-5 mb-2">Today's Low: {temperature(conditions?.main?.temp_min)}</div>
                     <div className="description">
                         <div className="fs-2">{description}</div>
                         {icon && <img src={icon}/>  }
@@ -59,7 +59,7 @@ function CurrentConditions({ conditions, oneCall, units }) {
                         <div className="forecast-info-block">
                             Feels Like
                             <div>
-                                {`${Math.round(conditions?.main?.feels_like)}\xB0${temperatureSymbol()}`}
+                                {temperature(conditions?.main?.feels_like)}
                             </div>
                         </div>
                     </div>
@@ -108,7 +108,7 @@ function CurrentConditions({ conditions, oneCall, units }) {
                     </div>
                     <div className="forecast-info-block">
                         Dew Point
-                        <div>{`${Math.round(oneCall?.current?.dew_point)}\xB0${temperatureSymbol()}`}</div>
+                        <div>{temperature(oneCall?.current?.dew_point)}</div>
                     </div>
                 </div>
                 <div className="forecast-info">
@@ -189,37 +189,37 @@ function CurrentConditions({ conditions, oneCall, units }) {
                 <div className="temperature">
                     <p className="fs-5 mb-1">Morning</p>
                     <div>
-                        Actual: {`${Math.round(oneCall?.daily?.[0]?.temp.morn)}\xB0${temperatureSymbol()}`}
+                        Actual: {temperature(oneCall?.daily?.[0]?.temp.morn)}
                     </div>
                     <div>
-                        Feels Like: {`${Math.round(oneCall?.daily?.[0]?.feels_like.morn)}\xB0${temperatureSymbol()}`}
+                        Feels Like: {temperature(oneCall?.daily?.[0]?.feels_like.morn)}
                     </div>
                 </div>
                 <div className="temperature">
                     <p className="fs-5 mb-1">Day</p>
                     <div>
-                        Actual: {`${Math.round(oneCall?.daily?.[0]?.temp.day)}\xB0${temperatureSymbol()}`}
+                        Actual: {temperature(oneCall?.daily?.[0]?.temp.day)}
                     </div>
                     <div>
-                        Feels Like: {`${Math.round(oneCall?.daily?.[0]?.feels_like.day)}\xB0${temperatureSymbol()}`}
+                        Feels Like: {temperature(oneCall?.daily?.[0]?.feels_like.day)}
                     </div>
                 </div>
                 <div className="temperature">
                     <p className="fs-5 mb-1">Evening</p>
                     <div>
-                        Actual: {`${Math.round(oneCall?.daily?.[0]?.temp.eve)}\xB0${temperatureSymbol()}`}
+                        Actual: {temperature(oneCall?.daily?.[0]?.temp.eve)}
                     </div>
                     <div>
-                        Feels Like: {`${Math.round(oneCall?.daily?.[0]?.feels_like.eve)}\xB0${temperatureSymbol()}`}
+                        Feels Like: {temperature(oneCall?.daily?.[0]?.feels_like.eve)}
                     </div>
                 </div>
                 <div className="temperature">
                     <p className="fs-5 mb-1">Night</p>
                     <div>
-                        Actual: {`${Math.round(oneCall?.daily?.[0]?.temp.night)}\xB0${temperatureSymbol()}`}
+                        Actual: {temperature(oneCall?.daily?.[0]?.temp.night)}
                     </div>
                     <div>
-                        Feels Like: {`${Math.round(oneCall?.daily?.[0]?.feels_like.night)}\xB0${temperatureSymbol()}`}
+                        Feels Like: {temperature(oneCall?.daily?.[0]?.feels_like.night)}
                     </div>
                 </div>
             </div>

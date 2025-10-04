@@ -1,7 +1,7 @@
 import React from "react";
 import "@css/forecast.css";
 import useDescription from "@/utils/hooks/useDescription";
-import useTempSymbol from "@/utils/hooks/useTempSymbol";
+import useTemperature from "@/utils/hooks/useTemperature";
 import useForecastDate from "@/utils/hooks/useForecastDate";
 import useIcon from "@/utils/hooks/useIcon";
 
@@ -22,7 +22,7 @@ function DailyForecastCard({ daily, index, onCardClick, tzOffset, units }) {
 
     const { icon } = useIcon(daily?.weather?.[0]?.icon);
 
-    const { temperatureSymbol } = useTempSymbol(units);
+    const { temperature } = useTemperature(units);
 
     const { forecastDate } = useForecastDate(daily.dt, tzOffset);
     
@@ -36,11 +36,11 @@ function DailyForecastCard({ daily, index, onCardClick, tzOffset, units }) {
             <div className="d-flex justify-content-evenly">
                 <div>
                     <p>Low</p>
-                    <p>{`${Math.round(daily?.temp?.min)}\xB0${temperatureSymbol()}`}</p>
+                    <p>{temperature(daily?.temp?.min)}</p>
                 </div>
                 <div>
                     <p>High</p>
-                    <p>{`${Math.round(daily?.temp?.max)}\xB0${temperatureSymbol()}`}</p>
+                    <p>{temperature(daily?.temp?.max)}</p>
                 </div>
             </div>
         </button>

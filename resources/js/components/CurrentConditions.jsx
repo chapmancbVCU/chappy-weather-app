@@ -5,6 +5,7 @@ import useTempSymbol from "@/utils/hooks/useTempSymbol";
 import useCurrentConditions from "@/utils/hooks/useCurrentConditions";
 import useIcon from "@/utils/hooks/useIcon";
 import asset from "@chappy/utils/asset";
+import useWinds from "@/utils/hooks/useWinds";
 
 /**
  * Renders current conditions.
@@ -31,10 +32,18 @@ function CurrentConditions({ conditions, oneCall, units }) {
         sunSet,
         time,
         visibility,
-        wind,
-        windDirection,
-        windGusts
+        // wind,
+        // windDirection,
+        // windGusts
     } = useCurrentConditions(conditions, oneCall, units);
+
+    const { wind, windDirection, windGusts
+    } = useWinds(
+        conditions?.wind?.speed, 
+        oneCall?.daily?.[0]?.wind_gust, 
+        conditions?.wind?.deg, 
+        units
+    );
 
     return (
         <div className="card forecast my-4">
@@ -91,7 +100,7 @@ function CurrentConditions({ conditions, oneCall, units }) {
                         </div>
                         <div className="forecast-info-block">
                             Winds
-                            <div>{wind} / {windDirection}</div>
+                            <div>{wind}, {windDirection}</div>
                             Wind Gusts
                             <div>{windGusts}</div>
                         </div>

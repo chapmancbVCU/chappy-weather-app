@@ -13,14 +13,9 @@ import useWinds from "@/utils/hooks/useWinds";
  * @returns {JSX.Element} The current conditions for selected area.
  */
 function CurrentConditions({ conditions, oneCall, units }) {
-    const { 
-        description 
-    } = useDescription(conditions?.weather?.[0]?.description)
-    
+    const { description } = useDescription(conditions?.weather?.[0]?.description)
     const { icon } = useIcon(conditions?.weather?.[0]?.icon)
-    const {
-        temperatureSymbol
-    } = useTempSymbol(units);
+    const { temperatureSymbol } = useTempSymbol(units);
     
     const { 
         date, 
@@ -32,13 +27,9 @@ function CurrentConditions({ conditions, oneCall, units }) {
         sunSet,
         time,
         visibility,
-        // wind,
-        // windDirection,
-        // windGusts
     } = useCurrentConditions(conditions, oneCall, units);
 
-    const { wind, windDirection, windGusts
-    } = useWinds(
+    const { wind, windDirection, windGusts } = useWinds(
         conditions?.wind?.speed, 
         oneCall?.daily?.[0]?.wind_gust, 
         conditions?.wind?.deg, 

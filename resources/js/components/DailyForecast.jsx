@@ -46,6 +46,16 @@ function DailyForecast({ oneCall, units }) {
                         {icon && <img src={icon}/>}
                         <h4>{`${Math.round(selectedCard?.temp.day)}\xB0${temperatureSymbol()}`}</h4>
                     </div>
+                    <div className="selected-content">
+                        <div>
+                            <p><strong>Low</strong></p>
+                            <p>{`${Math.round(selectedCard?.temp.min)}\xB0${temperatureSymbol()}`}</p>
+                        </div>
+                        <div>
+                            <p><strong>High</strong></p>
+                            <p>{`${Math.round(selectedCard?.temp.max)}\xB0${temperatureSymbol()}`}</p>
+                        </div>
+                    </div>
                 </div>
                 
             </div>

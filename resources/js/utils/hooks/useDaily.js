@@ -15,12 +15,6 @@ const useDaily = (oneCall) => {
     const [dailyForecast, setDailyForecast] = useState([]);
 
     /**
-     * The date associated with the currently selected card.
-     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
-     */
-    const [date, setDate] = useState("");
-
-    /**
      * The data associated with the selected card. 
      * The collection of daily forecast data.
      * @type {[object, import('react').Dispatch<import('react').SetStateAction<object>>]}
@@ -43,14 +37,8 @@ const useDaily = (oneCall) => {
         setSelectedCard(dailyForecast[0]);
     }, [dailyForecast])
 
-    useEffect(() => {
-        console.log(selectedCard)
-        const stamp = dateTimeUtil.getDateTime(selectedCard?.dt, oneCall?.timezone_offset);
-        setDate(dateTimeUtil.getForecastDate(stamp));
-    }, [selectedCard])
     return {
         dailyForecast,
-        date,
         onCardClick,
         selectedCard
     }

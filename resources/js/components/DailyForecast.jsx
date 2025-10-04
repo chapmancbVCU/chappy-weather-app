@@ -2,6 +2,7 @@ import React from "react";
 import "@css/forecast.css";
 import useDaily from "@/utils/hooks/useDaily";
 import DailyForecastCard from "./DailyForecastCard";
+import useForecastDate from "@/utils/hooks/useForecastDate";
 
 /**
  * Renders component for daily forecast.
@@ -16,12 +17,13 @@ function DailyForecast({ oneCall, units }) {
 
     const { 
         dailyForecast, 
-        date,
         onCardClick, 
         selectedCard 
     } = useDaily(oneCall);
     
-    
+    const {
+        forecastDate
+    } = useForecastDate(selectedCard?.dt, oneCall?.timezone_offset);
 
     return (
         <div className="card forecast my-4">
@@ -41,7 +43,7 @@ function DailyForecast({ oneCall, units }) {
             <hr className="hr-border mx-auto" />
 
             <div className="selected-day">
-                <h5 className="text-center my-2">{date}</h5>
+                <h5 className="text-center my-2">{forecastDate}</h5>
                 <div>
                     <p className="text-center my-2">{selectedCard?.summary}</p>
                 </div>

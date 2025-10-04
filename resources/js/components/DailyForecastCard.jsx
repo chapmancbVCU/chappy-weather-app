@@ -1,5 +1,6 @@
 import React from "react";
 import "@css/forecast.css";
+import useDescription from "@/utils/hooks/useDescription";
 import useTempSymbol from "@/utils/hooks/useTempSymbol";
 import useDailyCard from "@/utils/hooks/useDailyCard";
 
@@ -17,11 +18,14 @@ import useDailyCard from "@/utils/hooks/useDailyCard";
  */
 function DailyForecastCard({ daily, index, onCardClick, tzOffset, units }) {
     const {
+        description
+    } = useDescription(daily?.weather?.[0].description);
+    
+    const {
         temperatureSymbol
     } = useTempSymbol(units);
 
     const {
-        description,
         date,
         icon
     } = useDailyCard(daily, tzOffset);

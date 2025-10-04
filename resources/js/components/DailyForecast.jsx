@@ -27,7 +27,8 @@ function DailyForecast({ oneCall, units }) {
     const { wind, windDirection, windGusts} = useWinds(
         selectedCard?.wind_speed,
         selectedCard?.wind_gust,
-        selectedCard?.wind_deg
+        selectedCard?.wind_deg,
+        units
     );
 
     return (

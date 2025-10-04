@@ -79,6 +79,16 @@
     flex-direction: column;
 }
 
+.selected-day {
+    margin-left: auto;
+    margin-right: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;
+}
+
 .section {
     display: flex;
     flex-direction: column;

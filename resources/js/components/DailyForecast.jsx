@@ -35,6 +35,9 @@ function DailyForecast({ oneCall, units }) {
                     />
                 ))}
             </div>
+
+            <hr className="hr-border mx-auto" />
+            
             <div className="selected-day">
                 {selectedCard?.summary}
             </div>

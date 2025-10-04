@@ -12,7 +12,7 @@ const useTemperature = (units) => {
      */
     const temperature = (data) => {
         const system = (units === 'imperial') ? 'F' : 'C';
-        return `${Math.round(data)}\xB0${system}`;
+        return `${Math.round(data)} \xB0${system}`;
     }
 
     return { temperature }

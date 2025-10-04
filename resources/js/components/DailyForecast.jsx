@@ -48,12 +48,12 @@ function DailyForecast({ oneCall, units }) {
                     </div>
                     <div className="selected-content">
                         <div>
-                            <p><strong>Low</strong></p>
-                            <p>{`${Math.round(selectedCard?.temp.min)}\xB0${temperatureSymbol()}`}</p>
+                            <div><strong>Low</strong></div>
+                            <div>{`${Math.round(selectedCard?.temp.min)}\xB0${temperatureSymbol()}`}</div>
                         </div>
                         <div>
-                            <p><strong>High</strong></p>
-                            <p>{`${Math.round(selectedCard?.temp.max)}\xB0${temperatureSymbol()}`}</p>
+                            <div><strong>High</strong></div>
+                            <div>{`${Math.round(selectedCard?.temp.max)}\xB0${temperatureSymbol()}`}</div>
                         </div>
                     </div>
                 </div>

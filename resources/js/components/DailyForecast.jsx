@@ -57,15 +57,15 @@ function DailyForecast({ oneCall, units }) {
                         <h4>{temperature(selectedCard?.temp.day)}</h4>
                     </div>
                     <div className="selected-content">
-                        <div>
+                        <div className="mb-3">
                             <div><strong>Low</strong></div>
                             <div>{temperature(selectedCard?.temp.min)}</div>
                         </div>
-                        <div>
+                        <div className="mb-3">
                             <div><strong>High</strong></div>
                             <div>{temperature(selectedCard?.temp.max)}</div>
                         </div>
-                        <div className="forecast-info">
+                        <div className="forecast-info mb-3">
                             <div className="forecast-icon-container">
                                 <img className="forecast-icon" src={asset('public/icons/weather-windy.png')} />
                             </div>

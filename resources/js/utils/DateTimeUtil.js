@@ -111,7 +111,7 @@ export class DateTimeUtil {
 
     /**
      * This function reports the time based on the timestamp.
-     * @param {string} localDateTime The timestamp.
+     * @param {string} timestamp The timestamp.
      * @returns {string} The formatted time.
      */
     getTimeInfo(timestamp) {

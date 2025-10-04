@@ -24,13 +24,13 @@ function DailyForecastCard({ daily, index, onCardClick, tzOffset, units }) {
 
     const { temperatureSymbol } = useTempSymbol(units);
 
-    const { date } = useForecastDate(daily.dt, tzOffset);
+    const { forecastDate } = useForecastDate(daily.dt, tzOffset);
     
     return (
         <button className="daily-forecast-card"
             onClick={() => onCardClick(index)}
         >
-            <p><strong>{date}</strong></p>
+            <p><strong>{forecastDate}</strong></p>
             <p>{description}</p>
             {icon && <img src={icon} alt={description}></img>}
             <div className="d-flex justify-content-evenly">

@@ -14,14 +14,15 @@ const useForecastDate = (timestamp, tzOffset) => {
      * The date for a particular forecast.
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
      */
-    const [date, setDate] = useState("");
+    const [forecastDate, setForecastDate] = useState("");
     
     useEffect(() => {
+        if(timestamp == null || tzOffset == null) return;
         const stamp = dateTimeUtil.getDateTime(timestamp, tzOffset);
-        setDate(dateTimeUtil.getForecastDate(stamp));
+        setForecastDate(dateTimeUtil.getForecastDate(stamp));
     }, []);
 
-    return { date }
+    return { forecastDate }
 }
 
 export default useForecastDate;

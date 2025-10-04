@@ -3,7 +3,8 @@ import "@css/forecast.css";
 import useDaily from "@/utils/hooks/useDaily";
 import DailyForecastCard from "./DailyForecastCard";
 import useForecastDate from "@/utils/hooks/useForecastDate";
-
+import useIcon from "@/utils/hooks/useIcon";
+import useTempSymbol from "@/utils/hooks/useTempSymbol";
 /**
  * Renders component for daily forecast.
  * 
@@ -15,15 +16,10 @@ import useForecastDate from "@/utils/hooks/useForecastDate";
 function DailyForecast({ oneCall, units }) {
     const tzOffset = oneCall?.timezone_offset;
 
-    const { 
-        dailyForecast, 
-        onCardClick, 
-        selectedCard 
-    } = useDaily(oneCall);
-    
-    const {
-        forecastDate
-    } = useForecastDate(selectedCard?.dt, oneCall?.timezone_offset);
+    const { dailyForecast, onCardClick, selectedCard } = useDaily(oneCall);
+    const { forecastDate } = useForecastDate(selectedCard?.dt, oneCall?.timezone_offset);
+    const { icon } = useIcon(selectedCard?.weather?.[0]?.icon);
+    const { temperatureSymbol } = useTempSymbol(units);
 
     return (
         <div className="card forecast my-4">
@@ -46,6 +42,10 @@ function DailyForecast({ oneCall, units }) {
                 <h5 className="text-center my-2">{forecastDate}</h5>
                 <div>
                     <p className="text-center my-2">{selectedCard?.summary}</p>
+                    <div className="selected-content">
+                        {icon && <img src={icon}/>}
+                        <h4>{`${Math.round(selectedCard?.temp.day)}\xB0${temperatureSymbol()}`}</h4>
+                    </div>
                 </div>
                 
             </div>

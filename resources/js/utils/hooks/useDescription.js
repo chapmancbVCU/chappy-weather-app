@@ -12,7 +12,7 @@ const setDescriptionText = (data) =>
         .join(" ");
 
 /**
- * Sets description for views.
+ * Reusable hook for setting the description.
  * @param {string} data Description as presented by Open Weather Map.
  * @returns 
  */

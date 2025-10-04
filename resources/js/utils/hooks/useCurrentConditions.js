@@ -18,8 +18,6 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      */
     const [date, setDate] = useState("");
 
-
-
     /**
      * Sets icon for current conditions.
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}

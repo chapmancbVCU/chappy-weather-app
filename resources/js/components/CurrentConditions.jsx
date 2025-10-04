@@ -1,5 +1,6 @@
 import React from "react";
 import "@css/forecast.css";
+import useDescription from "@/utils/hooks/useDescription";
 import useTempSymbol from "@/utils/hooks/useTempSymbol";
 import useCurrentConditions from "@/utils/hooks/useCurrentConditions";
 import asset from "@chappy/utils/asset";
@@ -10,13 +11,16 @@ import asset from "@chappy/utils/asset";
  * @returns {JSX.Element} The current conditions for selected area.
  */
 function CurrentConditions({ conditions, oneCall, units }) {
+    const { 
+        description 
+    } = useDescription(conditions?.weather?.[0]?.description)
+    
     const {
         temperatureSymbol
     } = useTempSymbol(units);
     
     const { 
         date, 
-        description,
         icon, 
         moonRise,
         moonSet,

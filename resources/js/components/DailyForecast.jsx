@@ -12,14 +12,16 @@ import DailyForecastCard from "./DailyForecastCard";
  * @returns {JSX.Element} Component displaying daily forecast.
  */
 function DailyForecast({ oneCall, units }) {
+    const tzOffset = oneCall?.timezone_offset;
 
     const { 
         dailyForecast, 
+        date,
         onCardClick, 
         selectedCard 
     } = useDaily(oneCall);
     
-    const tzOffset = oneCall?.timezone_offset;
+    
 
     return (
         <div className="card forecast my-4">
@@ -37,9 +39,13 @@ function DailyForecast({ oneCall, units }) {
             </div>
 
             <hr className="hr-border mx-auto" />
-            
+
             <div className="selected-day">
-                {selectedCard?.summary}
+                <h5 className="text-center my-2">{date}</h5>
+                <div>
+                    <p className="text-center my-2">{selectedCard?.summary}</p>
+                </div>
+                
             </div>
         </div>
     );

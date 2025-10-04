@@ -3,6 +3,7 @@ import "@css/forecast.css";
 import useDescription from "@/utils/hooks/useDescription";
 import useTempSymbol from "@/utils/hooks/useTempSymbol";
 import useCurrentConditions from "@/utils/hooks/useCurrentConditions";
+import useIcon from "@/utils/hooks/useIcon";
 import asset from "@chappy/utils/asset";
 
 /**
@@ -15,13 +16,13 @@ function CurrentConditions({ conditions, oneCall, units }) {
         description 
     } = useDescription(conditions?.weather?.[0]?.description)
     
+    const { icon } = useIcon(conditions?.weather?.[0]?.icon)
     const {
         temperatureSymbol
     } = useTempSymbol(units);
     
     const { 
         date, 
-        icon, 
         moonRise,
         moonSet,
         pressure,

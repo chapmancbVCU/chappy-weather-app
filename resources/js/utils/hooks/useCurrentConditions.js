@@ -19,12 +19,6 @@ const useCurrentConditions = (conditions, oneCall, units) => {
     const [date, setDate] = useState("");
 
     /**
-     * Sets icon for current conditions.
-     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
-     */
-    const [icon, setIcon] = useState("");
-
-    /**
      * Sets message for moonrise.
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
      */
@@ -225,12 +219,10 @@ const useCurrentConditions = (conditions, oneCall, units) => {
 
         pressureText(conditions?.main.pressure);
         visibilityText(conditions?.visibility);
-        setIcon(`https://openweathermap.org/img/wn/${conditions?.weather?.[0]?.icon}@2x.png`);
     }, [conditions, oneCall, units]);
 
     return {
         date,
-        icon,
         moonRise,
         moonSet,
         pressure,

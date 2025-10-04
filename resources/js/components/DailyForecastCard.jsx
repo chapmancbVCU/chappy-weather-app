@@ -3,6 +3,7 @@ import "@css/forecast.css";
 import useDescription from "@/utils/hooks/useDescription";
 import useTempSymbol from "@/utils/hooks/useTempSymbol";
 import useDailyCard from "@/utils/hooks/useDailyCard";
+import useIcon from "@/utils/hooks/useIcon";
 
 /**
  * Renders daily forecast card component.
@@ -17,18 +18,13 @@ import useDailyCard from "@/utils/hooks/useDailyCard";
  * @returns {JSX.Element} The daily forecast card component.
  */
 function DailyForecastCard({ daily, index, onCardClick, tzOffset, units }) {
-    const {
-        description
-    } = useDescription(daily?.weather?.[0].description);
-    
-    const {
-        temperatureSymbol
-    } = useTempSymbol(units);
+    const { description } = useDescription(daily?.weather?.[0].description);
 
-    const {
-        date,
-        icon
-    } = useDailyCard(daily, tzOffset);
+    const { icon } = useIcon(daily?.weather?.[0]?.icon);
+
+    const { temperatureSymbol } = useTempSymbol(units);
+
+    const {date } = useDailyCard(daily, tzOffset);
     
     return (
         <button className="daily-forecast-card"

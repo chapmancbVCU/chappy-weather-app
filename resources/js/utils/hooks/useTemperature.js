@@ -8,6 +8,7 @@ const useTemperature = (units) => {
     
     /**
      * Determines temperature symbol based on system used.
+     * @param {number} data The temperature provided by OpenWeatherMap.
      * @returns {string} F or C depending of system used.
      */
     const temperature = (data) => {

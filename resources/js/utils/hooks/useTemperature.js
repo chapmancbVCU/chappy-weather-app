@@ -5,7 +5,6 @@
  * @returns 
  */
 const useTemperature = (units) => {
-    
     /**
      * Determines temperature symbol based on system used.
      * @param {number} data The temperature provided by OpenWeatherMap.
@@ -16,9 +15,7 @@ const useTemperature = (units) => {
         return `${Math.round(data)}\xB0${system}`;
     }
 
-    return {
-        temperature
-    }
+    return { temperature }
 }
 
 export default useTemperature;

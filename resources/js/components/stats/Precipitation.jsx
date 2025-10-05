@@ -68,7 +68,7 @@ function Precipitation({ data, units }) {
     }, [data]);
 
     return (
-        <>
+        <div className="d-flex flex-column">
             {data.rain && (
                 <div className="forecast-info">
                     <div className="forecast-icon-container">
@@ -91,7 +91,7 @@ function Precipitation({ data, units }) {
                     </div>
                 </div>
             )}
-        </>
+        </div>
     );
 }        
 export default Precipitation;

@@ -65,7 +65,7 @@ function DailyForecast({ oneCall, units }) {
                             <div><strong>High</strong></div>
                             <div>{temperature(selectedCard?.temp.max)}</div>
                         </div>
-                        <div className="forecast-info mb-3">
+                        <div className="forecast-info mb-3 winds-container">
                             <div className="forecast-icon-container">
                                 <img className="forecast-icon" src={asset('public/icons/weather-windy.png')} />
                             </div>

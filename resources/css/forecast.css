@@ -127,6 +127,10 @@
     width: 115px;
 }
 
+.winds-container {
+    margin-right: 20px;
+}
+
 @media only screen and (min-width: 922px) {
     .forecast-icon-container {
         min-width: 10px;
@@ -165,5 +169,9 @@
     .section-right {
         margin-left: auto;
         margin-bottom: 15px;
+    }
+
+    .winds-container {
+        margin-right: 0;
     }
 }

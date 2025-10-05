@@ -14,7 +14,7 @@ function Ephemeris({ data, tzOffset }) {
     if(data == null) return null;
 
     const dateTimeUtil = useMemo(() => new DateTimeUtil(), []);
-    const moonRiseIcon = asset('public/icons/moon-rise.png');
+    const moonRiseIcon = asset('public/icons/new-moon.png');
     const moonSetIcon = asset('public/icons/moon-set.png');
     const sunRiseIcon = asset('public/icons/sun-rise.png');
     const sunSetIcon = asset('public/icons/sun-set.png');

@@ -106,14 +106,14 @@ function DailyForecast({ oneCall, units }) {
             <div className="row-section">
                 <Humidity data={selectedCard?.humidity} />
                 <Precipitation data={selectedCard} units={units} />
-                <PPT data={selectedCard.pop} />
+                <PPT data={selectedCard?.pop} />
                 <div className="forecast-info">
                     <div className="forecast-icon-container">
-                        <img className="forecast-icon" src={asset('public/icons/moon-rise.png')} />
+                        <img className="forecast-icon" src={asset('public/icons/new-moon.png')} />
                     </div>
                     <div className="forecast-info-block">
                         Moon Phase
-                        <div>{selectedCard.moon_phase}</div>
+                        <div>{selectedCard?.moon_phase}</div>
                     </div>
                 </div>
             </div>

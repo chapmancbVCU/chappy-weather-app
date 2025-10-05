@@ -1,8 +1,17 @@
 import React from "react";
 import "@css/forecast.css";
 import asset from "@chappy/utils/asset";
-function PPT({ data }) {
 
+/**
+ * Renders information about chance of precipitation.
+ * 
+ * @property {number} data The precipitation chance.
+ * @param {InputProps} param0 
+ * @returns {JSX.Element} The component containing information about chance 
+ * of precipitation.
+ */
+function PPT({ data }) {
+    if(data == null) return;
     return (
         <div className="forecast-info">
             <div className="forecast-icon-container">

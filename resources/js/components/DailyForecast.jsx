@@ -130,15 +130,6 @@ function DailyForecast({ oneCall, units }) {
                 <DewPoint data={selectedCard?.dew_point} units={units} />
                 <div className="forecast-info">
                     <div className="forecast-icon-container">
-                        <img className="forecast-icon" src={asset('public/icons/dew-point.png')} />
-                    </div>
-                    <div className="forecast-info-block">
-                        Dew Point
-                        <div>{temperature(selectedCard?.dew_point)}</div>
-                    </div>
-                </div>
-                <div className="forecast-info">
-                    <div className="forecast-icon-container">
                         <img className="forecast-icon" src={asset('public/icons/UVI.png')} />
                     </div>
                     <div className="forecast-info-block">

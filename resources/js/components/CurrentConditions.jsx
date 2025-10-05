@@ -23,7 +23,8 @@ function CurrentConditions({ conditions, oneCall, units }) {
         moonSet,
         sunRise,
         sunSet
-     } = useEphemeris(oneCall?.daily?.[0], oneCall?.timezone_offset);
+    } = useEphemeris(oneCall?.daily?.[0], oneCall?.timezone_offset);
+
     const { 
         date, 
         pressure,

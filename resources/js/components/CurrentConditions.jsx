@@ -12,8 +12,7 @@ import usePressure from "@/utils/hooks/usePressure";
 /**
  * Renders current conditions.
  * 
- * @property {object} conditions The object containing information about 
- * current conditions.
+ * @property {object} conditions Standard data.
  * @property {object} oneCall The oneCall tier data.
  * @property {string} units The system of units in use.
  * @param {InputProps} param0 

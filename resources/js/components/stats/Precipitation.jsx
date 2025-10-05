@@ -34,6 +34,12 @@ function Precipitation({ data, units }) {
         } 
         return snowTotal + ' mm';
     };
+
+    /**
+     * Calculates precipitation totals to inches and rounds to 2 decimal places.
+     * @param {number} total Total amount of precipitation in mm.
+     * @returns 
+     */
     const imperialConversion = (total) => {
         const conversionConstant = 25.4;
         return (total * (1/conversionConstant)).toFixed(2) + '"';

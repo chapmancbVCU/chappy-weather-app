@@ -17,12 +17,6 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
      */
     const [date, setDate] = useState("");
-
-    /**
-     * Sets message for air pressure.
-     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
-     */
-    const [pressure, setPressure] = useState("");
     
     /**
      * Short summary of current conditions.
@@ -41,19 +35,6 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
      */
     const [visibility, setVisibility] = useState("");
-
-    /**
-     * Set message for air pressure depending on current system of units.
-     * @param {number} data The air pressure value from Open Weather Map.
-     */
-    const pressureText = (data) => {
-        const system = (units === 'imperial') ? "psi" : 'mbar';
-        const conversionValue = 0.0295
-        const pressure = (units === 'imperial') 
-            ? (conversionValue * data).toFixed(1) 
-            : data;
-        setPressure(`${pressure} ${system}`);
-    }
 
     /**
      * Sets message for visibility depending on current system of units.
@@ -80,14 +61,11 @@ const useCurrentConditions = (conditions, oneCall, units) => {
         setDate(dateTimeUtil.getDateInfo(stamp));
 
         setSummary(oneCall?.daily?.[0]?.summary ?? "");
-
-        pressureText(conditions?.main.pressure);
         visibilityText(conditions?.visibility);
     }, [conditions, oneCall, units]);
 
     return {
         date,
-        pressure,
         summary,
         time,
         visibility,

@@ -7,6 +7,7 @@ import useIcon from "@/utils/hooks/useIcon";
 import asset from "@chappy/utils/asset";
 import useWinds from "@/utils/hooks/useWinds";
 import useEphemeris from "@/utils/hooks/useEphemeris";
+import usePressure from "@/utils/hooks/usePressure";
 
 /**
  * Renders current conditions.
@@ -27,11 +28,12 @@ function CurrentConditions({ conditions, oneCall, units }) {
 
     const { 
         date, 
-        pressure,
         summary, 
         time,
         visibility,
     } = useCurrentConditions(conditions, oneCall, units);
+
+    const { pressure, pressureIcon } = usePressure(conditions?.main?.pressure, units);
 
     const { wind, windDirection, windGusts } = useWinds(
         conditions?.wind?.speed, 
@@ -126,7 +128,7 @@ function CurrentConditions({ conditions, oneCall, units }) {
                 </div>
                 <div className="forecast-info">
                     <div className="forecast-icon-container">
-                        <img className="forecast-icon" src={asset('public/icons/air-pressure.png')} />
+                        <img className="forecast-icon" src={pressureIcon} />
                     </div>
                     <div className="forecast-info-block">
                         Pressure

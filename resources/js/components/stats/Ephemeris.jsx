@@ -1,5 +1,5 @@
 import React from "react";
-function Epheremis() {
+function Ephemeris() {
 
     return (
         <>
@@ -7,4 +7,4 @@ function Epheremis() {
         </>
     );
 }        
-export default Epheremis;
+export default Ephemeris;

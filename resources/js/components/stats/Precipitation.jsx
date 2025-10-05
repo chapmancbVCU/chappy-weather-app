@@ -22,6 +22,10 @@ function Precipitation({ data, units }) {
         return rainTotal + ' mm';
     };
 
+    /**
+     * Setup display of snow totals based on systems of units.
+     * @returns {string} The snow totals.
+     */
     const calculateSnowTotal = () => {
         if(data.snow === undefined) return undefined;
         const snowTotal = data.snow;

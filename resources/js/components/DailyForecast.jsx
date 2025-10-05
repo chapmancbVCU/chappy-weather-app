@@ -78,8 +78,13 @@ function DailyForecast({ oneCall, units }) {
                         </div>
                     </div>
                 </div>
-                
             </div>
+
+            <hr className="hr-border mx-auto" />
+
+            <h4 className="text-center">Temperature Range</h4>
+
+            
         </div>
     );
 }        

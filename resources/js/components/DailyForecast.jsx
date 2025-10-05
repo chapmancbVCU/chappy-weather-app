@@ -84,7 +84,44 @@ function DailyForecast({ oneCall, units }) {
 
             <h4 className="text-center">Temperature Range</h4>
 
-            
+            <div className="row-section">
+                <div className="temperature">
+                    <p className="fs-5 mb-1">Morning</p>
+                    <div>
+                        Actual: {temperature(selectedCard?.temp.morn)}
+                    </div>
+                    <div>
+                        Feels Like: {temperature(selectedCard?.feels_like.morn)}
+                    </div>
+                </div>
+                <div className="temperature">
+                    <p className="fs-5 mb-1">Day</p>
+                    <div>
+                        Actual: {temperature(selectedCard?.temp.day)}
+                    </div>
+                    <div>
+                        Feels Like: {temperature(selectedCard?.feels_like.day)}
+                    </div>
+                </div>
+                <div className="temperature">
+                    <p className="fs-5 mb-1">Evening</p>
+                    <div>
+                        Actual: {temperature(selectedCard?.temp.eve)}
+                    </div>
+                    <div>
+                        Feels Like: {temperature(selectedCard?.feels_like.eve)}
+                    </div>
+                </div>
+                <div className="temperature">
+                    <p className="fs-5 mb-1">Night</p>
+                    <div>
+                        Actual: {temperature(selectedCard?.temp.night)}
+                    </div>
+                    <div>
+                        Feels Like: {temperature(selectedCard?.feels_like.night)}
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }        

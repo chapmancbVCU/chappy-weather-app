@@ -12,6 +12,7 @@ import useVisibility from "@/utils/hooks/useVisibility";
 import DewPoint from "./stats/DewPoint";
 import UVI from "./stats/UVI";
 import TemperatureRange from "./stats/TemperatureRange";
+import Humidity from "./stats/Humidity";
 
 /**
  * Renders current conditions.
@@ -80,7 +81,8 @@ function CurrentConditions({ conditions, oneCall, units }) {
                             </div>
                         </div>
                     </div>
-                    <div className="forecast-info">
+                    <Humidity data={conditions?.main?.humidity} />
+                    {/* <div className="forecast-info">
                         <div className="forecast-icon-container">
                             <img className="forecast-icon" src={asset('public/icons/humidity.png')} />
                         </div>
@@ -90,7 +92,7 @@ function CurrentConditions({ conditions, oneCall, units }) {
                                 {conditions?.main?.humidity}%
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                     <div className="forecast-info">
                         <div className="forecast-icon-container">
                             <img className="forecast-icon" src={asset('public/icons/weather-pouring.png')} />

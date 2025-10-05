@@ -6,7 +6,7 @@ import useCurrentConditions from "@/utils/hooks/useCurrentConditions";
 import useIcon from "@/utils/hooks/useIcon";
 import asset from "@chappy/utils/asset";
 import useWinds from "@/utils/hooks/useWinds";
-import useEphemeris from "@/utils/hooks/useEphemeris";
+import Ephemeris from "./stats/Ephemeris";
 import Pressure from "./Pressure";
 import useVisibility from "@/utils/hooks/useVisibility";
 import DewPoint from "./stats/DewPoint";
@@ -28,16 +28,16 @@ function CurrentConditions({ conditions, oneCall, units }) {
     const { icon } = useIcon(conditions?.weather?.[0]?.icon);
     const { temperature } = useTemperature(units);
     
-    const { 
-        moonRise, 
-        moonRiseIcon,
-        moonSet, 
-        moonSetIcon,
-        sunRise, 
-        sunRiseIcon,
-        sunSet,
-        sunSetIcon
-    } = useEphemeris(oneCall?.daily?.[0], oneCall?.timezone_offset);
+    // const { 
+    //     moonRise, 
+    //     moonRiseIcon,
+    //     moonSet, 
+    //     moonSetIcon,
+    //     sunRise, 
+    //     sunRiseIcon,
+    //     sunSet,
+    //     sunSetIcon
+    // } = useEphemeris(oneCall?.daily?.[0], oneCall?.timezone_offset);
 
     const { 
         date, 
@@ -136,48 +136,8 @@ function CurrentConditions({ conditions, oneCall, units }) {
             </div>
 
             <hr className="hr-border mx-auto" />
-
-            <div className="row-section">
-                <div className="forecast-info">
-                    <div className="forecast-icon-container">
-                        <img className="forecast-icon" src={sunRiseIcon} />
-                    </div>
-                    <div className="forecast-info-block">
-                        Sun Rise
-                        <div>{sunRise}</div>
-                    </div>
-                </div>
-                <div className="forecast-info">
-                    <div className="forecast-icon-container">
-                        <img className="forecast-icon" src={sunSetIcon} />
-                    </div>
-                    <div className="forecast-info-block">
-                        Sun Set
-                        <div>{sunSet}</div>
-                    </div>
-                </div>
-                <div className="forecast-info">
-                    <div className="forecast-icon-container">
-                        <img className="forecast-icon" src={moonRiseIcon} />
-                    </div>
-                    <div className="forecast-info-block">
-                        Moon Rise
-                        <div>{moonRise}</div>
-                    </div>
-                </div>
-                <div className="forecast-info">
-                    <div className="forecast-icon-container">
-                        <img className="forecast-icon" src={moonSetIcon} />
-                    </div>
-                    <div className="forecast-info-block">
-                        Moon Set
-                        <div>{moonSet}</div>
-                    </div>
-                </div>
-            </div>
-
+            <Ephemeris data={oneCall?.daily?.[0]} tzOffset={oneCall?.timezone_offset} />         
             <hr className="hr-border mx-auto" />
-
             <TemperatureRange data={oneCall?.daily?.[0]} units={units} />
         </div>
     );

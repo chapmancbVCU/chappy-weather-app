@@ -11,6 +11,11 @@ import usePressure from "@/utils/hooks/usePressure";
 
 /**
  * Renders current conditions.
+ * 
+ * @property {object} conditions The object containing information about 
+ * current conditions.
+ * @property {object} oneCall The oneCall tier data.
+ * @property {string} units The system of units in use.
  * @param {InputProps} param0 
  * @returns {JSX.Element} The current conditions for selected area.
  */

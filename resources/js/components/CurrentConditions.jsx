@@ -8,6 +8,7 @@ import asset from "@chappy/utils/asset";
 import useWinds from "@/utils/hooks/useWinds";
 import useEphemeris from "@/utils/hooks/useEphemeris";
 import usePressure from "@/utils/hooks/usePressure";
+import useVisibility from "@/utils/hooks/useVisibility";
 
 /**
  * Renders current conditions.
@@ -34,7 +35,6 @@ function CurrentConditions({ conditions, oneCall, units }) {
         date, 
         summary, 
         time,
-        visibility,
     } = useCurrentConditions(conditions, oneCall, units);
 
     const { pressure, pressureIcon } = usePressure(conditions?.main?.pressure, units);
@@ -45,6 +45,8 @@ function CurrentConditions({ conditions, oneCall, units }) {
         conditions?.wind?.deg, 
         units
     );
+
+    const { visibility, visibilityIcon} = useVisibility(conditions?.visibility, units);
 
     return (
         <div className="card forecast my-4">
@@ -141,7 +143,7 @@ function CurrentConditions({ conditions, oneCall, units }) {
                 </div>
                 <div className="forecast-info">
                     <div className="forecast-icon-container">
-                        <img className="forecast-icon" src={asset('public/icons/visibility.png')} />
+                        <img className="forecast-icon" src={visibilityIcon} />
                     </div>
                     <div className="forecast-info-block">
                         Visibility

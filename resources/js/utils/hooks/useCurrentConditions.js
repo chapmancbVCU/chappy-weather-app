@@ -30,26 +30,6 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      */
     const [time, setTime] = useState("");
 
-    /**
-     * Sets message for visibility.
-     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
-     */
-    const [visibility, setVisibility] = useState("");
-
-    /**
-     * Sets message for visibility depending on current system of units.
-     * @param {number} data Visibility value presented by Open Weather Map. 
-     */
-    const visibilityText = (data) => {
-        const imperialConversion = 1609.344;
-        const metricConversion = 1000;
-        const value = (units === 'imperial') 
-            ? (data / imperialConversion).toFixed(1) + ' miles'
-            : (data / metricConversion).toFixed(1) + ' km';
-
-        setVisibility(value);
-    }
-
     useEffect(() => {
         // Guard: need dt and timezone_offset to compute local date/time
         const dt = oneCall?.current?.dt;
@@ -61,14 +41,12 @@ const useCurrentConditions = (conditions, oneCall, units) => {
         setDate(dateTimeUtil.getDateInfo(stamp));
 
         setSummary(oneCall?.daily?.[0]?.summary ?? "");
-        visibilityText(conditions?.visibility);
     }, [conditions, oneCall, units]);
 
     return {
         date,
         summary,
         time,
-        visibility,
     }
 }
 

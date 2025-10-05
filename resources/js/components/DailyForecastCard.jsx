@@ -19,11 +19,8 @@ import useIcon from "@/utils/hooks/useIcon";
  */
 function DailyForecastCard({ daily, index, onCardClick, tzOffset, units }) {
     const { description } = useDescription(daily?.weather?.[0].description);
-
     const { icon } = useIcon(daily?.weather?.[0]?.icon);
-
     const { temperature } = useTemperature(units);
-
     const { forecastDate } = useForecastDate(daily.dt, tzOffset);
     
     return (

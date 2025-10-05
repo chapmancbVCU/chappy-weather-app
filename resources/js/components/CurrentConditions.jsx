@@ -81,18 +81,9 @@ function CurrentConditions({ conditions, oneCall, units }) {
                             </div>
                         </div>
                     </div>
+
                     <Humidity data={conditions?.main?.humidity} />
-                    {/* <div className="forecast-info">
-                        <div className="forecast-icon-container">
-                            <img className="forecast-icon" src={asset('public/icons/humidity.png')} />
-                        </div>
-                        <div className="forecast-info-block">
-                            Humidity
-                            <div>
-                                {conditions?.main?.humidity}%
-                            </div>
-                        </div>
-                    </div> */}
+                    
                     <div className="forecast-info">
                         <div className="forecast-icon-container">
                             <img className="forecast-icon" src={asset('public/icons/weather-pouring.png')} />

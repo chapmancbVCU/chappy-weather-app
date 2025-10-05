@@ -27,17 +27,6 @@ function CurrentConditions({ conditions, oneCall, units }) {
     const { description } = useDescription(conditions?.weather?.[0]?.description);
     const { icon } = useIcon(conditions?.weather?.[0]?.icon);
     const { temperature } = useTemperature(units);
-    
-    // const { 
-    //     moonRise, 
-    //     moonRiseIcon,
-    //     moonSet, 
-    //     moonSetIcon,
-    //     sunRise, 
-    //     sunRiseIcon,
-    //     sunSet,
-    //     sunSetIcon
-    // } = useEphemeris(oneCall?.daily?.[0], oneCall?.timezone_offset);
 
     const { 
         date, 
@@ -83,7 +72,7 @@ function CurrentConditions({ conditions, oneCall, units }) {
                     </div>
 
                     <Humidity data={conditions?.main?.humidity} />
-                    
+
                     <div className="forecast-info">
                         <div className="forecast-icon-container">
                             <img className="forecast-icon" src={asset('public/icons/weather-pouring.png')} />

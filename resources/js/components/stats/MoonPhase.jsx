@@ -1,5 +1,15 @@
 import React from "react";
-function MoonPhase() {
+import asset from "@chappy/utils/asset";
+
+/**
+ * Displays information about moon phases.
+ * 
+ * @property {number} data The current moon phase.
+ * @param {InputProps} param0 
+ * @returns {JSX.Element} The component that renders current moon phase 
+ * information.
+ */
+function MoonPhase({ data }) {
 
     return (
         <>

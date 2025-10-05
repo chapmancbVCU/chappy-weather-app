@@ -1,7 +1,13 @@
 import { useEffect, useState, useMemo } from "react";
 import { DateTimeUtil } from "../DateTimeUtil";
+import asset from "@chappy/utils/asset";
+
 const useEphemeris = (data, tzOffset) => {
     const dateTimeUtil = useMemo(() => new DateTimeUtil(), []);
+    const moonRiseIcon = asset('public/icons/moon-rise.png');
+    const moonSetIcon = asset('public/icons/moon-set.png');
+    const sunRiseIcon = asset('public/icons/sun-rise.png');
+    const sunSetIcon = asset('public/icons/sun-set.png');
 
     /**
      * Sets message for moonrise.
@@ -74,7 +80,16 @@ const useEphemeris = (data, tzOffset) => {
         calcSunSet(data?.sunset);
     }, [data]);
 
-    return { moonRise, moonSet, sunRise, sunSet }
+    return { 
+        moonRise, 
+        moonRiseIcon,
+        moonSet, 
+        moonSetIcon,
+        sunRise, 
+        sunRiseIcon,
+        sunSet,
+        sunSetIcon
+    }
 }
 
 export default useEphemeris;

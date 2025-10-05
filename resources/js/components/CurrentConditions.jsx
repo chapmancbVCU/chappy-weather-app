@@ -25,10 +25,14 @@ function CurrentConditions({ conditions, oneCall, units }) {
     const { temperature } = useTemperature(units);
     
     const { 
-        moonRise,
-        moonSet,
-        sunRise,
-        sunSet
+        moonRise, 
+        moonRiseIcon,
+        moonSet, 
+        moonSetIcon,
+        sunRise, 
+        sunRiseIcon,
+        sunSet,
+        sunSetIcon
     } = useEphemeris(oneCall?.daily?.[0], oneCall?.timezone_offset);
 
     const { 
@@ -157,7 +161,7 @@ function CurrentConditions({ conditions, oneCall, units }) {
             <div className="row-section">
                 <div className="forecast-info">
                     <div className="forecast-icon-container">
-                        <img className="forecast-icon" src={asset('public/icons/sun-rise.png')} />
+                        <img className="forecast-icon" src={sunRiseIcon} />
                     </div>
                     <div className="forecast-info-block">
                         Sun Rise
@@ -166,7 +170,7 @@ function CurrentConditions({ conditions, oneCall, units }) {
                 </div>
                 <div className="forecast-info">
                     <div className="forecast-icon-container">
-                        <img className="forecast-icon" src={asset('public/icons/sun-set.png')} />
+                        <img className="forecast-icon" src={sunSetIcon} />
                     </div>
                     <div className="forecast-info-block">
                         Sun Set
@@ -175,7 +179,7 @@ function CurrentConditions({ conditions, oneCall, units }) {
                 </div>
                 <div className="forecast-info">
                     <div className="forecast-icon-container">
-                        <img className="forecast-icon" src={asset('public/icons/moon-rise.png')} />
+                        <img className="forecast-icon" src={moonRiseIcon} />
                     </div>
                     <div className="forecast-info-block">
                         Moon Rise
@@ -184,7 +188,7 @@ function CurrentConditions({ conditions, oneCall, units }) {
                 </div>
                 <div className="forecast-info">
                     <div className="forecast-icon-container">
-                        <img className="forecast-icon" src={asset('public/icons/moon-set.png')} />
+                        <img className="forecast-icon" src={moonSetIcon} />
                     </div>
                     <div className="forecast-info-block">
                         Moon Set

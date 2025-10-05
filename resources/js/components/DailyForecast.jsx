@@ -97,6 +97,12 @@ function DailyForecast({ oneCall, units }) {
                 <Pressure data={selectedCard?.pressure} units={units} />
                 <Cloudiness data={selectedCard?.clouds} />
             </div>
+
+            <hr className="hr-border mx-auto" />
+
+            <div className="row-section">
+                
+            </div>
         </div>
     );
 }        

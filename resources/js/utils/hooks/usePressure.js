@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 import asset from "@chappy/utils/asset";
 
+/**
+ * Manages messaging for air pressure.
+ * 
+ * @param {number} data The value for pressure provided by Open Weather Map.
+ * @param {string} units The system of units in use.
+ * @returns 
+ */
 const usePressure = (data, units) => {
     const pressureIcon = asset('public/icons/air-pressure.png');
 

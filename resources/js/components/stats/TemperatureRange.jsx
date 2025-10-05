@@ -15,7 +15,7 @@ function TemperatureRange({ data, units }) {
     if(data == null) return;
 
     return (
-        <div>
+        <>
             <h4 className="text-center">Temperature Ranges</h4>
 
             <div className="row-section">
@@ -56,7 +56,7 @@ function TemperatureRange({ data, units }) {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }        
 export default TemperatureRange;

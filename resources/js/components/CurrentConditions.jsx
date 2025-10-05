@@ -11,6 +11,7 @@ import Pressure from "./Pressure";
 import useVisibility from "@/utils/hooks/useVisibility";
 import DewPoint from "./stats/DewPoint";
 import UVI from "./stats/UVI";
+import TemperatureRange from "./stats/TemperatureRange";
 
 /**
  * Renders current conditions.
@@ -175,46 +176,7 @@ function CurrentConditions({ conditions, oneCall, units }) {
 
             <hr className="hr-border mx-auto" />
 
-            <h4 className="text-center">Temperature Ranges</h4>
-
-            <div className="row-section">
-                <div className="temperature">
-                    <p className="fs-5 mb-1">Morning</p>
-                    <div>
-                        Actual: {temperature(oneCall?.daily?.[0]?.temp.morn)}
-                    </div>
-                    <div>
-                        Feels Like: {temperature(oneCall?.daily?.[0]?.feels_like.morn)}
-                    </div>
-                </div>
-                <div className="temperature">
-                    <p className="fs-5 mb-1">Day</p>
-                    <div>
-                        Actual: {temperature(oneCall?.daily?.[0]?.temp.day)}
-                    </div>
-                    <div>
-                        Feels Like: {temperature(oneCall?.daily?.[0]?.feels_like.day)}
-                    </div>
-                </div>
-                <div className="temperature">
-                    <p className="fs-5 mb-1">Evening</p>
-                    <div>
-                        Actual: {temperature(oneCall?.daily?.[0]?.temp.eve)}
-                    </div>
-                    <div>
-                        Feels Like: {temperature(oneCall?.daily?.[0]?.feels_like.eve)}
-                    </div>
-                </div>
-                <div className="temperature">
-                    <p className="fs-5 mb-1">Night</p>
-                    <div>
-                        Actual: {temperature(oneCall?.daily?.[0]?.temp.night)}
-                    </div>
-                    <div>
-                        Feels Like: {temperature(oneCall?.daily?.[0]?.feels_like.night)}
-                    </div>
-                </div>
-            </div>
+            <TemperatureRange data={oneCall?.daily?.[0]} units={units} />
         </div>
     );
 }        

@@ -9,6 +9,10 @@ function Precipitation({ data, units }) {
     const [rain, setRain] = useState("");
     const [snow, setSnow] = useState("");
 
+    /**
+     * Setup display of rain totals based on systems of units.
+     * @returns {string} The rain totals.
+     */
     const calculateRainTotal = () => {
         if(data.rain === undefined) return undefined;
         const rainTotal = data.rain;

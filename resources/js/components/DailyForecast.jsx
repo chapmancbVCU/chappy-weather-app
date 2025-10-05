@@ -11,6 +11,7 @@ import DewPoint from "./stats/DewPoint";
 import UVI from "./stats/UVI";
 import Pressure from "./Pressure";
 import TemperatureRange from "./stats/TemperatureRange";
+import Cloudiness from "./stats/Cloudiness";
 
 /**
  * Renders component for daily forecast.
@@ -94,6 +95,7 @@ function DailyForecast({ oneCall, units }) {
                 <DewPoint data={selectedCard?.dew_point} units={units} />
                 <UVI data={selectedCard?.uvi} />
                 <Pressure data={selectedCard?.pressure} units={units} />
+                <Cloudiness data={selectedCard?.clouds} />
             </div>
         </div>
     );

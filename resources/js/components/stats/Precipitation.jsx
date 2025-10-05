@@ -6,7 +6,16 @@ function Precipitation({ data, units }) {
     const rainIcon = asset('public/icons/weather-pouring.png');
     const snowIcon = asset('public/icons/snowflake.png');
 
+    /**
+     * Sets message for rain totals.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [rain, setRain] = useState("");
+
+    /**
+     * Sets message for snow totals.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [snow, setSnow] = useState("");
 
     /**

@@ -69,10 +69,10 @@ function DailyForecast({ oneCall, units }) {
                             <div className="forecast-icon-container">
                                 <img className="forecast-icon" src={asset('public/icons/weather-windy.png')} />
                             </div>
-                            <div className="forecast-info-block">
-                                Winds
-                                <div>{wind}, {windDirection}</div>
-                                Wind Gusts
+                            <div className="winds">
+                                <strong>Winds</strong>
+                                <div className="mb-2">{wind}, {windDirection}</div>
+                                <strong>Wind Gusts</strong>
                                 <div>{windGusts}</div>
                             </div>
                         </div>

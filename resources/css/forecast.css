@@ -122,6 +122,11 @@
     margin-bottom: 15px;
 }
 
+.winds {
+    margin-left: 10px;
+    width: 115px;
+}
+
 @media only screen and (min-width: 922px) {
     .forecast-icon-container {
         min-width: 10px;

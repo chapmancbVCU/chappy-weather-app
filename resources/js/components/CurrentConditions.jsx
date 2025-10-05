@@ -7,7 +7,7 @@ import useIcon from "@/utils/hooks/useIcon";
 import asset from "@chappy/utils/asset";
 import useWinds from "@/utils/hooks/useWinds";
 import useEphemeris from "@/utils/hooks/useEphemeris";
-import usePressure from "@/utils/hooks/usePressure";
+import Pressure from "./Pressure";
 import useVisibility from "@/utils/hooks/useVisibility";
 import DewPoint from "./stats/DewPoint";
 import UVI from "./stats/UVI";
@@ -42,8 +42,6 @@ function CurrentConditions({ conditions, oneCall, units }) {
         summary, 
         time,
     } = useCurrentConditions(conditions, oneCall, units);
-
-    const { pressure, pressureIcon } = usePressure(conditions?.main?.pressure, units);
 
     const { wind, windDirection, windGusts } = useWinds(
         conditions?.wind?.speed, 
@@ -122,15 +120,7 @@ function CurrentConditions({ conditions, oneCall, units }) {
             <div className="row-section">
                 <DewPoint data={oneCall?.current?.dew_point} units={units} />
                 <UVI data={oneCall?.daily?.[0]?.uvi} />
-                <div className="forecast-info">
-                    <div className="forecast-icon-container">
-                        <img className="forecast-icon" src={pressureIcon} />
-                    </div>
-                    <div className="forecast-info-block">
-                        Pressure
-                        <div>{pressure}</div>
-                    </div>
-                </div>
+                <Pressure data={conditions?.main?.pressure} units={units} />
                 <div className="forecast-info">
                     <div className="forecast-icon-container">
                         <img className="forecast-icon" src={visibilityIcon} />

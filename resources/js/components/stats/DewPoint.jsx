@@ -4,6 +4,9 @@ import useTemperature from "@/utils/hooks/useTemperature";
 import "@css/forecast.css";
 /**
  * Renders information about dew points.
+ * 
+ * @property {number} data The dew point data.
+ * @property {string} units The system of units in use.  
  * @param {InputProps} param0 
  * @returns {JSX.Element} Component containing dew point information.
  */

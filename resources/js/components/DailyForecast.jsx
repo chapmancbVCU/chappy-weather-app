@@ -12,6 +12,7 @@ import UVI from "./stats/UVI";
 import Pressure from "./Pressure";
 import TemperatureRange from "./stats/TemperatureRange";
 import Cloudiness from "./stats/Cloudiness";
+import Humidity from "./stats/Humidity";
 
 /**
  * Renders component for daily forecast.
@@ -101,7 +102,7 @@ function DailyForecast({ oneCall, units }) {
             <hr className="hr-border mx-auto" />
 
             <div className="row-section">
-                
+                <Humidity data={selectedCard?.humidity} />
             </div>
         </div>
     );

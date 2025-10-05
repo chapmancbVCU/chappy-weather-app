@@ -14,6 +14,7 @@ import TemperatureRange from "./stats/TemperatureRange";
 import Cloudiness from "./stats/Cloudiness";
 import Humidity from "./stats/Humidity";
 import Precipitation from "./stats/Precipitation";
+import PPT from "./stats/PPT";
 
 /**
  * Renders component for daily forecast.
@@ -105,6 +106,7 @@ function DailyForecast({ oneCall, units }) {
             <div className="row-section">
                 <Humidity data={selectedCard?.humidity} />
                 <Precipitation data={selectedCard} units={units} />
+                <PPT data={selectedCard.pop} />
             </div>
         </div>
     );

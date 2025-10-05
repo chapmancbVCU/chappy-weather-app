@@ -21,7 +21,7 @@ function Ephemeris({ data, tzOffset }) {
 
     /**
      * Sets message for moonrise.
-     * @returns {string} The rain totals.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
      */
     const [moonRise, setMoonRise] = useState("");
 

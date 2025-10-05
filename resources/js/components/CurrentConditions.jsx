@@ -6,6 +6,7 @@ import useCurrentConditions from "@/utils/hooks/useCurrentConditions";
 import useIcon from "@/utils/hooks/useIcon";
 import asset from "@chappy/utils/asset";
 import useWinds from "@/utils/hooks/useWinds";
+import useEphemeris from "@/utils/hooks/useEphemeris";
 
 /**
  * Renders current conditions.
@@ -13,18 +14,20 @@ import useWinds from "@/utils/hooks/useWinds";
  * @returns {JSX.Element} The current conditions for selected area.
  */
 function CurrentConditions({ conditions, oneCall, units }) {
-    const { description } = useDescription(conditions?.weather?.[0]?.description)
-    const { icon } = useIcon(conditions?.weather?.[0]?.icon)
+    const { description } = useDescription(conditions?.weather?.[0]?.description);
+    const { icon } = useIcon(conditions?.weather?.[0]?.icon);
     const { temperature } = useTemperature(units);
     
     const { 
-        date, 
         moonRise,
         moonSet,
+        sunRise,
+        sunSet
+     } = useEphemeris(oneCall?.daily?.[0], oneCall?.timezone_offset);
+    const { 
+        date, 
         pressure,
         summary, 
-        sunRise,
-        sunSet,
         time,
         visibility,
     } = useCurrentConditions(conditions, oneCall, units);

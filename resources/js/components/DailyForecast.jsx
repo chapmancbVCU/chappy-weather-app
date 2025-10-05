@@ -9,6 +9,7 @@ import useTemperature from "@/utils/hooks/useTemperature";
 import useWinds from "@/utils/hooks/useWinds";
 import DewPoint from "./stats/DewPoint";
 import UVI from "./stats/UVI";
+import Pressure from "./Pressure";
 
 /**
  * Renders component for daily forecast.
@@ -130,6 +131,7 @@ function DailyForecast({ oneCall, units }) {
             <div className="row-section">
                 <DewPoint data={selectedCard?.dew_point} units={units} />
                 <UVI data={selectedCard?.uvi} />
+                <Pressure data={selectedCard?.pressure} units={units} />
             </div>
         </div>
     );

@@ -8,6 +8,7 @@ import useIcon from "@/utils/hooks/useIcon";
 import useTemperature from "@/utils/hooks/useTemperature";
 import useWinds from "@/utils/hooks/useWinds";
 import DewPoint from "./stats/DewPoint";
+import UVI from "./stats/UVI";
 
 /**
  * Renders component for daily forecast.
@@ -128,15 +129,7 @@ function DailyForecast({ oneCall, units }) {
 
             <div className="row-section">
                 <DewPoint data={selectedCard?.dew_point} units={units} />
-                <div className="forecast-info">
-                    <div className="forecast-icon-container">
-                        <img className="forecast-icon" src={asset('public/icons/UVI.png')} />
-                    </div>
-                    <div className="forecast-info-block">
-                        UV Index
-                        <div>{selectedCard?.uvi?.toFixed(0)} out of 10</div>
-                    </div>
-                </div>
+                <UVI data={selectedCard?.uvi} />
             </div>
         </div>
     );

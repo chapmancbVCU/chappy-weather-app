@@ -10,6 +10,7 @@ import useEphemeris from "@/utils/hooks/useEphemeris";
 import usePressure from "@/utils/hooks/usePressure";
 import useVisibility from "@/utils/hooks/useVisibility";
 import DewPoint from "./stats/DewPoint";
+import UVI from "./stats/UVI";
 
 /**
  * Renders current conditions.
@@ -120,15 +121,7 @@ function CurrentConditions({ conditions, oneCall, units }) {
 
             <div className="row-section">
                 <DewPoint data={oneCall?.current?.dew_point} units={units} />
-                <div className="forecast-info">
-                    <div className="forecast-icon-container">
-                        <img className="forecast-icon" src={asset('public/icons/UVI.png')} />
-                    </div>
-                    <div className="forecast-info-block">
-                        UV Index
-                        <div>{oneCall?.daily?.[0]?.uvi.toFixed(0)} out of 10</div>
-                    </div>
-                </div>
+                <UVI data={oneCall?.daily?.[0]?.uvi} />
                 <div className="forecast-info">
                     <div className="forecast-icon-container">
                         <img className="forecast-icon" src={pressureIcon} />

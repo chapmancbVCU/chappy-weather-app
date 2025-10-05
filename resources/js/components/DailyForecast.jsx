@@ -7,6 +7,7 @@ import useForecastDate from "@/utils/hooks/useForecastDate";
 import useIcon from "@/utils/hooks/useIcon";
 import useTemperature from "@/utils/hooks/useTemperature";
 import useWinds from "@/utils/hooks/useWinds";
+import DewPoint from "./stats/DewPoint";
 
 /**
  * Renders component for daily forecast.
@@ -119,6 +120,30 @@ function DailyForecast({ oneCall, units }) {
                     </div>
                     <div>
                         Feels Like: {temperature(selectedCard?.feels_like.night)}
+                    </div>
+                </div>
+            </div>
+
+            <hr className="hr-border mx-auto" />
+
+            <div className="row-section">
+                <DewPoint data={selectedCard?.dew_point} units={units} />
+                <div className="forecast-info">
+                    <div className="forecast-icon-container">
+                        <img className="forecast-icon" src={asset('public/icons/dew-point.png')} />
+                    </div>
+                    <div className="forecast-info-block">
+                        Dew Point
+                        <div>{temperature(selectedCard?.dew_point)}</div>
+                    </div>
+                </div>
+                <div className="forecast-info">
+                    <div className="forecast-icon-container">
+                        <img className="forecast-icon" src={asset('public/icons/UVI.png')} />
+                    </div>
+                    <div className="forecast-info-block">
+                        UV Index
+                        <div>{selectedCard?.uvi?.toFixed(0)} out of 10</div>
                     </div>
                 </div>
             </div>

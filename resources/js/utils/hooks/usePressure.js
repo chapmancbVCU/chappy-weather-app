@@ -19,7 +19,6 @@ const usePressure = (data, units) => {
 
     /**
      * Set message for air pressure depending on current system of units.
-     * @param {number} data The air pressure value from Open Weather Map.
      */
     const pressureText = () => {
         const system = (units === 'imperial') ? "psi" : 'mbar';

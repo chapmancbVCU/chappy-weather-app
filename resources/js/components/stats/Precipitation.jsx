@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
 import asset from "@chappy/utils/asset";
 
+/**
+ * Manages the display of rain and snow totals.
+ * 
+ * @property {object} data Information containing daily information for forecast.
+ * @property {units} units The system of units in use.
+ * @param {data} param0 
+ * @returns 
+ */
 function Precipitation({ data, units }) {
     if(data == null) return null;
     const rainIcon = asset('public/icons/weather-pouring.png');

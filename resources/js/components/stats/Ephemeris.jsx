@@ -2,6 +2,14 @@ import React, { useEffect, useState, useMemo } from "react";
 import { DateTimeUtil } from "@/utils/DateTimeUtil";
 import asset from "@chappy/utils/asset";
 
+/**
+ * Renders information about sunrise, sunset, moonrise, and sunset times.
+ * 
+ * @param {object} data Information containing daily information for forecast.
+ * @param {number} tzOffset The timezone offset.
+ * @param {InputProps} param0 
+ * @returns {JSX.Element} Component containing time information.
+ */
 function Ephemeris({ data, tzOffset }) {
     if(data == null) return null;
 

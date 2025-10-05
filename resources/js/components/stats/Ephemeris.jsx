@@ -1,7 +1,16 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { DateTimeUtil } from "../DateTimeUtil";
+import { DateTimeUtil } from "@/utils/DateTimeUtil";
+import asset from "@chappy/utils/asset";
+
 function Ephemeris({ data, tzOffset }) {
+    if(data == null) return null;
+
     const dateTimeUtil = useMemo(() => new DateTimeUtil(), []);
+    const moonRiseIcon = asset('public/icons/moon-rise.png');
+    const moonSetIcon = asset('public/icons/moon-set.png');
+    const sunRiseIcon = asset('public/icons/sun-rise.png');
+    const sunSetIcon = asset('public/icons/sun-set.png');
+
     /**
      * Sets message for moonrise.
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
@@ -26,9 +35,64 @@ function Ephemeris({ data, tzOffset }) {
      */
     const [sunSet, setSunSet] = useState("");
 
+    const calculateTime = (timestamp) => {
+        return dateTimeUtil.getDateTime(timestamp, tzOffset);
+    }
+
+    useEffect(() => {
+        const moonRiseTime = calculateTime(data.moonrise);
+        setMoonRise(dateTimeUtil.getTimeInfo(moonRiseTime));
+
+        const moonSetTime = calculateTime(data.moonset);
+        setMoonSet(dateTimeUtil.getTimeInfo(moonSetTime));
+
+        const sunRiseTime = calculateTime(data.sunrise);
+        setSunRise(dateTimeUtil.getTimeInfo(sunRiseTime));
+
+        const sunSetTime = calculateTime(data.sunset);
+        setSunSet(dateTimeUtil.getTimeInfo(sunSetTime));
+    }, [data]);
+
     return (
         <>
-        
+            <div className="row-section">
+                <div className="forecast-info">
+                    <div className="forecast-icon-container">
+                        <img className="forecast-icon" src={sunRiseIcon} />
+                    </div>
+                    <div className="forecast-info-block">
+                        Sun Rise
+                        <div>{sunRise}</div>
+                    </div>
+                </div>
+                <div className="forecast-info">
+                    <div className="forecast-icon-container">
+                        <img className="forecast-icon" src={sunSetIcon} />
+                    </div>
+                    <div className="forecast-info-block">
+                        Sun Set
+                        <div>{sunSet}</div>
+                    </div>
+                </div>
+                <div className="forecast-info">
+                    <div className="forecast-icon-container">
+                        <img className="forecast-icon" src={moonRiseIcon} />
+                    </div>
+                    <div className="forecast-info-block">
+                        Moon Rise
+                        <div>{moonRise}</div>
+                    </div>
+                </div>
+                <div className="forecast-info">
+                    <div className="forecast-icon-container">
+                        <img className="forecast-icon" src={moonSetIcon} />
+                    </div>
+                    <div className="forecast-info-block">
+                        Moon Set
+                        <div>{moonSet}</div>
+                    </div>
+                </div>
+            </div>
         </>
     );
 }        

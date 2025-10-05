@@ -187,7 +187,7 @@ function CurrentConditions({ conditions, oneCall, units }) {
 
             <hr className="hr-border mx-auto" />
 
-            <h4 className="text-center">Temperature Range</h4>
+            <h4 className="text-center">Temperature Ranges</h4>
 
             <div className="row-section">
                 <div className="temperature">

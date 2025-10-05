@@ -9,6 +9,7 @@ import useWinds from "@/utils/hooks/useWinds";
 import useEphemeris from "@/utils/hooks/useEphemeris";
 import usePressure from "@/utils/hooks/usePressure";
 import useVisibility from "@/utils/hooks/useVisibility";
+import DewPoint from "./stats/DewPoint";
 
 /**
  * Renders current conditions.
@@ -118,15 +119,7 @@ function CurrentConditions({ conditions, oneCall, units }) {
             <hr className="hr-border mx-auto" />
 
             <div className="row-section">
-                <div className="forecast-info">
-                    <div className="forecast-icon-container">
-                        <img className="forecast-icon" src={asset('public/icons/dew-point.png')} />
-                    </div>
-                    <div className="forecast-info-block">
-                        Dew Point
-                        <div>{temperature(oneCall?.current?.dew_point)}</div>
-                    </div>
-                </div>
+                <DewPoint data={oneCall?.current?.dew_point} units={units} />
                 <div className="forecast-info">
                     <div className="forecast-icon-container">
                         <img className="forecast-icon" src={asset('public/icons/UVI.png')} />

@@ -11,33 +11,29 @@ function Precipitation({ data, units }) {
 
     const calculateRainTotal = () => {
         if(data.rain === undefined) return undefined;
-        const rain = data.rain;
+        const rainTotal = data.rain;
         if(units === 'imperial') { 
-            return imperialConversion(rain).toFixed(2) + '"';
-        } 
-        return rain + ' mm';
+            return imperialConversion(rainTotal)
+        }
+        return rainTotal + ' mm';
     };
 
     const calculateSnowTotal = () => {
         if(data.snow === undefined) return undefined;
-        const snow = data.snow;
+        const snowTotal = data.snow;
         if(units === 'imperial') { 
-            return imperialConversion(snow).toFixed(2) + '"';
+            return imperialConversion(snowTotal)
         } 
-        return snow + ' mm';
+        return snowTotal + ' mm';
     };
     const imperialConversion = (total) => {
         const conversionConstant = 25.4;
-        return total * (1/conversionConstant);
+        return (total * (1/conversionConstant)).toFixed(2) + '"';
     }
 
     useEffect(() => {
-        let rainTotal = calculateRainTotal();
         setRain(calculateRainTotal());
-        let snowTotal = calculateSnowTotal();
-        setSnow()
-        console.log(`Rain: ${rainTotal}`)
-        console.log(`Snow: ${snowTotal}`)
+        setSnow(calculateSnowTotal());
     }, [data]);
 
     return (

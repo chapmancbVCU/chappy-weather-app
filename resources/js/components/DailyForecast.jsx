@@ -13,7 +13,7 @@ import Pressure from "./Pressure";
 import TemperatureRange from "./stats/TemperatureRange";
 import Cloudiness from "./stats/Cloudiness";
 import Humidity from "./stats/Humidity";
-import Precipitation from "./Precipitation";
+import Precipitation from "./stats/Precipitation";
 
 /**
  * Renders component for daily forecast.

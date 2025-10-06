@@ -16,6 +16,7 @@ import Humidity from "./stats/Humidity";
 import Precipitation from "./stats/Precipitation";
 import PPT from "./stats/PPT";
 import MoonPhase from "./stats/MoonPhase";
+import Ephemeris from "./stats/Ephemeris";
 
 /**
  * Renders component for daily forecast.
@@ -110,6 +111,9 @@ function DailyForecast({ oneCall, units }) {
                 <PPT data={selectedCard?.pop} />
                 <MoonPhase data={selectedCard?.moon_phase} />
             </div>
+
+            <hr className="hr-border mx-auto" />
+            <Ephemeris data={selectedCard?.moon_phase} tzOffset={oneCall?.timezone_offset} /> 
         </div>
     );
 }        

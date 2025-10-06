@@ -15,6 +15,7 @@ import Cloudiness from "./stats/Cloudiness";
 import Humidity from "./stats/Humidity";
 import Precipitation from "./stats/Precipitation";
 import PPT from "./stats/PPT";
+import MoonPhase from "./stats/MoonPhase";
 
 /**
  * Renders component for daily forecast.
@@ -107,15 +108,7 @@ function DailyForecast({ oneCall, units }) {
                 <Humidity data={selectedCard?.humidity} />
                 <Precipitation data={selectedCard} units={units} />
                 <PPT data={selectedCard?.pop} />
-                <div className="forecast-info">
-                    <div className="forecast-icon-container">
-                        <img className="forecast-icon" src={asset('public/icons/new-moon.png')} />
-                    </div>
-                    <div className="forecast-info-block">
-                        Moon Phase
-                        <div>{selectedCard?.moon_phase}</div>
-                    </div>
-                </div>
+                <MoonPhase data={selectedCard?.moon_phase} />
             </div>
         </div>
     );

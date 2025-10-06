@@ -14,11 +14,19 @@ function Ephemeris({ data, tzOffset }) {
     if(data == null) return null;
     const dateTimeUtil = useMemo(() => new DateTimeUtil(), []);
 
+    /**
+     * Calculates time for specific solar and lunar events.
+     * @param {number} timestamp The timestamp for a specific event.
+     * @returns {string} The formatted time.
+     */
     const calculateTime = (timestamp) => {
         const stamp = dateTimeUtil.getDateTime(timestamp, tzOffset);
         return dateTimeUtil.getTimeInfo(stamp) ?? "";
     }
 
+    /**
+     * Sets times for moon rise, moon set, sun rise, and sun set.
+     */
     const { sunRise, sunSet, moonRise, moonSet } = useMemo(() => ({
         sunRise:  calculateTime(data.sunrise),
         sunSet:   calculateTime(data.sunset),

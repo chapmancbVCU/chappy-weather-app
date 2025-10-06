@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useMemo } from "react";
 import asset from "@chappy/utils/asset";
 
 /**
@@ -21,67 +21,35 @@ function MoonPhase({ data }) {
     const lastQuarterIcon = asset('public/icons/moon-last-quarter.png');
     const waningCrescent = asset('public/icons/moon-waning-crescent.png');
 
-    /**
-     * Sets moon phase label.
-     * @type {[number, import('react').Dispatch<import('react').SetStateAction<number>>]}
-     */
-    const [moonPhase, setMoonPhase] = useState();
-
-    /**
-     * Sets path to correct icon.
-     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
-     */
-    const [moonIcon, setMoonIcon] = useState("");
-
-    useEffect(() => {
-        switch (true) {
-            case (data == 0 || data == 1):
-                setMoonPhase('New moon');
-                setMoonIcon(newMoonIcon);
-                break;
-            case (data > 1 && data < 0.25):
-                setMoonPhase('Waxing crescent');
-                setMoonIcon(waxingCrescent);
-                break;
-            case (data == 0.25):
-                setMoonPhase('First quarter');
-                setMoonIcon(firstQuarterIcon);
-                break;
-            case (data > 0.25 && data < 0.5):
-                setMoonPhase('Waxing gibbous');
-                setMoonIcon(waxingGibbous);
-                break;
-            case (data == 0.5):
-                setMoonPhase('Full moon');
-                setMoonIcon(fullMoonIcon);
-                break;
-            case (data > 0.5 && data < 0.75):
-                setMoonPhase('Waning gibbous');
-                setMoonIcon(waningCrescent);
-                break;
-            case (data == 0.75):
-                setMoonPhase('Last quarter');
-                setMoonIcon(lastQuarterIcon);
-                break;
-            case (data > 0.75 && data < 1):
-                setMoonPhase('Waning crescent');
-                setMoonIcon(waningGibbous);
-                break;
-            default:
-                setMoonPhase('New moon');
-                setMoonIcon(newMoonIcon);
+    const { label, icon } = useMemo(() => {
+        if (data === 0 || data === 1) {
+            return { label: "New moon", icon: newMoonIcon };
+        } else if (data > 0 && data < 0.25) {
+            return { label: "Waxing crescent", icon: waxingCrescent };
+        } else if (data === 0.25) {
+            return { label: "First quarter", icon: firstQuarterIcon };
+        } else if (data > 0.25 && data < 0.5) {
+            return { label: "Waxing gibbous", icon: waxingGibbous };
+        } else if (data === 0.5) {
+            return { label: "Full moon", icon: fullMoonIcon };
+        } else if (data > 0.5 && data < 0.75) {
+            return { label: "Waning gibbous", icon: waningGibbous };
+        } else if (data === 0.75) {
+            return { label: "Last quarter", icon: lastQuarterIcon };
+        } else if (data > 0.75 && data < 1) {
+            return { label: "Waning crescent", icon: waningCrescent };
         }
     }, [data]);
 
     return (
         <div className="forecast-info">
             <div className="forecast-icon-container">
-                {moonIcon && <img className="forecast-icon" src={moonIcon} />}    
+                {icon && <img className="forecast-icon" src={icon} />}    
             </div>
             <div className="forecast-info-block">
                 Moon Phase
                 <div>
-                    {moonPhase}
+                    {label}
                 </div>
             </div>
         </div>

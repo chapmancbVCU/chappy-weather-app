@@ -48,16 +48,16 @@ function Ephemeris({ data, tzOffset }) {
     }
 
     useEffect(() => {
-        const moonRiseTime = calculateTime(data.moonrise);
+        const moonRiseTime = calculateTime(data?.moonrise);
         setMoonRise(dateTimeUtil.getTimeInfo(moonRiseTime));
 
-        const moonSetTime = calculateTime(data.moonset);
+        const moonSetTime = calculateTime(data?.moonset);
         setMoonSet(dateTimeUtil.getTimeInfo(moonSetTime));
 
-        const sunRiseTime = calculateTime(data.sunrise);
+        const sunRiseTime = calculateTime(data?.sunrise);
         setSunRise(dateTimeUtil.getTimeInfo(sunRiseTime));
 
-        const sunSetTime = calculateTime(data.sunset);
+        const sunSetTime = calculateTime(data?.sunset);
         setSunSet(dateTimeUtil.getTimeInfo(sunSetTime));
     }, [data]);
 
@@ -66,7 +66,9 @@ function Ephemeris({ data, tzOffset }) {
             <div className="row-section">
                 <div className="forecast-info">
                     <div className="forecast-icon-container">
-                        <img className="forecast-icon" src={sunRiseIcon} />
+                        {sunRiseIcon && (
+                            <img className="forecast-icon" src={sunRiseIcon} />
+                        )}
                     </div>
                     <div className="forecast-info-block">
                         Sun Rise
@@ -75,7 +77,9 @@ function Ephemeris({ data, tzOffset }) {
                 </div>
                 <div className="forecast-info">
                     <div className="forecast-icon-container">
-                        <img className="forecast-icon" src={sunSetIcon} />
+                        {sunSetIcon && (
+                            <img className="forecast-icon" src={sunSetIcon} />
+                        )}
                     </div>
                     <div className="forecast-info-block">
                         Sun Set
@@ -84,7 +88,9 @@ function Ephemeris({ data, tzOffset }) {
                 </div>
                 <div className="forecast-info">
                     <div className="forecast-icon-container">
-                        <img className="forecast-icon" src={moonRiseIcon} />
+                        {moonRiseIcon && (
+                            <img className="forecast-icon" src={moonRiseIcon} />
+                        )}
                     </div>
                     <div className="forecast-info-block">
                         Moon Rise
@@ -93,7 +99,9 @@ function Ephemeris({ data, tzOffset }) {
                 </div>
                 <div className="forecast-info">
                     <div className="forecast-icon-container">
-                        <img className="forecast-icon" src={moonSetIcon} />
+                        {moonSetIcon && (
+                            <img className="forecast-icon" src={moonSetIcon} />
+                        )}
                     </div>
                     <div className="forecast-info-block">
                         Moon Set

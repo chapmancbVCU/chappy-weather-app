@@ -10,7 +10,7 @@ import asset from "@chappy/utils/asset";
  * @returns 
  */
 function Precipitation({ data, units }) {
-    if(data == null) return null;
+    if(data == null) return;
     const rainIcon = asset('public/icons/weather-pouring.png');
     const snowIcon = asset('public/icons/snowflake.png');
 
@@ -72,7 +72,7 @@ function Precipitation({ data, units }) {
             {data.rain && (
                 <div className="forecast-info">
                     <div className="forecast-icon-container">
-                        <img className="forecast-icon" src={rainIcon} />
+                        {rainIcon && <img className="forecast-icon" src={rainIcon} />}        
                     </div>
                     <div className="forecast-info-block">
                         Rain
@@ -83,7 +83,7 @@ function Precipitation({ data, units }) {
             {data.snow && (
                 <div className="forecast-info">
                     <div className="forecast-icon-container">
-                        <img className="forecast-icon" src={snowIcon} />
+                        {snowIcon && <img className="forecast-icon" src={snowIcon} />}
                     </div>
                     <div className="forecast-info-block">
                         Snow

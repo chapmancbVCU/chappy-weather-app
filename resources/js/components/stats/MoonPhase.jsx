@@ -25,7 +25,7 @@ function MoonPhase({ data }) {
      * Sets moon phase label.
      * @type {[number, import('react').Dispatch<import('react').SetStateAction<number>>]}
      */
-    const [moonPhase, setMoonPhase] = useState("");
+    const [moonPhase, setMoonPhase] = useState();
 
     /**
      * Sets path to correct icon.

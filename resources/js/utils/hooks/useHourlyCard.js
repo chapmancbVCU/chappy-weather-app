@@ -11,12 +11,6 @@ const useHourlyCard = (hourly, tzOffset) => {
     const dateTimeUtil = useMemo(() => new DateTimeUtil(), []);
 
     /**
-     * The date associated with the currently selected card.
-     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
-     */
-    const [date, setDate] = useState("");
-
-    /**
      * The time associated with the currently selected card.
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
      */
@@ -24,12 +18,10 @@ const useHourlyCard = (hourly, tzOffset) => {
 
     useEffect(() => {
         const stamp = dateTimeUtil.getDateTime(hourly.dt, tzOffset);
-        setDate(dateTimeUtil.getForecastDate(stamp));
         setTime(dateTimeUtil.getTimeInfo(stamp));
     }, []);
 
     return {
-        date,
         time
     }
 }

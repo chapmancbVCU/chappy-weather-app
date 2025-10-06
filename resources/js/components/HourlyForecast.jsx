@@ -31,6 +31,7 @@ function HourlyForecast({ oneCall, units }) {
                         index={index}
                         onCardClick={onCardClick}
                         tzOffset={tzOffset}
+                        units={units}
                     />
                 ))}
             </div>

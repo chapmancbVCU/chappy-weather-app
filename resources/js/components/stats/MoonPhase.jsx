@@ -34,7 +34,6 @@ function MoonPhase({ data }) {
     const [moonIcon, setMoonIcon] = useState("");
 
     useEffect(() => {
-        console.log(data)
         switch (true) {
             case (data == 0 || data == 1):
                 setMoonPhase('New moon');

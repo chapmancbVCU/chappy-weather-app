@@ -1,7 +1,7 @@
 import React from "react";
 import "@css/forecast.css";
 import useHourlyCard from "@/utils/hooks/useHourlyCard";
-
+import useForecastDate from "@/utils/hooks/useForecastDate";
 /**
  * Renders hourly forecast card component.
  * 
@@ -16,15 +16,16 @@ import useHourlyCard from "@/utils/hooks/useHourlyCard";
  */
 function HourlyForecastCard({ hourly, index, onCardClick, tzOffset }) {
     const {
-        date,
+        // date,
         time
     } = useHourlyCard(hourly, tzOffset);
 
+    const { forecastDate } = useForecastDate(hourly.dt, tzOffset);
     return (
         <button className="hourly-forecast-card"
             onClick={() => onCardClick(index)}
         >
-            <div>{date}</div>
+            <div>{forecastDate}</div>
             <div>{time}</div>
         </button>
 

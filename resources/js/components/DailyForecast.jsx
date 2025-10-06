@@ -113,7 +113,7 @@ function DailyForecast({ oneCall, units }) {
             </div>
 
             <hr className="hr-border mx-auto" />
-            <Ephemeris data={selectedCard?.moon_phase} tzOffset={oneCall?.timezone_offset} /> 
+            <Ephemeris data={selectedCard} tzOffset={tzOffset} /> 
         </div>
     );
 }        

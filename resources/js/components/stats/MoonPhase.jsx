@@ -57,15 +57,15 @@ function MoonPhase({ data }) {
                 break;
             case (data > 0.5 && data < 0.75):
                 setMoonPhase('Waning crescent');
-                setMoonPhase(waningCrescent);
+                setMoonIcon(waningCrescent);
                 break;
             case (data == 0.75):
                 setMoonPhase('Last quarter');
-                setMoonPhase(lastQuarterIcon);
+                setMoonIcon(lastQuarterIcon);
                 break;
             case (data > 0.75 && data < 1):
                 setMoonPhase('Waning Gibbous');
-                setMoonPhase(waningGibbous);
+                setMoonIcon(waningGibbous);
                 break;
             default:
                 setMoonPhase('New moon');

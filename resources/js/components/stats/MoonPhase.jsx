@@ -21,6 +21,9 @@ function MoonPhase({ data }) {
     const lastQuarterIcon = asset('public/icons/moon-last-quarter.png');
     const waningCrescent = asset('public/icons/moon-waning-crescent.png');
 
+    /**
+     * Manages labels and icons for moon phases.
+     */
     const { label, icon } = useMemo(() => {
         if (data === 0 || data === 1) {
             return { label: "New moon", icon: newMoonIcon };

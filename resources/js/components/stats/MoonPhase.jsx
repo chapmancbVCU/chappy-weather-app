@@ -76,7 +76,7 @@ function MoonPhase({ data }) {
     return (
         <div className="forecast-info">
             <div className="forecast-icon-container">
-                <img className="forecast-icon" src={moonIcon} />
+                {moonIcon && <img className="forecast-icon" src={moonIcon} />}    
             </div>
             <div className="forecast-info-block">
                 Moon Phase

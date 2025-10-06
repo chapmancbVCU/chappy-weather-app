@@ -21,7 +21,16 @@ function MoonPhase({ data }) {
     const lastQuarterIcon = asset('public/icons/moon-last-quarter.png');
     const waningGibbous = asset('public/icons/moon-waning-gibbous.png');
 
+    /**
+     * Sets moon phase label.
+     * @type {[number, import('react').Dispatch<import('react').SetStateAction<number>>]}
+     */
     const [moonPhase, setMoonPhase] = useState("");
+
+    /**
+     * Sets path to correct icon.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [moonIcon, setMoonIcon] = useState("");
 
     useEffect(() => {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import asset from "@chappy/utils/asset";
 
 /**
@@ -11,20 +11,6 @@ import asset from "@chappy/utils/asset";
  */
 function Precipitation({ data, units }) {
     if(data == null) return;
-    const rainIcon = asset('public/icons/weather-pouring.png');
-    const snowIcon = asset('public/icons/snowflake.png');
-
-    /**
-     * Sets message for rain totals.
-     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
-     */
-    const [rain, setRain] = useState("");
-
-    /**
-     * Sets message for snow totals.
-     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
-     */
-    const [snow, setSnow] = useState("");
 
     /**
      * Setup display of rain totals based on systems of units.
@@ -62,36 +48,31 @@ function Precipitation({ data, units }) {
         return (total * (1/conversionConstant)).toFixed(2) + '"';
     }
 
-    useEffect(() => {
-        setRain(calculateRainTotal());
-        setSnow(calculateSnowTotal());
-    }, [data]);
-
     return (
-        <div className="d-flex flex-column">
+        <>
             {data.rain && (
                 <div className="forecast-info">
                     <div className="forecast-icon-container">
-                        {rainIcon && <img className="forecast-icon" src={rainIcon} />}        
+<                       img className="forecast-icon" src={asset('public/icons/weather-pouring.png')} />
                     </div>
                     <div className="forecast-info-block">
                         Rain
-                        <div>{rain}</div>
+                        <div>{calculateRainTotal(data.rain)}</div>
                     </div>
                 </div>
             )}
             {data.snow && (
                 <div className="forecast-info">
                     <div className="forecast-icon-container">
-                        {snowIcon && <img className="forecast-icon" src={snowIcon} />}
+                        <img className="forecast-icon" src={asset('public/icons/snowflake.png')} />
                     </div>
                     <div className="forecast-info-block">
                         Snow
-                        <div>{snow}</div>
+                        <div>{calculateSnowTotal(data.snow)}</div>
                     </div>
                 </div>
             )}
-        </div>
+        </>
     );
 }        
 export default Precipitation;

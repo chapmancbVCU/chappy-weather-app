@@ -10,21 +10,59 @@ import asset from "@chappy/utils/asset";
  * information.
  */
 function MoonPhase({ data }) {
-    
+    if(data == null) return;
+
     const newMoonIcon = asset('public/icons/new-moon.png');
-    const waxingCrescent = asset('public/icon/moon-waxing-crescent');
+    const waxingCrescent = asset('public/icon/moon-waxing-crescent.png');
     const firstQuarterIcon = asset('public/icons/moon-first-quarter.png');
-    const waxingGibbous = asset('public/icons/moon-waxing-gibbous')
+    const waxingGibbous = asset('public/icons/moon-waxing-gibbous.png')
     const fullMoonIcon = asset('public/icons/full-moon.png');
-    const waningCrescent = asset('public/icons/moon-waning-crescent');
+    const waningCrescent = asset('public/icons/moon-waning-crescent.png');
     const lastQuarterIcon = asset('public/icons/moon-last-quarter.png');
-    const waningGibbous = asset('public/icons/moon-waning-gibbous');
+    const waningGibbous = asset('public/icons/moon-waning-gibbous.png');
 
     const [moonPhase, setMoonPhase] = useState("");
     const [moonIcon, setMoonIcon] = useState("");
 
     useEffect(() => {
-
+        console.log(data)
+        switch (true) {
+            case (data == 0 || data == 1):
+                setMoonPhase('New moon');
+                setMoonIcon(newMoonIcon);
+                break;
+            case (data > 1 && data < 0.25):
+                setMoonPhase('Waxing crescent');
+                setMoonIcon(waxingCrescent);
+                break;
+            case (data == 0.25):
+                setMoonPhase('First quarter');
+                setMoonIcon(firstQuarterIcon);
+                break;
+            case (data > 0.25 && data < 0.5):
+                setMoonPhase('Waxing gibbous');
+                setMoonIcon(waxingGibbous);
+                break;
+            case (data == 0.5):
+                setMoonPhase('Full moon');
+                setMoonIcon(fullMoonIcon);
+                break;
+            case (data > 0.5 && data < 0.75):
+                setMoonPhase('Waning crescent');
+                setMoonPhase(waningCrescent);
+                break;
+            case (data == 0.75):
+                setMoonPhase('Last quarter');
+                setMoonPhase(lastQuarterIcon);
+                break;
+            case (data > 0.75 && data < 1):
+                setMoonPhase('Waning Gibbous');
+                setMoonPhase(waningGibbous);
+                break;
+            default:
+                setMoonPhase('New moon');
+                setMoonIcon(newMoonIcon);
+        }
     }, [data]);
 
     return (

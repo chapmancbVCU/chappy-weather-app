@@ -13,13 +13,13 @@ function MoonPhase({ data }) {
     if(data == null) return;
 
     const newMoonIcon = asset('public/icons/new-moon.png');
-    const waxingCrescent = asset('public/icon/moon-waxing-crescent.png');
+    const waxingCrescent = asset('public/icons/moon-waxing-crescent.png');
     const firstQuarterIcon = asset('public/icons/moon-first-quarter.png');
     const waxingGibbous = asset('public/icons/moon-waxing-gibbous.png')
     const fullMoonIcon = asset('public/icons/full-moon.png');
-    const waningCrescent = asset('public/icons/moon-waning-crescent.png');
-    const lastQuarterIcon = asset('public/icons/moon-last-quarter.png');
     const waningGibbous = asset('public/icons/moon-waning-gibbous.png');
+    const lastQuarterIcon = asset('public/icons/moon-last-quarter.png');
+    const waningCrescent = asset('public/icons/moon-waning-crescent.png');
 
     /**
      * Sets moon phase label.
@@ -56,7 +56,7 @@ function MoonPhase({ data }) {
                 setMoonIcon(fullMoonIcon);
                 break;
             case (data > 0.5 && data < 0.75):
-                setMoonPhase('Waning crescent');
+                setMoonPhase('Waning gibbous');
                 setMoonIcon(waningCrescent);
                 break;
             case (data == 0.75):
@@ -64,7 +64,7 @@ function MoonPhase({ data }) {
                 setMoonIcon(lastQuarterIcon);
                 break;
             case (data > 0.75 && data < 1):
-                setMoonPhase('Waning Gibbous');
+                setMoonPhase('Waning crescent');
                 setMoonIcon(waningGibbous);
                 break;
             default:

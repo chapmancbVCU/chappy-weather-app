@@ -107,9 +107,9 @@ function DailyForecast({ oneCall, units }) {
 
             <div className="row-section">
                 <Humidity data={selectedCard?.humidity} />
-                <Precipitation data={selectedCard} units={units} />
+                {/* <Precipitation data={selectedCard} units={units} /> */}
                 <PPT data={selectedCard?.pop} />
-                <MoonPhase data={selectedCard?.moon_phase} />
+                {/* <MoonPhase data={selectedCard?.moon_phase} /> */}
             </div>
 
             <hr className="hr-border mx-auto" />

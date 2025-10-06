@@ -12,63 +12,29 @@ import asset from "@chappy/utils/asset";
  */
 function Ephemeris({ data, tzOffset }) {
     if(data == null) return null;
-
     const dateTimeUtil = useMemo(() => new DateTimeUtil(), []);
-    const moonRiseIcon = asset('public/icons/weather-moonset-up.png');
-    const moonSetIcon = asset('public/icons/weather-moonset-down.png');
-    const sunRiseIcon = asset('public/icons/sun-rise.png');
-    const sunSetIcon = asset('public/icons/sun-set.png');
-
-    /**
-     * Sets message for moonrise.
-     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
-     */
-    const [moonRise, setMoonRise] = useState("");
-
-    /**
-     * Sets message for moonset.
-     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
-     */
-    const [moonSet, setMoonSet] = useState("");
-
-    /**
-     * Sets message for sunrise.
-     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
-     */
-    const [sunRise, setSunRise] = useState("");
-
-    /**
-     * Sets message for sunset.
-     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
-     */
-    const [sunSet, setSunSet] = useState("");
 
     const calculateTime = (timestamp) => {
-        return dateTimeUtil.getDateTime(timestamp, tzOffset);
+        const stamp = dateTimeUtil.getDateTime(timestamp, tzOffset);
+        return dateTimeUtil.getTimeInfo(stamp) ?? "";
     }
 
-    useEffect(() => {
-        const moonRiseTime = calculateTime(data?.moonrise);
-        setMoonRise(dateTimeUtil.getTimeInfo(moonRiseTime));
-
-        const moonSetTime = calculateTime(data?.moonset);
-        setMoonSet(dateTimeUtil.getTimeInfo(moonSetTime));
-
-        const sunRiseTime = calculateTime(data?.sunrise);
-        setSunRise(dateTimeUtil.getTimeInfo(sunRiseTime));
-
-        const sunSetTime = calculateTime(data?.sunset);
-        setSunSet(dateTimeUtil.getTimeInfo(sunSetTime));
-    }, [data]);
+    const { sunRise, sunSet, moonRise, moonSet } = useMemo(() => ({
+        sunRise:  calculateTime(data.sunrise),
+        sunSet:   calculateTime(data.sunset),
+        moonRise: calculateTime(data.moonrise),
+        moonSet:  calculateTime(data.moonset),
+    }), [data]);
 
     return (
         <>
             <div className="row-section">
                 <div className="forecast-info">
                     <div className="forecast-icon-container">
-                        {sunRiseIcon && (
-                            <img className="forecast-icon" src={sunRiseIcon} />
-                        )}
+                        <img 
+                            className="forecast-icon" 
+                            src={asset('public/icons/sun-rise.png')} 
+                        />
                     </div>
                     <div className="forecast-info-block">
                         Sun Rise
@@ -77,9 +43,10 @@ function Ephemeris({ data, tzOffset }) {
                 </div>
                 <div className="forecast-info">
                     <div className="forecast-icon-container">
-                        {sunSetIcon && (
-                            <img className="forecast-icon" src={sunSetIcon} />
-                        )}
+                        <img 
+                            className="forecast-icon" 
+                            src={asset('public/icons/sun-set.png')} 
+                        />
                     </div>
                     <div className="forecast-info-block">
                         Sun Set
@@ -88,9 +55,10 @@ function Ephemeris({ data, tzOffset }) {
                 </div>
                 <div className="forecast-info">
                     <div className="forecast-icon-container">
-                        {moonRiseIcon && (
-                            <img className="forecast-icon" src={moonRiseIcon} />
-                        )}
+                        <img 
+                            className="forecast-icon" 
+                            src={asset('public/icons/weather-moonset-up.png')} 
+                        />
                     </div>
                     <div className="forecast-info-block">
                         Moon Rise
@@ -99,9 +67,10 @@ function Ephemeris({ data, tzOffset }) {
                 </div>
                 <div className="forecast-info">
                     <div className="forecast-icon-container">
-                        {moonSetIcon && (
-                            <img className="forecast-icon" src={moonSetIcon} />
-                        )}
+                        <img 
+                            className="forecast-icon" 
+                            src={asset('public/icons/weather-moonset-down.png')} 
+                        />
                     </div>
                     <div className="forecast-info-block">
                         Moon Set

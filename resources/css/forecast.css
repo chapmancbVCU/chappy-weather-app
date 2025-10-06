@@ -145,11 +145,6 @@
         min-width: 115px;
     }
 
-    .row-section {
-        flex-direction: row;
-        justify-content:space-evenly;
-    }
-
     .selected-content {
         flex-direction: row;
         justify-content: space-evenly;
@@ -173,5 +168,12 @@
 
     .winds-container {
         margin-right: 0;
+    }
+}
+
+@media only screen and (min-width: 1150px) {
+    .row-section {
+        flex-direction: row;
+        justify-content:space-evenly;
     }
 }

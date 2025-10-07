@@ -1,6 +1,6 @@
 import React from "react";
 import "@css/forecast.css";
-import useHourlyCard from "@/utils/hooks/useHourlyCard";
+import useForecastTime from "@/utils/hooks/useForecastTime";
 import useForecastDate from "@/utils/hooks/useForecastDate";
 import useTemperature from "@/utils/hooks/useTemperature";
 import useIcon from "@/utils/hooks/useIcon";
@@ -21,7 +21,7 @@ import useDescription from "@/utils/hooks/useDescription";
 function HourlyForecastCard({ hourly, index, onCardClick, tzOffset, units }) {
     const {
         time
-    } = useHourlyCard(hourly, tzOffset);
+    } = useForecastTime(hourly.dt, tzOffset);
 
     const { description } = useDescription(hourly?.weather?.[0].description);
     const { forecastDate } = useForecastDate(hourly.dt, tzOffset);

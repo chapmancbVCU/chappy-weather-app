@@ -7,7 +7,7 @@ import { DateTimeUtil } from "../DateTimeUtil";
  * @param {number} tzOffset The the timezone offset.
  * @returns 
  */
-const useHourlyCard = (hourly, tzOffset) => {
+const useForecastTime = (data, tzOffset) => {
     const dateTimeUtil = useMemo(() => new DateTimeUtil(), []);
 
     /**
@@ -17,7 +17,7 @@ const useHourlyCard = (hourly, tzOffset) => {
     const [time, setTime] = useState("");
 
     useEffect(() => {
-        const stamp = dateTimeUtil.getDateTime(hourly.dt, tzOffset);
+        const stamp = dateTimeUtil.getDateTime(data, tzOffset);
         setTime(dateTimeUtil.getTimeInfo(stamp));
     }, []);
 
@@ -26,4 +26,4 @@ const useHourlyCard = (hourly, tzOffset) => {
     }
 }
 
-export default useHourlyCard;
+export default useForecastTime;

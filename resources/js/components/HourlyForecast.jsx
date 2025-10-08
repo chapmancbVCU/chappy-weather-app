@@ -2,6 +2,8 @@ import React from "react";
 import "@css/forecast.css";
 import useHourly from "@/utils/hooks/useHourly";
 import HourlyForecastCard from "./HourlyForecastCard";
+import useForecastTime from "@/utils/hooks/useForecastTime";
+import useForecastDate from "@/utils/hooks/useForecastDate";
 
 /**
  * Renders component for hourly forecast.
@@ -12,6 +14,7 @@ import HourlyForecastCard from "./HourlyForecastCard";
  * @returns {JSX.Element} Component displaying hourly forecast.
  */
 function HourlyForecast({ oneCall, units }) {
+    const tzOffset = oneCall?.timezone_offset;
 
     const {
         hourlyForecast,
@@ -19,7 +22,12 @@ function HourlyForecast({ oneCall, units }) {
         selectedCard
     } = useHourly(oneCall);
 
-    const tzOffset = oneCall?.timezone_offset;
+    const {
+        forecastDate
+    } = useForecastDate(selectedCard?.dt, tzOffset);
+    const {
+        forecastTime
+    } = useForecastTime(selectedCard?.dt, tzOffset);
 
     return (
         <div className="card forecast my-4">
@@ -35,7 +43,11 @@ function HourlyForecast({ oneCall, units }) {
                     />
                 ))}
             </div>
+
+            <hr className="hr-border mx-auto" />
+
             <div className="selected-hour">
+                <h5>{forecastDate}, {forecastTime}</h5>
                 {selectedCard?.weather?.[0]?.description}
             </div>
         </div>

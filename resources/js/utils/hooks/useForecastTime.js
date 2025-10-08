@@ -1,18 +1,17 @@
-import React, { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { DateTimeUtil } from "../DateTimeUtil";
 
 /**
- * Manages states and hooks for a particular daily forecast card.
- * @param {object} timestamp The data for a particular day.
+ * Manages states and hooks for forecast time.
+ * @param {object} timestamp The data for a particular time.
  * @param {number} tzOffset The the timezone offset.
  * @returns 
  */
 const useForecastTime = (timestamp, tzOffset) => {
-
     const dateTimeUtil = useMemo(() => new DateTimeUtil(), []);
 
     /**
-     * The time associated with the currently selected card.
+     * The date for a particular forecast.
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
      */
     const [forecastTime, setForecastTime] = useState("");

@@ -15,17 +15,15 @@ const useForecastTime = (timestamp, tzOffset) => {
      * The time associated with the currently selected card.
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
      */
-    const [time, setTime] = useState("");
+    const [forecastTime, setForecastTime] = useState("");
 
     useEffect(() => {
         if(timestamp == null || tzOffset == null) return;
         const stamp = dateTimeUtil.getDateTime(timestamp, tzOffset);
-        setTime(dateTimeUtil.getTimeInfo(stamp));
+        setForecastTime(dateTimeUtil.getTimeInfo(stamp));
     }, []);
 
-    return {
-        time
-    }
+    return { forecastTime }
 }
 
 export default useForecastTime;

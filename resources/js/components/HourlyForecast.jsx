@@ -15,19 +15,9 @@ import useForecastDate from "@/utils/hooks/useForecastDate";
  */
 function HourlyForecast({ oneCall, units }) {
     const tzOffset = oneCall?.timezone_offset;
-
-    const {
-        hourlyForecast,
-        onCardClick,
-        selectedCard
-    } = useHourly(oneCall);
-
-    const {
-        forecastDate
-    } = useForecastDate(selectedCard?.dt, tzOffset);
-    const {
-        forecastTime
-    } = useForecastTime(selectedCard?.dt, tzOffset);
+    const { hourlyForecast, onCardClick, selectedCard } = useHourly(oneCall);
+    const { forecastDate } = useForecastDate(selectedCard?.dt, tzOffset);
+    const { forecastTime } = useForecastTime(selectedCard?.dt, tzOffset);
 
     return (
         <div className="card forecast my-4">

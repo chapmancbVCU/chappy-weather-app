@@ -20,7 +20,7 @@ import useDescription from "@/utils/hooks/useDescription";
  */
 function HourlyForecastCard({ hourly, index, onCardClick, tzOffset, units }) {
     const {
-        time
+        forecastTime
     } = useForecastTime(hourly.dt, tzOffset);
 
     const { description } = useDescription(hourly?.weather?.[0].description);
@@ -32,7 +32,7 @@ function HourlyForecastCard({ hourly, index, onCardClick, tzOffset, units }) {
             onClick={() => onCardClick(index)}
         >
             <div><strong>{forecastDate}</strong></div>
-            <div className="">{time}</div>
+            <div className="">{forecastTime}</div>
             <p>{description}</p>
             {icon && <img src={icon} ></img>}
             <div className="d-flex justify-content-evenly">

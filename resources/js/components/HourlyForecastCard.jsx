@@ -19,14 +19,12 @@ import useDescription from "@/utils/hooks/useDescription";
  * @returns {JSX.Element} The hourly forecast card component.
  */
 function HourlyForecastCard({ hourly, index, onCardClick, tzOffset, units }) {
-    const {
-        forecastTime
-    } = useForecastTime(hourly.dt, tzOffset);
-
+    const { forecastTime } = useForecastTime(hourly.dt, tzOffset);
     const { description } = useDescription(hourly?.weather?.[0].description);
     const { forecastDate } = useForecastDate(hourly.dt, tzOffset);
     const { icon } = useIcon(hourly?.weather?.[0]?.icon);
     const { temperature } = useTemperature(units);
+
     return (
         <button className="hourly-forecast-card"
             onClick={() => onCardClick(index)}

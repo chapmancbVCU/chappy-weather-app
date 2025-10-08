@@ -7,6 +7,13 @@ import useForecastDate from "@/utils/hooks/useForecastDate";
 import useDescription from "@/utils/hooks/useDescription";
 import useIcon from "@/utils/hooks/useIcon";
 import useTemperature from "@/utils/hooks/useTemperature";
+import useWinds from "@/utils/hooks/useWinds";
+import asset from "@chappy/utils/asset";
+import PPT from "./stats/PPT";
+import useVisibility from "@/utils/hooks/useVisibility";
+import Humidity from "./stats/Humidity";
+import DewPoint from "./stats/DewPoint";
+
 /**
  * Renders component for hourly forecast.
  * 
@@ -23,6 +30,14 @@ function HourlyForecast({ oneCall, units }) {
     const { description } = useDescription(selectedCard?.weather?.[0]?.description);
     const { icon } = useIcon(selectedCard?.weather?.[0]?.icon);
     const { temperature } = useTemperature(units);
+    const { visibility, visibilityIcon} = useVisibility(selectedCard?.visibility, units);
+    const { wind, windDirection, windGusts} = useWinds(
+        selectedCard?.wind_speed,
+        selectedCard?.wind_gust,
+        selectedCard?.wind_deg,
+        units
+    );
+
     return (
         <div className="card forecast my-4">
             <div className="hourly-forecast-container">
@@ -53,10 +68,36 @@ function HourlyForecast({ oneCall, units }) {
                         <div className="text-center"><strong>Feels Like</strong></div>
                         <div className="text-center">{temperature(selectedCard?.feels_like)}</div>
                     </div>
+                    <div className="forecast-info mb-3 winds-container">
+                        <div className="forecast-icon-container">
+                            <img className="forecast-icon" src={asset('public/icons/weather-windy.png')} />
+                        </div>
+                        <div className="winds">
+                            <strong>Winds</strong>
+                            <div className="mb-2">{wind}, {windDirection}</div>
+                            <strong>Wind Gusts</strong>
+                            <div>{windGusts}</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <hr className="hr-border mx-auto" />
+
+            <div className="row-section">    
+                <PPT data={selectedCard?.pop} />
+                <div className="forecast-info">
+                    <div className="forecast-icon-container">
+                        <img className="forecast-icon" src={visibilityIcon} />
+                    </div>
+                    <div className="forecast-info-block">
+                        Visibility
+                        <div>{visibility}</div>
+                    </div>
+                </div>
+                <Humidity data={selectedCard?.humidity} />
+                <DewPoint data={selectedCard?.dew_point} units={units} />
+            </div>
         </div>
     );
 }        

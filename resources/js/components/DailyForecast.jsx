@@ -68,12 +68,12 @@ function DailyForecast({ oneCall, units }) {
                     </div>
                     <div className="selected-content">
                         <div className="mb-3">
-                            <div><strong>Low</strong></div>
-                            <div>{temperature(selectedCard?.temp.min)}</div>
+                            <div className="text-center"><strong>Low</strong></div>
+                            <div className="text-center">{temperature(selectedCard?.temp.min)}</div>
                         </div>
                         <div className="mb-3">
-                            <div><strong>High</strong></div>
-                            <div>{temperature(selectedCard?.temp.max)}</div>
+                            <div className="text-center"><strong>High</strong></div>
+                            <div className="text-center">{temperature(selectedCard?.temp.max)}</div>
                         </div>
                         <div className="forecast-info mb-3 winds-container">
                             <div className="forecast-icon-container">

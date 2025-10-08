@@ -37,7 +37,7 @@ function HourlyForecast({ oneCall, units }) {
             <hr className="hr-border mx-auto" />
 
             <div className="selected-hour">
-                <h5>{forecastDate}, {forecastTime}</h5>
+                <h5 className="text-center my-2">{forecastDate}, {forecastTime}</h5>
                 {selectedCard?.weather?.[0]?.description}
             </div>
         </div>

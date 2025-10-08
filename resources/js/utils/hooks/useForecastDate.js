@@ -2,7 +2,7 @@ import { useEffect, useState, useMemo } from "react";
 import { DateTimeUtil } from "../DateTimeUtil";
 
 /**
- * Manages states and hooks for forecast date..
+ * Manages states and hooks for forecast date.
  * @param {object} timestamp The timestamp for a particular date.
  * @param {number} tzOffset The the timezone offset.
  * @returns 

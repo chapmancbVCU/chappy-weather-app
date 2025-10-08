@@ -4,7 +4,7 @@ import useHourly from "@/utils/hooks/useHourly";
 import HourlyForecastCard from "./HourlyForecastCard";
 import useForecastTime from "@/utils/hooks/useForecastTime";
 import useForecastDate from "@/utils/hooks/useForecastDate";
-
+import useDescription from "@/utils/hooks/useDescription";
 /**
  * Renders component for hourly forecast.
  * 
@@ -18,7 +18,7 @@ function HourlyForecast({ oneCall, units }) {
     const { hourlyForecast, onCardClick, selectedCard } = useHourly(oneCall);
     const { forecastDate } = useForecastDate(selectedCard?.dt, tzOffset);
     const { forecastTime } = useForecastTime(selectedCard?.dt, tzOffset);
-
+    const { description } = useDescription(selectedCard?.weather?.[0]?.description);
     return (
         <div className="card forecast my-4">
             <div className="hourly-forecast-container">
@@ -38,7 +38,7 @@ function HourlyForecast({ oneCall, units }) {
 
             <div className="selected-hour">
                 <h5 className="text-center my-2">{forecastDate}, {forecastTime}</h5>
-                {selectedCard?.weather?.[0]?.description}
+                <p className="text-center my-2">{description}</p>
             </div>
         </div>
     );

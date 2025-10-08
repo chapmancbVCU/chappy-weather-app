@@ -3,11 +3,12 @@ import { DateTimeUtil } from "../DateTimeUtil";
 
 /**
  * Manages states and hooks for a particular daily forecast card.
- * @param {object} daily The data for a particular day.
+ * @param {object} timestamp The data for a particular day.
  * @param {number} tzOffset The the timezone offset.
  * @returns 
  */
-const useForecastTime = (data, tzOffset) => {
+const useForecastTime = (timestamp, tzOffset) => {
+
     const dateTimeUtil = useMemo(() => new DateTimeUtil(), []);
 
     /**
@@ -17,7 +18,8 @@ const useForecastTime = (data, tzOffset) => {
     const [time, setTime] = useState("");
 
     useEffect(() => {
-        const stamp = dateTimeUtil.getDateTime(data, tzOffset);
+        if(timestamp == null || tzOffset == null) return;
+        const stamp = dateTimeUtil.getDateTime(timestamp, tzOffset);
         setTime(dateTimeUtil.getTimeInfo(stamp));
     }, []);
 

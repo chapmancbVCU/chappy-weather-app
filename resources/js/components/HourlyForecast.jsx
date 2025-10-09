@@ -13,6 +13,8 @@ import PPT from "./stats/PPT";
 import useVisibility from "@/utils/hooks/useVisibility";
 import Humidity from "./stats/Humidity";
 import DewPoint from "./stats/DewPoint";
+import UVI from "./stats/UVI";
+import Pressure from "./Pressure";
 
 /**
  * Renders component for hourly forecast.
@@ -68,23 +70,23 @@ function HourlyForecast({ oneCall, units }) {
                         <div className="text-center"><strong>Feels Like</strong></div>
                         <div className="text-center">{temperature(selectedCard?.feels_like)}</div>
                     </div>
-                    <div className="forecast-info mb-3 winds-container">
-                        <div className="forecast-icon-container">
-                            <img className="forecast-icon" src={asset('public/icons/weather-windy.png')} />
-                        </div>
-                        <div className="winds">
-                            <strong>Winds</strong>
-                            <div className="mb-2">{wind}, {windDirection}</div>
-                            <strong>Wind Gusts</strong>
-                            <div>{windGusts}</div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
             <hr className="hr-border mx-auto" />
 
-            <div className="row-section">    
+            <div className="row-section"> 
+                <div className="forecast-info">
+                                        <div className="forecast-icon-container">
+                                            <img className="forecast-icon" src={asset('public/icons/weather-windy.png')} />
+                                        </div>
+                                        <div className="forecast-info-block">
+                                            Winds
+                                            <div>{wind}, {windDirection}</div>
+                                            Wind Gusts
+                                            <div>{windGusts}</div>
+                                        </div>
+                                    </div>   
                 <PPT data={selectedCard?.pop} />
                 <div className="forecast-info">
                     <div className="forecast-icon-container">
@@ -96,7 +98,23 @@ function HourlyForecast({ oneCall, units }) {
                     </div>
                 </div>
                 <Humidity data={selectedCard?.humidity} />
+            </div>
+
+            <hr className="hr-border mx-auto" />
+
+            <div className="row-section">
                 <DewPoint data={selectedCard?.dew_point} units={units} />
+                <UVI data={selectedCard?.uvi} />
+                <Pressure data={selectedCard?.pressure} units={units} />
+                <div className="forecast-info">
+                    <div className="forecast-icon-container">
+                        <img className="forecast-icon" src={asset('public/icons/clouds.png')} />
+                    </div>
+                    <div className="forecast-info-block">
+                        Cloudiness
+                        <div>{selectedCard?.clouds} %</div>
+                    </div>
+                </div>
             </div>
         </div>
     );

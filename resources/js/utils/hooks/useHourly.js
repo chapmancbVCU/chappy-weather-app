@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useEffect, useState, useMemo } from "react";
+import { Card } from "../Card";
 /**
  * Manages states and hooks for daily forecast.
  * @param {object} oneCall OneCall tier data.
  * @returns 
  */
 const useHourly = (oneCall) => {
+    const card = useMemo(() => new Card(), []);
     /**
      * The collection of hourly forecast data.
      * @type {[array, import('react').Dispatch<import('react').SetStateAction<array>>]}
@@ -29,10 +30,12 @@ const useHourly = (oneCall) => {
 
     useEffect(() => {
         setHourlyForecast(oneCall?.hourly);
-    });
+        
+    }, [oneCall]);
 
     useEffect(() => {
         // Use session storage to track between unit changes.
+        card.updateStorage(0);
         setSelectedCard(hourlyForecast[0]);
     }, [hourlyForecast]);
 

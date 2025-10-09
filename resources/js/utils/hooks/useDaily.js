@@ -1,13 +1,14 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { DateTimeUtil } from "../DateTimeUtil";
+import { Card } from "../Card";
 /**
  * Manages states and hooks for daily forecast.
  * @param {object} oneCall OneCall tier data.
  * @returns 
  */
 const useDaily = (oneCall) => {
-    const dateTimeUtil = useMemo(() => new DateTimeUtil(), []);
-
+    // const dateTimeUtil = useMemo(() => new DateTimeUtil(), []);
+    const card = useMemo(() => new Card(), []);
     /**
      * The collection of daily forecast data.
      * @type {[array, import('react').Dispatch<import('react').SetStateAction<array>>]}
@@ -31,12 +32,14 @@ const useDaily = (oneCall) => {
     
     useEffect(() => {
         setDailyForecast(oneCall?.daily);
-    });
+        
+    }, [oneCall]);
 
     useEffect(() => {
+        card.updateStorage(0);
         setSelectedCard(dailyForecast[0]);
     }, [dailyForecast])
-
+    
     return {
         dailyForecast,
         onCardClick,

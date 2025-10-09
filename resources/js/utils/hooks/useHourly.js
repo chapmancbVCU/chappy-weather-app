@@ -32,6 +32,7 @@ const useHourly = (oneCall) => {
     });
 
     useEffect(() => {
+        // Use session storage to track between unit changes.
         setSelectedCard(hourlyForecast[0]);
     }, [hourlyForecast]);
 

@@ -6,7 +6,6 @@ import { Card } from "../Card";
  * @returns 
  */
 const useDaily = (oneCall, units) => {
-    // const dateTimeUtil = useMemo(() => new DateTimeUtil(), []);
     const card = useMemo(() => new Card(), []);
     /**
      * The collection of daily forecast data.

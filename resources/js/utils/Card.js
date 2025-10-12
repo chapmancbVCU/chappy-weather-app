@@ -4,17 +4,22 @@ export class Card {
         if (typeof window === "undefined") {
             this.previous = "";
             this.current = "";
+            this.index = 0;
             return;
         }
         const data = this.readStorage();
         if(data) {
             console.log(`Data: ${data.url}`);
             this.previous = data.url;
+            this.index = data.index;
         }
         this.current = window.location.href;
         // console.log(`Previous: ${this.previous}`);
     }
 
+    matchesPrevious() {
+        return (this.current === this.previous) ? true : false;
+    }
 
     readStorage() {
         const cardData = sessionStorage.getItem('cardData');
@@ -25,12 +30,13 @@ export class Card {
         return null;
     }
 
-    updateStorage(index) {
+    updateStorage(newIndex) {
         let url = window.location.href;
         
         const cardData = {
-            url: url,
-            previous: this.current
+            index: newIndex,
+            previous: this.current,
+            url: url
         }
 
         this.previous = cardData.previous;

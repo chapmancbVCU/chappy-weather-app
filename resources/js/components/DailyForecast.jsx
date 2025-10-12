@@ -29,7 +29,7 @@ import Ephemeris from "./stats/Ephemeris";
 function DailyForecast({ oneCall, units }) {
     const tzOffset = oneCall?.timezone_offset;
 
-    const { dailyForecast, onCardClick, selectedCard } = useDaily(oneCall);
+    const { dailyForecast, onCardClick, selectedCard } = useDaily(oneCall, units);
     const { forecastDate } = useForecastDate(selectedCard?.dt, oneCall?.timezone_offset);
     const { icon } = useIcon(selectedCard?.weather?.[0]?.icon);
     const { temperature } = useTemperature(units);

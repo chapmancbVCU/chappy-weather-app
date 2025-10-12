@@ -5,7 +5,7 @@ import { Card } from "../Card";
  * @param {object} oneCall OneCall tier data.
  * @returns 
  */
-const useDaily = (oneCall, units) => {
+const useDaily = (oneCall) => {
     const card = useMemo(() => new Card(), []);
     /**
      * The collection of daily forecast data.

@@ -5,7 +5,7 @@ import { Card } from "../Card";
  * @param {object} oneCall OneCall tier data.
  * @returns 
  */
-const useHourly = (oneCall, units) => {
+const useHourly = (oneCall) => {
     const card = useMemo(() => new Card(), []);
     /**
      * The collection of hourly forecast data.

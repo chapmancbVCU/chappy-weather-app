@@ -26,7 +26,7 @@ import Pressure from "./Pressure";
  */
 function HourlyForecast({ oneCall, units }) {
     const tzOffset = oneCall?.timezone_offset;
-    const { hourlyForecast, onCardClick, selectedCard } = useHourly(oneCall, units);
+    const { hourlyForecast, onCardClick, selectedCard } = useHourly(oneCall);
     const { forecastDate } = useForecastDate(selectedCard?.dt, tzOffset);
     const { forecastTime } = useForecastTime(selectedCard?.dt, tzOffset);
     const { description } = useDescription(selectedCard?.weather?.[0]?.description);

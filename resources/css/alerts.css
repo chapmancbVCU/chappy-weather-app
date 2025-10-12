@@ -22,5 +22,6 @@
 
 .alert-card {
     width: 80%;
+    border-radius: 15px;
     align-self: center;
 }

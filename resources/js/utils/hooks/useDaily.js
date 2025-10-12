@@ -33,7 +33,6 @@ const useDaily = (oneCall, units) => {
     
     useEffect(() => {
         setDailyForecast(oneCall?.daily);
-        
     }, [oneCall]);
 
     useEffect(() => {

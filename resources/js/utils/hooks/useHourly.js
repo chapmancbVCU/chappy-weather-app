@@ -43,10 +43,6 @@ const useHourly = (oneCall, units) => {
         }
     }, [hourlyForecast]);
 
-    // useEffect(() => {
-    //     setSelectedCard(hourlyForecast[card.getIndex()]);
-    // }, [units])
-
     return {
         hourlyForecast,
         onCardClick,

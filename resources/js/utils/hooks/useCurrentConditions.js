@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
 import { DateTimeUtil } from "../DateTimeUtil";
-
+import { Card } from "../Card";
 /**
  * Manages states of hooks for current conditions.
  * @param {object} conditions Standard data.
@@ -9,6 +9,7 @@ import { DateTimeUtil } from "../DateTimeUtil";
  * @returns 
  */
 const useCurrentConditions = (conditions, oneCall, units) => {
+    const card = useMemo(() => new Card(), []);
     const dateTimeUtil = useMemo(() => new DateTimeUtil(), []);
 
     /**
@@ -41,6 +42,7 @@ const useCurrentConditions = (conditions, oneCall, units) => {
         setDate(dateTimeUtil.getDateInfo(stamp));
 
         setSummary(oneCall?.daily?.[0]?.summary ?? "");
+        card.updateStorage(0);
     }, [conditions, oneCall, units]);
 
     return {

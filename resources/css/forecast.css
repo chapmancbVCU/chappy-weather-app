@@ -1,3 +1,7 @@
+.card {
+    border-radius: 15px;
+}
+
 .daily-forecast-container, .hourly-forecast-container {
     display: flex;
     flex-direction: row;
@@ -14,7 +18,7 @@
     text-align: center;
     border: 3px solid rgb(57, 169, 244);
     background-color: rgb(111, 200, 230);
-    border-radius: 10px;
+    border-radius: 15px;
     min-width: 200px;
 }
 

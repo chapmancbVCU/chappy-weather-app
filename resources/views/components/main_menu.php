@@ -14,10 +14,10 @@ $userMenu = Router::getMenu('user_menu');
 
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="main_menu">
-    <ul class="navbar-nav me-auto">
+    <ul class="navbar-nav me-auto menu">
       <?= Helper::buildMenuListItems($menu); ?>
     </ul>
-    <ul class="navbar-nav right-menu me-2 align-items-center"> <!-- Align items vertically -->
+    <ul class="navbar-nav menu me-2 align-items-center"> <!-- Align items vertically -->
       <?= Helper::buildMenuListItems($userMenu, "dropdown-menu-end"); ?>
       <li class="nav-item">
         <a class="nav-link p-0" href="<?=route('profile')?>">

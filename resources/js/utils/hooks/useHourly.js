@@ -5,7 +5,7 @@ import { Card } from "../Card";
  * @param {object} oneCall OneCall tier data.
  * @returns 
  */
-const useHourly = (oneCall) => {
+const useHourly = (oneCall, units) => {
     const card = useMemo(() => new Card(), []);
     /**
      * The collection of hourly forecast data.
@@ -25,6 +25,7 @@ const useHourly = (oneCall) => {
      * @param {number} e Index for the card that is selected.
      */
     const onCardClick = (e) => {
+        card.updateStorage(e);
         setSelectedCard(hourlyForecast[e]);
     }
 
@@ -34,10 +35,17 @@ const useHourly = (oneCall) => {
     }, [oneCall]);
 
     useEffect(() => {
-        // Use session storage to track between unit changes.
-        card.updateStorage(0);
-        setSelectedCard(hourlyForecast[0]);
+        if(!card.matchesPrevious()) {
+            card.updateStorage(0);
+            setSelectedCard(hourlyForecast[0]);
+        } else {
+            setSelectedCard(hourlyForecast[card.getIndex()]);
+        }
     }, [hourlyForecast]);
+
+    // useEffect(() => {
+    //     setSelectedCard(hourlyForecast[card.getIndex()]);
+    // }, [units])
 
     return {
         hourlyForecast,

@@ -6,7 +6,7 @@ import { Card } from "../Card";
  * @param {object} oneCall OneCall tier data.
  * @returns 
  */
-const useDaily = (oneCall) => {
+const useDaily = (oneCall, units) => {
     // const dateTimeUtil = useMemo(() => new DateTimeUtil(), []);
     const card = useMemo(() => new Card(), []);
     /**
@@ -27,6 +27,7 @@ const useDaily = (oneCall) => {
      * @param {number} e Index for the card that is selected.
      */
     const onCardClick = (e) => {
+        card.updateStorage(e);
         setSelectedCard(dailyForecast[e]);
     }
     
@@ -36,8 +37,12 @@ const useDaily = (oneCall) => {
     }, [oneCall]);
 
     useEffect(() => {
-        card.updateStorage(0);
-        setSelectedCard(dailyForecast[0]);
+        if(!card.matchesPrevious()) {
+            card.updateStorage(0);
+            setSelectedCard(dailyForecast[0]);
+        } else {
+            setSelectedCard(dailyForecast[card.getIndex()]);
+        }
     }, [dailyForecast])
     
     return {

@@ -17,6 +17,10 @@ export class Card {
         // console.log(`Previous: ${this.previous}`);
     }
 
+    getIndex() {
+        return this.index;
+    }
+    
     matchesPrevious() {
         return (this.current === this.previous) ? true : false;
     }
@@ -41,6 +45,7 @@ export class Card {
 
         this.previous = cardData.previous;
         this.url = url;
+        this.index = newIndex;
         console.log(`Url: ${url}`);
         console.log(`Current: ${this.current}`)
         sessionStorage.setItem('cardData', JSON.stringify(cardData));

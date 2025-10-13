@@ -16,6 +16,8 @@ import Alerts from "@/components/Alerts";
  */
 function Index({ user }) {
     const weather = useMemo(() => new Weather(), []);
+    weather.redirectIfNoData();
+
     const { 
         city, 
         current,
@@ -51,7 +53,7 @@ function Index({ user }) {
                         }
                         <h2 className="ms-3">Daily forecast for {city}</h2>
                     </div>
-                    <DailyForecast oneCall={oneCall} units={units} />
+                    <DailyForecast oneCall={oneCall} units={units} current={current}/>
                 </div>
             )}
         </>

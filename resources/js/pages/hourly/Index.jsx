@@ -16,6 +16,8 @@ import Alerts from "@/components/Alerts";
  */
 function Index({ user }) {
     const weather = useMemo(() => new Weather(), []);
+    weather.redirectIfNoData();
+
     const { 
         city, 
         current,

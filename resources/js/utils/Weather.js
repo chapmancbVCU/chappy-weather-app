@@ -126,6 +126,15 @@ export class Weather {
     }
 
     /**
+     * Redirects to home if locationData does not exist.
+     */    
+    redirectIfNoData() {
+        if(this.readStorage() == null) {
+            window.location.replace('/');
+        }
+    }
+
+    /**
      * Setter function for the latitude of the user's location or search query.
      * @param {Number} latitude The latitude of the user's location or search 
      * query.

@@ -3,7 +3,7 @@ namespace App\Controllers;
 use Core\Controller;
 
 /**
- * Undocumented class
+ * Supports operations related to favorites.
  */
 class FavoritesController extends Controller {
     public function manageFavoritesAction(): void {

@@ -5,6 +5,7 @@ import useWeather from "@/utils/hooks/useWeather";
 import Error from "@/components/Error";
 import "@css/alerts.css";
 import AlertCard from "@/components/AlertCard";
+import { Card } from "@/utils/Card";
 
 /**
  * Renders view containing alerts.
@@ -12,7 +13,8 @@ import AlertCard from "@/components/AlertCard";
  * as cards.
  */
 function Index() {
-
+    const card = useMemo(() => new Card(), []);
+    card.updateStorage(0);
     const weather = useMemo(() => new Weather(), []);
     
     const { 

@@ -1,4 +1,7 @@
 export class Card {
+    /**
+     * Manages sessionStorage tracking of currently selected card.
+     */
     constructor() {
         // console.log(window.location.href);
         if (typeof window === "undefined") {
@@ -17,14 +20,29 @@ export class Card {
         // console.log(`Previous: ${this.previous}`);
     }
 
+    /**
+     * Gets index that represents currently selected card.
+     * 
+     * @returns {number} The index for currently selected card.
+     */
     getIndex() {
         return this.index;
     }
     
+    /**
+     * Test to check if current and previously rendered view are the same.
+     * 
+     * @returns {boolean} True if current and previous views are the same, 
+     * otherwise we return false.
+     */
     matchesPrevious() {
         return (this.current === this.previous) ? true : false;
     }
 
+    /**
+     * Reads cardData from session storage.
+     * @returns {object} Data from session storage.
+     */
     readStorage() {
         const cardData = sessionStorage.getItem('cardData');
         if(cardData) {
@@ -34,6 +52,10 @@ export class Card {
         return null;
     }
 
+    /**
+     * Updates cardData in sessionStorage.
+     * @param {number} newIndex The index for selected card.
+     */
     updateStorage(newIndex) {
         let url = window.location.href;
         

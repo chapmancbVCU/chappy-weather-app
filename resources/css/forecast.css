@@ -47,6 +47,15 @@
     background-color: rgb(111, 200, 230, .7);
 }
 
+.favorites-card {
+    margin: 5px;
+    text-align: center;
+    border: 3px solid rgb(57, 169, 244);
+    background-color: rgb(111, 200, 230);
+    border-radius: 15px;
+    width: 300px;
+}
+
 .forecast {
   width: 80%;
   border: 3px solid rgb(57, 169, 244);

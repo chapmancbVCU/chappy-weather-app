@@ -2,7 +2,10 @@ import React from "react";
 import cx from "classnames";
 import "@css/toggleSwitch.css"
 /**
- * @property {string} units The name of the system of units.
+ * @property {boolean} isToggled True or false value for state of switch.
+ * @property {(event: React.ChangeEvent<HTMLInputElement>) => void} handleToggleChange - 
+ * Function called when the toggle state changes. Receives the checkbox change event.
+ * @property {string} unitsLabel Temperature label based on units.
  * @param {InputProps} param0 
  * @returns 
  */

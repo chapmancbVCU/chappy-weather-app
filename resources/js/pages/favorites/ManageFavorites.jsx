@@ -4,7 +4,6 @@ import "@css/forecast.css";
 import FavoritesCard from "@/components/FavoritesCard";
 
 function ManageFavorites({ favorites }) {
-    console.log(favorites);
     documentTitle('Your Favorites');
     return (
         <div className="d-flex flex-column w-75 mx-auto">

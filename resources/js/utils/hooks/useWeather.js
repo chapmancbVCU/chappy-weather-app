@@ -95,7 +95,7 @@ const useWeather = (weather) => {
     const { 
         data: currentData, 
         loading: currentLoading, 
-        error: currentError} = useAsync(({ signal}) => {
+        error: currentError} = useAsync(({ signal }) => {
             if (!city) return Promise.resolve(null);
             const u = units || "imperial";
             return apiGet("/weather/currentConditions", { query: { q: city, units: u }, signal });

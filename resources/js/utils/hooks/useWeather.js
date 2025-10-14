@@ -81,7 +81,7 @@ const useWeather = (weather) => {
     }, [weather]);
 
     /**
-     * Sets name of city to value of query string on submit.b
+     * Sets name of city to value of query string on submit.
      * @param {string} q The query string.
      */
     const onSubmit = (q) => {

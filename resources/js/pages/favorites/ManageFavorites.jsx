@@ -20,11 +20,13 @@ function ManageFavorites({ favorites }) {
     return (
         <div className="d-flex flex-column w-75 mx-auto">
             <h1 className="text-center">Your Favorites</h1>
-            {<UnitsSwitch 
-                isToggled={isToggled} 
-                handleToggleChange={handleToggleChange} 
-                unitsLabel={unitsLabel}
-            />}
+            <div className="my-3">
+                {<UnitsSwitch
+                    isToggled={isToggled} 
+                    handleToggleChange={handleToggleChange} 
+                    unitsLabel={unitsLabel}
+                />}
+            </div>
             <div className="manage-favorites-content">
                 {favorites && favorites.map((favorite, index) => (
                     <FavoritesCard favorite={favorite} key={index} units={units}/> 

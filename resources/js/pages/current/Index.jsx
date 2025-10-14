@@ -29,7 +29,7 @@ function Index({ user }) {
         onSubmit, 
         units, 
         unitsLabel, 
-    } = useWeather(weather);
+    } = useWeather(weather, true);
 
     if(currentLoading || oneCallLoading) return <div className="mt-3 text-center">Loading...</div>
 
@@ -47,8 +47,8 @@ function Index({ user }) {
                         {<UnitsSwitch 
                             isToggled={isToggled} 
                             handleToggleChange={handleToggleChange} 
-                            unitsLabel={unitsLabel}/>
-                        }
+                            unitsLabel={unitsLabel}
+                        />}
                         <h2 className="ms-3">Conditions in {city}</h2>
                     </div>
                     <CurrentConditions 

@@ -1,16 +1,10 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React from "react";
 import { apiGet, useAsync } from '@chappy/utils/api';
-import { Weather } from "@/utils/Weather";
 import Error from "./Error";
 import useTemperature from "@/utils/hooks/useTemperature";
 
-function FavoritesCard({ favorite }) {
-    const weather = useMemo(() => new Weather(), []);
-    const [units, setUnits] = useState("");
+function FavoritesCard({ favorite, units }) {
     const { temperature } = useTemperature(units);
-    useEffect(() => {
-        setUnits(weather.getUnits());
-    })
 
     const { 
         data: favoriteData, 
@@ -21,13 +15,8 @@ function FavoritesCard({ favorite }) {
             return apiGet("/weather/currentConditions", { query: { q: favorite.name, units: u }, signal });
     }, [favorite.name, units]);
     const data = favoriteData?.data;
+    
     if(favoriteLoading) return <div className="mt-3 text-center">Loading...</div>
-
-    console.log("*********************************")
-    console.log("Favorite card data");
-    console.log(favorite);
-    console.log(favoriteData);
-    console.log("*********************************")
 
     return (
         <>

@@ -6,9 +6,10 @@ import { apiGet, useAsync } from '@chappy/utils/api';
  * consistency between views.
  * @param {Weather} weather Object responsible for tracking information about 
  * currently selected location.
+ * @param {boolean} fetch Boolean flag to determine if we will fetch data.
  * @returns 
  */
-const useWeather = (weather) => {
+const useWeather = (weather, fetch) => {
     /**
      * The name of the city.
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
@@ -96,6 +97,7 @@ const useWeather = (weather) => {
         data: currentData, 
         loading: currentLoading, 
         error: currentError} = useAsync(({ signal }) => {
+            if(fetch == false) return Promise.resolve(null);
             if (!city) return Promise.resolve(null);
             const u = units || "imperial";
             return apiGet("/weather/currentConditions", { query: { q: city, units: u }, signal });
@@ -103,26 +105,40 @@ const useWeather = (weather) => {
 
     const current = currentData?.data || {};
     const coords = current?.coord;
-    console.log(current)
+    if(fetch == true) {
+        console.log("Fetch (current): true")
+        console.log(current)
+    } else {
+        console.log("Fetch (current): false")
+        console.log(current)
+    }
     
     /**
-     * Fetches data using onecall api.
+     * Fetches data using oneCall api.
      */
     const {
         data: oneCallData,
         loading: oneCallLoading,
         error: oneCallError,
     } = useAsync(({ signal }) => {
+        if(fetch == false) return Promise.resolve(null);
         if (!coords || typeof coords.lat !== "number" || typeof coords.lon !== "number") {
-        return Promise.resolve(null);
+            return Promise.resolve(null);
         }
         const u = units || "imperial";
         return apiGet("/weather/oneCall", { query: { lat: coords.lat, lon: coords.lon, units: u }, signal });
     }, [coords?.lat, coords?.lon, units]);
     
     const oneCall = oneCallData?.data || {};
-    console.log(oneCall)
+    //console.log(oneCall)
 
+    if(fetch == true) {
+        console.log("Fetch (oneCall): true")
+        console.log(oneCall)
+    } else {
+        console.log("Fetch (oneCall): false")
+        console.log(oneCall)
+    }
     /**
      * Updates storage when there are updates to city, units,
      * coordinates, and weather object.

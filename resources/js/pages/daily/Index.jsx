@@ -31,7 +31,7 @@ function Index({ user }) {
         onSubmit, 
         units, 
         unitsLabel, 
-    } = useWeather(weather);
+    } = useWeather(weather, true);
 
     if(currentLoading || oneCallLoading) return <div className="mt-3 text-center">Loading...</div>
 

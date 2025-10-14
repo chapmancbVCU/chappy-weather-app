@@ -10,7 +10,7 @@ function ManageFavorites({ favorites }) {
             <h1 className="text-center">Your Favorites</h1>
             <div className="manage-favorites-content">
                 {favorites && favorites.map((favorite, index) => (
-                   <FavoritesCard favorite={favorite} key={index} /> 
+                    <FavoritesCard favorite={favorite} key={index} /> 
                 ))}
             </div>
         </div>

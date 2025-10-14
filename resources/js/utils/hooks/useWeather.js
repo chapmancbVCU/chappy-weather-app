@@ -99,7 +99,7 @@ const useWeather = (weather) => {
             if (!city) return Promise.resolve(null);
             const u = units || "imperial";
             return apiGet("/weather/currentConditions", { query: { q: city, units: u }, signal });
-        }, [city, units]);
+    }, [city, units]);
 
     const current = currentData?.data || {};
     const coords = current?.coord;

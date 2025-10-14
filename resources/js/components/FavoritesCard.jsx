@@ -9,13 +9,14 @@ function FavoritesCard({ favorite, units }) {
     const { 
         data: favoriteData, 
         loading: favoriteLoading, 
-        error: favoriteError} = useAsync(({ signal}) => {
+        error: favoriteError
+    } = useAsync(({ signal}) => {
             if (!favorite) return Promise.resolve(null);
             const u = units || "imperial";
             return apiGet("/weather/currentConditions", { query: { q: favorite.name, units: u }, signal });
     }, [favorite.name, units]);
     const data = favoriteData?.data;
-    
+
     if(favoriteLoading) return <div className="mt-3 text-center">Loading...</div>
 
     return (

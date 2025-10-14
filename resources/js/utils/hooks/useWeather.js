@@ -96,7 +96,8 @@ const useWeather = (weather, fetch) => {
     const { 
         data: currentData, 
         loading: currentLoading, 
-        error: currentError} = useAsync(({ signal }) => {
+        error: currentError
+    } = useAsync(({ signal }) => {
             if(fetch == false) return Promise.resolve(null);
             if (!city) return Promise.resolve(null);
             const u = units || "imperial";

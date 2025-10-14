@@ -10,7 +10,7 @@ function FavoritesCard({ favorite, units }) {
         data: favoriteData, 
         loading: favoriteLoading, 
         error: favoriteError
-    } = useAsync(({ signal}) => {
+    } = useAsync(({ signal }) => {
             if (!favorite) return Promise.resolve(null);
             const u = units || "imperial";
             return apiGet("/weather/currentConditions", { query: { q: favorite.name, units: u }, signal });

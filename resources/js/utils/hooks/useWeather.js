@@ -106,6 +106,7 @@ const useWeather = (weather, fetch) => {
 
     const current = currentData?.data || {};
     const coords = current?.coord;
+
     if(fetch == true) {
         console.log("Fetch (current): true")
         console.log(current)
@@ -131,7 +132,6 @@ const useWeather = (weather, fetch) => {
     }, [coords?.lat, coords?.lon, units]);
     
     const oneCall = oneCallData?.data || {};
-    //console.log(oneCall)
 
     if(fetch == true) {
         console.log("Fetch (oneCall): true")
@@ -140,6 +140,7 @@ const useWeather = (weather, fetch) => {
         console.log("Fetch (oneCall): false")
         console.log(oneCall)
     }
+
     /**
      * Updates storage when there are updates to city, units,
      * coordinates, and weather object.

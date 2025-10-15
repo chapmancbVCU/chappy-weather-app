@@ -42,16 +42,14 @@ function Index({ user, favorites }) {
 
             {!currentError && !oneCallError && ( 
                 <div className="mt-3 d-flex flex-column">
-                    {oneCall.alerts && <Alerts alerts={oneCall.alerts}/>}
-                    {user && <Favorites  favorites={favorites} units={units} />}
-                    <div className="d-flex justify-content-center">
-                        {<UnitsSwitch 
+                    {<UnitsSwitch 
                             isToggled={isToggled} 
                             handleToggleChange={handleToggleChange} 
                             unitsLabel={unitsLabel}/>
                         }
-                        <h2 className="ms-3">Hourly forecast for {city}</h2>
-                    </div>
+                    {oneCall.alerts && <Alerts alerts={oneCall.alerts}/>}
+                    {user && <Favorites  favorites={favorites} units={units} />}
+                    <h2 className="ms-3 text-center">Hourly forecast for {city}</h2>
                     <HourlyForecast oneCall={oneCall} units={units} />
                 </div>
             )}

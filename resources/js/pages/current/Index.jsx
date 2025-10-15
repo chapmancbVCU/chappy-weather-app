@@ -41,16 +41,14 @@ function Index({ user, favorites }) {
 
             {!currentError && !oneCallError && (
                 <div className="mt-3 d-flex flex-column">
-                    {oneCall.alerts && <Alerts alerts={oneCall.alerts}/>}
-                    {user && <Favorites favorites={favorites} units={units} />}
-                    <div className="d-flex justify-content-center">
-                        {<UnitsSwitch 
+                    {<UnitsSwitch 
                             isToggled={isToggled} 
                             handleToggleChange={handleToggleChange} 
                             unitsLabel={unitsLabel}
                         />}
-                        <h2 className="ms-3">Conditions in {city}</h2>
-                    </div>
+                    {oneCall.alerts && <Alerts alerts={oneCall.alerts}/>}
+                    {user && <Favorites favorites={favorites} units={units} />}
+                    <h2 className="ms-3 text-center">Conditions in {city}</h2>
                     <CurrentConditions 
                         conditions={current} 
                         oneCall={oneCall}

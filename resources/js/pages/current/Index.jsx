@@ -14,7 +14,7 @@ import Alerts from "@/components/Alerts";
  * @param {InputProps} param0 
  * @returns {JSX.Element} The view that displays current conditions.
  */
-function Index({ user }) {
+function Index({ user, favorites }) {
     const weather = useMemo(() => new Weather(), []);
     const { 
         city, 
@@ -42,7 +42,7 @@ function Index({ user }) {
             {!currentError && !oneCallError && (
                 <div className="mt-3 d-flex flex-column">
                     {oneCall.alerts && <Alerts alerts={oneCall.alerts}/>}
-                    {user && <Favorites />}
+                    {user && <Favorites favorites={favorites} units={units} />}
                     <div className="d-flex justify-content-center">
                         {<UnitsSwitch 
                             isToggled={isToggled} 

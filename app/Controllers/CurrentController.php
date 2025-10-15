@@ -2,6 +2,8 @@
 namespace App\Controllers;
 use Core\Controller;
 use Core\Services\AuthService;
+use App\Models\Favorites;
+
 /**
  * Supports operations for rendering current conditions.  This is our 
  * DEFAULT_CONTROLLER.
@@ -14,7 +16,11 @@ class CurrentController extends Controller {
      */
     public function indexAction(): void {
         $user = AuthService::currentUser();
-        $props = ['user' => $user ?? null];
+        $favorites = Favorites::findAllByUserId($user->id);
+        $props = [
+            'user' => $user ?? null,
+            'favorites' => $favorites
+        ];
         $this->view->renderJSX('current.Index', $props);
     }
 }

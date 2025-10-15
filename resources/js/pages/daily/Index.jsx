@@ -44,10 +44,10 @@ function Index({ user, favorites }) {
             {!currentError && !oneCallError && ( 
                 <div className="mt-3 d-flex flex-column">
                     {<UnitsSwitch 
-                            isToggled={isToggled} 
-                            handleToggleChange={handleToggleChange} 
-                            unitsLabel={unitsLabel}/>
-                        }
+                        isToggled={isToggled} 
+                        handleToggleChange={handleToggleChange} 
+                        unitsLabel={unitsLabel}/>
+                    }
                     {oneCall.alerts && <Alerts alerts={oneCall.alerts}/>}
                     {user && <Favorites  favorites={favorites} units={units} />}
                         <h2 className="ms-3 text-center">Daily forecast for {city}</h2>

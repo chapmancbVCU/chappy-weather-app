@@ -47,6 +47,17 @@
     background-color: rgb(111, 200, 230, .7);
 }
 
+.favorite-cards-container {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    margin: 15px auto;
+    gap: 15px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
 .forecast {
   width: 80%;
   border: 3px solid rgb(57, 169, 244);
@@ -91,7 +102,8 @@
     border: 3px solid rgb(57, 169, 244);
     background-color: rgb(111, 200, 230);
     border-radius: 15px;
-    width: 300px;
+    min-width: 300px;
+    max-width: 300px;
 }
 
 .manage-favorites-content {

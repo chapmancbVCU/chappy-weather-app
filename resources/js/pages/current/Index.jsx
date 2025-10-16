@@ -6,6 +6,7 @@ import useWeather from "@/utils/hooks/useWeather";
 import Error from "@/components/Error";
 import UnitsSwitch from "@/components/UnitsSwitch";
 import Favorites from "@/components/Favorites";
+import FavoritesCheck from "@/components/FavoritesCheck";
 import Alerts from "@/components/Alerts";
 
 /**
@@ -48,7 +49,10 @@ function Index({ user, favorites }) {
                     />}
                     {oneCall.alerts && <Alerts alerts={oneCall.alerts}/>}
                     {user && <Favorites favorites={favorites} units={units} />}
-                    <h2 className="ms-3 text-center">Conditions in {city}</h2>
+                    <div className="d-flex flex-row mx-auto">
+                        <h2 className="me-4 text-center">Conditions in {city}</h2>
+                        {user && <FavoritesCheck weather={weather} />}
+                    </div>
                     <CurrentConditions 
                         conditions={current} 
                         oneCall={oneCall}

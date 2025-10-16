@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Forms from "@chappy/components/Forms";
 function FavoritesCheck({ weather, favorites }) {
 
     const [isFavorite, setIsFavorite] = useState(false);
@@ -23,9 +24,12 @@ function FavoritesCheck({ weather, favorites }) {
         isFavoriteCity();
     })
     return (
-        <>
-            {isFavorite ? <p>Is favorite</p> : <p>Not favorite</p>}
-        </>
+        <form method="POST">
+            <Forms.CSRF />
+            {!isFavorite && (
+                <button>Add</button>
+            )}
+        </form>
     );
 }        
 export default FavoritesCheck;

@@ -1,6 +1,9 @@
 import React from "react";
-function FavoritesCheck({ weather }) {
-
+function FavoritesCheck({ weather, favorites }) {
+    console.log("********************");
+    console.log("Favorites Check");
+    console.log(weather)
+    console.log("********************");
     return (
         <>
             Checkbox

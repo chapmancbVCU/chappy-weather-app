@@ -15,10 +15,13 @@ class DailyController extends Controller {
      */
     public function indexAction(): void {
         $user = AuthService::currentUser();
-        $favorites = Favorites::findAllByUserId($user->id);
+        if($user) {
+            $favorites = Favorites::findAllByUserId($user->id);
+        }
+        
         $props = [
             'user' => $user ?? null,
-            'favorites' => $favorites
+            'favorites' => $favorites ?? null
         ];
         $this->view->renderJsx('daily.Index', $props);
     }

@@ -106,15 +106,7 @@ const useWeather = (weather, fetch) => {
 
     const current = currentData?.data || {};
     const coords = current?.coord;
-
-    if(fetch == true) {
-        console.log("Fetch (current): true")
-        console.log(current)
-    } else {
-        console.log("Fetch (current): false")
-        console.log(current)
-    }
-    
+ 
     /**
      * Fetches data using oneCall api.
      */
@@ -134,11 +126,12 @@ const useWeather = (weather, fetch) => {
     const oneCall = oneCallData?.data || {};
 
     if(fetch == true) {
-        console.log("Fetch (oneCall): true")
+        console.log("********************")
+        console.log("Standard API");
+        console.log(current)
+        console.log("OneCall")
         console.log(oneCall)
-    } else {
-        console.log("Fetch (oneCall): false")
-        console.log(oneCall)
+        console.log("********************")
     }
 
     /**

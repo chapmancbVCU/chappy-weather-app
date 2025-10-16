@@ -6,6 +6,7 @@ import HourlyForecast from "@/components/HourlyForecast";
 import Error from "@/components/Error";
 import UnitsSwitch from "@/components/UnitsSwitch";
 import Favorites from "@/components/Favorites";
+import FavoritesCheck from "@/components/FavoritesCheck";
 import Alerts from "@/components/Alerts";
 
 /**
@@ -49,7 +50,10 @@ function Index({ user, favorites }) {
                     }
                     {oneCall.alerts && <Alerts alerts={oneCall.alerts}/>}
                     {user && <Favorites  favorites={favorites} units={units} />}
-                    <h2 className="ms-3 text-center">Hourly forecast for {city}</h2>
+                    <div className="d-flex my-3 flex-row mx-auto">
+                        <h2 className="me-4 text-center">Hourly forecast for {city}</h2>
+                        {user && <FavoritesCheck weather={weather} />}
+                    </div>
                     <HourlyForecast oneCall={oneCall} units={units} />
                 </div>
             )}

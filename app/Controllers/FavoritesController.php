@@ -3,6 +3,8 @@ namespace App\Controllers;
 use Core\Controller;
 use Core\Services\AuthService;
 use App\Models\Favorites;
+use Core\Lib\Logging\Logger;
+use Throwable;
 /**
  * Supports operations related to favorites.
  */
@@ -12,6 +14,22 @@ class FavoritesController extends Controller {
         $favorites = Favorites::findAllByUserId($user->id);
         $this->view->props = ['favorites' => $favorites];
         $this->view->renderJsx('favorites.ManageFavorites');
+    }
+
+    public function storeAction(): void {
+        //$data =  $this->request->get();
+        try {
+            $raw = file_get_contents('php://input') ?: '';
+            $input = json_decode($raw, true);
+            if(!is_array($input)) {
+                $input = $this->request->get();
+            }
+            $test = trim((string)$input['test']);
+            Logger::log("Data");
+            Logger::log(json_encode($test));
+        } catch (Throwable $e){
+
+        }
     }
 
     public function showAction(): void {

@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Forms from "@chappy/components/Forms";
+import route from "@chappy/utils/route";
+import { apiPost } from "@chappy/utils/api";
 function FavoritesCheck({ weather, favorites }) {
 
     const [isFavorite, setIsFavorite] = useState(false);
+
+    const [form, setForm] = useState({
+        
+    });
+
     console.log("********************");
     console.log("Favorites Check");
     console.log(weather)
@@ -19,17 +26,39 @@ function FavoritesCheck({ weather, favorites }) {
         }
     }
 
-    useEffect(() => {
+    async function handleSubmit(e) {
+        console.log("test")
+        e.preventDefault();
+        
+        try {
+            const payload = {
+                test: "tester"
+            }
+            const json = await apiPost("/favorites/store", payload);
+        } catch (error) {
 
+        }
+      
+    }
+
+    useEffect(() => {
         isFavoriteCity();
-    })
+    });
+
     return (
-        <form method="POST">
-            <Forms.CSRF />
+        <>
             {!isFavorite && (
-                <button>Add</button>
+            <form method="POST" onSubmit={handleSubmit}>
+                <Forms.CSRF />
+                    <Forms.Hidden name="test" value="test" />
+                    <button 
+                        type="submit" 
+                        className="btn btn-primary btn-sm">
+                        <i className="fa fa-plus"></i>Add
+                    </button>
+                </form>
             )}
-        </form>
+        </>
     );
 }        
 export default FavoritesCheck;

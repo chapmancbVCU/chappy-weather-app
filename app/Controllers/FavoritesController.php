@@ -3,6 +3,8 @@ namespace App\Controllers;
 use Core\Controller;
 use Core\Services\AuthService;
 use App\Models\Favorites;
+use Core\FormHelper;
+use Core\Router;
 use Core\Lib\Logging\Logger;
 use Throwable;
 /**
@@ -17,7 +19,7 @@ class FavoritesController extends Controller {
     }
 
     public function storeAction(): void {
-        //$data =  $this->request->get();
+        //$this->request->csrfCheck();
         try {
             $raw = file_get_contents('php://input') ?: '';
             $input = json_decode($raw, true);
@@ -25,8 +27,12 @@ class FavoritesController extends Controller {
                 $input = $this->request->get();
             }
             $test = trim((string)$input['test']);
+            $csrf = $input['csrf_token'];
+            if(!FormHelper::checkToken($csrf)) {
+                Router::redirect('restricted/badToken');
+            }
             Logger::log("Data");
-            Logger::log(json_encode($test));
+            Logger::log(json_encode($raw));
         } catch (Throwable $e){
 
         }

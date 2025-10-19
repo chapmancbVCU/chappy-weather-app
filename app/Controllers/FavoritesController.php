@@ -4,13 +4,14 @@ use Core\Controller;
 use Core\Services\AuthService;
 use App\Models\Favorites;
 use Core\FormHelper;
-use Core\Router;
+use Core\Lib\Http\JsonResponse;
 use Core\Lib\Logging\Logger;
 use Throwable;
 /**
  * Supports operations related to favorites.
  */
 class FavoritesController extends Controller {
+    use JsonResponse;
     public function manageFavoritesAction(): void {
         $user = AuthService::currentUser();
         $favorites = Favorites::findAllByUserId($user->id);
@@ -22,20 +23,24 @@ class FavoritesController extends Controller {
         //$this->request->csrfCheck();
         try {
             $raw = file_get_contents('php://input') ?: '';
-            $input = json_decode($raw, true);
+            //$input = json_decode($raw, true);
+            $input = $this->get();
             if(!is_array($input)) {
                 $input = $this->request->get();
             }
-            $test = trim((string)$input['test']);
-            $csrf = $input['csrf_token'];
-            if(!FormHelper::checkToken($csrf)) {
+            $csrf = $this->get('csrf_token');
+            
+            //if(!FormHelper::checkToken($csrf)) {
                 //Router::redirect('restricted/badToken');
-                return $this->jsonError('Corrupted token');
-            } //else {
+                //return $this->jsonError('Corrupted token');
+            //} //else {
               //  $this->jsonResponse(['Corrupted token']);
             //}
             Logger::log("Data");
-            Logger::log(json_encode($raw));
+            Logger::log(json_encode($input));
+            //Logger::log($csrf);
+            if(!$this->apiCsrfCheck())
+               return $this->jsonError('Corrupted token');
         } catch (Throwable $e){
             //return $this->jsonError('Corrupted token');
         }

@@ -5,11 +5,12 @@ use Throwable;
 use Core\Controller;
 use Core\Lib\Logging\Logger;
 use App\Services\WeatherService;
-
+use Core\Lib\Http\JsonResponse;
 /**
  * Has actions that serves as endpoints for api requests.
  */
 class WeatherController extends Controller {
+    use JsonResponse;
     /**
      * Supports query for getting current conditions for a given area.
      *

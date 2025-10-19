@@ -23,7 +23,11 @@ function FavoritesCard({ favorite, units }) {
 
     const { description } = useDescription(data?.weather?.[0].description);
     const { icon } = useIcon(data?.weather?.[0]?.icon);
-    
+
+    /**
+     * Updates local storage with location information and refreshes page when 
+     * the user clicks on a card.
+     */
     const onCardClick = () => {
         console.log(favorite.name)
         weather.updateStorage(data, units, favorite.name);

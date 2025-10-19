@@ -18,7 +18,7 @@ class FavoritesController extends Controller {
         $this->view->renderJsx('favorites.ManageFavorites');
     }
 
-    public function storeAction(): void {
+    public function storeAction() {
         //$this->request->csrfCheck();
         try {
             $raw = file_get_contents('php://input') ?: '';
@@ -29,12 +29,15 @@ class FavoritesController extends Controller {
             $test = trim((string)$input['test']);
             $csrf = $input['csrf_token'];
             if(!FormHelper::checkToken($csrf)) {
-                Router::redirect('restricted/badToken');
-            }
+                //Router::redirect('restricted/badToken');
+                return $this->jsonError('Corrupted token');
+            } //else {
+              //  $this->jsonResponse(['Corrupted token']);
+            //}
             Logger::log("Data");
             Logger::log(json_encode($raw));
         } catch (Throwable $e){
-
+            //return $this->jsonError('Corrupted token');
         }
     }
 

@@ -46,7 +46,7 @@ function FavoritesCheck({ weather, favorites }) {
             }
             const json = await apiPost("/favorites/store", payload);
         } catch (error) {
-
+            console.log(error);
         }
       
     }

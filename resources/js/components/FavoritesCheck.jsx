@@ -33,14 +33,16 @@ function FavoritesCheck({ weather, favorites }) {
         return el?.value || "";
     }
     async function handleSubmit(e) {
-        console.log(e.target.csrf_token.value)
+        //console.log(e.target.csrf_token.value)
         e.preventDefault();
         
         
         try {
             const payload = {
-                test: "tester",
-                csrf_token: e.target[0].value
+                city: e.target.city.value,
+                latitude: e.target.latitude.value,
+                longitude: e.target.longitude.value,
+                csrf_token: e.target.csrf_token.value
             }
             const json = await apiPost("/favorites/store", payload);
         } catch (error) {
@@ -58,8 +60,9 @@ function FavoritesCheck({ weather, favorites }) {
             {!isFavorite && (
                 <form method="POST" onSubmit={handleSubmit}>
                     <Forms.CSRF />
-                    <Forms.Hidden name="test" value="test" />
-                    <Forms.Hidden name="test2" value="test2" />
+                    <Forms.Hidden name="city" value={weather.getCityInfo()} />
+                    <Forms.Hidden name="latitude" value={weather.getLatitude()} />
+                    <Forms.Hidden name="longitude" value={weather.getLongitude()} />
                     <button 
                         type="submit" 
                         className="btn btn-primary btn-sm">

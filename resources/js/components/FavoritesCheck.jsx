@@ -27,24 +27,23 @@ function FavoritesCheck({ weather, favorites }) {
         }
     }
 
-    function getCsrfToken() {
-        const el = document.getElementById('csrf_token');
-        //console.log(el.value)
-        return el?.value || "";
+    function getCsrfToken(e) {
+        return e.target.csrf_token.value
     }
     async function handleSubmit(e) {
         //console.log(e.target.csrf_token.value)
         e.preventDefault();
         
-        
+        console.log(e.target.city.value)
         try {
             const payload = {
-                city: e.target.city.value,
+                name: e.target.city.value,
                 latitude: e.target.latitude.value,
                 longitude: e.target.longitude.value,
-                csrf_token: e.target.csrf_token.value
+                csrf_token: getCsrfToken(e)
             }
             const json = await apiPost("/favorites/store", payload);
+            window.location.reload();
         } catch (error) {
             console.log(error);
         }

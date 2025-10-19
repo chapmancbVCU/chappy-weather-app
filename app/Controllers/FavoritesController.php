@@ -20,29 +20,19 @@ class FavoritesController extends Controller {
     }
 
     public function storeAction() {
-        //$this->request->csrfCheck();
+        
+        $favorite = new Favorites();
         try {
-            $raw = file_get_contents('php://input') ?: '';
-            //$input = json_decode($raw, true);
-            $input = $this->get();
-            if(!is_array($input)) {
-                $input = $this->request->get();
-            }
-            $csrf = $this->get('csrf_token');
-            
-            //if(!FormHelper::checkToken($csrf)) {
-                //Router::redirect('restricted/badToken');
-                //return $this->jsonError('Corrupted token');
-            //} //else {
-              //  $this->jsonResponse(['Corrupted token']);
-            //}
-            Logger::log("Data");
-            Logger::log(json_encode($input));
-            //Logger::log($csrf);
             if(!$this->apiCsrfCheck())
                return $this->jsonError('Corrupted token');
+            $input = $this->get();
+            Logger::log("Data");
+            Logger::log(json_encode($input));
+            $favorite->assign($this->get());
+            $favorite->user_id = AuthService::currentUser()->id;
+            $favorite->save();
         } catch (Throwable $e){
-            //return $this->jsonError('Corrupted token');
+            return $this->jsonError('Server error', 500);
         }
     }
 

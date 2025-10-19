@@ -6,6 +6,13 @@ import { Weather } from "@/utils/Weather";
 import useWeather from "@/utils/hooks/useWeather";
 import UnitsSwitch from "@/components/UnitsSwitch";
 
+/**
+ * Displays ManageFavorites view.
+ * @property {array} favorites The favorites associated with the currently 
+ * logged in user.
+ * @param {InputProps} param0 
+ * @returns {JSX.Element} The ManageFavorites view.
+ */
 function ManageFavorites({ favorites }) {
     documentTitle('Your Favorites');
     const weather = useMemo(() => new Weather(), []);

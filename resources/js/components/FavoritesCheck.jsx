@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Forms from "@chappy/components/Forms";
-import route from "@chappy/utils/route";
 import { apiPost } from "@chappy/utils/api";
-import { getCsrf } from "@chappy/utils/csrf";
 function FavoritesCheck({ weather, favorites }) {
 
     const [isFavorite, setIsFavorite] = useState(false);
-
-    const [form, setForm] = useState({
-        
-    });
 
     console.log("********************");
     console.log("Favorites Check");
@@ -18,7 +12,7 @@ function FavoritesCheck({ weather, favorites }) {
     console.log("********************");
     const isFavoriteCity = () => {
         const weatherCity = weather.city.toLowerCase();
-        for(let i = 0; i < favorites.length; i++) {
+        for(let i = 0; i < favorites?.length; i++) {
             let favCity = favorites[i].name.toLowerCase();
             if(favCity.includes(weatherCity) || weatherCity.includes(favCity)) {
                 setIsFavorite(true);
@@ -31,9 +25,7 @@ function FavoritesCheck({ weather, favorites }) {
         return e.target.csrf_token.value
     }
     async function handleSubmit(e) {
-        //console.log(e.target.csrf_token.value)
         e.preventDefault();
-        
         console.log(e.target.city.value)
         try {
             const payload = {

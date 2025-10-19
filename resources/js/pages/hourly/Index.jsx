@@ -8,6 +8,7 @@ import UnitsSwitch from "@/components/UnitsSwitch";
 import Favorites from "@/components/Favorites";
 import FavoritesCheck from "@/components/FavoritesCheck";
 import Alerts from "@/components/Alerts";
+import useFavorites from "@/utils/hooks/useFavorites";
 
 /**
  * Renders and handles information for hourly conditions at a specific 
@@ -15,8 +16,10 @@ import Alerts from "@/components/Alerts";
  * @param {InputProps} param0 
  * @returns {JSX.Element} The home view that displays hourly forecast.
  */
-function Index({ user, favorites }) {
+function Index({ user }) {
     const weather = useMemo(() => new Weather(), []);
+    const { favorites } = useFavorites();
+    
     weather.redirectIfNoData();
 
     const { 

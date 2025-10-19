@@ -38,6 +38,7 @@ class FavoritesController extends Controller {
 
     public function showAction(): void {
         $user = AuthService::currentUser();
-        $favorites = Favorites::findAllByUserId($user->id);
+        $data = Favorites::findAllByUserId($user->id);
+        $this->jsonResponse(['success' => true, 'data' => $data]);
     }
 }

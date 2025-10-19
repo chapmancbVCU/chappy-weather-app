@@ -8,6 +8,7 @@ import UnitsSwitch from "@/components/UnitsSwitch";
 import Favorites from "@/components/Favorites";
 import FavoritesCheck from "@/components/FavoritesCheck";
 import Alerts from "@/components/Alerts";
+import useFavorites from "@/utils/hooks/useFavorites";
 
 /**
  * Renders and handles information for current conditions at a specific 
@@ -15,8 +16,10 @@ import Alerts from "@/components/Alerts";
  * @param {InputProps} param0 
  * @returns {JSX.Element} The view that displays current conditions.
  */
-function Index({ user, favorites }) {
+function Index({ user }) {
     const weather = useMemo(() => new Weather(), []);
+    const { favorites } = useFavorites();
+
     const { 
         city, 
         current,

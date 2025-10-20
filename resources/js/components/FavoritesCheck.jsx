@@ -1,6 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Forms from "@chappy/components/Forms";
 import { apiPost } from "@chappy/utils/api";
+
+/**
+ * A component that displays a button to add a location to the favorites table.
+ * @property {object} weather An instance of the Weather class.
+ * @property {array} favorites The favorites associated with currently logged 
+ * in user.
+ * @param {InputProps} param0 
+ * @returns {JSX.Element} Component containing form that submits request to 
+ * add a location to the favorites table.
+ */
 function FavoritesCheck({ weather, favorites }) {
 
     const [isFavorite, setIsFavorite] = useState(false);

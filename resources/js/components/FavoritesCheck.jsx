@@ -42,7 +42,6 @@ function FavoritesCheck({ weather, favorites }) {
      */
     async function handleSubmit(e) {
         e.preventDefault();
-        console.log(e.target.city.value)
         try {
             const payload = {
                 name: e.target.city.value,

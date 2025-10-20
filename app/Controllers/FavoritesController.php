@@ -21,13 +21,12 @@ class FavoritesController extends Controller {
 
     public function storeAction() {
         
-        $favorite = new Favorites();
         try {
-            if(!$this->apiCsrfCheck())
-               return $this->jsonError('Corrupted token');
-            $input = $this->get();
-            Logger::log("Data");
-            Logger::log(json_encode($input));
+            $favorite = new Favorites();
+            if(!$this->apiCsrfCheck()) {
+                return $this->jsonError('Corrupted token');
+            }
+
             $favorite->assign($this->get());
             $favorite->user_id = AuthService::currentUser()->id;
             $favorite->save();

@@ -15,11 +15,6 @@ function FavoritesCheck({ weather, favorites }) {
 
     const [isFavorite, setIsFavorite] = useState(false);
 
-    console.log("********************");
-    console.log("Favorites Check");
-    console.log(weather)
-    console.log(favorites)
-    console.log("********************");
     const isFavoriteCity = () => {
         const weatherCity = weather.city.toLowerCase();
         for(let i = 0; i < favorites?.length; i++) {

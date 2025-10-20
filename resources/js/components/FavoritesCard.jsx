@@ -6,6 +6,14 @@ import useIcon from "@/utils/hooks/useIcon";
 import useDescription from "@/utils/hooks/useDescription";
 import { Weather } from "@/utils/Weather";
 
+/**
+ * Renders card with information related to a favorite location.
+ * @property {object} favorite The object for a specific favorite location.
+ * @property {string} units The system of units in use.
+ * @param {InputProps} param0 
+ * @returns {JSX.Element} Component containing card that displays information 
+ * for a favorite location.
+ */
 function FavoritesCard({ favorite, units }) {
     const weather = useMemo(() => new Weather(), []);
     const { temperature } = useTemperature(units);

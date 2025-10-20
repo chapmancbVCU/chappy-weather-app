@@ -18,8 +18,12 @@ class FavoritesController extends Controller {
         $this->view->renderJsx('favorites.ManageFavorites');
     }
 
+    /**
+     * Adds record to favorites table.
+     *
+     * @return void
+     */
     public function storeAction() {
-        
         try {
             $favorite = new Favorites();
             if(!$this->apiCsrfCheck()) {

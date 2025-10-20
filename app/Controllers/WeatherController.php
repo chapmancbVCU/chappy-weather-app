@@ -35,8 +35,12 @@ class WeatherController extends Controller {
         }
     }
 
-    public function oneCallAction()
-    {
+    /**
+     * Performs API request for OneCall data and sends data back requestor.
+     *
+     * @return void
+     */
+    public function oneCallAction() {
         try {
             $lat = $this->request->get('lat') ?? null;
             $lon = $this->request->get('lon') ?? null;

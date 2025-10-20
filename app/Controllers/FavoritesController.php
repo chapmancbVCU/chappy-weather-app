@@ -3,10 +3,9 @@ namespace App\Controllers;
 use Core\Controller;
 use Core\Services\AuthService;
 use App\Models\Favorites;
-use Core\FormHelper;
 use Core\Lib\Http\JsonResponse;
-use Core\Lib\Logging\Logger;
 use Throwable;
+
 /**
  * Supports operations related to favorites.
  */

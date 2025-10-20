@@ -38,6 +38,11 @@ class FavoritesController extends Controller {
         }
     }
 
+    /**
+     * Retrieves favorites data for favorites cards.
+     *
+     * @return void
+     */
     public function showAction(): void {
         $user = AuthService::currentUser();
         $data = Favorites::findAllByUserId($user->id);

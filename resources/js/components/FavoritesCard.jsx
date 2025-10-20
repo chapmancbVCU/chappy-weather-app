@@ -42,18 +42,30 @@ function FavoritesCard({ favorite, units }) {
         window.location.reload();
     }
 
+    const onDeleteClick = (e) => {
+        console.log(e)
+        if(window.confirm(`Are you sure you want to delete the location ${favorite.name}?`)) {
+
+        }
+    }
+
     if(favoriteLoading) return <div className="mt-3 text-center">Loading...</div>
 
     return (
         <>
             {favoriteError && <Error error={favoriteError} />}
-            {!favoriteError && 
-                <button className="manage-favorites-card" onClick={() => onCardClick()}>
-                    <h5 className="my-2">{favorite.name}</h5>
-                    <p>{description}</p>
-                    {icon && <img src={icon} alt={description}></img>}
-                    <p>{temperature(data.main.temp)}</p>
-                </button>
+            {!favoriteError && (
+                <div>
+                    <span className="btn-danger delete-favorite" onClick={() => onDeleteClick(favorite)}><i className="fa fa-times"></i></span>
+                    <button className="manage-favorites-card" onClick={() => onCardClick()}>
+                        <h5 className="my-2">{favorite.name}</h5>
+                        <p>{description}</p>
+                        {icon && <img src={icon} alt={description}></img>}
+                        <p>{temperature(data.main.temp)}</p>
+                    </button>
+                </div>
+            )
+                
             }
         </>
     );

@@ -3,7 +3,6 @@ namespace App\Controllers;
 
 use Throwable;
 use Core\Controller;
-use Core\Lib\Logging\Logger;
 use App\Services\WeatherService;
 use Core\Lib\Http\JsonResponse;
 /**

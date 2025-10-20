@@ -34,6 +34,12 @@ function FavoritesCheck({ weather, favorites }) {
     function getCsrfToken(e) {
         return e.target.csrf_token.value
     }
+
+    /**
+     * Sends post request to favorites controller when the 
+     * form is submitted.
+     * @param {Event} e Event for when user submits a form.
+     */
     async function handleSubmit(e) {
         e.preventDefault();
         console.log(e.target.city.value)

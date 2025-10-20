@@ -35,6 +35,12 @@
    margin-bottom: 5px;
 }
 
+.delete-favorite {
+    position: absolute;
+    color: crimson;
+    cursor: pointer;
+}
+
 .description {
     display: flex;
     align-items: center; 

@@ -4,6 +4,7 @@ use Core\Controller;
 use Core\Services\AuthService;
 use App\Models\Favorites;
 use Core\Lib\Http\JsonResponse;
+use Core\Lib\Logging\Logger;
 use Throwable;
 
 /**
@@ -40,6 +41,21 @@ class FavoritesController extends Controller {
             $favorite->assign($this->get());
             $favorite->user_id = AuthService::currentUser()->id;
             $favorite->save();
+        } catch (Throwable $e){
+            return $this->jsonError('Server error', 500);
+        }
+    }
+
+    public function destroyAction(int $id) {
+        Logger::log("destroy");
+        try {
+            if(!$this->apiCsrfCheck()) {
+                return $this->jsonError('Corrupted token');
+            }
+            //$id = $this->get('favorite_id');
+                $favorite = Favorites::findById($id);
+                //Logger::log($favorite);
+                $favorite->delete();
         } catch (Throwable $e){
             return $this->jsonError('Server error', 500);
         }

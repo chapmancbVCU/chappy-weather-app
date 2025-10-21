@@ -74,8 +74,8 @@ function FavoritesCard({ favorite, units }) {
             {!favoriteError && (
                 <div>
                     <form method="POST" onSubmit={onDeleteClick}>
-                            <Forms.CSRF />
-                            <button 
+                        <Forms.CSRF />
+                        <button 
                             type="submit" 
                             className="btn-danger delete-favorite">
                             <i className="fa fa-times "></i>

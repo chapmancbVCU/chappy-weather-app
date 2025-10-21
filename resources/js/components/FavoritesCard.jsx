@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { apiDelete, apiGet, useAsync } from '@chappy/utils/api';
 import Error from "./Error";
 import useTemperature from "@/utils/hooks/useTemperature";
@@ -17,7 +17,7 @@ import Forms from "@chappy/components/Forms";
 function FavoritesCard({ favorite, units }) {
     const weather = useMemo(() => new Weather(), []);
     const { temperature } = useTemperature(units);
-
+    const [error, setError] = useState(null);
     const { 
         data: favoriteData, 
         loading: favoriteLoading, 
@@ -46,6 +46,18 @@ function FavoritesCard({ favorite, units }) {
         return e.target.csrf_token.value
     }
 
+    function extractError(err) {
+        if (err?.response?.data) {
+            const d = err.response.data;
+            if (d.message) return d.message;
+            if (d.error) return d.error;
+            if (d.errors && typeof d.errors === 'object') {
+                return Object.values(d.errors).flat().join(' ');
+            }
+        }
+        return err?.message || 'Something went wrong while deleting the location.';
+    }
+
     /**
      * Handles event related to deleting a favorite.
      * @param {Event} e Event for when user submits a form to delete.
@@ -60,8 +72,10 @@ function FavoritesCard({ favorite, units }) {
                 }
                 const json = await apiDelete(`/favorites/destroy/${favorite.id}`, payload);
                 window.location.reload();
-            } catch (error) {
-                console.log(error);
+            } catch (err) {
+                console.log(err?.message);
+                
+                setError(extractError(err));
             }
         }
     }
@@ -73,14 +87,16 @@ function FavoritesCard({ favorite, units }) {
             {favoriteError && <Error error={favoriteError} />}
             {!favoriteError && (
                 <div>
-                    <form method="POST" onSubmit={onDeleteClick}>
-                        <Forms.CSRF />
-                        <button 
-                            type="submit" 
-                            className="btn-danger delete-favorite">
-                            <i className="fa fa-times "></i>
-                        </button>
-                    </form>
+                    {error ? (<p className="text-danger">{error}</p>) : 
+                        <form method="POST" onSubmit={onDeleteClick}>
+                            <Forms.CSRF />
+                            <button 
+                                type="submit" 
+                                className="btn-danger delete-favorite">
+                                <i className="fa fa-times "></i>
+                            </button>
+                        </form>
+                    }
                     <button className="favorites-card" onClick={() => onCardClick()}>
                         <h5 className="my-2">{favorite.name}</h5>
                         <p>{description}</p>

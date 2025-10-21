@@ -64,7 +64,6 @@ function FavoritesCard({ favorite, units }) {
      */
     async function onDeleteClick(e) {
         e.preventDefault()
-        console.log(favorite)
         if(window.confirm(`Are you sure you want to delete the location ${favorite.name}?`)) {
             try {
                 const payload = {
@@ -73,8 +72,6 @@ function FavoritesCard({ favorite, units }) {
                 const json = await apiDelete(`/favorites/destroy/${favorite.id}`, payload);
                 window.location.reload();
             } catch (err) {
-                console.log(err?.message);
-                
                 setError(extractError(err));
             }
         }

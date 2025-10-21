@@ -46,6 +46,10 @@ function FavoritesCard({ favorite, units }) {
         return e.target.csrf_token.value
     }
 
+    /**
+     * Handles event related to deleting a favorite.
+     * @param {Event} e Event for when user submits a form to delete.
+     */
     async function onDeleteClick(e) {
         e.preventDefault()
         console.log(favorite)
@@ -69,7 +73,6 @@ function FavoritesCard({ favorite, units }) {
             {favoriteError && <Error error={favoriteError} />}
             {!favoriteError && (
                 <div>
-                    {/* <span className="btn-danger delete-favorite" onClick={() => onDeleteClick(favorite)}><i className="fa fa-times"></i></span> */}
                     <form method="POST" onSubmit={onDeleteClick}>
                             <Forms.CSRF />
                             <button 

@@ -60,6 +60,16 @@
     background-color: rgb(111, 200, 230, .7);
 }
 
+.favorites-card {
+    margin: 5px;
+    text-align: center;
+    border: 3px solid rgb(57, 169, 244);
+    background-color: rgb(111, 200, 230);
+    border-radius: 15px;
+    min-width: 300px;
+    max-width: 300px;
+}
+
 .favorite-cards-container {
     width: 90%;
     display: flex;
@@ -107,30 +117,6 @@
 .hr-border {
     border: solid 3px rgb(57, 169, 244);
     width: 95%;
-}
-
-.manage-favorites {
-    display: flex;
-    flex-direction: column;
-    max-width: 75%;
-}
-
-.manage-favorites-card {
-    margin: 5px;
-    text-align: center;
-    border: 3px solid rgb(57, 169, 244);
-    background-color: rgb(111, 200, 230);
-    border-radius: 15px;
-    min-width: 300px;
-    max-width: 300px;
-}
-
-.manage-favorites-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-self: center;
-    gap: 25px;
 }
 
 .row-section {
@@ -202,10 +188,6 @@
     
     .forecast-info-block {
         min-width: 115px;
-    }
-
-    .manage-favorites-content {
-        flex-direction: row;
     }
 
     .selected-content {

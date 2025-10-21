@@ -81,7 +81,7 @@ function FavoritesCard({ favorite, units }) {
                             <i className="fa fa-times "></i>
                         </button>
                     </form>
-                    <button className="manage-favorites-card" onClick={() => onCardClick()}>
+                    <button className="favorites-card" onClick={() => onCardClick()}>
                         <h5 className="my-2">{favorite.name}</h5>
                         <p>{description}</p>
                         {icon && <img src={icon} alt={description}></img>}

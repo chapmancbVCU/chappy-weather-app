@@ -2,8 +2,6 @@
     "Login" : "auth/login",
     "Register for more features" : "auth/register",
     "%USERNAME%" : {
-      "Favorites" : "favorites/manageFavorites",
-      "separator" : "",
       "Profile" : "profile",
       "Logout" : "auth/logout"
     }

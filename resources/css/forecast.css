@@ -109,6 +109,12 @@
     width: 95%;
 }
 
+.manage-favorites {
+    display: flex;
+    flex-direction: column;
+    max-width: 75%;
+}
+
 .manage-favorites-card {
     margin: 5px;
     text-align: center;

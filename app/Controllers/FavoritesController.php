@@ -14,19 +14,6 @@ class FavoritesController extends Controller {
     use JsonResponse;
 
     /**
-     * Retrieves favorites for current user and renders the manageFavorites 
-     * view.
-     *
-     * @return void
-     */
-    public function manageFavoritesAction(): void {
-        $user = AuthService::currentUser();
-        $favorites = Favorites::findAllByUserId($user->id);
-        $this->view->props = ['favorites' => $favorites];
-        $this->view->renderJsx('favorites.ManageFavorites');
-    }
-
-    /**
      * Adds record to favorites table.
      *
      * @return void

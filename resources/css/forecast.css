@@ -37,6 +37,13 @@
 
 .delete-favorite {
     position: absolute;
+    border: none;
+    outline: none;
+    font-size: 25px;
+    top: 25px;
+    left: 5px;
+    background-color: inherit;
+    position: relative;
     color: crimson;
     cursor: pointer;
 }

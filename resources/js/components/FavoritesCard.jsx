@@ -55,7 +55,7 @@ function FavoritesCard({ favorite, units }) {
                 return Object.values(d.errors).flat().join(' ');
             }
         }
-        return err?.message || 'Something went wrong while deleting the location.';
+        return err?.message || 'Something went wrong with your request.';
     }
 
     /**

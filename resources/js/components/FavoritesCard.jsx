@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { apiDelete, apiGet, useAsync } from '@chappy/utils/api';
+import { apiDelete, apiGet, useAsync, apiError } from '@chappy/utils/api';
 import Error from "./Error";
 import useTemperature from "@/utils/hooks/useTemperature";
 import useIcon from "@/utils/hooks/useIcon";
@@ -46,18 +46,6 @@ function FavoritesCard({ favorite, units }) {
         return e.target.csrf_token.value
     }
 
-    function extractError(err) {
-        if (err?.response?.data) {
-            const d = err.response.data;
-            if (d.message) return d.message;
-            if (d.error) return d.error;
-            if (d.errors && typeof d.errors === 'object') {
-                return Object.values(d.errors).flat().join(' ');
-            }
-        }
-        return err?.message || 'Something went wrong with your request.';
-    }
-
     /**
      * Handles event related to deleting a favorite.
      * @param {Event} e Event for when user submits a form to delete.
@@ -72,7 +60,7 @@ function FavoritesCard({ favorite, units }) {
                 const json = await apiDelete(`/favorites/destroy/${favorite.id}`, payload);
                 window.location.reload();
             } catch (err) {
-                setError(extractError(err));
+                setError(apiError(err));
             }
         }
     }

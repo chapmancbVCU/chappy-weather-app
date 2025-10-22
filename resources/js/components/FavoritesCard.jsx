@@ -89,9 +89,7 @@ function FavoritesCard({ favorite, units }) {
                         <p>{temperature(data.main.temp)}</p>
                     </button>
                 </div>
-            )
-                
-            }
+            )}
         </>
     );
 }        

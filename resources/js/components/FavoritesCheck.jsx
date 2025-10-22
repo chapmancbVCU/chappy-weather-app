@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Forms from "@chappy/components/Forms";
-import { apiPost } from "@chappy/utils/api";
+import { apiPost, apiError } from "@chappy/utils/api";
 
 /**
  * A component that displays a button to add a location to the favorites table.
@@ -12,7 +12,7 @@ import { apiPost } from "@chappy/utils/api";
  * add a location to the favorites table.
  */
 function FavoritesCheck({ weather, favorites }) {
-
+    const [error, setError] = useState(null);
     const [isFavorite, setIsFavorite] = useState(false);
 
     const isFavoriteCity = () => {
@@ -46,8 +46,8 @@ function FavoritesCheck({ weather, favorites }) {
             }
             const json = await apiPost("/favorites/store", payload);
             window.location.reload();
-        } catch (error) {
-            console.log(error);
+        } catch (err) {
+            setError(apiError(err));
         }
       
     }
@@ -59,17 +59,21 @@ function FavoritesCheck({ weather, favorites }) {
     return (
         <>
             {!isFavorite && (
-                <form method="POST" onSubmit={handleSubmit}>
-                    <Forms.CSRF />
-                    <Forms.Hidden name="city" value={weather.getCityInfo()} />
-                    <Forms.Hidden name="latitude" value={weather.getLatitude()} />
-                    <Forms.Hidden name="longitude" value={weather.getLongitude()} />
-                    <button 
-                        type="submit" 
-                        className="btn btn-primary btn-sm">
-                        <i className="fa fa-plus"></i>Add
-                    </button>
-                </form>
+                <>
+                    {error ? (<p className="text-danger">{error}</p>) : 
+                        <form method="POST" onSubmit={handleSubmit}>
+                            <Forms.CSRF />
+                            <Forms.Hidden name="city" value={weather.getCityInfo()} />
+                            <Forms.Hidden name="latitude" value={weather.getLatitude()} />
+                            <Forms.Hidden name="longitude" value={weather.getLongitude()} />
+                            <button 
+                                type="submit" 
+                                className="btn btn-primary btn-sm">
+                                <i className="fa fa-plus"></i>Add
+                            </button>
+                        </form>
+                    }
+                </>
             )}
         </>
     );

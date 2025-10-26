@@ -3,9 +3,13 @@ import path from 'path';
 import react from '@vitejs/plugin-react'; // ✅ ADD THIS
 import FullReload from 'vite-plugin-full-reload';
 
+const isProd = process.env.NODE_ENV === 'production';
+
 export default defineConfig({
+    publicDir: false,
     build: {
         outDir: 'public/build',
+        assetsDir: 'assets',
         manifest: true,
         rollupOptions: {
             input: {

@@ -1,23 +1,17 @@
 RewriteEngine On
 
-# 1) Let Apache serve real existing files/dirs immediately
-RewriteCond %{REQUEST_FILENAME} -f [OR]
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^ - [L]
+# Ensure Apache serves static files (CSS, JS, images, fonts) directly
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule \.(css|js|png|jpg|jpeg|gif|svg|ico|woff2|woff|ttf|eot)$ - [L]
 
-# 2) Always serve built frontend assets directly
-#    (Vite production build lives in public/build)
-RewriteRule ^public/build/ - [L]
-
-# 3) Serve Doctum API docs (static files)
+# Serve Doctum API documentation from resources/views/api-docs/
 RewriteRule ^api-docs/(.*)$ resources/views/api-docs/$1 [L]
 
-# 4) /docs -> docs index
+# Ensure /docs/ automatically serves index.html
 RewriteRule ^docs/?$ resources/views/docs/content/index.html [L]
 
-# 5) Block direct access to sensitive project folders (optional hardening)
-RewriteCond $1 ^(config|vendor|core|src|database|storage|tests|node_modules) [NC]
-RewriteRule ^ - [R=404,L]
-
-# 6) Everything else -> front controller
-RewriteRule ^ index.php [QSA,L]
+# Handle all other requests using Router.php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond $1 !^(config|public|vendor|core|src|database|resources|storage|tests|node_modules|robots\.txt)
+RewriteRule ^(.+)$ index.php/$1 [L]

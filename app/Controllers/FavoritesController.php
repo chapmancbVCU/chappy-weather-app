@@ -39,10 +39,8 @@ class FavoritesController extends Controller {
             if(!$this->apiCsrfCheck()) {
                 return $this->jsonError('Corrupted token');
             }
-            //$id = $this->get('favorite_id');
-                $favorite = Favorites::findById($id);
-                //Logger::log($favorite);
-                $favorite->delete();
+            $favorite = Favorites::findById($id);
+            $favorite->delete();
         } catch (Throwable $e){
             return $this->jsonError('Server error', 500);
         }

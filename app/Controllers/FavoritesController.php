@@ -34,7 +34,6 @@ class FavoritesController extends Controller {
     }
 
     public function destroyAction(int $id) {
-        Logger::log("destroy");
         try {
             if(!$this->apiCsrfCheck()) {
                 return $this->jsonError('Corrupted token');

@@ -6,7 +6,7 @@ use Core\Lib\Logging\Logger;
 use InvalidArgumentException;
 
 /**
- * Service that supports retrieving weather for current conditions.
+ * Service that supports retrieving weather from OpenWeatherMap.
  */
 class WeatherService extends Api {
     public const GEO_LOCATE = 'http://api.openweathermap.org/geo/1.0';

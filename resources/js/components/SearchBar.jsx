@@ -6,7 +6,8 @@ import { apiGet, useAsync } from '@chappy/utils/api';
  * Supports the search feature for the weather application.  It also includes, 
  * the ability to show suggestions when user types input.
  * 
- * @property {} onSubmit 
+ * @property {function(React.SyntheticEvent): void} props.onSubmit - Callback 
+ * function to handle form submission.
  * @param {InputProps} param0 
  * @returns {JSX.Element} The search bar
  */

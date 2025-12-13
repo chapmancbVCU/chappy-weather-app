@@ -107,7 +107,7 @@ const useWeather = (weather, fetch) => {
 
     const current = currentData?.data || {};
     const coords = current?.coord;
- 
+
     /**
      * Fetches data using oneCall api.
      */
@@ -131,7 +131,7 @@ const useWeather = (weather, fetch) => {
      * coordinates, and weather object.
      */
     useEffect(() => {
-        if(city && units && coords) {
+        if(city && units && coords && currentError != null && oneCallError != null) {
             weather.updateStorage(current, units, city);
         }
     }, [city, units, coords?.lat, coords?.lon, weather]);

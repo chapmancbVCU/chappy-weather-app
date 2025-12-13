@@ -3,7 +3,6 @@ export class Card {
      * Manages sessionStorage tracking of currently selected card.
      */
     constructor() {
-        // console.log(window.location.href);
         if (typeof window === "undefined") {
             this.previous = "";
             this.current = "";
@@ -12,12 +11,10 @@ export class Card {
         }
         const data = this.readStorage();
         if(data) {
-            console.log(`Data: ${data.url}`);
             this.previous = data.url;
             this.index = data.index;
         }
         this.current = window.location.href;
-        // console.log(`Previous: ${this.previous}`);
     }
 
     /**
@@ -68,8 +65,6 @@ export class Card {
         this.previous = cardData.previous;
         this.url = url;
         this.index = newIndex;
-        console.log(`Url: ${url}`);
-        console.log(`Current: ${this.current}`)
         sessionStorage.setItem('cardData', JSON.stringify(cardData));
     }
 }

@@ -37,7 +37,6 @@ function FavoritesCard({ favorite, units }) {
      * the user clicks on a card.
      */
     const onCardClick = () => {
-        console.log(favorite.name)
         weather.updateStorage(data, units, favorite.name);
         window.location.reload();
     }

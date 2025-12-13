@@ -125,15 +125,6 @@ const useWeather = (weather, fetch) => {
     
     const oneCall = oneCallData?.data || {};
 
-    if(fetch == true) {
-        console.log("********************")
-        console.log("Standard API");
-        console.log(current)
-        console.log("OneCall")
-        console.log(oneCall)
-        console.log("********************")
-    }
-
     /**
      * Updates storage when there are updates to city, units,
      * coordinates, and weather object.

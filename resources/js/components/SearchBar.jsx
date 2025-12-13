@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "@css/searchbar.css";
 import { apiGet, useAsync } from '@chappy/utils/api';
-import Error from "./Error";
 
 /**
  * Supports the search feature for the weather application.  It also includes, 

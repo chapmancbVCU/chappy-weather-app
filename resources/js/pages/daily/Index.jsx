@@ -45,7 +45,7 @@ function Index({ user }) {
             {oneCallError && <Error error={oneCallError} />}
 
             {!currentError && !oneCallError && ( 
-                <div className="mt-3 d-flex flex-column">
+                <div className="mt-3 d-flex flex-column w-75 mx-auto">
                     {<UnitsSwitch 
                         isToggled={isToggled} 
                         handleToggleChange={handleToggleChange} 

@@ -2,8 +2,8 @@ import React, { Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import ErrorBoundary from '@chappy/components/ErrorBoundary';
 import '@css/app.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap'; // JS
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 // Code-split all pages under ./pages

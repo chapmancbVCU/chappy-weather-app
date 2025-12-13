@@ -3,7 +3,8 @@ import FavoritesCard from "./FavoritesCard";
 import "@css/forecast.css";
 
 /**
- * Renders a component containing favorites in a scrollable container.
+ * Renders a component containing favorites in a scrollable container if the 
+ * favorites object is not empty.
  * @property {array} favorites The favorites associated with currently logged 
  * in user.
  * @property {string} units The system of units in use.
@@ -11,15 +12,21 @@ import "@css/forecast.css";
  * @returns {JSX.Element} The container with favorites.
  */
 function Favorites({ favorites, units }) {
+    const isDataNotEmpty = favorites && Object.keys(favorites).length > 0;
+
     return (
-        <div className="favorites-bar mx-auto my-3">
-            <h5 className="text-center mt-4">Favorite Locations</h5>
-            <div className="favorite-cards-container">
-                {favorites && favorites.map((favorite, index) => (
-                    <FavoritesCard favorite={favorite} key={index} units={units}/> 
-                ))}
-            </div>
-        </div>
+        <>
+            {isDataNotEmpty && (
+                <div className="favorites-bar mx-auto my-3">
+                    <h5 className="text-center mt-4">Favorite Locations</h5>
+                    <div className="favorite-cards-container">
+                        {favorites && favorites.map((favorite, index) => (
+                            <FavoritesCard favorite={favorite} key={index} units={units}/> 
+                        ))}
+                    </div>
+                </div>
+            )}
+        </>
     );
 }        
 export default Favorites;

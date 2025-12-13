@@ -85,13 +85,14 @@ function SearchBar({ onSubmit }) {
     return (
         <>
             <div className="search-bar">
-                <form className="search-form" >
+                <form className="search-form">
                     <input id="q"
                         className="search-input"
                         type="text"
                         aria-label="Get weather conditions"
                         placeholder="City or Zip Code"
                         value={searchTerm}
+                        required
                         onChange={onInputChange}>
                     </input>
                     <div

@@ -86,6 +86,7 @@ const useWeather = (weather, fetch) => {
      * @param {string} q The query string.
      */
     const onSubmit = (q) => {
+        if(q === "") { return; }
         setCity(q);
         weather.setLocation(q);
     }

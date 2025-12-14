@@ -23,6 +23,9 @@ const useDescription = (data) => {
      */
     const [description, setDescription] = useState("");
 
+    /**
+     * Ensure correct description is rendered when user changes location.
+     */
     useEffect(() => {
         setDescription(setDescriptionText(data));
     }, [data])

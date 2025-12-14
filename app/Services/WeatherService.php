@@ -55,8 +55,17 @@ class WeatherService extends Api {
      * weather information.
      */
     public function current(array $query): array {
-        $allowed = ['q', 'units', 'lang'];
+        if(array_key_exists('q', $query) && is_numeric($query['q'])) {
+            $query['zip'] = $query['q'];
+            unset($query['q']);
+            $query['zip'] = $query['zip'] . ",US";
+        }
+
+
+        $allowed = ['q', 'units', 'lang', 'zip'];
         $params = array_intersect_key($query, array_flip($allowed));
+        Logger::log(json_encode($params));
+        Logger::log(json_encode($this->get('/weather', $params)));
         return $this->get('/weather', $params);
     }
 

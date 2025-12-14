@@ -9,6 +9,7 @@ import Favorites from "@/components/Favorites";
 import FavoritesCheck from "@/components/FavoritesCheck";
 import Alerts from "@/components/Alerts";
 import useFavorites from "@/utils/hooks/useFavorites";
+import Minutely from "@/components/Minutely";
 
 /**
  * Renders and handles information for hourly conditions at a specific 
@@ -58,6 +59,7 @@ function Index({ user }) {
                         {user && <FavoritesCheck weather={weather}  favorites={favorites} />}
                     </div>
                     <HourlyForecast oneCall={oneCall} units={units} />
+                    <Minutely />
                 </div>
             )}
         </>

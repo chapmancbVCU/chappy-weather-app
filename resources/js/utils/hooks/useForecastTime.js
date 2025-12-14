@@ -16,6 +16,9 @@ const useForecastTime = (timestamp, tzOffset) => {
      */
     const [forecastTime, setForecastTime] = useState("");
 
+    /**
+     * Ensure correct time is rendered.
+     */
     useEffect(() => {
         if(timestamp == null || tzOffset == null) return;
         const stamp = dateTimeUtil.getDateTime(timestamp, tzOffset);

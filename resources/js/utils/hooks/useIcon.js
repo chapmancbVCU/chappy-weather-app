@@ -12,6 +12,9 @@ const useIcon = (data) => {
      */
     const [icon, setIcon] = useState("");
 
+    /**
+     * Sets URL for icon to be used in component.
+     */
     useEffect(() => {
         setIcon(`https://openweathermap.org/img/wn/${data}@2x.png`);
     }, [data]);

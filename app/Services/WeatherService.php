@@ -55,10 +55,10 @@ class WeatherService extends Api {
      * weather information.
      */
     public function current(array $query): array {
-        if(array_key_exists('q', $query) && is_numeric($query['q'])) {
+        if(array_key_exists('q', $query) && preg_match('/\d/', $query['q'])) {
             $query['zip'] = $query['q'];
             unset($query['q']);
-            $query['zip'] = $query['zip'] . ",US";
+            $query['zip'] = $query['zip'];
         }
 
 

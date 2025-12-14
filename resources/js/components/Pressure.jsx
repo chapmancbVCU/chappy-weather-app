@@ -31,6 +31,9 @@ function Pressure({ data, units }) {
         setPressure(`${pressure} ${system}`);
     }
 
+    /**
+     * Ensure units reflect current system when user switches between imperial and metric.
+     */
     useEffect(() => {
         pressureText();
     }, [data]);

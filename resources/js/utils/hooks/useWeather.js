@@ -125,7 +125,7 @@ const useWeather = (weather, fetch) => {
     }, [coords?.lat, coords?.lon, units]);
     
     const oneCall = oneCallData?.data || {};
-
+    console.log(oneCall);
     /**
      * Updates storage when there are updates to city, units,
      * coordinates, and weather object.

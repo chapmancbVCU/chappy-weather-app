@@ -1,7 +1,7 @@
 import { useEffect, useState, useMemo } from "react";
 import { Card } from "../Card";
 /**
- * Manages states and hooks for daily forecast.
+ * Manages states and hooks for hourly forecast.
  * @param {object} oneCall OneCall tier data.
  * @returns 
  */
@@ -15,7 +15,7 @@ const useHourly = (oneCall) => {
 
     /**
      * The data associated with the selected card. 
-     * The collection of daily forecast data.
+     * The collection of hourly forecast data.
      * @type {[object, import('react').Dispatch<import('react').SetStateAction<object>>]}
      */
     const [selectedCard, setSelectedCard] = useState();
@@ -29,11 +29,17 @@ const useHourly = (oneCall) => {
         setSelectedCard(hourlyForecast[e]);
     }
 
+    /**
+     * Ensure correct hourly forecast data is used when user changes location.
+     */
     useEffect(() => {
         setHourlyForecast(oneCall?.hourly);
-        
     }, [oneCall]);
 
+    /**
+     * Ensure correct card is selected.  If user refreshes page same card is selected.
+     * When user was at a different view we make card at index 0 is selected.
+     */
     useEffect(() => {
         if(!card.matchesPrevious()) {
             card.updateStorage(0);

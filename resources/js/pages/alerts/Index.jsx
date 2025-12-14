@@ -18,7 +18,7 @@ function Index() {
     const weather = useMemo(() => new Weather(), []);
     
     const { 
-        city, 
+        current, 
         currentError, 
         currentLoading, 
         oneCall,
@@ -39,7 +39,7 @@ function Index() {
 
             {!currentError && !oneCallError && (
                 <div className="mt-3 d-flex flex-column mx-auto weather-container">
-                    <h1 className="text-center">Alerts in {city}</h1>
+                    <h1 className="text-center">Alerts in {current.name}</h1>
                     {alerts && alerts.map((alert, index) => (
                         <AlertCard key={index} alert={alert}/>
                     ))}

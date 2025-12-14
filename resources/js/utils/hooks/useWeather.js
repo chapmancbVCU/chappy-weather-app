@@ -131,8 +131,8 @@ const useWeather = (weather, fetch) => {
      * coordinates, and weather object.
      */
     useEffect(() => {
-        if(city && units && coords && currentError != null) {
-            weather.updateStorage(current, units, city);
+        if(city && units && coords) {
+            weather.updateStorage(current, units, current.name);
         }
     }, [city, units, coords?.lat, coords?.lon, weather]);
 

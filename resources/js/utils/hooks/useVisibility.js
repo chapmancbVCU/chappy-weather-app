@@ -30,6 +30,9 @@ const useVisibility = (data, units) => {
         setVisibility(value);
     }
 
+    /**
+     * Sets value for visibility text.
+     */
     useEffect(() => {
         visibilityText();
     }, [data]);

@@ -77,16 +77,16 @@ function HourlyForecast({ oneCall, units }) {
 
             <div className="row-section"> 
                 <div className="forecast-info">
-                                        <div className="forecast-icon-container">
-                                            <img className="forecast-icon" src={asset('public/icons/weather-windy.png')} />
-                                        </div>
-                                        <div className="forecast-info-block">
-                                            Winds
-                                            <div>{wind}, {windDirection}</div>
-                                            Wind Gusts
-                                            <div>{windGusts}</div>
-                                        </div>
-                                    </div>   
+                    <div className="forecast-icon-container">
+                        <img className="forecast-icon" src={asset('public/icons/weather-windy.png')} />
+                    </div>
+                    <div className="forecast-info-block">
+                        Winds
+                        <div>{wind}, {windDirection}</div>
+                        Wind Gusts
+                        <div>{windGusts}</div>
+                    </div>
+                </div>   
                 <PPT data={selectedCard?.pop} />
                 <div className="forecast-info">
                     <div className="forecast-icon-container">

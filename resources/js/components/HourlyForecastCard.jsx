@@ -44,7 +44,6 @@ function HourlyForecastCard({ hourly, index, onCardClick, tzOffset, units }) {
                 </div>
             </div>
         </button>
-
     );
 }        
 export default HourlyForecastCard;

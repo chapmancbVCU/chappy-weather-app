@@ -39,3 +39,7 @@
   border: solid rgb(18, 87, 133) 3px;
   border-radius: 15px;
 }
+
+.weather-container {
+  max-width: 1100px;
+}

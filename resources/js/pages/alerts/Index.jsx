@@ -38,7 +38,7 @@ function Index() {
             {oneCallError && <Error error={oneCallError} />}
 
             {!currentError && !oneCallError && (
-                <div className="mt-3 d-flex flex-column w-75 mx-auto">
+                <div className="mt-3 d-flex flex-column mx-auto weather-container">
                     <h1 className="text-center">Alerts in {city}</h1>
                     {alerts && alerts.map((alert, index) => (
                         <AlertCard key={index} alert={alert}/>

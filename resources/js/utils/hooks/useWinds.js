@@ -75,6 +75,9 @@ const  useWinds = (speed, gust, direction, units) => {
         setWind(`${Math.round(data)} ${system}`);
     }
 
+    /**
+     * Sets data for wind speed, direction, and wind gust.
+     */
     useEffect(() => {
         windSpeed(speed);
         calculateWindDirection(direction);

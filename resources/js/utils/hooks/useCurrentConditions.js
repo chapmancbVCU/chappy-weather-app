@@ -31,6 +31,9 @@ const useCurrentConditions = (conditions, oneCall, units) => {
      */
     const [time, setTime] = useState("");
 
+    /**
+     * Ensure date, time, and summary updates when new location is selected.
+     */
     useEffect(() => {
         // Guard: need dt and timezone_offset to compute local date/time
         const dt = oneCall?.current?.dt;

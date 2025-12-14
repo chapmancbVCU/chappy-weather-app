@@ -41,6 +41,11 @@ function FavoritesCard({ favorite, units }) {
         window.location.reload();
     }
 
+    /**
+     * Ensures we submit CSRF token to backend when deleting a favorite.
+     * @param {Event} e The event associated with clicking the delete button.
+     * @returns The value of the CSRF token.
+     */
     function getCsrfToken(e) {
         return e.target.csrf_token.value
     }

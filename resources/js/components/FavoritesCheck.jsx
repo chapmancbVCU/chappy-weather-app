@@ -36,10 +36,11 @@ function FavoritesCheck({ weather, favorites }) {
      * @param {Event} e Event for when user submits a form.
      */
     async function handleSubmit(e) {
+        const storedWeather = weather.readStorage();
         e.preventDefault();
         try {
             const payload = {
-                name: e.target.city.value,
+                name: storedWeather.location,
                 latitude: e.target.latitude.value,
                 longitude: e.target.longitude.value,
                 csrf_token: getCsrfToken(e)

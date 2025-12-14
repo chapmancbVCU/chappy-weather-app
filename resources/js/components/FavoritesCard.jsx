@@ -17,7 +17,13 @@ import Forms from "@chappy/components/Forms";
 function FavoritesCard({ favorite, units }) {
     const weather = useMemo(() => new Weather(), []);
     const { temperature } = useTemperature(units);
+
+    /**
+     * Sets value of error if exists.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [error, setError] = useState(null);
+
     const { 
         data: favoriteData, 
         loading: favoriteLoading, 

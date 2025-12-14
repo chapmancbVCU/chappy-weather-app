@@ -63,6 +63,10 @@ function FavoritesCheck({ weather, favorites }) {
       
     }
 
+    /**
+     * Calls isFavoriteCity to ensure we render add button if and only if 
+     * city is not a favorite location.
+     */
     useEffect(() => {
         isFavoriteCity();
     });

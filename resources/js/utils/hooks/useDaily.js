@@ -29,10 +29,17 @@ const useDaily = (oneCall) => {
         setSelectedCard(dailyForecast[e]);
     }
     
+    /**
+     * Ensure correct daily forecast data is used when user changes location.
+     */
     useEffect(() => {
         setDailyForecast(oneCall?.daily);
     }, [oneCall]);
 
+    /**
+     * Ensure correct card is selected.  If user refreshes page same card is selected.
+     * When user was at a different view we make card at index 0 is selected.
+     */
     useEffect(() => {
         if(!card.matchesPrevious()) {
             card.updateStorage(0);

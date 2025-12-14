@@ -15,6 +15,10 @@ function FavoritesCheck({ weather, favorites }) {
     const [error, setError] = useState(null);
     const [isFavorite, setIsFavorite] = useState(false);
 
+    /**
+     * Determines if a city is a favorite location.  If so we do not render 
+     * form for adding city as favorite.
+     */
     const isFavoriteCity = () => {
         const weatherCity = weather.city.toLowerCase();
         for(let i = 0; i < favorites?.length; i++) {
@@ -26,6 +30,12 @@ function FavoritesCheck({ weather, favorites }) {
         }
     }
 
+    /**
+     * Gets value of CSRF token upon form submit.
+     * @param {Event} e The event associated with submitting form for adding 
+     * a location name. 
+     * @returns The value of the CSRF token.
+     */
     function getCsrfToken(e) {
         return e.target.csrf_token.value
     }

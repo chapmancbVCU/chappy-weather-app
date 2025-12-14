@@ -21,8 +21,7 @@ function Index({ user }) {
     
     weather.redirectIfNoData();
 
-    const { 
-        city, 
+    const {
         current,
         currentError, 
         currentLoading, 

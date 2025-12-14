@@ -21,7 +21,6 @@ function Index({ user }) {
     const { favorites } = useFavorites();
 
     const { 
-        city, 
         current,
         currentError, 
         currentLoading, 

@@ -90,7 +90,7 @@ function SearchBar({ onSubmit }) {
                         className="search-input"
                         type="text"
                         aria-label="Get weather conditions"
-                        placeholder="City or Zip Code"
+                        placeholder="City or Zip/Postal Code (23220/TW10,GB)"
                         value={searchTerm}
                         required
                         onChange={onInputChange}>

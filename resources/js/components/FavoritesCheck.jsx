@@ -12,7 +12,16 @@ import { apiPost, apiError } from "@chappy/utils/api";
  * add a location to the favorites table.
  */
 function FavoritesCheck({ weather, favorites }) {
+    /**
+     * Sets value of error if exists.
+     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [error, setError] = useState(null);
+
+    /**
+     * State to track if current location is a favorite city.
+     * @type {[boolean, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     */
     const [isFavorite, setIsFavorite] = useState(false);
 
     /**

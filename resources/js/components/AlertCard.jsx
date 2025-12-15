@@ -10,7 +10,6 @@ import { Card, Button, Collapse } from 'react-bootstrap';
  * @returns {JSX.Element} The AlertCard component.
  */
 function AlertCard({ alert }) {
-
     /**
      * Manages state of card body so user can reveal and hide it.
      * @type {[boolean, import('react').Dispatch<import('react').SetStateAction<string>>]}

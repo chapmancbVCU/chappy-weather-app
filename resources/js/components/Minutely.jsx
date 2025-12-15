@@ -17,12 +17,16 @@ ChartJS.register(
  */
 function Minutely({ minutely }) {
 
+    /**
+     * Processes OneCall data so it can be used in graph.
+     * @returns {array} precipitationTotals - An array of precipitation total for next 60 minutes.
+     */
     const myData = () => {
-        let d = [];
+        let precipitationTotals = [];
         for(let i = 0; i < minutely?.length; i++) {
-            d.push(minutely?.[i].precipitation);
+            precipitationTotals.push(minutely?.[i].precipitation);
         }
-        return d;
+        return precipitationTotals;
     }
 
     const labels = () => {

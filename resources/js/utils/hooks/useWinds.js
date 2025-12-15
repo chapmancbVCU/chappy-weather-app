@@ -10,7 +10,6 @@ import { useEffect, useState } from 'react';
  * @returns 
  */
 const  useWinds = (speed, gust, direction, units) => {
-
     /**
      * The wind speed.
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}

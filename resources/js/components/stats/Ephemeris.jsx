@@ -12,6 +12,7 @@ import asset from "@chappy/utils/asset";
  */
 function Ephemeris({ data, tzOffset }) {
     if(data == null) return null;
+    
     const dateTimeUtil = useMemo(() => new DateTimeUtil(), []);
 
     /**

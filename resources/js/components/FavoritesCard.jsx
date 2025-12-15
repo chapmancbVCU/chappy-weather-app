@@ -6,6 +6,7 @@ import useIcon from "@/utils/hooks/useIcon";
 import useDescription from "@/utils/hooks/useDescription";
 import { Weather } from "@/utils/Weather";
 import Forms from "@chappy/components/Forms";
+
 /**
  * Renders card with information related to a favorite location.
  * 

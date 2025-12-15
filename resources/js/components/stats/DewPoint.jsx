@@ -2,6 +2,7 @@ import React from "react";
 import asset from "@chappy/utils/asset";
 import useTemperature from "@/utils/hooks/useTemperature";
 import "@css/forecast.css";
+
 /**
  * Renders information about dew points.
  * 

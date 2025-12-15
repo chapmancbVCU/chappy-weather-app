@@ -12,6 +12,8 @@ import useFavorites from "@/utils/hooks/useFavorites";
 /**
  * Renders and handles information for daily forecast at a specific 
  * location and search.
+ * 
+ * @property {object} user Currently logged in user.
  * @param {InputProps} param0 
  * @returns {JSX.Element} The view that displays daily forecast.
  */

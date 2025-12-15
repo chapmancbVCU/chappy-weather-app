@@ -14,6 +14,8 @@ import Minutely from "@/components/Minutely";
 /**
  * Renders and handles information for hourly conditions at a specific 
  * location and search.
+ * 
+ * @property {object} user Currently logged in user.
  * @param {InputProps} param0 
  * @returns {JSX.Element} The home view that displays hourly forecast.
  */

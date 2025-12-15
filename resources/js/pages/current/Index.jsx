@@ -13,6 +13,8 @@ import useFavorites from "@/utils/hooks/useFavorites";
 /**
  * Renders and handles information for current conditions at a specific 
  * location and search.
+ * 
+ * @property {object} user Currently logged in user.
  * @param {InputProps} param0 
  * @returns {JSX.Element} The view that displays current conditions.
  */

@@ -12,6 +12,8 @@ import UnitsSwitch from "@/components/UnitsSwitch";
 
 /**
  * Renders view containing alerts.
+ * 
+ * @property {object} user Currently logged in user.
  * @returns {JSX.Element} View containing list of alerts represented 
  * as cards.
  */

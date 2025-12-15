@@ -26,10 +26,7 @@ function Minutely({ minutely, units }) {
         for(let i = 0; i < minutely?.length; i++) {
             let total = minutely?.[i]?.precipitation;
             const conversionConstant = 2.54;
-            if(units === 'imperial') {
-                total = ((total / conversionConstant)).toFixed(2);
-            }
-            console.log(total)
+            if(units === 'imperial') total = ((total / conversionConstant)).toFixed(2);
             precipitationTotals.push(total);
         }
         return precipitationTotals;
@@ -41,7 +38,8 @@ function Minutely({ minutely, units }) {
      */
     const labels = () => {
         let steps = [];
-        for(let i = 0; i < 60; i++) {
+        let minutesInHour = 60
+        for(let i = 0; i < minutesInHour; i++) {
             steps.push(i)
         }
         return steps;

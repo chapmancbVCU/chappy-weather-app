@@ -5,6 +5,7 @@ import "@css/forecast.css";
 /**
  * Renders a component containing favorites in a scrollable container if the 
  * favorites object is not empty.
+ * 
  * @property {array} favorites The favorites associated with currently logged 
  * in user.
  * @property {string} units The system of units in use.

@@ -4,6 +4,7 @@ import { Card, Button, Collapse } from 'react-bootstrap';
 
 /**
  * Renders card with information about a particular alert.
+ * 
  * @property {object} alert The alert object with data from national weather agency.
  * @param {InputProp} param0 
  * @returns {JSX.Element} The AlertCard component.

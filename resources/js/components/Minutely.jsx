@@ -13,6 +13,7 @@ ChartJS.register(
 
 /**
  * Renders minutely precipitation forecast as a bar chart.
+ * 
  * @param {InputProps} param0 
  * @returns {JSX.Element} The minutely precipitation forecast.
  */

@@ -4,6 +4,7 @@ import { apiPost, apiError } from "@chappy/utils/api";
 
 /**
  * A component that displays a button to add a location to the favorites table.
+ * 
  * @property {object} weather An instance of the Weather class.
  * @property {array} favorites The favorites associated with currently logged 
  * in user.

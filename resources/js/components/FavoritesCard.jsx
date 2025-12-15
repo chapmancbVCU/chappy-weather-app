@@ -8,6 +8,7 @@ import { Weather } from "@/utils/Weather";
 import Forms from "@chappy/components/Forms";
 /**
  * Renders card with information related to a favorite location.
+ * 
  * @property {object} favorite The object for a specific favorite location.
  * @property {string} units The system of units in use.
  * @param {InputProps} param0 

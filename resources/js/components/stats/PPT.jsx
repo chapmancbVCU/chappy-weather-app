@@ -12,6 +12,7 @@ import asset from "@chappy/utils/asset";
  */
 function PPT({ data }) {
     if(data == null) return;
+    
     return (
         <div className="forecast-info">
             <div className="forecast-icon-container">

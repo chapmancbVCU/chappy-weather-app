@@ -11,8 +11,9 @@ import "@css/forecast.css";
  * @returns {JSX.Element} Component containing temperature information.
  */
 function TemperatureRange({ data, units }) {
-    const { temperature } = useTemperature(units);
     if(data == null) return;
+    
+    const { temperature } = useTemperature(units);
 
     return (
         <>

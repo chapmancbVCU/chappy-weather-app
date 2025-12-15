@@ -47,6 +47,12 @@ function Minutely({ minutely, units }) {
         return steps;
     }
 
+
+    /**
+     * Sets label depending on system of units being used.
+     * @returns {string} A string containing inches per hour or mm per hour depending
+     * on system being used.
+     */
     const unitsLabel = () => {
         return (units === 'imperial') ? 'in/h' : 'mm/h';
     }

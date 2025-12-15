@@ -16,7 +16,7 @@ ChartJS.register(
  * @param {InputProps} param0 
  * @returns {JSX.Element} The minutely precipitation forecast.
  */
-function Minutely({ minutely }) {
+function Minutely({ minutely, units }) {
     /**
      * Processes OneCall data so it can be used in graph.
      * @returns {array} precipitationTotals - An array of precipitation total for next 60 minutes.
@@ -24,7 +24,13 @@ function Minutely({ minutely }) {
     const myData = () => {
         let precipitationTotals = [];
         for(let i = 0; i < minutely?.length; i++) {
-            precipitationTotals.push(minutely?.[i].precipitation);
+            let total = minutely?.[i]?.precipitation;
+            const conversionConstant = 2.54;
+            if(units === 'imperial') {
+                total = ((total / conversionConstant)).toFixed(2);
+            }
+            console.log(total)
+            precipitationTotals.push(total);
         }
         return precipitationTotals;
     }
@@ -41,6 +47,10 @@ function Minutely({ minutely }) {
         return steps;
     }
 
+    const unitsLabel = () => {
+        return (units === 'imperial') ? 'in/h' : 'mm/h';
+    }
+    
     /**
      * Setup chart data.
      */
@@ -48,7 +58,7 @@ function Minutely({ minutely }) {
         labels: labels(),
         datasets: [
             {
-                label: "mm/h",
+                label: unitsLabel(),
                 data: myData(),
                 backgroundColor: 'rgba(75, 192, 192, 0.6)',
                 borderColor: 'rgba(75, 192, 192, 1)',

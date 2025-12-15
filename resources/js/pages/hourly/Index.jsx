@@ -59,7 +59,7 @@ function Index({ user }) {
                         {user && <FavoritesCheck weather={weather}  favorites={favorites} />}
                     </div>
                     <HourlyForecast oneCall={oneCall} units={units} />
-                    <Minutely minutely={oneCall?.minutely}/>
+                    <Minutely minutely={oneCall?.minutely} units={units}/>
                 </div>
             )}
         </>

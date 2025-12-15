@@ -1,5 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
 import { Card } from "../Card";
+
 /**
  * Manages states and hooks for hourly forecast.
  * @param {object} oneCall OneCall tier data.

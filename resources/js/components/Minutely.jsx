@@ -10,13 +10,13 @@ ChartJS.register(
     Tooltip,
     Legend
 );
+
 /**
  * Renders minutely precipitation forecast as a bar chart.
  * @param {InputProps} param0 
  * @returns {JSX.Element} The minutely precipitation forecast.
  */
 function Minutely({ minutely }) {
-
     /**
      * Processes OneCall data so it can be used in graph.
      * @returns {array} precipitationTotals - An array of precipitation total for next 60 minutes.
@@ -29,6 +29,10 @@ function Minutely({ minutely }) {
         return precipitationTotals;
     }
 
+    /**
+     * Builds array for labels.
+     * @returns {array} steps - An array containing steps for graph.
+     */
     const labels = () => {
         let steps = [];
         for(let i = 0; i < 60; i++) {
@@ -37,6 +41,9 @@ function Minutely({ minutely }) {
         return steps;
     }
 
+    /**
+     * Setup chart data.
+     */
     const chartData = {
         labels: labels(),
         datasets: [
@@ -50,6 +57,9 @@ function Minutely({ minutely }) {
         ],
     }
 
+    /**
+     * Setup options for chart.
+     */
     const options = {
         responsive: true,
         maintainAspectRatio: false,

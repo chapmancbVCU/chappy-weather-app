@@ -26,6 +26,9 @@ function FavoritesCard({ favorite, units }) {
      */
     const [error, setError] = useState(null);
 
+    /**
+     * Retrieves current data for favorites cards.
+     */
     const { 
         data: favoriteData, 
         loading: favoriteLoading, 

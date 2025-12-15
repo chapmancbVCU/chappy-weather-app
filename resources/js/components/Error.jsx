@@ -1,4 +1,5 @@
 import React from "react";
+
 /**
  * @property {object} error Object containing information about any errors.
  * @param {inputProps} param0 

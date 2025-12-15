@@ -7,7 +7,6 @@ ChartJS.register(
     CategoryScale,
     LinearScale,
     BarElement,
-    
     Tooltip,
     Legend
 );
@@ -17,7 +16,6 @@ ChartJS.register(
  * @returns {JSX.Element} The minutely precipitation forecast.
  */
 function Minutely({ minutely }) {
-    console.log(minutely);
 
     const myData = () => {
         let d = [];
@@ -26,18 +24,17 @@ function Minutely({ minutely }) {
         }
         return d;
     }
-    console.log(myData())
-    const labels = [
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 
-        11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-        21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
-        31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
-        41, 42, 43, 44, 45, 46, 47, 48, 49, 50,
-        51, 52, 53, 54, 55, 56, 57, 58, 59, 60
-    ];
+
+    const labels = () => {
+        let steps = [];
+        for(let i = 0; i < 60; i++) {
+            steps.push(i)
+        }
+        return steps;
+    }
 
     const chartData = {
-        labels: labels,
+        labels: labels(),
         datasets: [
             {
                 label: "mm/h",
@@ -51,6 +48,7 @@ function Minutely({ minutely }) {
 
     const options = {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
             legend: {
                 position: 'bottom',
@@ -62,11 +60,11 @@ function Minutely({ minutely }) {
             }
         }
     }
-    
+
     return (
         <div className="card forecast my-4">
             <h4 className="text-center mt-4">Minutely Forecast</h4>
-            <div style={{ width: '600px', margin: 'auto' }}>
+            <div className="minutely-chart">
                 <Bar data={chartData} options={options} />
             </div>
         </div>

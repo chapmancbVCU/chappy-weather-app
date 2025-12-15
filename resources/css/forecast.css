@@ -121,6 +121,12 @@
     width: 95%;
 }
 
+.minutely-chart {
+    width: 85%;
+    margin: auto;
+    height: 200px;
+}
+
 .row-section {
     display: flex;
     flex-direction: column;

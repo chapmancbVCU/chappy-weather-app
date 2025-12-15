@@ -1,3 +1,7 @@
+/**
+ * This class manages session storage data that tracks which card is selected on the daily
+ * and hourly views.
+ */
 export class Card {
     /**
      * Manages sessionStorage tracking of currently selected card.

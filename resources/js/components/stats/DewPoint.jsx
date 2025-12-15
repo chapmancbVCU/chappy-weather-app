@@ -13,6 +13,7 @@ import "@css/forecast.css";
  */
 function DewPoint({ data, units }) {
     const { temperature } = useTemperature(units);
+    
     return (
         <div className="forecast-info">
             <div className="forecast-icon-container">

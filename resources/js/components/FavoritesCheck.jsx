@@ -87,7 +87,7 @@ function FavoritesCheck({ weather, favorites }) {
                 <>
                     {error ? (<p className="text-danger">{error}</p>) : 
                         <form method="POST" onSubmit={handleSubmit}>
-                            <Forms.CSRF />
+                            <Forms.CSRFInput />
                             <Forms.Hidden name="city" value={weather.getCityInfo()} />
                             <Forms.Hidden name="latitude" value={weather.getLatitude()} />
                             <Forms.Hidden name="longitude" value={weather.getLongitude()} />

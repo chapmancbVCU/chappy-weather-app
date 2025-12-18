@@ -89,7 +89,7 @@ function FavoritesCard({ favorite, units }) {
                 <div>
                     {error ? (<p className="text-danger">{error}</p>) : 
                         <form method="POST" onSubmit={onDeleteClick}>
-                            <Forms.CSRF />
+                            <Forms.CSRFInput />
                             <button 
                                 type="submit" 
                                 className="btn-danger delete-favorite">

@@ -19,6 +19,7 @@ class Favorites extends Model {
     // Fields from your database
     public $deleted = 0;
     public $id;
+    public $is_home = 0;
     public $latitude;
     public $longitude;
     public $name;

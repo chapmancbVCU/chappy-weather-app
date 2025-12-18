@@ -53,15 +53,6 @@ function FavoritesCard({ favorite, units }) {
     }
 
     /**
-     * Ensures we submit CSRF token to backend when deleting a favorite.
-     * @param {Event} e The event associated with clicking the delete button.
-     * @returns The value of the CSRF token.
-     */
-    function getCsrfToken(e) {
-        return e.target.csrf_token.value
-    }
-
-    /**
      * Handles event related to deleting a favorite.
      * @param {Event} e Event for when user submits a form to delete.
      */
@@ -70,7 +61,7 @@ function FavoritesCard({ favorite, units }) {
         if(window.confirm(`Are you sure you want to delete the location ${favorite.name}?`)) {
             try {
                 const payload = {
-                    csrf_token: getCsrfToken(e)
+                    csrf_token: Forms.CSRFToken(e)
                 }
                 const json = await apiDelete(`/favorites/destroy/${favorite.id}`, payload);
                 window.location.reload();

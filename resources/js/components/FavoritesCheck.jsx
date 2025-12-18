@@ -41,16 +41,6 @@ function FavoritesCheck({ weather, favorites }) {
     }
 
     /**
-     * Gets value of CSRF token upon form submit.
-     * @param {Event} e The event associated with submitting form for adding 
-     * a location name. 
-     * @returns The value of the CSRF token.
-     */
-    function getCsrfToken(e) {
-        return e.target.csrf_token.value
-    }
-
-    /**
      * Sends post request to favorites controller when the 
      * form is submitted.
      * @param {Event} e Event for when user submits a form.
@@ -63,7 +53,7 @@ function FavoritesCheck({ weather, favorites }) {
                 name: storedWeather.location,
                 latitude: e.target.latitude.value,
                 longitude: e.target.longitude.value,
-                csrf_token: getCsrfToken(e)
+                csrf_token: Forms.CSRFToken(e)
             }
             const json = await apiPost("/favorites/store", payload);
             window.location.reload();

@@ -21,6 +21,7 @@ class Migration1758935369 extends Migration {
             $table->float('longitude');
             $table->integer('user_id');
             $table->index('user_id');
+            $table->tinyInteger('is_home');
             $table->softDeletes();
         });
     }

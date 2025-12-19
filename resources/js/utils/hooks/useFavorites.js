@@ -13,4 +13,4 @@ const useFavorites = () => {
     return { favorites }
 }
 
-export default useFavorites
+export default useFavorites;

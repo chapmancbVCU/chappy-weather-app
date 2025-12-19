@@ -24,16 +24,21 @@ class Favorites extends Model {
     public $longitude;
     public $name;
 
-    public static function findCurrentHome($id) {
-        Logger::log("Id: " . $id);
+    /**
+     * Returns favorite location for a user that is set to home.
+     *
+     * @param int $user_id The id for current logged in user.
+     * @return Favorites The favorite location that is set to home.
+     */
+    public static function findCurrentHome(int $user_id) {
         $conditions = [
             'conditions' => 'user_id = ? AND is_home = ?',
-            'bind' => [$id, 1]
+            'bind' => [(int)$user_id, 1]
         ];
         
         return self::findFirst($conditions);
     } 
-    
+
     public function afterDelete(): void {
         // Implement your function
     }

@@ -16,7 +16,7 @@
         "Auth" : ["logout"],
         "Contacts" : ["*"],
         "Profile" : ["*"],
-        "Favorites" : ["store", "show", "destroy"]
+        "Favorites" : ["store", "show", "destroy", "patch"]
     },
     "Admin" : {
         "denied" : {},

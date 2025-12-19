@@ -83,7 +83,7 @@ function FavoritesCheck({ weather, favorites }) {
                             <Forms.Hidden name="longitude" value={weather.getLongitude()} />
                             <button 
                                 type="submit" 
-                                className="btn btn-primary btn-sm mt-1">
+                                className="btn btn-primary btn-sm">
                                 <i className="me-2 fa fa-plus"></i>Add
                             </button>
                         </form>

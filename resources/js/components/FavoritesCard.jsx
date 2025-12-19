@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { apiDelete, apiGet, useAsync, apiError } from '@chappy/utils/api';
 import Error from "./Error";
 import useTemperature from "@/utils/hooks/useTemperature";
@@ -25,6 +25,23 @@ function FavoritesCard({ favorite, units }) {
      * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
      */
     const [error, setError] = useState(null);
+
+    const [isHome, setIsHome] = useState(false);
+
+    /**
+     * Check if favorite is home location and set to true if that is the case.
+     * Otherwise, we set to false.
+     */
+    const checkIsHome = () => {
+        (favorite.is_home == 1) ? setIsHome(true) : setIsHome(false)
+    }
+
+    /**
+     * Ensure correct home status is set.
+     */
+    useEffect(() => {
+        checkIsHome();
+    }, [favorite]);
 
     /**
      * Retrieves current data for favorites cards.
@@ -89,7 +106,13 @@ function FavoritesCard({ favorite, units }) {
                         </form>
                     }
                     <button className="favorites-card" onClick={() => onCardClick()}>
-                        <h5 className="my-2">{favorite.name}</h5>
+                        <h5 className="my-2 mx-2">{favorite.name} 
+                            {isHome && (
+                            <>
+                                <i className="me-3 ms-2 fa fa-home" aria-hidden="true"></i>
+                            </>
+                            
+                        )}</h5>
                         <p>{description}</p>
                         {icon && <img src={icon} alt={description}></img>}
                         <p>{temperature(data.main.temp)}</p>

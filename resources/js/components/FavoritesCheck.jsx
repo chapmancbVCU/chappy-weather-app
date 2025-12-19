@@ -84,7 +84,7 @@ function FavoritesCheck({ weather, favorites }) {
                             <button 
                                 type="submit" 
                                 className="btn btn-primary btn-sm">
-                                <i className="fa fa-plus"></i>Add
+                                <i className="me-1 fa fa-plus"></i>Add
                             </button>
                         </form>
                     }

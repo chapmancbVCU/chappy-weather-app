@@ -84,7 +84,7 @@ function FavoritesCard({ favorite, units }) {
                             <button 
                                 type="submit" 
                                 className="btn-danger delete-favorite">
-                                <i className="fa fa-times "></i>
+                                <i className="fa fa-times"></i>
                             </button>
                         </form>
                     }

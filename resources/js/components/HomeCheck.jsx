@@ -53,7 +53,7 @@ function HomeCheck({ weather, favorites }) {
                 name: e.target.value.is_home,
                 csrf_token: Forms.CSRFToken(e)
             }
-            const json = await apiPost("/favorites/store", payload);
+            const json = await apiPost("/favorites/patch", payload);
             window.location.reload();
         } catch (err) {
             setError(apiError(err));
@@ -71,7 +71,7 @@ function HomeCheck({ weather, favorites }) {
             {isFavorite && (
                 <div>
                     {isHome ? (
-                        <button className="btn btn-success btn-sm">
+                        <button className="btn btn-success btn-sm mt-1">
                             <i className="me-2 fa fa-home" aria-hidden="true"></i>Home
                         </button>
                     ) : (

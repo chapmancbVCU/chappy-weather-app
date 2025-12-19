@@ -1,7 +1,7 @@
 <?php
 namespace App\Models;
 use Core\Model;
-
+use Core\Lib\Logging\Logger;
 /**
  * Implements features of the Favorites class.
  */
@@ -24,6 +24,16 @@ class Favorites extends Model {
     public $longitude;
     public $name;
 
+    public static function findCurrentHome($id) {
+        Logger::log("Id: " . $id);
+        $conditions = [
+            'conditions' => 'user_id = ? AND is_home = ?',
+            'bind' => [$id, 1]
+        ];
+        
+        return self::findFirst($conditions);
+    } 
+    
     public function afterDelete(): void {
         // Implement your function
     }

@@ -9,6 +9,7 @@ function HomeCheck({ weather, favorites }) {
      */
     const [error, setError] = useState(null);
 
+    const [favorite, setFavorite] = useState(null);
     /**
      * State to track if current location is a favorite city.
      * @type {[boolean, import('react').Dispatch<import('react').SetStateAction<string>>]}
@@ -27,6 +28,7 @@ function HomeCheck({ weather, favorites }) {
             let favCity = favorites[i].name.toLowerCase();
             if(favCity.includes(weatherCity) || weatherCity.includes(favCity)) {
                 setIsFavorite(true);
+                setFavorite(favorites[i]);
                 break;
             }
         }
@@ -50,10 +52,10 @@ function HomeCheck({ weather, favorites }) {
         e.preventDefault();
         try {
             const payload = {
-                name: e.target.value.is_home,
+                // name: e.target.value.is_home,
                 csrf_token: Forms.CSRFToken(e)
             }
-            const json = await apiPost("/favorites/patch", payload);
+            const json = await apiPost(`/favorites/patch/${favorite.id}`, payload);
             window.location.reload();
         } catch (err) {
             setError(apiError(err));
@@ -64,6 +66,7 @@ function HomeCheck({ weather, favorites }) {
     useEffect(() => {
         isFavoriteCity();
         isHomeCity();
+        console.log(favorite);
     });
 
     return (
@@ -79,7 +82,9 @@ function HomeCheck({ weather, favorites }) {
                             {error ? (<p className="text-danger">{error}</p>) : 
                                 <form method="POST" onSubmit={handleSubmit}>
                                     <Forms.CSRFInput />
-                                    <Forms.Hidden name="is_home" value={weather.getCityInfo()} />
+                                    {/* <Forms.Hidden name="is_home" value={weather.getCityInfo()} /> */}
+                                    {/* <Forms.Hidden user_id={favorite.user_id} />
+                                    <Forms.Hidden is_home={favorite.is_home} /> */}
                                     <button 
                                         type="submit" 
                                         className="btn btn-primary btn-sm">

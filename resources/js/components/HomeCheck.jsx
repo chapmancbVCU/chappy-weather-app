@@ -74,7 +74,7 @@ function HomeCheck({ weather, favorites }) {
             {isFavorite && (
                 <div>
                     {isHome ? (
-                        <button className="btn btn-success btn-sm mt-1">
+                        <button className="btn btn-success btn-sm">
                             <i className="me-2 fa fa-home" aria-hidden="true"></i>Home
                         </button>
                     ) : (
@@ -82,9 +82,6 @@ function HomeCheck({ weather, favorites }) {
                             {error ? (<p className="text-danger">{error}</p>) : 
                                 <form method="POST" onSubmit={handleSubmit}>
                                     <Forms.CSRFInput />
-                                    {/* <Forms.Hidden name="is_home" value={weather.getCityInfo()} /> */}
-                                    {/* <Forms.Hidden user_id={favorite.user_id} />
-                                    <Forms.Hidden is_home={favorite.is_home} /> */}
                                     <button 
                                         type="submit" 
                                         className="btn btn-primary btn-sm">

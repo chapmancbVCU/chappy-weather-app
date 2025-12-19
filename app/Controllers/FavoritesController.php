@@ -41,12 +41,12 @@ class FavoritesController extends Controller {
             }
             $user = AuthService::currentUser();
             $currentHome = Favorites::findCurrentHome($user->id);
-            Logger::log("Conditions" . json_encode($currentHome));
+
             if($currentHome->is_home == 1) {
                 $currentHome->is_home = 0;
                 $currentHome->save();
             }
-            
+
             $favorite = Favorites::findById($id);
             $favorite->is_home = 1;
             $favorite->save();

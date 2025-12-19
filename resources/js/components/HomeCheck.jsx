@@ -74,7 +74,7 @@ function HomeCheck({ weather, favorites }) {
             {isFavorite && (
                 <div>
                     {isHome ? (
-                        <button className="btn btn-success btn-sm">
+                        <button className="btn btn-success btn-sm mt-1">
                             <i className="me-2 fa fa-home" aria-hidden="true"></i>Home
                         </button>
                     ) : (
@@ -84,7 +84,7 @@ function HomeCheck({ weather, favorites }) {
                                     <Forms.CSRFInput />
                                     <button 
                                         type="submit" 
-                                        className="btn btn-primary btn-sm">
+                                        className="btn btn-primary btn-sm mt-1">
                                         <i className="me-2 fa fa-home"></i>Set Home
                                     </button>
                                 </form>

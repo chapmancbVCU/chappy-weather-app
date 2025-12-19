@@ -7,6 +7,7 @@ import Error from "@/components/Error";
 import UnitsSwitch from "@/components/UnitsSwitch";
 import Favorites from "@/components/Favorites";
 import FavoritesCheck from "@/components/FavoritesCheck";
+import HomeCheck from "@/components/HomeCheck";
 import Alerts from "@/components/Alerts";
 import useFavorites from "@/utils/hooks/useFavorites";
 import Minutely from "@/components/Minutely";
@@ -59,6 +60,7 @@ function Index({ user }) {
                     <div className="d-flex my-3 flex-row mx-auto">
                         <h2 className="me-4 text-center">Hourly forecast for {current.name}</h2>
                         {user && <FavoritesCheck weather={weather}  favorites={favorites} />}
+                        {user && <HomeCheck weather={weather} favorites={favorites} />}
                     </div>
                     <HourlyForecast oneCall={oneCall} units={units} />
                     <Minutely minutely={oneCall?.minutely} units={units}/>

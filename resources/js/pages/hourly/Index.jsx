@@ -56,7 +56,7 @@ function Index({ user }) {
                         unitsLabel={unitsLabel}/>
                     }
                     {oneCall.alerts && <Alerts alerts={oneCall.alerts}/>}
-                    {user && <Favorites  favorites={favorites} units={units} />}
+                    {user && <Favorites favorites={favorites} units={units} />}
                     <div className="d-flex my-3 flex-row mx-auto">
                         <h2 className="me-4 text-center">Hourly forecast for {current.name}</h2>
                         {user && <FavoritesCheck weather={weather}  favorites={favorites} />}

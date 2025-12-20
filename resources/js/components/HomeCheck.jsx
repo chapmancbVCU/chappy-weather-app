@@ -34,19 +34,28 @@ function HomeCheck({ weather, favorites }) {
         }
     }
 
+    /**
+     * Determines if a favorite is currently set as a home location.  Sets 
+     * appropriate useState hook if a home location is detected to ensure proper 
+     * rendering.
+     */
     const isHomeCity = () => {
         const weatherCity = weather.city.toLowerCase();
         for(let i = 0; i < favorites?.length; i++) {
             let homeCity = favorites[i].name.toLowerCase();
 
             if((homeCity.includes(weatherCity) || weatherCity.includes(homeCity)) && favorites[i].is_home == 1) {
-                console.log("home");
                 setIsHome(true);
                 break;
             }
         }
     }
 
+    /**
+     * Sends post request to favorites controller when the 
+     * form is submitted.
+     * @param {Event} e Event for when user submits a form.
+     */
     async function handleSubmit(e) {
         const storedWeather = weather.readStorage();
         e.preventDefault();
@@ -63,10 +72,12 @@ function HomeCheck({ weather, favorites }) {
       
     }
 
+    /**
+     * Ensure favoriteCity and isHome hooks are set.
+     */
     useEffect(() => {
         isFavoriteCity();
         isHomeCity();
-        console.log(favorite);
     });
 
     return (

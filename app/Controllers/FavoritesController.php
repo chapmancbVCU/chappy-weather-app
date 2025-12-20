@@ -4,7 +4,6 @@ use Core\Controller;
 use Core\Services\AuthService;
 use App\Models\Favorites;
 use Core\Lib\Http\JsonResponse;
-use Core\Lib\Logging\Logger;
 use Throwable;
 
 /**
@@ -14,25 +13,31 @@ class FavoritesController extends Controller {
     use JsonResponse;
 
     /**
-     * Adds record to favorites table.
+     * Removes current location from list of favorites.
      *
+     * @param int $id The id for favorite location we want to remove.
      * @return void
      */
-    public function storeAction() {
+    public function destroyAction(int $id) {
         try {
-            $favorite = new Favorites();
             if(!$this->apiCsrfCheck()) {
                 return $this->jsonError('Corrupted token');
             }
-
-            $favorite->assign($this->get());
-            $favorite->user_id = AuthService::currentUser()->id;
-            $favorite->save();
+            $favorite = Favorites::findById($id);
+            $favorite->delete();
         } catch (Throwable $e){
             return $this->jsonError('Server error', 500);
         }
     }
 
+    /**
+     * Sets currently selected location as home if not currently home.  We 
+     * also want to ensure the previous home location is no longer set as 
+     * home.
+     *
+     * @param int $id The id for selected favorite location
+     * @return void
+     */
     public function patchAction(int $id) {
         
         try {
@@ -54,17 +59,6 @@ class FavoritesController extends Controller {
             return $this->jsonError('Server error' . $e, 500);
         }
     }
-    public function destroyAction(int $id) {
-        try {
-            if(!$this->apiCsrfCheck()) {
-                return $this->jsonError('Corrupted token');
-            }
-            $favorite = Favorites::findById($id);
-            $favorite->delete();
-        } catch (Throwable $e){
-            return $this->jsonError('Server error', 500);
-        }
-    }
 
     /**
      * Retrieves favorites data for favorites cards.
@@ -75,5 +69,25 @@ class FavoritesController extends Controller {
         $user = AuthService::currentUser();
         $data = Favorites::findAllByUserId($user->id);
         $this->jsonResponse(['success' => true, 'data' => $data]);
+    }
+
+    /**
+     * Adds record to favorites table.
+     *
+     * @return void
+     */
+    public function storeAction() {
+        try {
+            $favorite = new Favorites();
+            if(!$this->apiCsrfCheck()) {
+                return $this->jsonError('Corrupted token');
+            }
+
+            $favorite->assign($this->get());
+            $favorite->user_id = AuthService::currentUser()->id;
+            $favorite->save();
+        } catch (Throwable $e){
+            return $this->jsonError('Server error', 500);
+        }
     }
 }

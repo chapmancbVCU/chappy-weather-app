@@ -23,7 +23,9 @@ class FavoritesController extends Controller {
             if(!$this->apiCsrfCheck()) {
                 return $this->jsonError('Corrupted token');
             }
-            $favorite = Favorites::findById($id);
+
+            $user = AuthService::currentUser();
+            $favorite = Favorites::findByIdAndUserId($id, $user->id);
             if($favorite) {
                 $favorite->delete();
             }

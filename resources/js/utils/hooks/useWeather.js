@@ -18,7 +18,7 @@ const useWeather = (weather, fetch) => {
 
     /**
      * Manages checked status for units toggle switch.
-     * @type {[boolean, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     * @type {[boolean, import('react').Dispatch<import('react').SetStateAction<boolean>>]}
      */
     const [isToggled, setToggled] = useState(false);
 

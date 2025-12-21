@@ -24,7 +24,9 @@ class FavoritesController extends Controller {
                 return $this->jsonError('Corrupted token');
             }
             $favorite = Favorites::findById($id);
-            $favorite->delete();
+            if($favorite) {
+                $favorite->delete();
+            }
         } catch (Throwable $e){
             return $this->jsonError('Server error', 500);
         }

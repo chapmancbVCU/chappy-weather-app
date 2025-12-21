@@ -23,6 +23,7 @@ class Favorites extends Model {
     public $latitude;
     public $longitude;
     public $name;
+    public $user_id;
 
     /**
      * Returns favorite location for a user that is set to home.

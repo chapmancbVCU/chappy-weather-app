@@ -16,12 +16,16 @@ import { apiPost, apiError } from "@chappy/utils/api";
 function HomeCheck({ weather, favorites }) {
     /**
      * Sets value of error if exists.
-     * @type {[string, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     * @type {[object, import('react').Dispatch<import('react').SetStateAction<object>>]}
      */
     const [error, setError] = useState(null);
 
-
+    /**
+     * Hook to track currently selected favorite.
+     * @type {[object, import('react').Dispatch<import('react').SetStateAction<object>>]}
+     */
     const [favorite, setFavorite] = useState(null);
+    
     /**
      * Hook to track if current location is a favorite city.
      * @type {[boolean, import('react').Dispatch<import('react').SetStateAction<boolean>>]}

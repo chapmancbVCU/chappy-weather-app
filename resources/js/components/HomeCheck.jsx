@@ -9,13 +9,18 @@ function HomeCheck({ weather, favorites }) {
      */
     const [error, setError] = useState(null);
 
+    
     const [favorite, setFavorite] = useState(null);
     /**
-     * State to track if current location is a favorite city.
-     * @type {[boolean, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     * Hook to track if current location is a favorite city.
+     * @type {[boolean, import('react').Dispatch<import('react').SetStateAction<boolean>>]}
      */
     const [isFavorite, setIsFavorite] = useState(false);
 
+    /**
+     * Hook to track if current location is a the user's home city.
+     * @type {[boolean, import('react').Dispatch<import('react').SetStateAction<boolean>>]}
+     */
     const [isHome, setIsHome] = useState(false);
 
     /**

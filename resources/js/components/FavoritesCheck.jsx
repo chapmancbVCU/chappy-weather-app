@@ -21,7 +21,7 @@ function FavoritesCheck({ weather, favorites }) {
 
     /**
      * State to track if current location is a favorite city.
-     * @type {[boolean, import('react').Dispatch<import('react').SetStateAction<string>>]}
+     * @type {[boolean, import('react').Dispatch<import('react').SetStateAction<boolean>>]}
      */
     const [isFavorite, setIsFavorite] = useState(false);
 

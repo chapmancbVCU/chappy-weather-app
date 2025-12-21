@@ -61,7 +61,6 @@ function HomeCheck({ weather, favorites }) {
         e.preventDefault();
         try {
             const payload = {
-                // name: e.target.value.is_home,
                 csrf_token: Forms.CSRFToken(e)
             }
             const json = await apiPost(`/favorites/patch/${favorite.id}`, payload);

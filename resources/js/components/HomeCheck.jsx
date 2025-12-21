@@ -68,7 +68,6 @@ function HomeCheck({ weather, favorites }) {
         } catch (err) {
             setError(apiError(err));
         }
-      
     }
 
     /**

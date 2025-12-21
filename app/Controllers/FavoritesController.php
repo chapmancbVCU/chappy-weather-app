@@ -39,7 +39,6 @@ class FavoritesController extends Controller {
      * @return void
      */
     public function patchAction(int $id) {
-        
         try {
             if(!$this->apiCsrfCheck()) {
                 return $this->jsonError('Corrupted token');
@@ -47,14 +46,16 @@ class FavoritesController extends Controller {
             $user = AuthService::currentUser();
             $currentHome = Favorites::findCurrentHome($user->id);
 
-            if($currentHome->is_home == 1) {
+            if($currentHome && $currentHome->is_home == 1) {
                 $currentHome->is_home = 0;
                 $currentHome->save();
             }
 
-            $favorite = Favorites::findById($id);
-            $favorite->is_home = 1;
-            $favorite->save();
+            $favorite = Favorites::findByIdAndUserId($id, $user->id);
+            if($favorite) {
+                $favorite->is_home = 1;
+                $favorite->save();
+            }
         } catch (Throwable $e){
             return $this->jsonError('Server error' . $e, 500);
         }

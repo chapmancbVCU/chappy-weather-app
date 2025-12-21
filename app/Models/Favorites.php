@@ -40,6 +40,14 @@ class Favorites extends Model {
         return self::findFirst($conditions);
     } 
 
+    public static function findByIdAndUserId(int $id, int $user_id): object|bool {
+        return self::findFirst(
+            [
+            'conditions' => 'id = ? AND user_id = ?',
+            'bind' => [(int)$id, (int)$user_id]
+        ]);
+    }
+
     public function afterDelete(): void {
         // Implement your function
     }

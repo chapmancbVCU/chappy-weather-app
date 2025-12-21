@@ -2,6 +2,17 @@ import React, { useEffect, useState } from "react";
 import Forms from "@chappy/components/Forms";
 import { apiPost, apiError } from "@chappy/utils/api";
 
+/**
+ * A component that renders a button for setting current location as home.  If 
+ * already home an icon is rendered to indicate this status.
+ * 
+ * @property {object} weather An instance of the Weather class.
+ * @property {array} favorites The favorites associated with currently logged 
+ * in user.
+ * @param {InputProps} param0 
+ * @returns {JSX.Element} Component for rendering button to set location as 
+ * home or a home icon if currently user's home.
+ */
 function HomeCheck({ weather, favorites }) {
     /**
      * Sets value of error if exists.
@@ -9,7 +20,7 @@ function HomeCheck({ weather, favorites }) {
      */
     const [error, setError] = useState(null);
 
-    
+
     const [favorite, setFavorite] = useState(null);
     /**
      * Hook to track if current location is a favorite city.

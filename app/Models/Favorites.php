@@ -40,6 +40,13 @@ class Favorites extends Model {
         return self::findFirst($conditions);
     } 
 
+    /**
+     * Returns favorite record by checking $id and $user_id
+     *
+     * @param int $id The $id of the record.
+     * @param int $user_id
+     * @return object|boolean The favorite object or false if no record is found.
+     */
     public static function findByIdAndUserId(int $id, int $user_id): object|bool {
         return self::findFirst(
             [

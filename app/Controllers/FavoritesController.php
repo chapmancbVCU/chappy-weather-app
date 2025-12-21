@@ -78,11 +78,11 @@ class FavoritesController extends Controller {
      */
     public function storeAction() {
         try {
-            $favorite = new Favorites();
             if(!$this->apiCsrfCheck()) {
                 return $this->jsonError('Corrupted token');
             }
 
+            $favorite = new Favorites();
             $favorite->assign($this->get());
             $favorite->user_id = AuthService::currentUser()->id;
             $favorite->save();

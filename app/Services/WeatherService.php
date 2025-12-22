@@ -11,7 +11,7 @@ class WeatherService extends Api {
     public const GEO_LOCATE = 'http://api.openweathermap.org/geo/1.0';
     public const ONE_CALL = 'http://api.openweathermap.org/data/3.0';
     public const STANDARD = 'http://api.openweathermap.org/data/2.5';
-    
+
     /**
      * Setup instance of this class.  Configures default query with 
      * appid and units for suggestions to be returned.
@@ -38,7 +38,6 @@ class WeatherService extends Api {
     private static function buildQuery(string $mode): array {
         $query = [];
         $query['appid'] = env('OWM_API_KEY');
-        // $query['units'] = 'imperial';
 
         if($mode === self::GEO_LOCATE) {
             $query['limit'] = env('OWM_SEARCH_TERM_LIMIT');

@@ -58,7 +58,7 @@ function FavoritesCard({ favorite, units }) {
             if (!favorite) return Promise.resolve(null);
             const u = units || "imperial";
             return apiGet("/weather/currentConditions", { query: { q: favorite.name, units: u }, signal });
-    }, [favorite.name, units]);
+    }, [favorite, units]);
     const data = favoriteData?.data;
 
     const { description } = useDescription(data?.weather?.[0].description);

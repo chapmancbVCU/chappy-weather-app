@@ -2,7 +2,6 @@
 namespace App\Services;
 
 use Core\Lib\Http\Api;
-use Core\Lib\Logging\Logger;
 use InvalidArgumentException;
 
 /**

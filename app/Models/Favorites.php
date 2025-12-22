@@ -54,29 +54,4 @@ class Favorites extends Model {
             'bind' => [(int)$id, (int)$user_id]
         ]);
     }
-
-    public function afterDelete(): void {
-        // Implement your function
-    }
-
-    public function afterSave(): void {
-        // Implement your function
-    }
-
-    public function beforeDelete(): void {
-        // Implement your function
-    }
-
-    public function beforeSave(): void {
-        // Implement your function
-    }
-
-    /**
-     * Performs validation for the Favorites model.
-     *
-     * @return void
-     */
-    public function validator(): void {
-        // Implement your function
-    }
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Forms from "@chappy/components/Forms";
-import { apiPut, apiError } from "@chappy/utils/api";
+import { apiPatch, apiError } from "@chappy/utils/api";
 
 /**
  * A component that renders a button for setting current location as home.  If 
@@ -25,7 +25,7 @@ function HomeCheck({ weather, favorites }) {
      * @type {[object, import('react').Dispatch<import('react').SetStateAction<object>>]}
      */
     const [favorite, setFavorite] = useState(null);
-
+    
     /**
      * Hook to track if current location is a favorite city.
      * @type {[boolean, import('react').Dispatch<import('react').SetStateAction<boolean>>]}
@@ -83,7 +83,7 @@ function HomeCheck({ weather, favorites }) {
             const payload = {
                 csrf_token: Forms.CSRFToken(e)
             }
-            const json = await apiPut(`/favorites/patch/${favorite.id}`, payload);
+            const json = await apiPatch(`/favorites/patch/${favorite.id}`, payload);
             window.location.reload();
         } catch (err) {
             setError(apiError(err));

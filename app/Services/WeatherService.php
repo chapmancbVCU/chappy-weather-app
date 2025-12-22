@@ -63,8 +63,6 @@ class WeatherService extends Api {
 
         $allowed = ['q', 'units', 'lang', 'zip'];
         $params = array_intersect_key($query, array_flip($allowed));
-        // Logger::log(json_encode($params));
-        // Logger::log(json_encode($this->get('/weather', $params)));
         return $this->get('/weather', $params);
     }
 

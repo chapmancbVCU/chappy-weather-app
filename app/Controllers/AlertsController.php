@@ -13,6 +13,7 @@ class AlertsController extends Controller {
      */
     public function indexAction(): void {
         $user = AuthService::currentUser();
+        unset($user->password);
         $props = ['user' => $user ?? null,];
         $this->view->renderJsx('alerts.Index', $props);
     }

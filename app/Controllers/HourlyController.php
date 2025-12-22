@@ -14,6 +14,7 @@ class HourlyController extends Controller {
      */
     public function indexAction(): void {
         $user = AuthService::currentUser();
+        unset($user->password);
         $props = ['user' => $user ?? null,];
         $this->view->renderJsx('hourly.Index', $props);
     }

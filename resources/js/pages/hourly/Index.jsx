@@ -11,6 +11,7 @@ import HomeCheck from "@/components/HomeCheck";
 import Alerts from "@/components/Alerts";
 import useFavorites from "@/utils/hooks/useFavorites";
 import Minutely from "@/components/Minutely";
+import documentTitle from "@chappy/utils/documentTitle";
 
 /**
  * Renders and handles information for hourly conditions at a specific 
@@ -21,6 +22,7 @@ import Minutely from "@/components/Minutely";
  * @returns {JSX.Element} The home view that displays hourly forecast.
  */
 function Index({ user }) {
+    documentTitle("Chappy Weather - Hourly Forecast");
     const weather = useMemo(() => new Weather(), []);
     const { favorites } = useFavorites();
     

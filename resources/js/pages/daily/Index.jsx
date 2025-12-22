@@ -10,6 +10,8 @@ import FavoritesCheck from "@/components/FavoritesCheck";
 import HomeCheck from "@/components/HomeCheck";
 import Alerts from "@/components/Alerts";
 import useFavorites from "@/utils/hooks/useFavorites";
+import documentTitle from "@chappy/utils/documentTitle";
+
 /**
  * Renders and handles information for daily forecast at a specific 
  * location and search.
@@ -19,6 +21,7 @@ import useFavorites from "@/utils/hooks/useFavorites";
  * @returns {JSX.Element} The view that displays daily forecast.
  */
 function Index({ user }) {
+    documentTitle("Chappy Weather - Daily Forecast");
     const weather = useMemo(() => new Weather(), []);
     const { favorites } = useFavorites();
     

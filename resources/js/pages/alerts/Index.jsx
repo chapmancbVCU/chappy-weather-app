@@ -9,6 +9,7 @@ import { Card } from "@/utils/Card";
 import useFavorites from '@/utils/hooks/useFavorites';
 import Favorites from "@/components/Favorites";
 import UnitsSwitch from "@/components/UnitsSwitch";
+import documentTitle from "@chappy/utils/documentTitle";
 
 /**
  * Renders view containing alerts.
@@ -18,6 +19,7 @@ import UnitsSwitch from "@/components/UnitsSwitch";
  * as cards.
  */
 function Index({ user }) {
+    documentTitle("Chappy Weather - Alerts");
     const { favorites } = useFavorites();
     const card = useMemo(() => new Card(), []);
     card.updateStorage(0);

@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useEffect } from "react";
 import CurrentConditions from "@/components/CurrentConditions";
 import SearchBar from "@/components/SearchBar";
 import { Weather } from "@/utils/Weather";
@@ -10,6 +10,7 @@ import FavoritesCheck from "@/components/FavoritesCheck";
 import HomeCheck from "@/components/HomeCheck";
 import Alerts from "@/components/Alerts";
 import useFavorites from "@/utils/hooks/useFavorites";
+import documentTitle from "@chappy/utils/documentTitle";
 
 /**
  * Renders and handles information for current conditions at a specific 
@@ -20,6 +21,7 @@ import useFavorites from "@/utils/hooks/useFavorites";
  * @returns {JSX.Element} The view that displays current conditions.
  */
 function Index({ user }) {
+    documentTitle("Chappy Weather - Current Conditions");
     const weather = useMemo(() => new Weather(), []);
     const { favorites } = useFavorites();
 

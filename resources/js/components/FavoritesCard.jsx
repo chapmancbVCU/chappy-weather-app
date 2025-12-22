@@ -26,6 +26,10 @@ function FavoritesCard({ favorite, units }) {
      */
     const [error, setError] = useState(null);
 
+    /**
+     * Hook to track if current location is a the user's home city.
+     * @type {[boolean, import('react').Dispatch<import('react').SetStateAction<boolean>>]}
+     */
     const [isHome, setIsHome] = useState(false);
 
     /**

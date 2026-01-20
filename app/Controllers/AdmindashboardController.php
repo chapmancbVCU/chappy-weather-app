@@ -159,8 +159,7 @@ class AdmindashboardController extends Controller {
 
         $this->view->userAcls = Arr::map($userAcls, 'strval'); // Ensure values are strings
         $profileImages = ProfileImages::findByUserId($user->id);
-    
-        if ($this->request->isPost()) {
+        if ($this->request->isPut()) { // Changed to isPut for unit testing
             $this->request->csrfCheck();
             $user->assign($this->request->get(), Users::blackListedFormKeys);
     

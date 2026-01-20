@@ -13,7 +13,7 @@ class ExampleFeatureTest extends ApplicationTestCase {
      */
     public function test_homepage_loads_successfully(): void
     {
-        $response = $this->get('/');
+        $response = $this->get('/current');
         $response->assertStatus(200);
     }
 }

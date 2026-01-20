@@ -1,6 +1,7 @@
 <?php
 namespace Tests\Feature;
 
+use App\Models\Users;
 use Core\DB;
 use Core\FormHelper;
 use Core\Lib\Testing\ApplicationTestCase;
@@ -55,7 +56,9 @@ class StandardControllerTests extends ApplicationTestCase {
             'description' => 'Seeded user',
             'password' => password_hash('Password@123', PASSWORD_DEFAULT),
             'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
+            'updated_at' => date('Y-m-d H:i:s'),
+            'acl' => '[""]',
+            'deleted' => 0
         ]);
 
         $userId = DB::getInstance()->lastID();
@@ -64,11 +67,12 @@ class StandardControllerTests extends ApplicationTestCase {
         $data = [
             'username' => 'updateduser',
             'email' => 'updated@example.com',
+            'images_sorted' => '[]',
             'csrf_token' => FormHelper::generateToken()
         ];
 
         // ✅ Simulate PUT request to update controller
-        $response = $this->put("/profile/update/{$userId}", $data);
+        $response = $this->put("/admindashboard/edit/{$userId}", $data);
 
         // ✅ Assert changes in DB
         $user = DB::getInstance()->query("SELECT * FROM users WHERE id = ?", [$userId])->first();

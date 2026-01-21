@@ -38,10 +38,10 @@ class RESTfulStoreBadCSRFTest extends ApplicationTestCase {
         // Bad CSRF (won't match session token)
         $payload = [
             'user_id'     => $userId,
-            'name'       => 'Bad CSRF City',
-            'latitude'   => '1.23',
-            'longitude'  => '4.56',
-            'csrf_token' => 'not-a-real-token',
+            'name'        => 'Bad CSRF City',
+            'latitude'    => '1.23',
+            'longitude'   => '4.56',
+            'csrf_token'  => 'not-a-real-token',
         ];
 
         FavoritesController::$rawInputOverride = json_encode($payload);

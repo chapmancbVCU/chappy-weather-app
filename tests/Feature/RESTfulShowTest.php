@@ -47,8 +47,8 @@ class RESTfulShowTest extends ApplicationTestCase {
         DB::getInstance()->insert('favorites', [
             'user_id'     => $userId,
             'name'        => 'Norfolk, VA',
-            'latitude'         => 36.8508,
-            'longitude'         => -76.2859,
+            'latitude'    => 36.8508,
+            'longitude'   => -76.2859,
             'is_home'     => 0,
             'deleted'     => 0,
         ]);
@@ -56,8 +56,8 @@ class RESTfulShowTest extends ApplicationTestCase {
         DB::getInstance()->insert('favorites', [
             'user_id'     => $userId,
             'name'        => 'Virginia Beach, VA',
-            'latitude'         => 36.8529,
-            'longitude'         => -75.9780,
+            'latitude'    => 36.8529,
+            'longitude'   => -75.9780,
             'is_home'     => 1,
             'deleted'     => 0
         ]);

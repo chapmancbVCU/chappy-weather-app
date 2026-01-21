@@ -1,14 +1,11 @@
 <?php
 declare(strict_types=1);
-
 namespace Tests\Feature;
 
-use App\Controllers\FavoritesController;
 use Core\DB;
 use Core\Lib\Utilities\Env;
 use Core\Lib\Http\JsonResponse; // trait with static test mode toggles
 use Core\Lib\Testing\ApplicationTestCase;
-use Core\FormHelper;
 
 /**
  * Unit tests

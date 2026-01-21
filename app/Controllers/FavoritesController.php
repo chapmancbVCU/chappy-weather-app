@@ -95,10 +95,7 @@ class FavoritesController extends Controller {
             $favorite->user_id = AuthService::currentUser()->id;
             $favorite->save();
         } catch (Throwable $e){
-            return $this->jsonError('Server error', 500, [
-        'exception' => $e->getMessage(),
-        'trace' => $e->getTraceAsString(),
-    ]);
+            return $this->jsonError('Server error' . $e, 500);
         }
     }
 }

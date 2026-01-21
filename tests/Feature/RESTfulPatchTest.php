@@ -99,8 +99,4 @@ class RESTfulPatchTest extends ApplicationTestCase {
         // Cleanup override so it doesn't leak into other tests
         JsonResponse::$rawInputOverride = null;
     }
-
-    
-
-    
 }

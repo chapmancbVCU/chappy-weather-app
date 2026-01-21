@@ -8,7 +8,6 @@ use Core\DB;
 use Core\Lib\Utilities\Env;
 use Core\Lib\Http\JsonResponse; // trait with static test mode toggles
 use Core\Lib\Testing\ApplicationTestCase;
-use Core\FormHelper;
 
 /**
  * Unit tests

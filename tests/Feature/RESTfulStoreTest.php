@@ -43,11 +43,11 @@ class RESTfulStoreTest extends ApplicationTestCase {
             'name'       => 'Norfolk, VA',
             'latitude'   => '36.85',
             'longitude'  => '-76.28',
-            'csrf_token' => FormHelper::generateToken(),
+            'csrf_token' => FormHelper::generateToken()
         ];
 
         // Inject JSON body for JsonResponse::get()
-        FavoritesController::setRawInputOverride(json_encode($payload));
+        FavoritesController::setRawInputOverride($payload);
 
         // 4) Call store endpoint (your controller/action routing)
         $_SERVER['REQUEST_METHOD'] = 'POST';

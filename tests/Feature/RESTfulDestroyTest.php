@@ -58,7 +58,7 @@ class RESTfulDestroyTest extends ApplicationTestCase
 
         // 3) JSON body for CSRF (destroyAction reads csrf_token from JsonResponse::get())
         $payload = ['csrf_token' => FormHelper::generateToken(),];
-        FavoritesController::setRawInputOverride(json_encode($payload));
+        FavoritesController::setRawInputOverride($payload);
 
         // 4) DELETE /favorites/destroy/{id}
         $_SERVER['REQUEST_METHOD'] = 'DELETE';

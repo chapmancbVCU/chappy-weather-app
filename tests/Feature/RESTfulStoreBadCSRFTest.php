@@ -41,7 +41,7 @@ class RESTfulStoreBadCSRFTest extends ApplicationTestCase {
             'csrf_token'  => 'not-a-real-token',
         ];
 
-        FavoritesController::setRawInputOverride(json_encode($payload));
+        FavoritesController::setRawInputOverride($payload);
 
         $_SERVER['REQUEST_METHOD'] = 'POST';
         $response = $this->post('/favorites/store', []);

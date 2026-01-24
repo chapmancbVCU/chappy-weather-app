@@ -70,7 +70,7 @@ class RESTfulPatchTest extends ApplicationTestCase {
 
         // IMPORTANT: set the override on the class using the trait
         // FavoritesController::$rawInputOverride = json_encode($payload);
-        FavoritesController::setRawInputOverride(json_encode($payload));
+        FavoritesController::setRawInputOverride($payload);
 
         // If you added this testing flag to prevent exit()
         FavoritesController::$testing = true;

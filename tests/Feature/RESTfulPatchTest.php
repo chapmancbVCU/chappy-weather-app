@@ -79,7 +79,7 @@ class RESTfulPatchTest extends ApplicationTestCase {
 
         $response = $this->patch("/favorites/patch/{$targetId}", []);
 
-        FavoritesController::$rawInputOverride = null;
+        FavoritesController::setRawInputOverride();
         // 6) Assert response looks like JSON success (optional but helpful)
         $response->assertStatus(200);
 

@@ -17,11 +17,9 @@ class RESTfulPatchTest extends ApplicationTestCase {
     public function test_patch_sets_selected_favorite_as_home_and_unsets_previous_home(): void
     {
         // Ensure JSON responses don't exit during tests
-        JsonResponse::$testing = true;
+        self::enableJsonTestingMode();
 
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
+        self::ensureSessionStarts();
 
         // 1) Seed user
         DB::getInstance()->insert('users', [

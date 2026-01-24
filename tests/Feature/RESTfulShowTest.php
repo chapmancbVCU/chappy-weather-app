@@ -14,12 +14,10 @@ class RESTfulShowTest extends ApplicationTestCase {
     public function test_show_returns_favorites_for_current_user(): void
     {
         // Ensure JSON responses don't exit during tests
-        JsonResponse::$testing = true;
+        self::enableJsonTestingMode();
 
         // Start session for AuthService::currentUser()
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
+        self::ensureSessionStarts();
 
         // 1) Seed a user record
         DB::getInstance()->insert('users', [

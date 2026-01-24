@@ -15,11 +15,9 @@ use Core\Lib\Testing\ApplicationTestCase;
 class RESTfulStoreBadCSRFTest extends ApplicationTestCase {
     public function test_store_rejects_request_with_bad_csrf_and_does_not_create_row(): void
     {
-        JsonResponse::$testing = true;
+        self::enableJsonTestingMode();
 
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
+        self::ensureSessionStarts();
 
         // Seed + login user
         DB::getInstance()->insert('users', [

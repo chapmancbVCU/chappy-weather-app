@@ -14,11 +14,9 @@ class RESTfulDestroyTest extends ApplicationTestCase
 {
     public function test_destroy_deletes_one_favorite_and_leaves_other_intact(): void
     {
-        JsonResponse::$testing = true;
+        self::enableJsonTestingMode();
 
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
+        self::ensureSessionStarts();
 
         // 1) Seed user
         DB::getInstance()->insert('users', [

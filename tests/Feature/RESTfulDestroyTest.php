@@ -57,17 +57,15 @@ class RESTfulDestroyTest extends ApplicationTestCase
         $this->assertNotSame($fav1Id, $fav2Id);
 
         // 3) JSON body for CSRF (destroyAction reads csrf_token from JsonResponse::get())
-        $payload = [
-            'csrf_token' => FormHelper::generateToken(),
-        ];
-        FavoritesController::$rawInputOverride = json_encode($payload);
+        $payload = ['csrf_token' => FormHelper::generateToken(),];
+        FavoritesController::setRawInputOverride(json_encode($payload));
 
         // 4) DELETE /favorites/destroy/{id}
         $_SERVER['REQUEST_METHOD'] = 'DELETE';
         $response = $this->delete("/favorites/destroy/{$fav1Id}", []);
 
         // Cleanup override
-        FavoritesController::$rawInputOverride = null;
+        FavoritesController::setRawInputOverride();
 
         // 5) On success, destroyAction returns no body
         $response->assertStatus(200);

@@ -16,12 +16,8 @@ use Core\FormHelper;
 class RESTfulStoreTest extends ApplicationTestCase {
     public function test_store_creates_favorite_for_current_user(): void
     {
-        // Prevent jsonResponse() from exiting during tests
-        JsonResponse::$testing = true;
-
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
+        self::enableJsonTestingMode();
+        self::ensureSessionStarts();
 
         // 1) Seed user
         DB::getInstance()->insert('users', [
@@ -51,14 +47,14 @@ class RESTfulStoreTest extends ApplicationTestCase {
         ];
 
         // Inject JSON body for JsonResponse::get()
-        FavoritesController::$rawInputOverride = json_encode($payload);
+        FavoritesController::setRawInputOverride(json_encode($payload));
 
         // 4) Call store endpoint (your controller/action routing)
         $_SERVER['REQUEST_METHOD'] = 'POST';
         $response = $this->post('/favorites/store', []);
 
         // Cleanup override to avoid leaking into other tests
-        FavoritesController::$rawInputOverride = null;
+        FavoritesController::setRawInputOverride();
 
         // 5) On success, your action returns no JSON body (same as patch)
         $response->assertStatus(200);

@@ -16,7 +16,6 @@ class RESTfulStoreBadCSRFTest extends ApplicationTestCase {
     public function test_store_rejects_request_with_bad_csrf_and_does_not_create_row(): void
     {
         self::enableJsonTestingMode();
-
         self::ensureSessionStarts();
 
         // Seed + login user
@@ -42,12 +41,12 @@ class RESTfulStoreBadCSRFTest extends ApplicationTestCase {
             'csrf_token'  => 'not-a-real-token',
         ];
 
-        FavoritesController::$rawInputOverride = json_encode($payload);
+        FavoritesController::setRawInputOverride(json_encode($payload));
 
         $_SERVER['REQUEST_METHOD'] = 'POST';
         $response = $this->post('/favorites/store', []);
 
-        FavoritesController::$rawInputOverride = null;
+        FavoritesController::setRawInputOverride();
 
         $response->assertStatus(200);
 

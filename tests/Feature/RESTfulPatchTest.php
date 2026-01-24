@@ -69,7 +69,8 @@ class RESTfulPatchTest extends ApplicationTestCase {
         ];
 
         // IMPORTANT: set the override on the class using the trait
-        FavoritesController::$rawInputOverride = json_encode($payload);
+        // FavoritesController::$rawInputOverride = json_encode($payload);
+        FavoritesController::setRawInputOverride(json_encode($payload));
 
         // If you added this testing flag to prevent exit()
         FavoritesController::$testing = true;
@@ -95,6 +96,6 @@ class RESTfulPatchTest extends ApplicationTestCase {
         $this->assertSame(1, (int) $new->is_home, 'Expected selected favorite to be set as home.');
 
         // Cleanup override so it doesn't leak into other tests
-        JsonResponse::$rawInputOverride = null;
+        JsonResponse::setRawInputOverride();
     }
 }

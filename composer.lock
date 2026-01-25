@@ -141,7 +141,7 @@
             "dist": {
                 "type": "path",
                 "url": "../chappy-php-framework",
-                "reference": "ae88c7a3da9b88e1595132fe1a63a63df9e4b9ce"
+                "reference": "8e3742a5749c7854ce008122ea020bcc823b532e"
             },
             "require": {
                 "composer": "*",
@@ -150,7 +150,7 @@
                 "filp/whoops": "^2.17",
                 "giggsey/libphonenumber-for-php": "^9.0",
                 "nesbot/carbon": "^3.8",
-                "php": ">=8.2",
+                "php": ">=8.4",
                 "phpunit/phpunit": "^11.3",
                 "predis/predis": "^3.1",
                 "ramsey/uuid": "^4.9",
